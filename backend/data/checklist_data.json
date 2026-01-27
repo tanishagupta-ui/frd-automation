@@ -5781,5 +5781,337 @@
       ],
       "additionalComments": ""
     }
+  },
+  {
+    "filename": "checklist-1769508243541-758178892.xlsx",
+    "originalName": "CAW Audit Checklist (1) (1).xlsx",
+    "product": "Charge at Will",
+    "uploadDate": "2026-01-27T10:04:03.637Z",
+    "data": {
+      "audit_id": "audit_1769508243635_320",
+      "merchant_info": {
+        "name": "",
+        "mid": "",
+        "date": ""
+      },
+      "audit_data": [
+        {
+          "section": "General",
+          "checks": [
+            {
+              "item": "E Mandate",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "UPI Autopay",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Card Mandates",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Paper Nach",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "2. Order creation",
+          "checks": [
+            {
+              "item": "Auth Type",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Token Expiry",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Frequency",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Max_amount",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Recurring type / value",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Bank Account / TPV",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Notification Object (UPI / Cards) during subsequent debit",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Registration and Charge First. (E Mandate / Paper Nach)",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "3. Checkout configuration",
+          "checks": [
+            {
+              "item": "Handler Function",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Callback function [w/o Redirect]",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Deeplink Handling (S2S Checkout)",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Recurring True / 1 / preferred",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Customer_ID",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "4. For Successful transactions",
+          "checks": [
+            {
+              "item": "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout)",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Fetch status of Payment_id",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "5. For Failure transactions",
+          "checks": [
+            {
+              "item": "Consumes Error Codes",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "6. Token Management",
+          "checks": [
+            {
+              "item": "Fetch Token by Payment ID",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Fetch Tokens by Customer ID",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Delete Token",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Cancel Token (UPI)",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "7. Autoacapture Settings",
+          "checks": [
+            {
+              "item": "2 Days for UPI and 3 Days for other methods",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "8. Late Auth Scenarios",
+          "checks": [
+            {
+              "item": "Consumes payment state at capture time",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "9. Verify Payment / Token Status",
+          "checks": [
+            {
+              "item": "Webhooks",
+              "status": null,
+              "comment": "Events:"
+            },
+            {
+              "item": "Fetch payment APIs (Fallback)",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "10. Checkout library, server language, version",
+          "checks": [
+            {
+              "item": "a. Platform",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "b. Checkout Type",
+              "status": null,
+              "comment": "Type:"
+            },
+            {
+              "item": "c. Server language/SDK",
+              "status": null,
+              "comment": "Version:"
+            }
+          ]
+        },
+        {
+          "section": "11. Refund APIs",
+          "checks": [
+            {
+              "item": "Autorefund Auth payments using payment capture as manual",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Using Refund api's",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "12. Recurring Terminals",
+          "checks": [
+            {
+              "item": "upi_icici",
+              "status": null,
+              "comment": "Others if applicable:"
+            },
+            {
+              "item": "enach_rbl",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "hitachi / fulcrum",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "13. Feature Flags",
+          "checks": [
+            {
+              "item": "Charge_at_will",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "e_sign",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "save_vpa",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "emandate_mrn",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "tokenization flags for cards",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "allow_billdesk_sihub",
+              "status": null,
+              "comment": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1769508274039-358446812.xlsx",
+    "originalName": "Go Live Checklist- ManipalCigna Health Insurance.xlsx",
+    "product": "Charge at Will",
+    "uploadDate": "2026-01-27T10:04:34.087Z",
+    "data": {
+      "audit_id": "audit_1769508274086_558",
+      "merchant_info": {
+        "name": "",
+        "mid": "",
+        "date": ""
+      },
+      "audit_data": [
+        {
+          "section": "General",
+          "checks": [
+            {
+              "item": "ManipalCigna Health Insurance",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Rakshita Sharma",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Gauthami Bhaskar",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "10th March, 2025",
+              "status": null,
+              "comment": null
+            }
+          ]
+        }
+      ]
+    }
   }
 ]

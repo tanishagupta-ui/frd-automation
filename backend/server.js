@@ -4,12 +4,13 @@ const cors = require("cors");
 const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
+const merchantService = require("./services/merchantService");
 const xlsx = require("xlsx");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 // Initialize Gemini AI
 let genAI = null;
-if (process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY !== 'YOUR_API_KEY_HERE') {
+if (process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY !== 'AIzaSyA3ka04wRlpWanOfl-S7hA1Bt_0fxGn_No') {
     genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
     console.log("✅ Gemini AI initialized");
 } else {
@@ -145,7 +146,7 @@ function storeMerchantEnrichment(enrichmentData) {
 }
 
 app.post("/upload", (req, res) => {
-    upload.single("checklist")(req, res, function (err) {
+    upload.single("checklist")(req, res, async function (err) {
         if (err instanceof multer.MulterError) {
             // A Multer error occurred when uploading.
             console.error("Multer Error:", err);
@@ -164,6 +165,25 @@ app.post("/upload", (req, res) => {
 
         console.log("File uploaded successfully:", req.file);
         console.log("Request Body:", req.body);
+
+        // Extract Merchant Name
+        let merchantName = null;
+        let merchantInfo = "Info pending...";
+
+        try {
+            merchantName = merchantService.extractMerchantName(req.file.path);
+            if (merchantName) {
+                console.log(`Extracted Merchant Name: ${merchantName}`);
+                // Fire and forget (or await if fast enough) - basic scraping is slow, so maybe fire and forget?
+                // But for now let's await to see results immediately for testing.
+                // In production, use a queue.
+                merchantInfo = await merchantService.fetchMerchantInfo(merchantName);
+            } else {
+                console.log("Could not extract merchant name.");
+            }
+        } catch (extractionError) {
+            console.error("Error in merchant extraction process:", extractionError);
+        }
         console.log("Processing for product:", req.body.product);
 
         try {
