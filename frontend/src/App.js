@@ -17,7 +17,10 @@ function App() {
     "Charge at Will",
     "Standard Checkout",
     "Custom Checkout",
-    "S2S"
+    "S2S",
+    "Payment Links",
+    "QR Codes",
+    "Affordability Widget"
   ];
 
   const openFilePicker = () => {
@@ -60,7 +63,7 @@ function App() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5001/upload",
+        "http://localhost:5002/upload",
         formData
       );
       console.log("Upload response:", res.data);

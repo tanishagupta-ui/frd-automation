@@ -17,8 +17,10 @@ if (process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY !== 'YOUR_API_KEY_H
 }
 
 const app = express();
-const PORT = 5001; // Changed to 5001 to avoid macOS AirPlay/ControlCenter conflict
+const PORT = 5002; // Changed to 5001 to avoid macOS AirPlay/ControlCenter conflict
 
+
+app.use(express.json());
 // Ensure uploads directory exists
 const uploadDir = path.join(__dirname, "uploads");
 if (!fs.existsSync(uploadDir)) {
@@ -1424,6 +1426,26 @@ app.post("/upload", (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
+app.use("/api", require("./routes/docRoute"));
+
+
+const server = app.listen(PORT, () => {
     console.log(`✅ Server running on http://localhost:${PORT}`);
+});
+
+server.on('error', (error) => {
+    console.error('Server error:', error);
+});
+
+// Prevent unhandled crashes
+process.on('uncaughtException', (err) => {
+    console.error('UNCAUGHT EXCEPTION:', err);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('UNHANDLED REJECTION:', reason);
+});
+
+process.on('exit', (code) => {
+    console.log(`Process exited with code: ${code}`);
 });
