@@ -1,0 +1,5785 @@
+[
+  {
+    "filename": "checklist-1768901590342-61093582.xlsx",
+    "uploadDate": "2026-01-20T09:33:10.349Z",
+    "data": [
+      {
+        "Audit Checklist": "Item 1",
+        "Configs": "Config A",
+        "Status": "Done"
+      },
+      {
+        "Audit Checklist": "Item 2",
+        "Configs": "Config B",
+        "Status": "Pending"
+      }
+    ]
+  },
+  {
+    "filename": "checklist-1768901639002-127867471.xlsx",
+    "uploadDate": "2026-01-20T09:33:59.023Z",
+    "data": [
+      {
+        "__EMPTY": "Tech Checklist"
+      },
+      {
+        "__EMPTY": "Audit Checklist",
+        "__EMPTY_1": "Configs",
+        "__EMPTY_2": "Status",
+        "__EMPTY_3": "Comment"
+      },
+      {
+        "__EMPTY": "1. Order creation",
+        "__EMPTY_1": "a. Partial Payments",
+        "__EMPTY_2": "N/A"
+      },
+      {
+        "__EMPTY_1": "b. Capture settings",
+        "__EMPTY_2": "Done"
+      },
+      {
+        "__EMPTY_1": "c. Additional fee bearer information",
+        "__EMPTY_2": "Done",
+        "__EMPTY_3": "Platform "
+      },
+      {
+        "__EMPTY": "2. Checkout configuration",
+        "__EMPTY_1": "a. Handler Function",
+        "__EMPTY_2": "N/A"
+      },
+      {
+        "__EMPTY_1": "b. Callback function [w/o Redirect]",
+        "__EMPTY_2": "Done"
+      },
+      {
+        "__EMPTY_1": "c. Timeout",
+        "__EMPTY_2": "N/A",
+        "__EMPTY_3": "NO"
+      },
+      {
+        "__EMPTY_1": "d. Retry [w/o max_count]",
+        "__EMPTY_2": "N/A",
+        "__EMPTY_3": "NO"
+      },
+      {
+        "__EMPTY_1": "e. Config",
+        "__EMPTY_2": "N/A"
+      },
+      {
+        "__EMPTY": "3. For successful transactions",
+        "__EMPTY_1": "a. Consumes payment_id, order_id and razorpay_signature",
+        "__EMPTY_2": "Done"
+      },
+      {
+        "__EMPTY_1": "b. Verify payment signature step",
+        "__EMPTY_2": "Done"
+      },
+      {
+        "__EMPTY": "4. For failure transactions",
+        "__EMPTY_1": "a. Consumes Error Codes",
+        "__EMPTY_2": "Done"
+      },
+      {
+        "__EMPTY": "5. Late Auth Scenarios",
+        "__EMPTY_1": "a. Consumes payment state at capture time",
+        "__EMPTY_2": "Done"
+      },
+      {
+        "__EMPTY": "6. Verify Payment Status ",
+        "__EMPTY_1": "a. Webhooks",
+        "__EMPTY_2": "Done"
+      },
+      {
+        "__EMPTY_1": "b. Verify webhook signature",
+        "__EMPTY_2": "N/A"
+      },
+      {
+        "__EMPTY_1": "c. Fetch payment APIs",
+        "__EMPTY_2": "N/A"
+      },
+      {
+        "__EMPTY": "7. Checkout library, server language, version",
+        "__EMPTY_1": "a. Platform",
+        "__EMPTY_2": "Done",
+        "__EMPTY_3": "Standard checkout , web and android "
+      },
+      {
+        "__EMPTY_1": "b. Server language/SDK",
+        "__EMPTY_2": "Pending with Merchant"
+      },
+      {
+        "__EMPTY_1": "c. Version",
+        "__EMPTY_2": "Pending with Merchant"
+      },
+      {
+        "__EMPTY": "8. Offers",
+        "__EMPTY_2": "N/A"
+      },
+      {
+        "__EMPTY": "9. Refund APIs",
+        "__EMPTY_2": "N/A"
+      },
+      {
+        "__EMPTY": "10. Affordability Widget",
+        "__EMPTY_2": "N/A"
+      },
+      {
+        "__EMPTY": "11. UAT Sign Off",
+        "__EMPTY_2": "Done",
+        "__EMPTY_3": "They have internally tested the transaction using the live key, and both payments and transfers are working fine on web."
+      },
+      {
+        "__EMPTY": "Additional Comments"
+      },
+      {
+        "__EMPTY": "QrfBjbubfaKPkb The merchant has implemented the standard checkout on both web and Android apps, using UPI as the standalone payment method. Settlement is blocked on the main MID. The payments made by customers are transferred to the relevant linked accounts, and these transfers are completed through the order transfer using the order ID."
+      }
+    ]
+  },
+  {
+    "filename": "checklist-1768902799706-360606962.xlsx",
+    "uploadDate": "2026-01-20T09:53:19.715Z",
+    "data": [
+      {
+        "__EMPTY": "Tech Checklist"
+      },
+      {
+        "__EMPTY": "Audit Checklist",
+        "__EMPTY_1": "Configs",
+        "__EMPTY_2": "Status",
+        "__EMPTY_3": "Comment"
+      },
+      {
+        "__EMPTY": "1. Order creation",
+        "__EMPTY_1": "a. Partial Payments",
+        "__EMPTY_2": "N/A"
+      },
+      {
+        "__EMPTY_1": "b. Capture settings",
+        "__EMPTY_2": "Done"
+      },
+      {
+        "__EMPTY_1": "c. Additional fee bearer information",
+        "__EMPTY_2": "Done",
+        "__EMPTY_3": "Platform "
+      },
+      {
+        "__EMPTY": "2. Checkout configuration",
+        "__EMPTY_1": "a. Handler Function",
+        "__EMPTY_2": "N/A"
+      },
+      {
+        "__EMPTY_1": "b. Callback function [w/o Redirect]",
+        "__EMPTY_2": "Done"
+      },
+      {
+        "__EMPTY_1": "c. Timeout",
+        "__EMPTY_2": "N/A",
+        "__EMPTY_3": "NO"
+      },
+      {
+        "__EMPTY_1": "d. Retry [w/o max_count]",
+        "__EMPTY_2": "N/A",
+        "__EMPTY_3": "NO"
+      },
+      {
+        "__EMPTY_1": "e. Config",
+        "__EMPTY_2": "N/A"
+      },
+      {
+        "__EMPTY": "3. For successful transactions",
+        "__EMPTY_1": "a. Consumes payment_id, order_id and razorpay_signature",
+        "__EMPTY_2": "Done"
+      },
+      {
+        "__EMPTY_1": "b. Verify payment signature step",
+        "__EMPTY_2": "Done"
+      },
+      {
+        "__EMPTY": "4. For failure transactions",
+        "__EMPTY_1": "a. Consumes Error Codes",
+        "__EMPTY_2": "Done"
+      },
+      {
+        "__EMPTY": "5. Late Auth Scenarios",
+        "__EMPTY_1": "a. Consumes payment state at capture time",
+        "__EMPTY_2": "Done"
+      },
+      {
+        "__EMPTY": "6. Verify Payment Status ",
+        "__EMPTY_1": "a. Webhooks",
+        "__EMPTY_2": "Done"
+      },
+      {
+        "__EMPTY_1": "b. Verify webhook signature",
+        "__EMPTY_2": "N/A"
+      },
+      {
+        "__EMPTY_1": "c. Fetch payment APIs",
+        "__EMPTY_2": "N/A"
+      },
+      {
+        "__EMPTY": "7. Checkout library, server language, version",
+        "__EMPTY_1": "a. Platform",
+        "__EMPTY_2": "Done",
+        "__EMPTY_3": "Standard checkout , web and android "
+      },
+      {
+        "__EMPTY_1": "b. Server language/SDK",
+        "__EMPTY_2": "Pending with Merchant"
+      },
+      {
+        "__EMPTY_1": "c. Version",
+        "__EMPTY_2": "Pending with Merchant"
+      },
+      {
+        "__EMPTY": "8. Offers",
+        "__EMPTY_2": "N/A"
+      },
+      {
+        "__EMPTY": "9. Refund APIs",
+        "__EMPTY_2": "N/A"
+      },
+      {
+        "__EMPTY": "10. Affordability Widget",
+        "__EMPTY_2": "N/A"
+      },
+      {
+        "__EMPTY": "11. UAT Sign Off",
+        "__EMPTY_2": "Done",
+        "__EMPTY_3": "They have internally tested the transaction using the live key, and both payments and transfers are working fine on web."
+      },
+      {
+        "__EMPTY": "Additional Comments"
+      },
+      {
+        "__EMPTY": "QrfBjbubfaKPkb The merchant has implemented the standard checkout on both web and Android apps, using UPI as the standalone payment method. Settlement is blocked on the main MID. The payments made by customers are transferred to the relevant linked accounts, and these transfers are completed through the order transfer using the order ID."
+      }
+    ]
+  },
+  {
+    "filename": "checklist-1768910329339-524668232.xlsx",
+    "uploadDate": "2026-01-20T11:58:49.348Z",
+    "data": {
+      "auditChecklist": [
+        {
+          "section": "1. Order creation",
+          "configs": [
+            {
+              "item": "a. Partial Payments",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "b. Capture settings",
+              "status": "Done",
+              "comment": ""
+            }
+          ]
+        }
+      ],
+      "additionalComments": "This is a test comment."
+    }
+  },
+  {
+    "filename": "checklist-1768910364783-443567644.xlsx",
+    "uploadDate": "2026-01-20T11:59:24.805Z",
+    "data": {
+      "auditChecklist": [
+        {
+          "section": "1. Order creation",
+          "configs": [
+            {
+              "item": "a. Partial Payments",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "b. Capture settings",
+              "status": "Done",
+              "comment": ""
+            },
+            {
+              "item": "c. Additional fee bearer information",
+              "status": "Done",
+              "comment": "Platform"
+            }
+          ]
+        },
+        {
+          "section": "2. Checkout configuration",
+          "configs": [
+            {
+              "item": "a. Handler Function",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "b. Callback function [w/o Redirect]",
+              "status": "Done",
+              "comment": ""
+            },
+            {
+              "item": "c. Timeout",
+              "status": "N/A",
+              "comment": "NO"
+            },
+            {
+              "item": "d. Retry [w/o max_count]",
+              "status": "N/A",
+              "comment": "NO"
+            },
+            {
+              "item": "e. Config",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "3. For successful transactions",
+          "configs": [
+            {
+              "item": "a. Consumes payment_id, order_id and razorpay_signature",
+              "status": "Done",
+              "comment": ""
+            },
+            {
+              "item": "b. Verify payment signature step",
+              "status": "Done",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "4. For failure transactions",
+          "configs": [
+            {
+              "item": "a. Consumes Error Codes",
+              "status": "Done",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "5. Late Auth Scenarios",
+          "configs": [
+            {
+              "item": "a. Consumes payment state at capture time",
+              "status": "Done",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "6. Verify Payment Status",
+          "configs": [
+            {
+              "item": "a. Webhooks",
+              "status": "Done",
+              "comment": ""
+            },
+            {
+              "item": "b. Verify webhook signature",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "c. Fetch payment APIs",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "7. Checkout library, server language, version",
+          "configs": [
+            {
+              "item": "a. Platform",
+              "status": "Done",
+              "comment": "Standard checkout , web and android"
+            },
+            {
+              "item": "b. Server language/SDK",
+              "status": "Pending with Merchant",
+              "comment": ""
+            },
+            {
+              "item": "c. Version",
+              "status": "Pending with Merchant",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "8. Offers",
+          "configs": []
+        },
+        {
+          "section": "9. Refund APIs",
+          "configs": []
+        },
+        {
+          "section": "10. Affordability Widget",
+          "configs": []
+        },
+        {
+          "section": "11. UAT Sign Off",
+          "configs": []
+        }
+      ],
+      "additionalComments": "QrfBjbubfaKPkb The merchant has implemented the standard checkout on both web and Android apps, using UPI as the standalone payment method. Settlement is blocked on the main MID. The payments made by customers are transferred to the relevant linked accounts, and these transfers are completed through the order transfer using the order ID."
+    }
+  },
+  {
+    "filename": "checklist-1768910766158-350340918.xlsx",
+    "uploadDate": "2026-01-20T12:06:06.224Z",
+    "data": {
+      "auditChecklist": [
+        {
+          "section": "General",
+          "configs": [
+            {
+              "item": "Tech Checklist",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "MX Name:",
+          "configs": [
+            {
+              "item": "Audit Checklist",
+              "status": "Configs",
+              "comment": "Status"
+            }
+          ]
+        },
+        {
+          "section": "MID:RXE6NADHhchRtf",
+          "configs": [
+            {
+              "item": "1. Methods Enabled",
+              "status": "E Mandate",
+              "comment": "Done"
+            }
+          ]
+        },
+        {
+          "section": "Date of Audit:",
+          "configs": [
+            {
+              "item": "2. Order creation",
+              "status": "Auth Type",
+              "comment": "Done"
+            },
+            {
+              "item": "3. Checkout configuration",
+              "status": "Handler Function",
+              "comment": "N/A"
+            },
+            {
+              "item": "4. For Successful transactions",
+              "status": "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout)",
+              "comment": "N/A"
+            },
+            {
+              "item": "5. For Failure transactions",
+              "status": "Consumes Error Codes",
+              "comment": ""
+            },
+            {
+              "item": "6. Token Management",
+              "status": "Fetch Token by Payment ID",
+              "comment": "N/A"
+            },
+            {
+              "item": "7. Autoacapture Settings",
+              "status": "2 Days for UPI and 3 Days for other methods",
+              "comment": "Done"
+            },
+            {
+              "item": "8. Late Auth Scenarios",
+              "status": "Consumes payment state at capture time",
+              "comment": "Done"
+            },
+            {
+              "item": "9. Verify Payment / Token Status",
+              "status": "Webhooks",
+              "comment": "N/A"
+            },
+            {
+              "item": "10. Checkout library, server language, version",
+              "status": "a. Platform",
+              "comment": "N/A"
+            },
+            {
+              "item": "11. Refund APIs",
+              "status": "Autorefund Auth payments using payment capture as manual",
+              "comment": "Done"
+            },
+            {
+              "item": "12. Recurring Terminals",
+              "status": "upi_icici",
+              "comment": ""
+            },
+            {
+              "item": "13. Feature Flags",
+              "status": "Charge_at_will",
+              "comment": "Done"
+            },
+            {
+              "item": "Additional Comments",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        }
+      ],
+      "additionalComments": ""
+    }
+  },
+  {
+    "filename": "checklist-1768985430919-839504743.xlsx",
+    "uploadDate": "2026-01-21T08:50:30.988Z",
+    "data": {
+      "auditChecklist": [
+        {
+          "section": "General",
+          "configs": [
+            {
+              "item": "Tech Checklist",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "MX Name:",
+          "configs": [
+            {
+              "item": "Audit Checklist",
+              "status": "Configs",
+              "comment": "Status"
+            }
+          ]
+        },
+        {
+          "section": "MID:RXE6NADHhchRtf",
+          "configs": [
+            {
+              "item": "1. Methods Enabled",
+              "status": "E Mandate",
+              "comment": "Done"
+            }
+          ]
+        },
+        {
+          "section": "Date of Audit:",
+          "configs": [
+            {
+              "item": "2. Order creation",
+              "status": "Auth Type",
+              "comment": "Done"
+            },
+            {
+              "item": "3. Checkout configuration",
+              "status": "Handler Function",
+              "comment": "N/A"
+            },
+            {
+              "item": "4. For Successful transactions",
+              "status": "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout)",
+              "comment": "N/A"
+            },
+            {
+              "item": "5. For Failure transactions",
+              "status": "Consumes Error Codes",
+              "comment": ""
+            },
+            {
+              "item": "6. Token Management",
+              "status": "Fetch Token by Payment ID",
+              "comment": "N/A"
+            },
+            {
+              "item": "7. Autoacapture Settings",
+              "status": "2 Days for UPI and 3 Days for other methods",
+              "comment": "Done"
+            },
+            {
+              "item": "8. Late Auth Scenarios",
+              "status": "Consumes payment state at capture time",
+              "comment": "Done"
+            },
+            {
+              "item": "9. Verify Payment / Token Status",
+              "status": "Webhooks",
+              "comment": "N/A"
+            },
+            {
+              "item": "10. Checkout library, server language, version",
+              "status": "a. Platform",
+              "comment": "N/A"
+            },
+            {
+              "item": "11. Refund APIs",
+              "status": "Autorefund Auth payments using payment capture as manual",
+              "comment": "Done"
+            },
+            {
+              "item": "12. Recurring Terminals",
+              "status": "upi_icici",
+              "comment": ""
+            },
+            {
+              "item": "13. Feature Flags",
+              "status": "Charge_at_will",
+              "comment": "Done"
+            },
+            {
+              "item": "Additional Comments",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        }
+      ],
+      "additionalComments": ""
+    }
+  },
+  {
+    "filename": "checklist-1768985643011-289391245.xlsx",
+    "uploadDate": "2026-01-21T08:54:03.066Z",
+    "data": {
+      "auditChecklist": [
+        {
+          "section": "General",
+          "configs": [
+            {
+              "item": "Tech Checklist",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "MX Name: Sugarfit",
+          "configs": [
+            {
+              "item": "Audit Checklist",
+              "status": "Configs",
+              "comment": "Status"
+            },
+            {
+              "item": "1. Methods Enabled",
+              "status": "E Mandate",
+              "comment": "N/A"
+            }
+          ]
+        },
+        {
+          "section": "Date of Audit: 7th November",
+          "configs": [
+            {
+              "item": "2. Plan creation",
+              "status": "Period",
+              "comment": "N/A"
+            },
+            {
+              "item": "3. Subscription creation",
+              "status": "Plan_id",
+              "comment": "Done"
+            },
+            {
+              "item": "3. Checkout configuration",
+              "status": "Handler Function",
+              "comment": "Done"
+            },
+            {
+              "item": "4. For Successful transactions",
+              "status": "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout)",
+              "comment": "N/A"
+            },
+            {
+              "item": "5. For Failure transactions",
+              "status": "Consumes Error Codes",
+              "comment": "Done"
+            },
+            {
+              "item": "6. Subscription Management",
+              "status": "Fetch a Plan",
+              "comment": "Done"
+            },
+            {
+              "item": "7. Auto-capture Settings",
+              "status": "2 Days for UPI and 3 Days for other methods",
+              "comment": "Done"
+            },
+            {
+              "item": "8. Late Auth Scenarios",
+              "status": "Consumes payment state at capture time",
+              "comment": "Done"
+            },
+            {
+              "item": "9. Verify Payment / Token Status",
+              "status": "Webhooks",
+              "comment": "Done"
+            },
+            {
+              "item": "10. Checkout library, server language, version",
+              "status": "Platform",
+              "comment": "Done"
+            },
+            {
+              "item": "11. Refund Api's",
+              "status": "Using Refund api's",
+              "comment": "N/A"
+            },
+            {
+              "item": "12. Recurring Terminals",
+              "status": "upi_icici",
+              "comment": "N/A"
+            },
+            {
+              "item": "13. Feature Flags",
+              "status": "Subscription",
+              "comment": "Done"
+            },
+            {
+              "item": "Additional Comments",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "Subscription.completed, subscription.halted, subscription.activated webhook events have been recommended to be implemented at the merchant end.\nIn case of payment failure or auto-refund, using the same subscription_id generated previously has been recommended to the merchant to reduce API calls.",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        }
+      ],
+      "additionalComments": ""
+    }
+  },
+  {
+    "filename": "checklist-1768987494764-13152137.xlsx",
+    "uploadDate": "2026-01-21T09:24:54.773Z",
+    "data": {
+      "auditChecklist": [
+        {
+          "section": "Route",
+          "configs": [
+            {
+              "item": "Test Config",
+              "status": "Done",
+              "comment": "Verified"
+            }
+          ]
+        }
+      ],
+      "additionalComments": ""
+    }
+  },
+  {
+    "filename": "checklist-1768987691310-182110738.xlsx",
+    "originalName": "test_checklist.xlsx",
+    "product": "Route",
+    "uploadDate": "2026-01-21T09:28:11.319Z",
+    "data": {
+      "auditChecklist": [
+        {
+          "section": "Route",
+          "configs": [
+            {
+              "item": "Test Config",
+              "status": "Done",
+              "comment": "Verified"
+            }
+          ]
+        }
+      ],
+      "additionalComments": ""
+    }
+  },
+  {
+    "filename": "checklist-1768988069690-650172232.xlsx",
+    "originalName": "Go live checklist - PG.xlsx",
+    "product": "Route",
+    "uploadDate": "2026-01-21T09:34:29.720Z",
+    "data": {
+      "auditChecklist": [
+        {
+          "section": "Configs",
+          "configs": [
+            {
+              "item": "Status",
+              "status": "Comments",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "Account Live (Key/Secret available for live mode)",
+          "configs": [
+            {
+              "item": "Done",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "Webhook Configs",
+          "configs": [
+            {
+              "item": "Done",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "Successful Payment IDs",
+          "configs": [
+            {
+              "item": "Done",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "Order API Implementation",
+          "configs": [
+            {
+              "item": "Done",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "Checkout Implementation / Create Payment",
+          "configs": [
+            {
+              "item": "Done",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "WebView Implementation (If Applicable)",
+          "configs": [
+            {
+              "item": "Done",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "Signature verification",
+          "configs": [
+            {
+              "item": "Done",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "Callback_url",
+          "configs": [
+            {
+              "item": "Done",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "Implementing fetch status API",
+          "configs": [
+            {
+              "item": "Done",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "Custom solution",
+          "configs": [
+            {
+              "item": "Done",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "Refund API",
+          "configs": [
+            {
+              "item": "Done",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "Session Timeout - webhooks / fetch api/ create payment API(s2s)",
+          "configs": [
+            {
+              "item": "Done",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "Payment capture settings",
+          "configs": [
+            {
+              "item": "Done",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "Failure handler-function",
+          "configs": [
+            {
+              "item": "Done",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "Backend Language",
+          "configs": [
+            {
+              "item": "Done",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "Checkout library and platform",
+          "configs": [
+            {
+              "item": "Done",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "SDK latest Version",
+          "configs": [
+            {
+              "item": "Done",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "Best practices",
+          "configs": [
+            {
+              "item": "Done",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "Rainy day",
+          "configs": [
+            {
+              "item": "Done",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "Late Auth",
+          "configs": [
+            {
+              "item": "Done",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "Sign off",
+          "configs": [
+            {
+              "item": "Done",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        }
+      ],
+      "additionalComments": ""
+    }
+  },
+  {
+    "filename": "checklist-1768988463342-985992020.xlsx",
+    "uploadDate": "2026-01-21T09:41:03.410Z",
+    "data": {
+      "auditChecklist": [
+        {
+          "section": "General",
+          "configs": [
+            {
+              "item": "Tech Checklist",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "MX Name: Sugarfit",
+          "configs": [
+            {
+              "item": "Audit Checklist",
+              "status": "Configs",
+              "comment": "Status"
+            },
+            {
+              "item": "1. Methods Enabled",
+              "status": "E Mandate",
+              "comment": "N/A"
+            }
+          ]
+        },
+        {
+          "section": "Date of Audit: 7th November",
+          "configs": [
+            {
+              "item": "2. Plan creation",
+              "status": "Period",
+              "comment": "N/A"
+            },
+            {
+              "item": "3. Subscription creation",
+              "status": "Plan_id",
+              "comment": "Done"
+            },
+            {
+              "item": "3. Checkout configuration",
+              "status": "Handler Function",
+              "comment": "Done"
+            },
+            {
+              "item": "4. For Successful transactions",
+              "status": "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout)",
+              "comment": "N/A"
+            },
+            {
+              "item": "5. For Failure transactions",
+              "status": "Consumes Error Codes",
+              "comment": "Done"
+            },
+            {
+              "item": "6. Subscription Management",
+              "status": "Fetch a Plan",
+              "comment": "Done"
+            },
+            {
+              "item": "7. Auto-capture Settings",
+              "status": "2 Days for UPI and 3 Days for other methods",
+              "comment": "Done"
+            },
+            {
+              "item": "8. Late Auth Scenarios",
+              "status": "Consumes payment state at capture time",
+              "comment": "Done"
+            },
+            {
+              "item": "9. Verify Payment / Token Status",
+              "status": "Webhooks",
+              "comment": "Done"
+            },
+            {
+              "item": "10. Checkout library, server language, version",
+              "status": "Platform",
+              "comment": "Done"
+            },
+            {
+              "item": "11. Refund Api's",
+              "status": "Using Refund api's",
+              "comment": "N/A"
+            },
+            {
+              "item": "12. Recurring Terminals",
+              "status": "upi_icici",
+              "comment": "N/A"
+            },
+            {
+              "item": "13. Feature Flags",
+              "status": "Subscription",
+              "comment": "Done"
+            },
+            {
+              "item": "Additional Comments",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "Subscription.completed, subscription.halted, subscription.activated webhook events have been recommended to be implemented at the merchant end.\nIn case of payment failure or auto-refund, using the same subscription_id generated previously has been recommended to the merchant to reduce API calls.",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        }
+      ],
+      "additionalComments": ""
+    }
+  },
+  {
+    "filename": "checklist-1768988503675-233203092.xlsx",
+    "uploadDate": "2026-01-21T09:41:43.725Z",
+    "data": {
+      "auditChecklist": [
+        {
+          "section": "General",
+          "configs": [
+            {
+              "item": "Tech Checklist",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "MX Name:",
+          "configs": [
+            {
+              "item": "Audit Checklist",
+              "status": "Configs",
+              "comment": "Status"
+            }
+          ]
+        },
+        {
+          "section": "MID:",
+          "configs": [
+            {
+              "item": "1. Methods Enabled",
+              "status": "E Mandate",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "Date of Audit:",
+          "configs": [
+            {
+              "item": "2. Order creation",
+              "status": "Auth Type",
+              "comment": ""
+            },
+            {
+              "item": "3. Checkout configuration",
+              "status": "Handler Function",
+              "comment": ""
+            },
+            {
+              "item": "4. For Successful transactions",
+              "status": "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout)",
+              "comment": ""
+            },
+            {
+              "item": "5. For Failure transactions",
+              "status": "Consumes Error Codes",
+              "comment": ""
+            },
+            {
+              "item": "6. Token Management",
+              "status": "Fetch Token by Payment ID",
+              "comment": ""
+            },
+            {
+              "item": "7. Autoacapture Settings",
+              "status": "2 Days for UPI and 3 Days for other methods",
+              "comment": ""
+            },
+            {
+              "item": "8. Late Auth Scenarios",
+              "status": "Consumes payment state at capture time",
+              "comment": ""
+            },
+            {
+              "item": "9. Verify Payment / Token Status",
+              "status": "Webhooks",
+              "comment": ""
+            },
+            {
+              "item": "10. Checkout library, server language, version",
+              "status": "a. Platform",
+              "comment": ""
+            },
+            {
+              "item": "11. Refund APIs",
+              "status": "Autorefund Auth payments using payment capture as manual",
+              "comment": ""
+            },
+            {
+              "item": "12. Recurring Terminals",
+              "status": "upi_icici",
+              "comment": ""
+            },
+            {
+              "item": "13. Feature Flags",
+              "status": "Charge_at_will",
+              "comment": ""
+            },
+            {
+              "item": "Additional Comments",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        }
+      ],
+      "additionalComments": ""
+    }
+  },
+  {
+    "filename": "checklist-1768988536979-228593825.xlsx",
+    "uploadDate": "2026-01-21T09:42:17.018Z",
+    "data": {
+      "auditChecklist": [
+        {
+          "section": "General",
+          "configs": [
+            {
+              "item": "Tech Checklist",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "MX Name: Sugarfit",
+          "configs": [
+            {
+              "item": "Audit Checklist",
+              "status": "Configs",
+              "comment": "Status"
+            },
+            {
+              "item": "1. Methods Enabled",
+              "status": "E Mandate",
+              "comment": "N/A"
+            }
+          ]
+        },
+        {
+          "section": "Date of Audit: 7th November",
+          "configs": [
+            {
+              "item": "2. Plan creation",
+              "status": "Period",
+              "comment": "N/A"
+            },
+            {
+              "item": "3. Subscription creation",
+              "status": "Plan_id",
+              "comment": "Done"
+            },
+            {
+              "item": "3. Checkout configuration",
+              "status": "Handler Function",
+              "comment": "Done"
+            },
+            {
+              "item": "4. For Successful transactions",
+              "status": "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout)",
+              "comment": "N/A"
+            },
+            {
+              "item": "5. For Failure transactions",
+              "status": "Consumes Error Codes",
+              "comment": "Done"
+            },
+            {
+              "item": "6. Subscription Management",
+              "status": "Fetch a Plan",
+              "comment": "Done"
+            },
+            {
+              "item": "7. Auto-capture Settings",
+              "status": "2 Days for UPI and 3 Days for other methods",
+              "comment": "Done"
+            },
+            {
+              "item": "8. Late Auth Scenarios",
+              "status": "Consumes payment state at capture time",
+              "comment": "Done"
+            },
+            {
+              "item": "9. Verify Payment / Token Status",
+              "status": "Webhooks",
+              "comment": "Done"
+            },
+            {
+              "item": "10. Checkout library, server language, version",
+              "status": "Platform",
+              "comment": "Done"
+            },
+            {
+              "item": "11. Refund Api's",
+              "status": "Using Refund api's",
+              "comment": "N/A"
+            },
+            {
+              "item": "12. Recurring Terminals",
+              "status": "upi_icici",
+              "comment": "N/A"
+            },
+            {
+              "item": "13. Feature Flags",
+              "status": "Subscription",
+              "comment": "Done"
+            },
+            {
+              "item": "Additional Comments",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "Subscription.completed, subscription.halted, subscription.activated webhook events have been recommended to be implemented at the merchant end.\nIn case of payment failure or auto-refund, using the same subscription_id generated previously has been recommended to the merchant to reduce API calls.",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        }
+      ],
+      "additionalComments": ""
+    }
+  },
+  {
+    "filename": "checklist-1768990329024-224759655.xlsx",
+    "originalName": "CAW Audit Checklist (1).xlsx",
+    "product": "Charge at Will",
+    "uploadDate": "2026-01-21T10:12:09.079Z",
+    "data": {
+      "audit_id": "audit_1768992769020_947",
+      "merchant_info": {
+        "name": "",
+        "mid": "",
+        "date": ""
+      },
+      "audit_data": [
+        {
+          "section": "Methods Enabled",
+          "checks": [
+            {
+              "item": "E Mandate",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "UPI Autopay",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Card Mandates",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Paper Nach",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Order creation",
+          "checks": [
+            {
+              "item": "Auth Type",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Token Expiry",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Frequency",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Max_amount",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Recurring type / value",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Bank Account / TPV",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Notification Object (UPI / Cards) during subsequent debit",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Registration and Charge First. (E Mandate / Paper Nach)",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Checkout configuration",
+          "checks": [
+            {
+              "item": "Handler Function",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Callback function [w/o Redirect]",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Deeplink Handling (S2S Checkout)",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Recurring True / 1 / preferred",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Customer_ID",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "For Successful transactions",
+          "checks": [
+            {
+              "item": "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout)",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Fetch status of Payment_id",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "For Failure transactions",
+          "checks": [
+            {
+              "item": "Consumes Error Codes",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Token Management",
+          "checks": [
+            {
+              "item": "Fetch Token by Payment ID",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Fetch Tokens by Customer ID",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Delete Token",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Cancel Token (UPI)",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Autoacapture Settings",
+          "checks": [
+            {
+              "item": "2 Days for UPI and 3 Days for other methods",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Late Auth Scenarios",
+          "checks": [
+            {
+              "item": "Consumes payment state at capture time",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Verify Payment / Token Status",
+          "checks": [
+            {
+              "item": "Webhooks",
+              "status": null,
+              "comment": "Events:"
+            },
+            {
+              "item": "Fetch payment APIs (Fallback)",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Checkout library, server language, version",
+          "checks": [
+            {
+              "item": "a. Platform",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "b. Checkout Type",
+              "status": null,
+              "comment": "Type:"
+            },
+            {
+              "item": "c. Server language/SDK",
+              "status": null,
+              "comment": "Version:"
+            }
+          ]
+        },
+        {
+          "section": "Refund APIs",
+          "checks": [
+            {
+              "item": "Autorefund Auth payments using payment capture as manual",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Using Refund api's",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Recurring Terminals",
+          "checks": [
+            {
+              "item": "upi_icici",
+              "status": null,
+              "comment": "Others if applicable:"
+            },
+            {
+              "item": "enach_rbl",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "hitachi / fulcrum",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Feature Flags",
+          "checks": [
+            {
+              "item": "Charge_at_will",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "e_sign",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "save_vpa",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "emandate_mrn",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "tokenization flags for cards",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "allow_billdesk_sihub",
+              "status": null,
+              "comment": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1768990343581-207774473.xlsx",
+    "originalName": "CAW Audit Checklist (1).xlsx",
+    "product": "Charge at Will",
+    "uploadDate": "2026-01-21T10:12:23.634Z",
+    "data": {
+      "audit_id": "audit_1768992769044_666",
+      "merchant_info": {
+        "name": "",
+        "mid": "",
+        "date": ""
+      },
+      "audit_data": [
+        {
+          "section": "Methods Enabled",
+          "checks": [
+            {
+              "item": "E Mandate",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "UPI Autopay",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Card Mandates",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Paper Nach",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Order creation",
+          "checks": [
+            {
+              "item": "Auth Type",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Token Expiry",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Frequency",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Max_amount",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Recurring type / value",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Bank Account / TPV",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Notification Object (UPI / Cards) during subsequent debit",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Registration and Charge First. (E Mandate / Paper Nach)",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Checkout configuration",
+          "checks": [
+            {
+              "item": "Handler Function",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Callback function [w/o Redirect]",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Deeplink Handling (S2S Checkout)",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Recurring True / 1 / preferred",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Customer_ID",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "For Successful transactions",
+          "checks": [
+            {
+              "item": "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout)",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Fetch status of Payment_id",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "For Failure transactions",
+          "checks": [
+            {
+              "item": "Consumes Error Codes",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Token Management",
+          "checks": [
+            {
+              "item": "Fetch Token by Payment ID",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Fetch Tokens by Customer ID",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Delete Token",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Cancel Token (UPI)",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Autoacapture Settings",
+          "checks": [
+            {
+              "item": "2 Days for UPI and 3 Days for other methods",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Late Auth Scenarios",
+          "checks": [
+            {
+              "item": "Consumes payment state at capture time",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Verify Payment / Token Status",
+          "checks": [
+            {
+              "item": "Webhooks",
+              "status": null,
+              "comment": "Events:"
+            },
+            {
+              "item": "Fetch payment APIs (Fallback)",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Checkout library, server language, version",
+          "checks": [
+            {
+              "item": "a. Platform",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "b. Checkout Type",
+              "status": null,
+              "comment": "Type:"
+            },
+            {
+              "item": "c. Server language/SDK",
+              "status": null,
+              "comment": "Version:"
+            }
+          ]
+        },
+        {
+          "section": "Refund APIs",
+          "checks": [
+            {
+              "item": "Autorefund Auth payments using payment capture as manual",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Using Refund api's",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Recurring Terminals",
+          "checks": [
+            {
+              "item": "upi_icici",
+              "status": null,
+              "comment": "Others if applicable:"
+            },
+            {
+              "item": "enach_rbl",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "hitachi / fulcrum",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Feature Flags",
+          "checks": [
+            {
+              "item": "Charge_at_will",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "e_sign",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "save_vpa",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "emandate_mrn",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "tokenization flags for cards",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "allow_billdesk_sihub",
+              "status": null,
+              "comment": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1768990483546-924345594.xlsx",
+    "originalName": "CAW Audit Checklist (1).xlsx",
+    "product": "Charge at Will",
+    "uploadDate": "2026-01-21T10:14:43.618Z",
+    "data": {
+      "audit_id": "audit_1768992769060_260",
+      "merchant_info": {
+        "name": "",
+        "mid": "",
+        "date": ""
+      },
+      "audit_data": [
+        {
+          "section": "Methods Enabled",
+          "checks": [
+            {
+              "item": "E Mandate",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "UPI Autopay",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Card Mandates",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Paper Nach",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Order creation",
+          "checks": [
+            {
+              "item": "Auth Type",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Token Expiry",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Frequency",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Max_amount",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Recurring type / value",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Bank Account / TPV",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Notification Object (UPI / Cards) during subsequent debit",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Registration and Charge First. (E Mandate / Paper Nach)",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Checkout configuration",
+          "checks": [
+            {
+              "item": "Handler Function",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Callback function [w/o Redirect]",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Deeplink Handling (S2S Checkout)",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Recurring True / 1 / preferred",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Customer_ID",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "For Successful transactions",
+          "checks": [
+            {
+              "item": "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout)",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Fetch status of Payment_id",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "For Failure transactions",
+          "checks": [
+            {
+              "item": "Consumes Error Codes",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Token Management",
+          "checks": [
+            {
+              "item": "Fetch Token by Payment ID",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Fetch Tokens by Customer ID",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Delete Token",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Cancel Token (UPI)",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Autoacapture Settings",
+          "checks": [
+            {
+              "item": "2 Days for UPI and 3 Days for other methods",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Late Auth Scenarios",
+          "checks": [
+            {
+              "item": "Consumes payment state at capture time",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Verify Payment / Token Status",
+          "checks": [
+            {
+              "item": "Webhooks",
+              "status": null,
+              "comment": "Events:"
+            },
+            {
+              "item": "Fetch payment APIs (Fallback)",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Checkout library, server language, version",
+          "checks": [
+            {
+              "item": "a. Platform",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "b. Checkout Type",
+              "status": null,
+              "comment": "Type:"
+            },
+            {
+              "item": "c. Server language/SDK",
+              "status": null,
+              "comment": "Version:"
+            }
+          ]
+        },
+        {
+          "section": "Refund APIs",
+          "checks": [
+            {
+              "item": "Autorefund Auth payments using payment capture as manual",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Using Refund api's",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Recurring Terminals",
+          "checks": [
+            {
+              "item": "upi_icici",
+              "status": null,
+              "comment": "Others if applicable:"
+            },
+            {
+              "item": "enach_rbl",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "hitachi / fulcrum",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Feature Flags",
+          "checks": [
+            {
+              "item": "Charge_at_will",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "e_sign",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "save_vpa",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "emandate_mrn",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "tokenization flags for cards",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "allow_billdesk_sihub",
+              "status": null,
+              "comment": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1768990566257-373749626.xlsx",
+    "originalName": "CAW Audit Checklist (1) (1).xlsx",
+    "product": "Charge at Will",
+    "uploadDate": "2026-01-21T10:16:06.310Z",
+    "data": {
+      "audit_id": "audit_1768992769076_352",
+      "merchant_info": {
+        "name": "",
+        "mid": "",
+        "date": ""
+      },
+      "audit_data": [
+        {
+          "section": "Methods Enabled",
+          "checks": [
+            {
+              "item": "E Mandate",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "UPI Autopay",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Card Mandates",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Paper Nach",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Order creation",
+          "checks": [
+            {
+              "item": "Auth Type",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Token Expiry",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Frequency",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Max_amount",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Recurring type / value",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Bank Account / TPV",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Notification Object (UPI / Cards) during subsequent debit",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Registration and Charge First. (E Mandate / Paper Nach)",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Checkout configuration",
+          "checks": [
+            {
+              "item": "Handler Function",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Callback function [w/o Redirect]",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Deeplink Handling (S2S Checkout)",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Recurring True / 1 / preferred",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Customer_ID",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "For Successful transactions",
+          "checks": [
+            {
+              "item": "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout)",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Fetch status of Payment_id",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "For Failure transactions",
+          "checks": [
+            {
+              "item": "Consumes Error Codes",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Token Management",
+          "checks": [
+            {
+              "item": "Fetch Token by Payment ID",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Fetch Tokens by Customer ID",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Delete Token",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Cancel Token (UPI)",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Autoacapture Settings",
+          "checks": [
+            {
+              "item": "2 Days for UPI and 3 Days for other methods",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Late Auth Scenarios",
+          "checks": [
+            {
+              "item": "Consumes payment state at capture time",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Verify Payment / Token Status",
+          "checks": [
+            {
+              "item": "Webhooks",
+              "status": null,
+              "comment": "Events:"
+            },
+            {
+              "item": "Fetch payment APIs (Fallback)",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Checkout library, server language, version",
+          "checks": [
+            {
+              "item": "a. Platform",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "b. Checkout Type",
+              "status": null,
+              "comment": "Type:"
+            },
+            {
+              "item": "c. Server language/SDK",
+              "status": null,
+              "comment": "Version:"
+            }
+          ]
+        },
+        {
+          "section": "Refund APIs",
+          "checks": [
+            {
+              "item": "Autorefund Auth payments using payment capture as manual",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Using Refund api's",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Recurring Terminals",
+          "checks": [
+            {
+              "item": "upi_icici",
+              "status": null,
+              "comment": "Others if applicable:"
+            },
+            {
+              "item": "enach_rbl",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "hitachi / fulcrum",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "Feature Flags",
+          "checks": [
+            {
+              "item": "Charge_at_will",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "e_sign",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "save_vpa",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "emandate_mrn",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "tokenization flags for cards",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "allow_billdesk_sihub",
+              "status": null,
+              "comment": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1768997842847-392099124.xlsx",
+    "originalName": "CAW Audit Checklist (1) (1).xlsx",
+    "product": "Charge at Will",
+    "uploadDate": "2026-01-21T12:17:22.914Z",
+    "data": {
+      "audit_id": "audit_1768997842913_136",
+      "merchant_info": {
+        "name": "",
+        "mid": "",
+        "date": ""
+      },
+      "audit_data": [
+        {
+          "section": "General",
+          "checks": [
+            {
+              "item": "E Mandate",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "UPI Autopay",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Card Mandates",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Paper Nach",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "2. Order creation",
+          "checks": [
+            {
+              "item": "Auth Type",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Token Expiry",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Frequency",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Max_amount",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Recurring type / value",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Bank Account / TPV",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Notification Object (UPI / Cards) during subsequent debit",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Registration and Charge First. (E Mandate / Paper Nach)",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "3. Checkout configuration",
+          "checks": [
+            {
+              "item": "Handler Function",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Callback function [w/o Redirect]",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Deeplink Handling (S2S Checkout)",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Recurring True / 1 / preferred",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Customer_ID",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "4. For Successful transactions",
+          "checks": [
+            {
+              "item": "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout)",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Fetch status of Payment_id",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "5. For Failure transactions",
+          "checks": [
+            {
+              "item": "Consumes Error Codes",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "6. Token Management",
+          "checks": [
+            {
+              "item": "Fetch Token by Payment ID",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Fetch Tokens by Customer ID",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Delete Token",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Cancel Token (UPI)",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "7. Autoacapture Settings",
+          "checks": [
+            {
+              "item": "2 Days for UPI and 3 Days for other methods",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "8. Late Auth Scenarios",
+          "checks": [
+            {
+              "item": "Consumes payment state at capture time",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "9. Verify Payment / Token Status",
+          "checks": [
+            {
+              "item": "Webhooks",
+              "status": null,
+              "comment": "Events:"
+            },
+            {
+              "item": "Fetch payment APIs (Fallback)",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "10. Checkout library, server language, version",
+          "checks": [
+            {
+              "item": "a. Platform",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "b. Checkout Type",
+              "status": null,
+              "comment": "Type:"
+            },
+            {
+              "item": "c. Server language/SDK",
+              "status": null,
+              "comment": "Version:"
+            }
+          ]
+        },
+        {
+          "section": "11. Refund APIs",
+          "checks": [
+            {
+              "item": "Autorefund Auth payments using payment capture as manual",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "Using Refund api's",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "12. Recurring Terminals",
+          "checks": [
+            {
+              "item": "upi_icici",
+              "status": null,
+              "comment": "Others if applicable:"
+            },
+            {
+              "item": "enach_rbl",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "hitachi / fulcrum",
+              "status": null,
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "13. Feature Flags",
+          "checks": [
+            {
+              "item": "Charge_at_will",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "e_sign",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "save_vpa",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "emandate_mrn",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "tokenization flags for cards",
+              "status": null,
+              "comment": null
+            },
+            {
+              "item": "allow_billdesk_sihub",
+              "status": null,
+              "comment": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1769058240139-725133759.xlsx",
+    "originalName": "test_route_checklist.xlsx",
+    "product": "Route",
+    "uploadDate": "2026-01-22T05:04:00.150Z",
+    "data": {
+      "session": {
+        "id": 1,
+        "merchant_id": "123456",
+        "merchant_name": "Test Merchant",
+        "audit_date": "2026-01-22",
+        "auditor_name": "",
+        "overall_status": "In Progress",
+        "created_at": "2026-01-22T05:04:00.148Z"
+      },
+      "results": [
+        {
+          "id": 1,
+          "session_id": 1,
+          "item_id": 1,
+          "status": "Pass",
+          "comment": "Works fine"
+        },
+        {
+          "id": 2,
+          "session_id": 1,
+          "item_id": 2,
+          "status": "Fail",
+          "comment": "Fix needed"
+        },
+        {
+          "id": 3,
+          "session_id": 1,
+          "item_id": 3,
+          "status": "Pass",
+          "comment": "API functional"
+        },
+        {
+          "id": 4,
+          "session_id": 1,
+          "item_id": 4,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 5,
+          "session_id": 1,
+          "item_id": 5,
+          "status": "Pass",
+          "comment": "Order transfer ok"
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1769058258094-937932125.xlsx",
+    "originalName": "test_route_checklist.xlsx",
+    "product": "Route",
+    "uploadDate": "2026-01-22T05:04:18.097Z",
+    "data": {
+      "session": {
+        "id": 2,
+        "merchant_id": "123456",
+        "merchant_name": "Test Merchant",
+        "audit_date": "2026-01-22",
+        "auditor_name": "",
+        "overall_status": "In Progress",
+        "created_at": "2026-01-22T05:04:18.096Z"
+      },
+      "results": [
+        {
+          "id": 6,
+          "session_id": 2,
+          "item_id": 1,
+          "status": "Pass",
+          "comment": "Works fine"
+        },
+        {
+          "id": 7,
+          "session_id": 2,
+          "item_id": 2,
+          "status": "Fail",
+          "comment": "Fix needed"
+        },
+        {
+          "id": 8,
+          "session_id": 2,
+          "item_id": 3,
+          "status": "Pass",
+          "comment": "API functional"
+        },
+        {
+          "id": 9,
+          "session_id": 2,
+          "item_id": 4,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 10,
+          "session_id": 2,
+          "item_id": 5,
+          "status": "Pass",
+          "comment": "Order transfer ok"
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1769058321207-725238426.xlsx",
+    "originalName": "test_route_checklist.xlsx",
+    "product": "Route",
+    "uploadDate": "2026-01-22T05:05:21.217Z",
+    "data": {
+      "session": {
+        "id": 3,
+        "merchant_id": "123456",
+        "merchant_name": "Test Merchant",
+        "audit_date": "2026-01-22",
+        "auditor_name": "",
+        "overall_status": "In Progress",
+        "created_at": "2026-01-22T05:05:21.216Z"
+      },
+      "results": [
+        {
+          "id": 11,
+          "session_id": 3,
+          "item_id": 1,
+          "status": "Pass",
+          "comment": "Works fine"
+        },
+        {
+          "id": 12,
+          "session_id": 3,
+          "item_id": 2,
+          "status": "Fail",
+          "comment": "Fix needed"
+        },
+        {
+          "id": 13,
+          "session_id": 3,
+          "item_id": 3,
+          "status": "Pass",
+          "comment": "API functional"
+        },
+        {
+          "id": 14,
+          "session_id": 3,
+          "item_id": 4,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 15,
+          "session_id": 3,
+          "item_id": 5,
+          "status": "Pass",
+          "comment": "Order transfer ok"
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1769058479655-827155522.xlsx",
+    "originalName": "Route and Smart collect Checklist .xlsx",
+    "product": "Route",
+    "uploadDate": "2026-01-22T05:07:59.676Z",
+    "data": {
+      "session": {
+        "id": 4,
+        "merchant_id": "",
+        "merchant_name": "",
+        "audit_date": "",
+        "auditor_name": "",
+        "overall_status": "In Progress",
+        "created_at": "2026-01-22T05:07:59.674Z"
+      },
+      "results": [
+        {
+          "id": 16,
+          "session_id": 4,
+          "item_id": 6,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 17,
+          "session_id": 4,
+          "item_id": 6,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 18,
+          "session_id": 4,
+          "item_id": 6,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 19,
+          "session_id": 4,
+          "item_id": 6,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 20,
+          "session_id": 4,
+          "item_id": 6,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 21,
+          "session_id": 4,
+          "item_id": 6,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 22,
+          "session_id": 4,
+          "item_id": 6,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 23,
+          "session_id": 4,
+          "item_id": 6,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 24,
+          "session_id": 4,
+          "item_id": 6,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 25,
+          "session_id": 4,
+          "item_id": 6,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 26,
+          "session_id": 4,
+          "item_id": 6,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 27,
+          "session_id": 4,
+          "item_id": 6,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 28,
+          "session_id": 4,
+          "item_id": 6,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 29,
+          "session_id": 4,
+          "item_id": 6,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 30,
+          "session_id": 4,
+          "item_id": 6,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 31,
+          "session_id": 4,
+          "item_id": 6,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 32,
+          "session_id": 4,
+          "item_id": 6,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 33,
+          "session_id": 4,
+          "item_id": 6,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 34,
+          "session_id": 4,
+          "item_id": 6,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 35,
+          "session_id": 4,
+          "item_id": 6,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 36,
+          "session_id": 4,
+          "item_id": 6,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 37,
+          "session_id": 4,
+          "item_id": 6,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 38,
+          "session_id": 4,
+          "item_id": 6,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 39,
+          "session_id": 4,
+          "item_id": 6,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 40,
+          "session_id": 4,
+          "item_id": 6,
+          "status": "N/A",
+          "comment": ""
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1769058988605-565420625.xlsx",
+    "originalName": "test_refined_route.xlsx",
+    "product": "Route",
+    "uploadDate": "2026-01-22T05:16:28.610Z",
+    "data": {
+      "session": {
+        "id": 5,
+        "merchant_id": "REF789",
+        "merchant_name": "Refined Merchant",
+        "audit_date": "2026-01-22",
+        "auditor_name": "",
+        "overall_status": "In Progress",
+        "created_at": "2026-01-22T05:16:28.609Z"
+      },
+      "results": [
+        {
+          "id": 41,
+          "session_id": 5,
+          "item_id": 1,
+          "status": "Pass",
+          "comment": "Batch ok"
+        },
+        {
+          "id": 42,
+          "session_id": 5,
+          "item_id": 2,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 43,
+          "session_id": 5,
+          "item_id": 7,
+          "status": "Pass",
+          "comment": "Access ok"
+        },
+        {
+          "id": 44,
+          "session_id": 5,
+          "item_id": 8,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 45,
+          "session_id": 5,
+          "item_id": 3,
+          "status": "Pass",
+          "comment": "API ok"
+        },
+        {
+          "id": 46,
+          "session_id": 5,
+          "item_id": 4,
+          "status": "Pass",
+          "comment": "Transfer batch ok"
+        },
+        {
+          "id": 47,
+          "session_id": 5,
+          "item_id": 9,
+          "status": "Pass",
+          "comment": "All good"
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1769059044723-429854057.xlsx",
+    "originalName": "test_refined_route.xlsx",
+    "product": "Route",
+    "uploadDate": "2026-01-22T05:17:24.726Z",
+    "data": {
+      "session": {
+        "id": 6,
+        "merchant_id": "REF789",
+        "merchant_name": "Refined Merchant",
+        "audit_date": "2026-01-22",
+        "auditor_name": "",
+        "overall_status": "In Progress",
+        "created_at": "2026-01-22T05:17:24.725Z"
+      },
+      "results": [
+        {
+          "id": 48,
+          "session_id": 6,
+          "item_id": 1,
+          "status": "Pass",
+          "comment": "Batch ok"
+        },
+        {
+          "id": 49,
+          "session_id": 6,
+          "item_id": 2,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 50,
+          "session_id": 6,
+          "item_id": 7,
+          "status": "Pass",
+          "comment": "Access ok"
+        },
+        {
+          "id": 51,
+          "session_id": 6,
+          "item_id": 8,
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "id": 52,
+          "session_id": 6,
+          "item_id": 3,
+          "status": "Pass",
+          "comment": "API ok"
+        },
+        {
+          "id": 53,
+          "session_id": 6,
+          "item_id": 4,
+          "status": "Pass",
+          "comment": "Transfer batch ok"
+        },
+        {
+          "id": 54,
+          "session_id": 6,
+          "item_id": 9,
+          "status": "Pass",
+          "comment": "All good"
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1769060050005-374071813.xlsx",
+    "originalName": "test_refined_route.xlsx",
+    "product": "Route",
+    "uploadDate": "2026-01-22T05:34:10.018Z",
+    "data": {
+      "product": "Route",
+      "audit_metadata": {
+        "merchant_id": "REF789",
+        "merchant_name": "Refined Merchant"
+      },
+      "checklist": [
+        {
+          "category": "1. Linked account creation",
+          "sub_items": [
+            {
+              "label": "a. Batch upload",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "b. Dashboard",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "i. Create linked account API",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "i. Dashboard access to linked account",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "c. API",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "a. Batch upload",
+              "status": "Pass",
+              "comment": "Batch ok"
+            },
+            {
+              "label": "b. Dashboard",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "i. Dashboard access to linked account",
+              "status": "Pass",
+              "comment": "Access ok"
+            },
+            {
+              "label": "c. API",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "i. Create linked account API",
+              "status": "Pass",
+              "comment": "API ok"
+            }
+          ]
+        },
+        {
+          "category": "2. Transfer process to linked account",
+          "sub_items": [
+            {
+              "label": "a. Batch upload",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "i. Transfer via order",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "a. Batch upload",
+              "status": "Pass",
+              "comment": "Transfer batch ok"
+            }
+          ]
+        },
+        {
+          "category": "",
+          "sub_items": [
+            {
+              "label": "N/A",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "8. UAT Sign Off",
+          "sub_items": [
+            {
+              "label": "Sign Off / Action Item",
+              "status": "Pass",
+              "comment": "All good"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1769060116222-857112962.xlsx",
+    "originalName": "test_refined_route.xlsx",
+    "product": "Route",
+    "uploadDate": "2026-01-22T05:35:16.231Z",
+    "data": {
+      "product": "Route",
+      "audit_metadata": {
+        "merchant_id": "REF789",
+        "merchant_name": "Refined Merchant"
+      },
+      "checklist": [
+        {
+          "category": "1. Linked account creation",
+          "sub_items": [
+            {
+              "label": "a. Batch upload",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "b. Dashboard",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "i. Create linked account API",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "i. Dashboard access to linked account",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "c. API",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "a. Batch upload",
+              "status": "Pass",
+              "comment": "Batch ok"
+            },
+            {
+              "label": "b. Dashboard",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "i. Dashboard access to linked account",
+              "status": "Pass",
+              "comment": "Access ok"
+            },
+            {
+              "label": "c. API",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "i. Create linked account API",
+              "status": "Pass",
+              "comment": "API ok"
+            }
+          ]
+        },
+        {
+          "category": "2. Transfer process to linked account",
+          "sub_items": [
+            {
+              "label": "a. Batch upload",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "i. Transfer via order",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "a. Batch upload",
+              "status": "Pass",
+              "comment": "Transfer batch ok"
+            }
+          ]
+        },
+        {
+          "category": "",
+          "sub_items": [
+            {
+              "label": "N/A",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "8. UAT Sign Off",
+          "sub_items": [
+            {
+              "label": "Sign Off / Action Item",
+              "status": "Pass",
+              "comment": "All good"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1769060468489-459484934.xlsx",
+    "originalName": "test_refined_route.xlsx",
+    "product": "Route",
+    "uploadDate": "2026-01-22T05:41:08.500Z",
+    "data": {
+      "product": "Route",
+      "audit_metadata": {
+        "merchant_id": "REF789",
+        "merchant_name": "Refined Merchant"
+      },
+      "checklist": [
+        {
+          "category": "1. Linked account creation",
+          "sub_items": [
+            {
+              "label": "a. Batch upload",
+              "status": "Pass",
+              "comment": "Batch ok"
+            },
+            {
+              "label": "b. Dashboard",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "i. Dashboard access to linked account",
+              "status": "Pass",
+              "comment": "Access ok"
+            },
+            {
+              "label": "c. API",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "i. Create linked account API",
+              "status": "Pass",
+              "comment": "API ok"
+            }
+          ]
+        },
+        {
+          "category": "2. Transfer process to linked account",
+          "sub_items": [
+            {
+              "label": "a. Batch upload",
+              "status": "Pass",
+              "comment": "Transfer batch ok"
+            }
+          ]
+        },
+        {
+          "category": "8. UAT Sign Off",
+          "sub_items": [
+            {
+              "label": "Sign Off / Action Item",
+              "status": "Pass",
+              "comment": "All good"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1769060924676-675160286.xlsx",
+    "originalName": "Route and Smart collect Checklist .xlsx",
+    "product": "Route",
+    "uploadDate": "2026-01-22T05:48:44.694Z",
+    "data": {
+      "product": "Route",
+      "audit_metadata": {
+        "merchant_id": "",
+        "merchant_name": ""
+      },
+      "checklist": [
+        {
+          "category": "1. Linked account creation",
+          "sub_items": [
+            {
+              "label": "a. Batch upload",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "b. Dashboard",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "i. Dashboard access to linked account",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "c. API",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "i. Create linked account API",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "2. Transfer process to linked account",
+          "sub_items": [
+            {
+              "label": "a. Batch upload",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "8. UAT Sign Off",
+          "sub_items": [
+            {
+              "label": "Sign Off / Action Item",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "",
+          "sub_items": [
+            {
+              "label": "N/A",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1769061223856-74940321.xlsx",
+    "originalName": "test_canonical.xlsx",
+    "product": "Route",
+    "uploadDate": "2026-01-22T05:53:43.864Z",
+    "data": {
+      "product": "Route",
+      "audit_metadata": {
+        "merchant_id": "CRM123",
+        "merchant_name": "CRM Test"
+      },
+      "checklist": [
+        {
+          "category": "1. Linked account creation",
+          "sub_items": [
+            {
+              "label": "Batch upload",
+              "status": "Pass",
+              "comment": "Batch OK"
+            },
+            {
+              "label": "Dashboard",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "i. Dashboard access to linked account",
+              "status": "Pass",
+              "comment": "Access OK"
+            },
+            {
+              "label": "API",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "i. Create linked account API",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "ii. Create stakeholder",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "iii. Request product config",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "iv. Update product config",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "2. Transfer process to linked account",
+          "sub_items": [
+            {
+              "label": "Batch upload",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "Dashboard",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "API",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "i. Transfer via order",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "ii. Transfer via payment",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "iii. Direct transfer",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "3. For failure transfers",
+          "sub_items": [
+            {
+              "label": "Consumes Error Codes",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "4. LA creation and transfer platform",
+          "sub_items": [
+            {
+              "label": "Platform",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "Server language/SDK",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "5. Verify Transfer and Settlement Status",
+          "sub_items": [
+            {
+              "label": "Webhooks (url and events )",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "Verify webhook signature",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "Fetch payment APIs",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "6. Refund or Reversal",
+          "sub_items": [
+            {
+              "label": "Dashboard",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "API",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "7. Settlement",
+          "sub_items": [
+            {
+              "label": "Normal settlement",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "Instant settlement",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "8. UAT Sign Off",
+          "sub_items": [
+            {
+              "label": "Sign Off / Action Item",
+              "status": "Pass",
+              "comment": "Finalized"
+            }
+          ]
+        },
+        {
+          "category": "Additional Comments",
+          "sub_items": [
+            {
+              "label": "Additional Comments",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1769061278968-640190596.xlsx",
+    "originalName": "Route and Smart collect Checklist .xlsx",
+    "product": "Route",
+    "uploadDate": "2026-01-22T05:54:38.989Z",
+    "data": {
+      "product": "Route",
+      "audit_metadata": {
+        "merchant_id": "",
+        "merchant_name": ""
+      },
+      "checklist": [
+        {
+          "category": "1. Linked account creation",
+          "sub_items": [
+            {
+              "label": "Batch upload",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "Dashboard",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "i. Dashboard access to linked account",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "API",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "i. Create linked account API",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "ii. Create stakeholder",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "iii. Request product config",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "iv. Update product config",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "2. Transfer process to linked account",
+          "sub_items": [
+            {
+              "label": "Batch upload",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "Dashboard",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "API",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "i. Transfer via order",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "ii. Transfer via payment",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "iii. Direct transfer",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "3. For failure transfers",
+          "sub_items": [
+            {
+              "label": "Consumes Error Codes",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "4. LA creation and transfer platform",
+          "sub_items": [
+            {
+              "label": "Platform",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "Server language/SDK",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "5. Verify Transfer and Settlement Status",
+          "sub_items": [
+            {
+              "label": "Webhooks (url and events )",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "Verify webhook signature",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "Fetch payment APIs",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "6. Refund or Reversal",
+          "sub_items": [
+            {
+              "label": "Dashboard",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "API",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "7. Settlement",
+          "sub_items": [
+            {
+              "label": "Normal settlement",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "label": "Instant settlement",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "8. UAT Sign Off",
+          "sub_items": [
+            {
+              "label": "Sign Off / Action Item",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "Additional Comments",
+          "sub_items": [
+            {
+              "label": "Additional Comments",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1769065590785-440074154.xlsx",
+    "originalName": "Subscriptions Audit Checklist.xlsx",
+    "product": "Subscription",
+    "uploadDate": "2026-01-22T07:06:30.850Z",
+    "data": {
+      "auditChecklist": [
+        {
+          "section": "General",
+          "configs": [
+            {
+              "item": "Tech Checklist",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "2. Plan creation",
+              "status": "Period",
+              "comment": ""
+            },
+            {
+              "item": "3. Subscription creation",
+              "status": "Plan_id",
+              "comment": ""
+            },
+            {
+              "item": "3. Checkout configuration",
+              "status": "Handler Function",
+              "comment": ""
+            },
+            {
+              "item": "4. For Successful transactions",
+              "status": "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout)",
+              "comment": ""
+            },
+            {
+              "item": "5. For Failure transactions",
+              "status": "Consumes Error Codes",
+              "comment": ""
+            },
+            {
+              "item": "6. Subscription Management",
+              "status": "Fetch a Plan",
+              "comment": ""
+            },
+            {
+              "item": "7. Autoacapture Settings",
+              "status": "2 Days for UPI and 3 Days for other methods",
+              "comment": ""
+            },
+            {
+              "item": "8. Late Auth Scenarios",
+              "status": "Consumes payment state at capture time",
+              "comment": ""
+            },
+            {
+              "item": "9. Verify Payment / Token Status",
+              "status": "Webhooks",
+              "comment": ""
+            },
+            {
+              "item": "10. Checkout library, server language, version",
+              "status": "Platform",
+              "comment": ""
+            },
+            {
+              "item": "11. Refund Api's",
+              "status": "Using Refund api's",
+              "comment": ""
+            },
+            {
+              "item": "12. Recurring Terminals",
+              "status": "upi_icici",
+              "comment": ""
+            },
+            {
+              "item": "13. Feature Flags",
+              "status": "Subscription",
+              "comment": ""
+            },
+            {
+              "item": "Additional Comments",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        }
+      ],
+      "additionalComments": ""
+    }
+  },
+  {
+    "filename": "checklist-1769080058475-94375047.xlsx",
+    "originalName": "test_subscription_checklist.xlsx",
+    "product": "Subscriptions",
+    "uploadDate": "2026-01-22T11:07:38.485Z",
+    "data": {
+      "product": "Subscriptions",
+      "audit_metadata": {
+        "mx_name": "Test Merchant",
+        "mid": "TestMID123",
+        "date": "2024-01-22"
+      },
+      "checklist": [
+        {
+          "category": "2. Plan creation",
+          "items": [
+            {
+              "name": "Period",
+              "status": "Pass",
+              "hint": "",
+              "comment": "Correct period"
+            },
+            {
+              "name": "Interval",
+              "status": "Fail",
+              "hint": "",
+              "comment": "Wrong interval"
+            }
+          ]
+        },
+        {
+          "category": "3. Subscription creation",
+          "items": [
+            {
+              "name": "Plan_id",
+              "status": "Pass",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "total_count",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "Addons",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "6. Subscription Management",
+          "items": [
+            {
+              "name": "Fetch a Plan",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "Cancel a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "Update a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "Pause a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "Resume a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "9. Verify Status",
+          "items": [
+            {
+              "name": "Webhooks",
+              "status": "N/A",
+              "hint": "Events:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "10. Checkout/Library",
+          "items": [
+            {
+              "name": "Platform",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "Checkout Type",
+              "status": "N/A",
+              "hint": "Type:",
+              "comment": ""
+            },
+            {
+              "name": "Server language/SDK",
+              "status": "N/A",
+              "hint": "Version:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "12. Recurring Terminals",
+          "items": [
+            {
+              "name": "upi_icici",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "enach_rbl",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "hitachi / fulcrum",
+              "status": "N/A",
+              "hint": "Others:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "13. Feature Flags",
+          "items": [
+            {
+              "name": "Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "recurring_upi_intent",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "allow_dc_recurring",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1769080314708-52998117.xlsx",
+    "originalName": "Subscriptions Audit Checklist.xlsx",
+    "product": "Subscriptions",
+    "uploadDate": "2026-01-22T11:11:54.780Z",
+    "data": {
+      "product": "Subscriptions",
+      "audit_metadata": {
+        "mx_name": "Audit Checklist",
+        "mid": "1. Methods Enabled",
+        "date": ""
+      },
+      "checklist": [
+        {
+          "category": "2. Plan creation",
+          "items": [
+            {
+              "name": "Period",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "Interval",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "3. Subscription creation",
+          "items": [
+            {
+              "name": "Plan_id",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "total_count",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "Addons",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "6. Subscription Management",
+          "items": [
+            {
+              "name": "Fetch a Plan",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "Cancel a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "Update a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "Pause a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "Resume a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "9. Verify Status",
+          "items": [
+            {
+              "name": "Webhooks",
+              "status": "N/A",
+              "hint": "Events:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "10. Checkout/Library",
+          "items": [
+            {
+              "name": "Platform",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "Checkout Type",
+              "status": "N/A",
+              "hint": "Type:",
+              "comment": ""
+            },
+            {
+              "name": "Server language/SDK",
+              "status": "N/A",
+              "hint": "Version:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "12. Recurring Terminals",
+          "items": [
+            {
+              "name": "upi_icici",
+              "status": "N/A",
+              "hint": "",
+              "comment": "Others if applicable:"
+            },
+            {
+              "name": "enach_rbl",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "hitachi / fulcrum",
+              "status": "N/A",
+              "hint": "Others:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "13. Feature Flags",
+          "items": [
+            {
+              "name": "Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "recurring_upi_intent",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "allow_dc_recurring",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1769082109483-687120763.xlsx",
+    "originalName": "Subscriptions Audit Checklist.xlsx",
+    "product": "Subscriptions",
+    "uploadDate": "2026-01-22T11:41:49.533Z",
+    "data": {
+      "product": "Subscriptions",
+      "audit_metadata": {
+        "mx_name": "Audit Checklist",
+        "mid": "1. Methods Enabled",
+        "date": ""
+      },
+      "checklist": [
+        {
+          "category": "2. Plan creation",
+          "items": [
+            {
+              "name": "Period",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "Interval",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "3. Subscription creation",
+          "items": [
+            {
+              "name": "Plan_id",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "total_count",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "Addons",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "6. Subscription Management",
+          "items": [
+            {
+              "name": "Fetch a Plan",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "Cancel a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "Update a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "Pause a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "Resume a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "9. Verify Status",
+          "items": [
+            {
+              "name": "Webhooks",
+              "status": "N/A",
+              "hint": "Events:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "10. Checkout/Library",
+          "items": [
+            {
+              "name": "Platform",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "Checkout Type",
+              "status": "N/A",
+              "hint": "Type:",
+              "comment": ""
+            },
+            {
+              "name": "Server language/SDK",
+              "status": "N/A",
+              "hint": "Version:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "12. Recurring Terminals",
+          "items": [
+            {
+              "name": "upi_icici",
+              "status": "N/A",
+              "hint": "",
+              "comment": "Others if applicable:"
+            },
+            {
+              "name": "enach_rbl",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "hitachi / fulcrum",
+              "status": "N/A",
+              "hint": "Others:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "13. Feature Flags",
+          "items": [
+            {
+              "name": "Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "recurring_upi_intent",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "allow_dc_recurring",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1769082360166-395033810.xlsx",
+    "originalName": "test_subscription_checklist_v2.xlsx",
+    "product": "Subscriptions",
+    "uploadDate": "2026-01-22T11:46:00.169Z",
+    "data": {
+      "product": "Subscriptions",
+      "audit_metadata": {
+        "mx_name": "Unified Test",
+        "mid": "UnifiedMID",
+        "date": ""
+      },
+      "checklist": [
+        {
+          "category": "2. Plan creation",
+          "items": [
+            {
+              "name": "Period",
+              "status": "Pass",
+              "hint": "",
+              "comment": "Check period"
+            },
+            {
+              "name": "Interval",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "3. Subscription creation",
+          "items": [
+            {
+              "name": "Plan_id",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "total_count",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "Addons",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "6. Subscription Management",
+          "items": [
+            {
+              "name": "Fetch a Plan",
+              "status": "Fail",
+              "hint": "",
+              "comment": "Not working"
+            },
+            {
+              "name": "Cancel a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "Update a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "Pause a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "Resume a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "9. Verify Status",
+          "items": [
+            {
+              "name": "Webhooks",
+              "status": "N/A",
+              "hint": "Events:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "10. Checkout/Library",
+          "items": [
+            {
+              "name": "Platform",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "Checkout Type",
+              "status": "N/A",
+              "hint": "Type:",
+              "comment": ""
+            },
+            {
+              "name": "Server language/SDK",
+              "status": "N/A",
+              "hint": "Version:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "12. Recurring Terminals",
+          "items": [
+            {
+              "name": "upi_icici",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "enach_rbl",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "hitachi / fulcrum",
+              "status": "N/A",
+              "hint": "Others:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "13. Feature Flags",
+          "items": [
+            {
+              "name": "Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "recurring_upi_intent",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "name": "allow_dc_recurring",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1769082413759-331715893.xlsx",
+    "originalName": "test_subscription_checklist_v2.xlsx",
+    "product": "Subscriptions",
+    "uploadDate": "2026-01-22T11:46:53.768Z",
+    "data": {
+      "product": "Subscriptions",
+      "audit_metadata": {
+        "mx_name": "Unified Test",
+        "mid": "UnifiedMID",
+        "date": ""
+      },
+      "checklist_content": [
+        {
+          "category": "2. Plan creation",
+          "checks": [
+            {
+              "item": "Period",
+              "status": "Pass",
+              "hint": "",
+              "comment": "Check period"
+            },
+            {
+              "item": "Interval",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "3. Subscription creation",
+          "checks": [
+            {
+              "item": "Plan_id",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "total_count",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Addons",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "6. Subscription Management",
+          "checks": [
+            {
+              "item": "Fetch a Plan",
+              "status": "Fail",
+              "hint": "",
+              "comment": "Not working"
+            },
+            {
+              "item": "Cancel a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Update a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Pause a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Resume a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "9. Verify Status",
+          "checks": [
+            {
+              "item": "Webhooks",
+              "status": "N/A",
+              "hint": "Events:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "10. Checkout/Library",
+          "checks": [
+            {
+              "item": "Platform",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Checkout Type",
+              "status": "N/A",
+              "hint": "Type:",
+              "comment": ""
+            },
+            {
+              "item": "Server language/SDK",
+              "status": "N/A",
+              "hint": "Version:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "12. Recurring Terminals",
+          "checks": [
+            {
+              "item": "upi_icici",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "enach_rbl",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "hitachi / fulcrum",
+              "status": "N/A",
+              "hint": "Others:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "13. Feature Flags",
+          "checks": [
+            {
+              "item": "Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "recurring_upi_intent",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "allow_dc_recurring",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1769082636430-51174887.xlsx",
+    "originalName": "Subscriptions Audit Checklist.xlsx",
+    "product": "Subscriptions",
+    "uploadDate": "2026-01-22T11:50:36.501Z",
+    "data": {
+      "product": "Subscriptions",
+      "audit_metadata": {
+        "mx_name": "Audit Checklist",
+        "mid": "1. Methods Enabled",
+        "date": ""
+      },
+      "checklist_content": [
+        {
+          "category": "2. Plan creation",
+          "checks": [
+            {
+              "item": "Period",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Interval",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "3. Subscription creation",
+          "checks": [
+            {
+              "item": "Plan_id",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "total_count",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Addons",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "6. Subscription Management",
+          "checks": [
+            {
+              "item": "Fetch a Plan",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Cancel a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Update a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Pause a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Resume a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "9. Verify Status",
+          "checks": [
+            {
+              "item": "Webhooks",
+              "status": "N/A",
+              "hint": "Events:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "10. Checkout/Library",
+          "checks": [
+            {
+              "item": "Platform",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Checkout Type",
+              "status": "N/A",
+              "hint": "Type:",
+              "comment": ""
+            },
+            {
+              "item": "Server language/SDK",
+              "status": "N/A",
+              "hint": "Version:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "12. Recurring Terminals",
+          "checks": [
+            {
+              "item": "upi_icici",
+              "status": "N/A",
+              "hint": "",
+              "comment": "Others if applicable:"
+            },
+            {
+              "item": "enach_rbl",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "hitachi / fulcrum",
+              "status": "N/A",
+              "hint": "Others:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "13. Feature Flags",
+          "checks": [
+            {
+              "item": "Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "recurring_upi_intent",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "allow_dc_recurring",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1769082960525-89362007.xlsx",
+    "originalName": "test_subscription_checklist_v3.xlsx",
+    "product": "Subscriptions",
+    "uploadDate": "2026-01-22T11:56:00.534Z",
+    "data": {
+      "product": "Subscriptions",
+      "audit_metadata": {
+        "mx_name": "Unified Test Items",
+        "mid": "UnifiedMID3",
+        "date": ""
+      },
+      "checklist_content": [
+        {
+          "category": "2. Plan creation",
+          "checks": [
+            {
+              "item": "Period",
+              "status": "Pass",
+              "hint": "",
+              "comment": "Check period"
+            },
+            {
+              "item": "Interval",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "3. Subscription creation",
+          "checks": [
+            {
+              "item": "Plan_id",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "total_count",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Addons",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "6. Subscription Management",
+          "checks": [
+            {
+              "item": "Fetch a Plan",
+              "status": "Fail",
+              "hint": "",
+              "comment": "Not working"
+            },
+            {
+              "item": "Cancel a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Update a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Pause a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Resume a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "9. Verify Status",
+          "checks": [
+            {
+              "item": "Webhooks",
+              "status": "N/A",
+              "hint": "Events:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "10. Checkout/Library",
+          "checks": [
+            {
+              "item": "Platform",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Checkout Type",
+              "status": "N/A",
+              "hint": "Type:",
+              "comment": ""
+            },
+            {
+              "item": "Server language/SDK",
+              "status": "N/A",
+              "hint": "Version:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "12. Recurring Terminals",
+          "checks": [
+            {
+              "item": "upi_icici",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "enach_rbl",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "hitachi / fulcrum",
+              "status": "N/A",
+              "hint": "Others:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "13. Feature Flags",
+          "checks": [
+            {
+              "item": "Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "recurring_upi_intent",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "allow_dc_recurring",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1769082987762-473335149.xlsx",
+    "originalName": "test_subscription_checklist_v3.xlsx",
+    "product": "Subscriptions",
+    "uploadDate": "2026-01-22T11:56:27.766Z",
+    "data": {
+      "product": "Subscriptions",
+      "audit_metadata": {
+        "mx_name": "Unified Test Items",
+        "mid": "UnifiedMID3",
+        "date": ""
+      },
+      "checklist_content": [
+        {
+          "category": "1. Methods Enabled",
+          "checks": [
+            {
+              "item": "E Mandate",
+              "status": "Pass",
+              "hint": "",
+              "comment": "Mandate active"
+            },
+            {
+              "item": "UPI Autopay",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Card Mandates",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Paper Nach",
+              "status": "N/A",
+              "hint": "",
+              "comment": "Not needed"
+            }
+          ]
+        },
+        {
+          "category": "2. Plan creation",
+          "checks": [
+            {
+              "item": "Period",
+              "status": "Pass",
+              "hint": "",
+              "comment": "Check period"
+            },
+            {
+              "item": "Interval",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "3. Subscription creation",
+          "checks": [
+            {
+              "item": "Plan_id",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "total_count",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Addons",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "6. Subscription Management",
+          "checks": [
+            {
+              "item": "Fetch a Plan",
+              "status": "Fail",
+              "hint": "",
+              "comment": "Not working"
+            },
+            {
+              "item": "Cancel a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Update a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Pause a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Resume a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "9. Verify Status",
+          "checks": [
+            {
+              "item": "Webhooks",
+              "status": "N/A",
+              "hint": "Events:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "10. Checkout/Library",
+          "checks": [
+            {
+              "item": "Platform",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Checkout Type",
+              "status": "N/A",
+              "hint": "Type:",
+              "comment": ""
+            },
+            {
+              "item": "Server language/SDK",
+              "status": "N/A",
+              "hint": "Version:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "12. Recurring Terminals",
+          "checks": [
+            {
+              "item": "upi_icici",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "enach_rbl",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "hitachi / fulcrum",
+              "status": "N/A",
+              "hint": "Others:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "13. Feature Flags",
+          "checks": [
+            {
+              "item": "Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "recurring_upi_intent",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "allow_dc_recurring",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1769083122661-431030513.xlsx",
+    "originalName": "Subscriptions Audit Checklist.xlsx",
+    "product": "Subscriptions",
+    "uploadDate": "2026-01-22T11:58:42.733Z",
+    "data": {
+      "product": "Subscriptions",
+      "audit_metadata": {
+        "mx_name": "Audit Checklist",
+        "mid": "1. Methods Enabled",
+        "date": ""
+      },
+      "checklist_content": [
+        {
+          "category": "1. Methods Enabled",
+          "checks": [
+            {
+              "item": "E Mandate",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "UPI Autopay",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Card Mandates",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Paper Nach",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "2. Plan creation",
+          "checks": [
+            {
+              "item": "Period",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Interval",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "3. Subscription creation",
+          "checks": [
+            {
+              "item": "Plan_id",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "total_count",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Addons",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "6. Subscription Management",
+          "checks": [
+            {
+              "item": "Fetch a Plan",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Cancel a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Update a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Pause a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Resume a Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "9. Verify Status",
+          "checks": [
+            {
+              "item": "Webhooks",
+              "status": "N/A",
+              "hint": "Events:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "10. Checkout/Library",
+          "checks": [
+            {
+              "item": "Platform",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "Checkout Type",
+              "status": "N/A",
+              "hint": "Type:",
+              "comment": ""
+            },
+            {
+              "item": "Server language/SDK",
+              "status": "N/A",
+              "hint": "Version:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "12. Recurring Terminals",
+          "checks": [
+            {
+              "item": "upi_icici",
+              "status": "N/A",
+              "hint": "",
+              "comment": "Others if applicable:"
+            },
+            {
+              "item": "enach_rbl",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "hitachi / fulcrum",
+              "status": "N/A",
+              "hint": "Others:",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "category": "13. Feature Flags",
+          "checks": [
+            {
+              "item": "Subscription",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "recurring_upi_intent",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            },
+            {
+              "item": "allow_dc_recurring",
+              "status": "N/A",
+              "hint": "",
+              "comment": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "filename": "checklist-1769098037058-360374108.xlsx",
+    "originalName": "test_ncapps_checklist.xlsx",
+    "product": "NCApps",
+    "uploadDate": "2026-01-22T16:07:17.062Z",
+    "data": {
+      "auditChecklist": [
+        {
+          "section": "General",
+          "configs": [
+            {
+              "item": "1. Live Keys",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "2. Implementation Setup",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "webhook Url for payment",
+              "status": "https://ncapps-webhook.com",
+              "comment": ""
+            },
+            {
+              "item": "Webhook Events",
+              "status": "order.paid, payment.captured",
+              "comment": ""
+            }
+          ]
+        }
+      ],
+      "additionalComments": ""
+    }
+  }
+]

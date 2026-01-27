@@ -1,0 +1,162 @@
+{
+  "affordability_audits": [
+    {
+      "id": 1,
+      "merchant_id": "AFF_MID_999",
+      "merchant_name": "Affordability Test Merchant",
+      "audit_date": "",
+      "created_at": "2026-01-23T03:26:14.854Z"
+    },
+    {
+      "id": 2,
+      "merchant_id": "AFF_MID_999",
+      "merchant_name": "Affordability Test Merchant",
+      "audit_date": "",
+      "created_at": "2026-01-27T06:54:37.278Z"
+    }
+  ],
+  "affordability_checklist_template": [
+    {
+      "item_id": 1,
+      "category": "1. Live Keys",
+      "item_description": "a. Downloading Keys",
+      "sort_order": 1
+    },
+    {
+      "item_id": 2,
+      "category": "1. Live Keys",
+      "item_description": "b. Set Expiry",
+      "sort_order": 2
+    },
+    {
+      "item_id": 3,
+      "category": "2. Affordability Widget with",
+      "item_description": "a. Shopify",
+      "sort_order": 3
+    },
+    {
+      "item_id": 4,
+      "category": "2. Affordability Widget with",
+      "item_description": "b. WooCommerce",
+      "sort_order": 4
+    },
+    {
+      "item_id": 5,
+      "category": "2. Affordability Widget with",
+      "item_description": "c. Native Website",
+      "sort_order": 5
+    }
+  ],
+  "affordability_comment_templates": [
+    {
+      "id": 1,
+      "field_label": "webhook Url for payment"
+    },
+    {
+      "id": 2,
+      "field_label": "Webhook Events"
+    },
+    {
+      "id": 3,
+      "field_label": "General Notes"
+    }
+  ],
+  "affordability_audit_results": [
+    {
+      "id": 1,
+      "session_id": 1,
+      "template_id": 1,
+      "status": "Pass",
+      "specific_comment": "Keys are live"
+    },
+    {
+      "id": 2,
+      "session_id": 1,
+      "template_id": 3,
+      "status": "Pass",
+      "specific_comment": "Shopify plugin works"
+    },
+    {
+      "id": 3,
+      "session_id": 1,
+      "template_id": 4,
+      "status": "Fail",
+      "specific_comment": "Plugin not found"
+    },
+    {
+      "id": 4,
+      "session_id": 1,
+      "template_id": 2,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 5,
+      "session_id": 1,
+      "template_id": 5,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 6,
+      "session_id": 2,
+      "template_id": 1,
+      "status": "Pass",
+      "specific_comment": "Keys are live"
+    },
+    {
+      "id": 7,
+      "session_id": 2,
+      "template_id": 3,
+      "status": "Pass",
+      "specific_comment": "Shopify plugin works"
+    },
+    {
+      "id": 8,
+      "session_id": 2,
+      "template_id": 4,
+      "status": "Fail",
+      "specific_comment": "Plugin not found"
+    },
+    {
+      "id": 9,
+      "session_id": 2,
+      "template_id": 2,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 10,
+      "session_id": 2,
+      "template_id": 5,
+      "status": "N/A",
+      "specific_comment": ""
+    }
+  ],
+  "affordability_comment_values": [
+    {
+      "id": 1,
+      "session_id": 1,
+      "comment_template_id": 1,
+      "field_value": "https://aff-webhook.com"
+    },
+    {
+      "id": 2,
+      "session_id": 1,
+      "comment_template_id": 3,
+      "field_value": "Testing Affordability"
+    },
+    {
+      "id": 3,
+      "session_id": 2,
+      "comment_template_id": 1,
+      "field_value": "https://aff-webhook.com"
+    },
+    {
+      "id": 4,
+      "session_id": 2,
+      "comment_template_id": 3,
+      "field_value": "Testing Affordability"
+    }
+  ]
+}

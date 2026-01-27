@@ -1,0 +1,201 @@
+{
+  "qr_audits": [
+    {
+      "id": 1,
+      "merchant_id": "QR_MID_123",
+      "merchant_name": "QR Test Merchant",
+      "audit_date": "",
+      "created_at": "2026-01-22T15:35:21.963Z"
+    },
+    {
+      "id": 2,
+      "merchant_id": "Unknown",
+      "merchant_name": "Audit Checklist",
+      "audit_date": "",
+      "created_at": "2026-01-22T15:36:45.600Z"
+    }
+  ],
+  "qr_checklist_template": [
+    {
+      "item_id": 1,
+      "category": "1. Live Keys",
+      "item_description": "Downloading Keys",
+      "sort_order": 1
+    },
+    {
+      "item_id": 2,
+      "category": "1. Live Keys",
+      "item_description": "Set Expiry",
+      "sort_order": 2
+    },
+    {
+      "item_id": 3,
+      "category": "1. Live Keys",
+      "item_description": "Regenerate Keys",
+      "sort_order": 3
+    },
+    {
+      "item_id": 4,
+      "category": "2. QR Code Implementation",
+      "item_description": "Dashboard",
+      "sort_order": 4
+    },
+    {
+      "item_id": 5,
+      "category": "2. QR Code Implementation",
+      "item_description": "API",
+      "sort_order": 5
+    },
+    {
+      "item_id": 6,
+      "category": "2. QR Code Implementation",
+      "item_description": "Instant QR",
+      "sort_order": 6
+    },
+    {
+      "item_id": 7,
+      "category": "2. QR Code Implementation",
+      "item_description": "Dynamic QR",
+      "sort_order": 7
+    },
+    {
+      "item_id": 8,
+      "category": "2. QR Code Implementation",
+      "item_description": "Expiry for QR",
+      "sort_order": 8
+    },
+    {
+      "item_id": 9,
+      "category": "3. Features Enabled",
+      "item_description": "QR",
+      "sort_order": 9
+    },
+    {
+      "item_id": 10,
+      "category": "4. Image Content",
+      "item_description": "Image Content URL",
+      "sort_order": 10
+    },
+    {
+      "item_id": 11,
+      "category": "4 Terminals Enabled",
+      "item_description": "Type Online(yesbank, icici)",
+      "sort_order": 11
+    },
+    {
+      "item_id": 12,
+      "category": "5. Methods Enabled",
+      "item_description": "Payment Methods",
+      "sort_order": 12
+    },
+    {
+      "item_id": 13,
+      "category": "6. Capture Settings",
+      "item_description": "Auto Capture & Manual Capture",
+      "sort_order": 13
+    },
+    {
+      "item_id": 14,
+      "category": "7. For successful transactions",
+      "item_description": "Consumes payment_id, order_id",
+      "sort_order": 14
+    },
+    {
+      "item_id": 15,
+      "category": "7. For successful transactions",
+      "item_description": "Verify payment signature step",
+      "sort_order": 15
+    },
+    {
+      "item_id": 16,
+      "category": "8. For failure transactions",
+      "item_description": "Consumes Error Codes",
+      "sort_order": 16
+    },
+    {
+      "item_id": 17,
+      "category": "9. Late Auth Scenarios",
+      "item_description": "Consumes payment state at capture time",
+      "sort_order": 17
+    },
+    {
+      "item_id": 18,
+      "category": "10. Verify Payment Status",
+      "item_description": "Webhooks",
+      "sort_order": 18
+    },
+    {
+      "item_id": 19,
+      "category": "10. Verify Payment Status",
+      "item_description": "Verify webhook signature",
+      "sort_order": 19
+    },
+    {
+      "item_id": 20,
+      "category": "10. Verify Payment Status",
+      "item_description": "Fetch payment APIs",
+      "sort_order": 20
+    },
+    {
+      "item_id": 21,
+      "category": "11. Offers",
+      "item_description": "Offers",
+      "sort_order": 21
+    },
+    {
+      "item_id": 22,
+      "category": "12. Fetch Payment API's",
+      "item_description": "Fetch Payment API's",
+      "sort_order": 22
+    },
+    {
+      "item_id": 23,
+      "category": "Additional Comments",
+      "item_description": "webhook Url for payment",
+      "sort_order": 23
+    },
+    {
+      "item_id": 24,
+      "category": "Additional Comments",
+      "item_description": "Webhook Events",
+      "sort_order": 24
+    }
+  ],
+  "qr_audit_results": [
+    {
+      "id": 1,
+      "audit_id": 1,
+      "item_id": 1,
+      "status": "Pass",
+      "comment": "Keys downloaded"
+    },
+    {
+      "id": 2,
+      "audit_id": 1,
+      "item_id": 4,
+      "status": "Pass",
+      "comment": "Dash verified"
+    },
+    {
+      "id": 3,
+      "audit_id": 1,
+      "item_id": 6,
+      "status": "N/A",
+      "comment": "Not used"
+    },
+    {
+      "id": 4,
+      "audit_id": 1,
+      "item_id": 23,
+      "status": "N/A",
+      "comment": "https://example.com/hook"
+    },
+    {
+      "id": 5,
+      "audit_id": 1,
+      "item_id": 24,
+      "status": "N/A",
+      "comment": "payment.captured, payment.failed"
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "golive_audits": [
+    {
+      "id": 1,
+      "product": "Standard Checkout",
+      "merchant_id": "GL_MID_123",
+      "merchant_name": "Go Live Test Merchant",
+      "audit_date": "",
+      "created_at": "2026-01-23T05:57:20.076Z"
+    },
+    {
+      "id": 2,
+      "product": "Standard Checkout",
+      "merchant_id": "GL_MID_123",
+      "merchant_name": "Go Live Test Merchant",
+      "audit_date": "",
+      "created_at": "2026-01-23T05:59:30.708Z"
+    },
+    {
+      "id": 3,
+      "product": "Standard Checkout",
+      "merchant_id": "Unknown",
+      "merchant_name": "Audit Checklist",
+      "audit_date": "",
+      "created_at": "2026-01-23T06:00:32.668Z"
+    },
+    {
+      "id": 4,
+      "product": "Standard Checkout",
+      "merchant_id": "GL_MID_123",
+      "merchant_name": "Go Live Test Merchant",
+      "audit_date": "",
+      "created_at": "2026-01-27T06:55:00.438Z"
+    }
+  ],
+  "golive_results": [
+    {
+      "id": 1,
+      "session_id": 1,
+      "config_item": "Configs",
+      "source": "Unmapped",
+      "status": "Status",
+      "comment": "Comments"
+    },
+    {
+      "id": 2,
+      "session_id": 1,
+      "config_item": "Account Live (Key/Secret)",
+      "source": "Admin Dashboard",
+      "status": "Done",
+      "comment": "Keys active"
+    },
+    {
+      "id": 3,
+      "session_id": 1,
+      "config_item": "Webhook Configs",
+      "source": "Merchant Dashboard",
+      "status": "Pending",
+      "comment": "Customer delaying"
+    },
+    {
+      "id": 4,
+      "session_id": 1,
+      "config_item": "Signature Verification",
+      "source": "Coralogix",
+      "status": "Done",
+      "comment": "Verified in Coralogix"
+    },
+    {
+      "id": 5,
+      "session_id": 1,
+      "config_item": "Unknown Config Item",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": "Should be Unmapped"
+    },
+    {
+      "id": 6,
+      "session_id": 2,
+      "config_item": "Account Live (Key/Secret)",
+      "source": "Admin Dashboard",
+      "status": "Done",
+      "comment": "Keys active"
+    },
+    {
+      "id": 7,
+      "session_id": 2,
+      "config_item": "Webhook Configs",
+      "source": "Merchant Dashboard",
+      "status": "Pending",
+      "comment": "Customer delaying"
+    },
+    {
+      "id": 8,
+      "session_id": 2,
+      "config_item": "Signature Verification",
+      "source": "Coralogix",
+      "status": "Done",
+      "comment": "Verified in Coralogix"
+    },
+    {
+      "id": 9,
+      "session_id": 2,
+      "config_item": "Unknown Config Item",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": "Should be Unmapped"
+    },
+    {
+      "id": 10,
+      "session_id": 4,
+      "config_item": "Account Live (Key/Secret)",
+      "source": "Admin Dashboard",
+      "status": "Done",
+      "comment": "Keys active"
+    },
+    {
+      "id": 11,
+      "session_id": 4,
+      "config_item": "Webhook Configs",
+      "source": "Merchant Dashboard",
+      "status": "Pending",
+      "comment": "Customer delaying"
+    },
+    {
+      "id": 12,
+      "session_id": 4,
+      "config_item": "Signature Verification",
+      "source": "Coralogix",
+      "status": "Done",
+      "comment": "Verified in Coralogix"
+    },
+    {
+      "id": 13,
+      "session_id": 4,
+      "config_item": "Unknown Config Item",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": "Should be Unmapped"
+    }
+  ]
+}

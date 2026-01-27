@@ -1,0 +1,39 @@
+{
+  "product": "Standard Checkout",
+  "audit_metadata": {
+    "merchant_id": "GL_MID_123",
+    "date": ""
+  },
+  "checklist_content": [
+    {
+      "config": "Configs",
+      "source": "Unmapped",
+      "status": "Status",
+      "comment": "Comments"
+    },
+    {
+      "config": "Account Live (Key/Secret)",
+      "source": "Admin Dashboard",
+      "status": "Done",
+      "comment": "Keys active"
+    },
+    {
+      "config": "Webhook Configs",
+      "source": "Merchant Dashboard",
+      "status": "Pending",
+      "comment": "Customer delaying"
+    },
+    {
+      "config": "Signature Verification",
+      "source": "Coralogix",
+      "status": "Done",
+      "comment": "Verified in Coralogix"
+    },
+    {
+      "config": "Unknown Config Item",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": "Should be Unmapped"
+    }
+  ]
+}

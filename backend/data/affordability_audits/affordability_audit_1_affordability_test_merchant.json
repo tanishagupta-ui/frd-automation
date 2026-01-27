@@ -1,0 +1,44 @@
+{
+  "product": "Affordability Widget",
+  "audit_metadata": {
+    "merchant_id": "AFF_MID_999",
+    "date": ""
+  },
+  "tech_checklist": [
+    {
+      "category": "1. Live Keys",
+      "checks": [
+        {
+          "config": "a. Downloading Keys",
+          "status": "Pass"
+        },
+        {
+          "config": "b. Set Expiry",
+          "status": "N/A"
+        }
+      ]
+    },
+    {
+      "category": "2. Affordability Widget with",
+      "checks": [
+        {
+          "config": "a. Shopify",
+          "status": "Pass"
+        },
+        {
+          "config": "b. WooCommerce",
+          "status": "Fail"
+        },
+        {
+          "config": "c. Native Website",
+          "status": "N/A"
+        }
+      ]
+    }
+  ],
+  "additional_comments": {
+    "webhook_url_for_payment": "https://aff-webhook.com",
+    "webhook_events": "",
+    "general_notes": "Testing Affordability"
+  }
+}

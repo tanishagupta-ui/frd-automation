@@ -1,0 +1,185 @@
+{
+  "product": "Route",
+  "session_id": 3,
+  "audit_metadata": {
+    "merchant_id": "STO001",
+    "merchant_name": "Storage Test"
+  },
+  "checklist": [
+    {
+      "category": "1. Linked account creation",
+      "sub_items": [
+        {
+          "label": "Batch upload",
+          "status": "Pass",
+          "comment": "Testing Storage"
+        },
+        {
+          "label": "Dashboard",
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "label": "i. Dashboard access to linked account",
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "label": "API",
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "label": "i. Create linked account API",
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "label": "ii. Create stakeholder",
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "label": "iii. Request product config",
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "label": "iv. Update product config",
+          "status": "N/A",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "2. Transfer process to linked account",
+      "sub_items": [
+        {
+          "label": "Batch upload",
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "label": "Dashboard",
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "label": "API",
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "label": "i. Transfer via order",
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "label": "ii. Transfer via payment",
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "label": "iii. Direct transfer",
+          "status": "N/A",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "3. For failure transfers",
+      "sub_items": [
+        {
+          "label": "Consumes Error Codes",
+          "status": "N/A",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "4. LA creation and transfer platform",
+      "sub_items": [
+        {
+          "label": "Platform",
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "label": "Server language/SDK",
+          "status": "N/A",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "5. Verify Transfer and Settlement Status",
+      "sub_items": [
+        {
+          "label": "Webhooks (url and events )",
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "label": "Verify webhook signature",
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "label": "Fetch payment APIs",
+          "status": "N/A",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "6. Refund or Reversal",
+      "sub_items": [
+        {
+          "label": "Dashboard",
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "label": "API",
+          "status": "N/A",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "7. Settlement",
+      "sub_items": [
+        {
+          "label": "Normal settlement",
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "label": "Instant settlement",
+          "status": "N/A",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "8. UAT Sign Off",
+      "sub_items": [
+        {
+          "label": "Sign Off / Action Item",
+          "status": "N/A",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "Additional Comments",
+      "sub_items": [
+        {
+          "label": "Additional Comments",
+          "status": "N/A",
+          "comment": ""
+        }
+      ]
+    }
+  ]
+}

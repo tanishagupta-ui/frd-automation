@@ -9,7 +9,10 @@ function App() {
 
   const products = [
     "Route",
-    "Subscription",
+    "Subscriptions",
+    "QR Code",
+    "NCApps",
+    "Affordability Widget",
     "Smart Collect",
     "Charge at Will",
     "Standard Checkout",
@@ -22,21 +25,37 @@ function App() {
   };
 
   const handleFileChange = async (e) => {
+    setMessage(""); // Clear previous messages
     const file = e.target.files[0];
     if (!file) return;
+
+    console.log("File selected:", file.name, "Type:", file.type);
+    console.log("Selected Products:", selectedProducts);
 
     // Allowed Excel MIME types
     const validTypes = [
       "application/vnd.ms-excel", // .xls
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" // .xlsx
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", // .xlsx
+      "" // specific case for some systems where mimetype is empty
     ];
 
-    if (!validTypes.includes(file.type)) {
-      setMessage("Please select an Excel file only (.xls or .xlsx)");
+    // Check by extension if mimetype is empty or generic
+    const isExcelExtension = file.name.endsWith(".xls") || file.name.endsWith(".xlsx");
+
+    if (!validTypes.includes(file.type) && !isExcelExtension) {
+      console.warn("Invalid file type:", file.type);
+      setMessage(`Invalid file type: ${file.type}. Please use .xls or .xlsx`);
+      return;
+    }
+
+    if (selectedProducts.length === 0) {
+      setMessage("Please select a product before uploading.");
       return;
     }
 
     const formData = new FormData();
+    // Append product sent FIRST for multer stability
+    formData.append("product", selectedProducts[0]);
     formData.append("checklist", file);
 
     try {
@@ -44,9 +63,11 @@ function App() {
         "http://localhost:5001/upload",
         formData
       );
+      console.log("Upload response:", res.data);
       setMessage(res.data.message);
     } catch (error) {
-      setMessage("Upload failed");
+      console.error("Upload error:", error);
+      setMessage(error.response?.data?.message || "Upload failed");
     }
   };
 
