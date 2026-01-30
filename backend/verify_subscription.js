@@ -23,7 +23,7 @@ async function verifySubscription() {
     xlsx.writeFile(wb, filePath);
 
     const form = new FormData();
-    form.append('product', 'Subscription'); // Front-end uses 'Subscription'
+    form.append('product', 'Subscriptions'); // Match backend plural
     form.append('checklist', fs.createReadStream(filePath));
 
     try {
@@ -36,13 +36,13 @@ async function verifySubscription() {
         console.log("Merchant:", result.audit_metadata.mx_name);
 
         let totalItems = 0;
-        result.checklist.forEach(c => totalItems += c.items.length);
+        result.checklist_content.forEach(c => totalItems += c.checks.length);
         console.log("Total Items in Response:", totalItems);
 
-        if (totalItems === 39) {
-            console.log("SUCCESS: All 39 canonical items captured!");
+        if (totalItems === 40) { // Canonical template has 40 items including Comments
+            console.log("SUCCESS: All 40 canonical items captured!");
         } else {
-            console.log("FAILURE: Expected 39 items, got", totalItems);
+            console.log("FAILURE: Expected 40 items, got", totalItems);
         }
 
         // Check if individual file exists

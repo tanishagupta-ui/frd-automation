@@ -5,6 +5,7 @@ const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
 const merchantService = require("./services/merchantService");
+const auditSummaryService = require("./services/auditSummaryService");
 const xlsx = require("xlsx");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
@@ -18,7 +19,7 @@ if (process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY !== 'AIzaSyA3ka04wR
 }
 
 const app = express();
-const PORT = 5002; // Changed to 5001 to avoid macOS AirPlay/ControlCenter conflict
+const PORT = 5001; // Changed to 5001 to avoid macOS AirPlay/ControlCenter conflict
 
 
 app.use(express.json());
@@ -59,68 +60,127 @@ const upload = multer({
 });
 
 // Function to search for merchant information using Gemini
-async function searchMerchantInfo(merchantName, merchantId) {
-    if (!genAI) {
-        console.log("Gemini API not configured, skipping merchant search");
-        return null;
-    }
+const sleep = (ms) => new Promise(res => setTimeout(res, ms));
 
-    try {
-        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
+async function searchMerchantInfo(merchantName, merchantId, retries = 3) {
+    if (!genAI) return null;
 
-        const prompt = `Search the web and provide comprehensive information about the company "${merchantName}". Include:
-1. Official website URL
-2. Business description (what they do)
-3. Industry/sector
-4. Company size (if available)
-5. Location/headquarters
-6. Key products or services
-
-Format the response as a JSON object with these exact keys: website, description, industry, company_size, location, products_services. If any information is not available, use "Not found" as the value.`;
-
-        const result = await model.generateContent(prompt);
-        const responseText = result.response.text();
-
-        // Try to parse JSON from response
-        let parsedData;
+    // 1. Check if already enriched in the LAST 24 HOURS (simple check)
+    const dataPath = path.join(__dirname, "data", "merchant_enrichment_data.json");
+    if (fs.existsSync(dataPath)) {
         try {
-            // Extract JSON from markdown code blocks if present
-            const jsonMatch = responseText.match(/```(?:json)?\s*({[\s\S]*?})\s*```/);
-            if (jsonMatch) {
-                parsedData = JSON.parse(jsonMatch[1]);
-            } else {
-                parsedData = JSON.parse(responseText);
+            const storage = JSON.parse(fs.readFileSync(dataPath, "utf8"));
+            const targetName = merchantName.trim().toLowerCase();
+            const existing = storage.enrichments.find(e =>
+                e.merchant_name && e.merchant_name.trim().toLowerCase() === targetName && e.web_data
+            );
+            if (existing) {
+                console.log(`ℹ️ Merchant "${merchantName}" already enriched. Skipping search.`);
+                return null;
             }
-        } catch (parseError) {
-            // If parsing fails, store the raw response
-            parsedData = {
-                raw_response: responseText,
-                website: "Not found",
-                description: "Not found",
-                industry: "Not found",
-                company_size: "Not found",
-                location: "Not found",
-                products_services: "Not found"
-            };
-        }
-
-        return {
-            merchant_name: merchantName,
-            merchant_id: merchantId,
-            search_date: new Date().toISOString(),
-            web_data: parsedData
-        };
-    } catch (error) {
-        console.error("Error searching merchant info:", error);
-        return {
-            merchant_name: merchantName,
-            merchant_id: merchantId,
-            search_date: new Date().toISOString(),
-            error: error.message,
-            web_data: null
-        };
+        } catch (e) { console.error("Cache read error:", e); }
     }
+
+    // Use gemini-1.5-flash (Stable)
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
+
+    const prompt = `Search the web and provide JSON info for company "${merchantName}": website, description, industry, company_size, location, products_services.`;
+
+    for (let i = 0; i < retries; i++) {
+        try {
+            const result = await model.generateContent(prompt);
+            const responseText = result.response.text();
+
+            let parsedData;
+            try {
+                const jsonMatch = responseText.match(/```(?:json)?\s*({[\s\S]*?})\s*```/);
+                parsedData = jsonMatch ? JSON.parse(jsonMatch[1]) : JSON.parse(responseText);
+            } catch (e) {
+                parsedData = { description: responseText };
+            }
+
+            return {
+                merchant_name: merchantName,
+                merchant_id: merchantId,
+                search_date: new Date().toISOString(),
+                web_data: parsedData
+            };
+
+        } catch (error) {
+            if (error.status === 429) {
+                const waitTime = (i + 1) * 20000; // Progressive wait: 20s, 40s, 60s
+                console.warn(`⚠️ Quota exceeded for "${merchantName}". Waiting ${waitTime / 1000}s before retry ${i + 1}/${retries}...`);
+                await sleep(waitTime);
+                continue;
+            }
+            console.error("Search error:", error);
+            break;
+        }
+    }
+    return null;
 }
+// async function searchMerchantInfo(merchantName, merchantId) {
+//     if (!genAI) {
+//         console.log("Gemini API not configured, skipping merchant search");
+//         return null;
+//     }
+
+//     try {
+//         const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
+
+//         const prompt = `Search the web and provide comprehensive information about the company "${merchantName}". Include:
+// 1. Official website URL
+// 2. Business description (what they do)
+// 3. Industry/sector
+// 4. Company size (if available)
+// 5. Location/headquarters
+// 6. Key products or services
+
+// Format the response as a JSON object with these exact keys: website, description, industry, company_size, location, products_services. If any information is not available, use "Not found" as the value.`;
+
+//         const result = await model.generateContent(prompt);
+//         const responseText = result.response.text();
+
+//         // Try to parse JSON from response
+//         let parsedData;
+//         try {
+//             // Extract JSON from markdown code blocks if present
+//             const jsonMatch = responseText.match(/```(?:json)?\s*({[\s\S]*?})\s*```/);
+//             if (jsonMatch) {
+//                 parsedData = JSON.parse(jsonMatch[1]);
+//             } else {
+//                 parsedData = JSON.parse(responseText);
+//             }
+//         } catch (parseError) {
+//             // If parsing fails, store the raw response
+//             parsedData = {
+//                 raw_response: responseText,
+//                 website: "Not found",
+//                 description: "Not found",
+//                 industry: "Not found",
+//                 company_size: "Not found",
+//                 location: "Not found",
+//                 products_services: "Not found"
+//             };
+//         }
+
+//         return {
+//             merchant_name: merchantName,
+//             merchant_id: merchantId,
+//             search_date: new Date().toISOString(),
+//             web_data: parsedData
+//         };
+//     } catch (error) {
+//         console.error("Error searching merchant info:", error);
+//         return {
+//             merchant_name: merchantName,
+//             merchant_id: merchantId,
+//             search_date: new Date().toISOString(),
+//             error: error.message,
+//             web_data: null
+//         };
+//     }
+// }
 
 // Function to store merchant enrichment data
 function storeMerchantEnrichment(enrichmentData) {
@@ -138,11 +198,20 @@ function storeMerchantEnrichment(enrichmentData) {
         }
     }
 
-    enrichmentData.id = storage.enrichments.length + 1;
-    storage.enrichments.push(enrichmentData);
+    // Check for existing entry to update instead of push
+    const existingIndex = storage.enrichments.findIndex(e => e.merchant_name === enrichmentData.merchant_name);
+
+    if (existingIndex >= 0) {
+        enrichmentData.id = storage.enrichments[existingIndex].id;
+        storage.enrichments[existingIndex] = enrichmentData;
+        console.log(`✅ Merchant enrichment data UPDATED for: ${enrichmentData.merchant_name}`);
+    } else {
+        enrichmentData.id = storage.enrichments.length + 1;
+        storage.enrichments.push(enrichmentData);
+        console.log(`✅ Merchant enrichment data STORED for: ${enrichmentData.merchant_name}`);
+    }
 
     fs.writeFileSync(dataPath, JSON.stringify(storage, null, 2));
-    console.log(`✅ Merchant enrichment data stored for: ${enrichmentData.merchant_name}`);
 }
 
 app.post("/upload", (req, res) => {
@@ -166,24 +235,6 @@ app.post("/upload", (req, res) => {
         console.log("File uploaded successfully:", req.file);
         console.log("Request Body:", req.body);
 
-        // Extract Merchant Name
-        let merchantName = null;
-        let merchantInfo = "Info pending...";
-
-        try {
-            merchantName = merchantService.extractMerchantName(req.file.path);
-            if (merchantName) {
-                console.log(`Extracted Merchant Name: ${merchantName}`);
-                // Fire and forget (or await if fast enough) - basic scraping is slow, so maybe fire and forget?
-                // But for now let's await to see results immediately for testing.
-                // In production, use a queue.
-                merchantInfo = await merchantService.fetchMerchantInfo(merchantName);
-            } else {
-                console.log("Could not extract merchant name.");
-            }
-        } catch (extractionError) {
-            console.error("Error in merchant extraction process:", extractionError);
-        }
         console.log("Processing for product:", req.body.product);
 
         try {
@@ -198,7 +249,7 @@ app.post("/upload", (req, res) => {
             let result;
             const productType = req.body.product || "Unknown";
 
-            if (productType === "Charge at Will") {
+            if (productType.toLowerCase() === "charge at will") {
                 const auditId = "audit_" + Date.now() + "_" + Math.round(Math.random() * 1000);
                 result = {
                     audit_id: auditId,
@@ -272,7 +323,7 @@ app.post("/upload", (req, res) => {
                         sectionObj.checks.push(checkItem);
                     }
                 }
-            } else if (productType === "Route") {
+            } else if (productType.toLowerCase() === "route") {
                 // Specialized Logic for Route
                 const routeDataPath = path.join(__dirname, "data", "route_checklist_data.json");
 
@@ -454,7 +505,7 @@ app.post("/upload", (req, res) => {
                 const sessionFilename = `route_audit_${sessionId}_${safeMxName}.json`;
                 fs.writeFileSync(path.join(routeAuditsDir, sessionFilename), JSON.stringify(result, null, 2));
                 console.log(`Individual Route audit saved to: ${sessionFilename}`);
-            } else if (productType === "Subscriptions") {
+            } else if (productType.toLowerCase().startsWith("subscription")) {
                 // Specialized Logic for Subscriptions
                 const subDataPath = path.join(__dirname, "data", "subscription_checklist_data.json");
 
@@ -542,10 +593,14 @@ app.post("/upload", (req, res) => {
                     const colD = row[3] ? String(row[3]).trim() : "";
                     const colE = row[4] ? String(row[4]).trim() : "";
 
-                    const lowerA = colA.toLowerCase();
-                    if (lowerA.includes("mx name")) sessionRecord.merchant_name = colA.split(":")[1]?.trim() || colB;
-                    if (lowerA.includes("mid")) sessionRecord.merchant_id = colA.split(":")[1]?.trim() || colB;
-                    if (lowerA.includes("date of audit")) sessionRecord.audit_date = colA.split(":")[1]?.trim() || colB;
+                    row.forEach((cell, cellIdx) => {
+                        if (!cell) return;
+                        const str = String(cell).trim();
+                        const lower = str.toLowerCase();
+                        if (lower.includes("mx name")) sessionRecord.merchant_name = str.split(":")[1]?.trim() || String(row[cellIdx + 1] || "").trim() || sessionRecord.merchant_name;
+                        if (lower.includes("mid")) sessionRecord.merchant_id = str.split(":")[1]?.trim() || String(row[cellIdx + 1] || "").trim() || sessionRecord.merchant_id;
+                        if (lower.includes("date of audit")) sessionRecord.audit_date = str.split(":")[1]?.trim() || String(row[cellIdx + 1] || "").trim() || sessionRecord.audit_date;
+                    });
 
                     if (colB && colB.match(/^\d+\./)) currentCategoryForSub = colB;
                     if (row.join(" ").includes("Additional Comments")) currentCategoryForSub = "Additional Comments";
@@ -611,6 +666,11 @@ app.post("/upload", (req, res) => {
             } else {
                 // Generic/Existing Logic for other products
                 result = {
+                    audit_metadata: {
+                        merchant_name: "",
+                        merchant_id: "",
+                        date: ""
+                    },
                     auditChecklist: [],
                     additionalComments: ""
                 };
@@ -625,7 +685,12 @@ app.post("/upload", (req, res) => {
                     const colC = row[2] ? String(row[2]).trim() : "";
                     const colD = row[3] ? String(row[3]).trim() : "";
 
-                    if (colA.toLowerCase().startsWith("mx name") || colA.toLowerCase().startsWith("mid") || colA.toLowerCase().startsWith("date of audit")) continue;
+                    const lowerA = colA.toLowerCase();
+                    if (lowerA.startsWith("mx name")) result.audit_metadata.merchant_name = colA.split(":")[1]?.trim() || colB;
+                    if (lowerA.startsWith("mid")) result.audit_metadata.merchant_id = colA.split(":")[1]?.trim() || colB;
+                    if (lowerA.startsWith("date of audit")) result.audit_metadata.date = colA.split(":")[1]?.trim() || colB;
+
+                    if (lowerA.startsWith("mx name") || lowerA.startsWith("mid") || lowerA.startsWith("date of audit")) continue;
 
                     if ((!colA && !colB && !colC && !colD) || colA === "Tech Checklist" || colA === "Audit Checklist") continue;
 
@@ -663,8 +728,16 @@ app.post("/upload", (req, res) => {
             // Define path for data storage
             const dataFilePath = path.join(__dirname, "data", "checklist_data.json");
 
-            // Skip general storage for Route and Subscriptions and QR Code (saved in their own files)
-            if (productType !== "Route" && productType !== "Subscriptions" && productType !== "QR Code" && productType !== "NCApps" && productType !== "Affordability Widget" && productType !== "Standard Checkout" && productType !== "Custom Checkout" && productType !== "S2S") {
+            // Skip general storage for specific products (saved in their own files)
+            const lowerProduct = productType.toLowerCase();
+            if (!lowerProduct.startsWith("route") &&
+                !lowerProduct.startsWith("subscription") &&
+                !lowerProduct.startsWith("qr code") &&
+                !lowerProduct.startsWith("ncapps") &&
+                !lowerProduct.startsWith("affordability") &&
+                !lowerProduct.startsWith("standard checkout") &&
+                !lowerProduct.startsWith("custom checkout") &&
+                !lowerProduct.startsWith("s2s")) {
                 // Read existing data
                 let existingData = [];
                 if (fs.existsSync(dataFilePath)) {
@@ -697,7 +770,7 @@ app.post("/upload", (req, res) => {
                     (result.results ? result.results.length : 0));
 
             // --- NCApps Specific Logic ---
-            if (productType === "NCApps") {
+            if (productType.toLowerCase() === "ncapps") {
                 console.log("Entering NCApps logic...");
                 const ncappsDataPath = path.join(__dirname, "data", "ncapps_checklist_data.json");
                 const data = xlsx.utils.sheet_to_json(workbook.Sheets[sheetName]);
@@ -914,9 +987,8 @@ app.post("/upload", (req, res) => {
             // --- Go Live Checklist - PG Specific Logic ---
             if (productType === "Standard Checkout" || productType === "Custom Checkout" || productType === "S2S") {
                 const goliveDataPath = path.join(__dirname, "data", "golive_checklist_data.json");
-                const data = xlsx.utils.sheet_to_json(workbook.Sheets[sheetName]);
 
-                // Canonical Template from User Request
+                // Canonical Template 
                 const GOLIVE_CANONICAL_TEMPLATE = [
                     { config: "Account Live (Key/Secret)", source: "Admin Dashboard" },
                     { config: "Webhook Configs", source: "Merchant Dashboard" },
@@ -925,9 +997,60 @@ app.post("/upload", (req, res) => {
                     { config: "Signature Verification", source: "Coralogix" },
                     { config: "Refund API", source: "Admin Dashboard / Payments Table" },
                     { config: "SDK latest Version", source: "Admin Dashboard / Payments Table" }
-                    // Add more items here if the user provides the full list of 22 items. 
-                    // For now, using the ones explicitly listed in the prompt + generic mapping.
                 ];
+
+                // Robust Column Detection
+                let configColIdx = -1;
+                let statusColIdx = -1;
+                let commentColIdx = -1;
+                let headerRowIndex = -1;
+
+                // Try to find columns by searching for headers or template items
+                for (let i = 0; i < Math.min(rawData.length, 40); i++) {
+                    const row = rawData[i];
+                    if (!row || !Array.isArray(row)) continue;
+
+                    // Option A: Look for explicit header keywords
+                    const configIdx = row.findIndex(c => c && /configs|checklist|items|requirement/i.test(String(c)));
+                    if (configIdx !== -1) {
+                        headerRowIndex = i;
+                        configColIdx = configIdx;
+                        statusColIdx = row.findIndex(c => c && /status|result/i.test(String(c)));
+                        commentColIdx = row.findIndex(c => /comment|remarks|remark|dev/i.test(String(c)));
+                        break;
+                    }
+
+                    // Option B: Look for row that has column values matching canonical items
+                    let matches = 0;
+                    row.forEach((cell, idx) => {
+                        if (!cell) return;
+                        const cellVal = String(cell).toLowerCase();
+                        if (GOLIVE_CANONICAL_TEMPLATE.some(t => cellVal.includes(t.config.toLowerCase()))) {
+                            matches++;
+                            if (configColIdx === -1) configColIdx = idx;
+                        }
+                    });
+                    if (matches >= 1) {
+                        headerRowIndex = i - 1;
+                        if (statusColIdx === -1) {
+                            // Try to find a column with Pass/Fail/Done/Yes/No in this or next row
+                            const nextRow = rawData[i + 1] || [];
+                            statusColIdx = row.findIndex(c => c && /pass|fail|done|yes|no|pending/i.test(String(c))) ||
+                                nextRow.findIndex(c => c && /pass|fail|done|yes|no|pending/i.test(String(c)));
+                        }
+                        break;
+                    }
+                }
+
+                if (configColIdx === -1) configColIdx = 0;
+                if (statusColIdx === -1) statusColIdx = configColIdx + 1;
+                if (commentColIdx === -1) commentColIdx = configColIdx + 2;
+
+                console.log(`[GoLive] Header detection: row=${headerRowIndex}, configCol=${configColIdx}, statusCol=${statusColIdx}, commentCol=${commentColIdx}`);
+
+                let additionalComments = "";
+                let processedItems = [];
+
 
                 let goliveStorage = {
                     golive_audits: [],
@@ -943,19 +1066,30 @@ app.post("/upload", (req, res) => {
                     }
                 }
 
+                // Metadata Extraction - search ALL cells in a robust way
                 let merchantId = "";
                 let merchantName = "";
                 let auditDate = "";
 
-                // Metadata Extraction
-                for (let i = 0; i < rawData.length; i++) {
+                for (let i = 0; i < Math.min(rawData.length, 50); i++) {
                     const row = rawData[i];
-                    const colA = row[0] ? String(row[0]).trim() : "";
-                    const colB = row[1] ? String(row[1]).trim() : "";
-                    const lowerA = colA.toLowerCase();
-                    if (lowerA.includes("mx name")) merchantName = colA.split(":")[1]?.trim() || colB;
-                    if (lowerA.includes("mid")) merchantId = colA.split(":")[1]?.trim() || colB;
-                    if (lowerA.includes("date of audit")) auditDate = colA.split(":")[1]?.trim() || colB;
+                    if (!row || !Array.isArray(row)) continue;
+                    row.forEach((cell, idx) => {
+                        if (!cell) return;
+                        const str = String(cell).trim();
+                        const lower = str.toLowerCase();
+                        const val = str.split(":")[1]?.trim() || String(row[idx + 1] || "").trim();
+
+                        if (lower.includes("mx name") || lower.includes("merchant name")) {
+                            merchantName = val || merchantName;
+                        }
+                        if (lower.includes("mid") || lower.includes("merchant id") || (lower.includes("id") && lower.length < 5)) {
+                            merchantId = val || merchantId;
+                        }
+                        if (lower.includes("date of audit") || (lower.includes("date") && !lower.includes("update") && !lower.includes("create") && !/id|key/i.test(lower))) {
+                            auditDate = val || auditDate;
+                        }
+                    });
                 }
 
                 const sessionId = goliveStorage.golive_audits.length + 1;
@@ -969,31 +1103,43 @@ app.post("/upload", (req, res) => {
                 };
                 goliveStorage.golive_audits.push(sessionRecord);
 
-                let processedItems = [];
+                let currentAuditResults = [];
 
-                data.forEach(row => {
-                    // Check various potential column names for Configs
-                    let configItem = row["Configs"] || row["Tech Checklist"] || row["Audit Checklist"];
-                    let status = row["Status"] || "N/A";
-                    let comment = row["Comments"] || row["Comment"] || "";
+                const startIdx = headerRowIndex !== -1 ? headerRowIndex + 1 : 0;
 
-                    if (!configItem) return;
-                    configItem = configItem.trim();
+                for (let i = startIdx; i < rawData.length; i++) {
+                    const row = rawData[i];
+                    if (!row || !Array.isArray(row)) continue;
 
-                    // Skip metadata rows if they appear in the data array
-                    if (configItem.toLowerCase().includes("mx name") || configItem.toLowerCase().includes("mid")) return;
-                    if (configItem.toLowerCase() === "configs" || configItem.toLowerCase() === "tech checklist" || configItem.toLowerCase() === "audit checklist") return;
+                    const configItem = String(row[configColIdx] || "").trim();
+                    const status = statusColIdx !== -1 && statusColIdx < row.length ? String(row[statusColIdx] || "N/A").trim() : "N/A";
+                    const comment = commentColIdx !== -1 && commentColIdx < row.length ? String(row[commentColIdx] || "").trim() : "";
+
+                    if (!configItem) continue;
+
+                    const lowerConfig = configItem.toLowerCase();
+                    if (lowerConfig.includes("mx name") || lowerConfig.includes("mid") || lowerConfig.includes("date of audit")) continue;
+                    if (lowerConfig === "configs" || lowerConfig === "tech checklist" || lowerConfig === "audit checklist" || lowerConfig === "status") continue;
+
+                    if (lowerConfig.includes("additional comments") || lowerConfig.includes("remarks")) {
+                        additionalComments = comment;
+                    }
 
                     // Determine Source
                     let source = "Unknown";
-                    const templateMatch = GOLIVE_CANONICAL_TEMPLATE.find(t => t.config.toLowerCase() === configItem.toLowerCase());
-                    if (templateMatch) {
-                        source = templateMatch.source;
-                    } else {
-                        // Heuristic or Default Source if not in canonical list specifically
-                        // For this implementation, we will append it as a new item found in this audit
-                        source = "Unmapped";
-                    }
+                    const templateMatch = GOLIVE_CANONICAL_TEMPLATE.find(t => t.config.toLowerCase() === lowerConfig);
+                    if (templateMatch) source = templateMatch.source;
+                    else source = "Unmapped";
+
+                    const itemData = {
+                        config: configItem,
+                        source: source,
+                        status: status,
+                        comment: comment
+                    };
+
+                    currentAuditResults.push(itemData);
+                    processedItems.push(configItem);
 
                     goliveStorage.golive_results.push({
                         id: goliveStorage.golive_results.length + 1,
@@ -1003,28 +1149,21 @@ app.post("/upload", (req, res) => {
                         status: status,
                         comment: comment
                     });
-                    processedItems.push(configItem);
-                });
+                }
 
                 fs.writeFileSync(goliveDataPath, JSON.stringify(goliveStorage, null, 2));
 
-                // Construct Response
-                const currentAuditResults = goliveStorage.golive_results
-                    .filter(r => r.session_id === sessionId)
-                    .map(r => ({
-                        config: r.config_item,
-                        source: r.source,
-                        status: r.status,
-                        comment: r.comment
-                    }));
 
                 result = {
                     product: productType, // Dynamic based on selection
                     audit_metadata: {
+                        mx_name: sessionRecord.merchant_name,
+                        merchant_name: sessionRecord.merchant_name,
                         merchant_id: sessionRecord.merchant_id,
                         date: sessionRecord.audit_date
                     },
-                    checklist_content: currentAuditResults
+                    checklist_content: currentAuditResults,
+                    additionalComments: additionalComments
                 };
 
                 // Save individual audit file
@@ -1439,6 +1578,27 @@ app.post("/upload", (req, res) => {
                     });
             }
 
+            // Trigger audit summarization (async, non-blocking)
+            if (result && (merchantName || merchantId)) {
+                console.log(`📝 Triggering audit summarization for: ${merchantName || merchantId}`);
+                const metadata = {
+                    audit_id: result.audit_id || result.session_id || `audit_${Date.now()}`,
+                    merchant_name: merchantName || "Unknown",
+                    product_type: productType,
+                    audit_date: result.audit_metadata?.date || result.merchant_info?.date || new Date().toISOString()
+                };
+
+                auditSummaryService.generateAndStoreSummary(result, metadata)
+                    .then(summary => {
+                        if (summary) {
+                            console.log(`✅ Audit summary generated and stored for: ${metadata.merchant_name}`);
+                        }
+                    })
+                    .catch(err => {
+                        console.error("Audit summarization error (non-blocking):", err);
+                    });
+            }
+
         } catch (parseError) {
             console.error("Error parsing Excel file:", parseError);
             res.status(500).json({ message: "Error processing Excel file", error: parseError.message });
@@ -1454,7 +1614,13 @@ const server = app.listen(PORT, () => {
 });
 
 server.on('error', (error) => {
-    console.error('Server error:', error);
+    if (error.code === 'EADDRINUSE') {
+        console.error(`\n❌ ERROR: Port ${PORT} is already in use.`);
+        console.error(`💡 This often happens if you used Ctrl+Z instead of Ctrl+C to stop the server.`);
+        console.error(`👉 FIX: Run 'kill -9 $(lsof -t -i :${PORT})' to clear the port.\n`);
+    } else {
+        console.error('Server error:', error);
+    }
 });
 
 // Prevent unhandled crashes

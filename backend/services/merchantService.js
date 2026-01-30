@@ -21,7 +21,7 @@ if (!fs.existsSync(MERCHANT_DATA_FILE)) {
 }
 
 /**
- * Extracts the merchant name from the first cell (A1) of the Excel file.
+ * Extracts the merchant name from the Excel file by checking A1 and surrounding cells.
  * Expects format: "MX Name: [Name]"
  * @param {string} filePath 
  * @returns {string|null} The merchant name or null if not found.
@@ -32,28 +32,27 @@ function extractMerchantName(filePath) {
         const sheetName = workbook.SheetNames[0];
         const sheet = workbook.Sheets[sheetName];
 
-        // cell A1 is usually the first key in the sheet object if it's the top-left cell
-        // Or access directly via cell address
-        const cellAddress = 'A1';
-        const cell = sheet[cellAddress];
+        // Check A1 first, then search first 10 rows if not found
+        const searchRange = ['A1', 'A2', 'B1', 'B2', 'A3', 'B3'];
 
-        if (!cell || !cell.v) {
-            console.warn('Cell A1 is empty or undefined.');
-            return null;
+        for (const addr of searchRange) {
+            const cell = sheet[addr];
+            if (cell && cell.v) {
+                const val = cell.v.toString().trim();
+                const match = val.match(/^MX Name:\s*(.+)$/i);
+                if (match && match[1]) return match[1].trim();
+
+                // If it doesn't have the prefix but looks like a name (not a header)
+                if (val.length > 3 && !['Audit Checklist', 'Tech Checklist', 'Configs', 'Status'].includes(val)) {
+                    // Only return if it's likely a name
+                    if (!val.includes(':') && !val.match(/^\d+\./)) {
+                        return val;
+                    }
+                }
+            }
         }
 
-        const cellValue = cell.v.toString().trim();
-        // Check if starts with "MX Name:" (case insensitive)
-        const match = cellValue.match(/^MX Name:\s*(.+)$/i);
-
-        if (match && match[1]) {
-            return match[1].trim();
-        } else {
-            // Fallback: Return the whole value if it doesn't match the prefix but looks like a header
-            // Or maybe user just put the name directly.
-            // For strictness, let's just return the value if it's not empty, but let's try to remove prefix if present.
-            return cellValue.replace(/^MX Name:\s*/i, '').trim();
-        }
+        return null;
     } catch (error) {
         console.error('Error extracting merchant name:', error.message);
         return null;
@@ -83,13 +82,13 @@ async function fetchMerchantInfo(merchantName) {
     }
 
     try {
-        const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+        // Use gemini-1.5-flash (Stable)
+        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
 
         const prompt = `Provide a brief 2-3 sentence description about the company or merchant named "${merchantName}". Include what industry they're in and what they do. If this is a test/demo merchant name, just say "Test merchant for demonstration purposes."`;
 
         const result = await model.generateContent(prompt);
-        const response = await result.response;
-        const info = response.text().trim();
+        const info = result.response.text().trim();
 
         if (info) {
             // Store it

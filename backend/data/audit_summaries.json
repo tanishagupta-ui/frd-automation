@@ -1,0 +1,270 @@
+{
+  "summaries": [
+    {
+      "id": "sum_1769667079644",
+      "audit_id": "test_audit_123",
+      "merchant_name": "Test Merchant",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-01-29T06:11:18.909Z",
+      "summary_date": "2026-01-29T06:11:19.644Z",
+      "key_findings": [
+        "Improve: a. Handler Function - Missing handler"
+      ],
+      "overall_status": "Action Required",
+      "additional_recommendations": "Merchant needs to implement the handler function immediately."
+    },
+    {
+      "id": "sum_1769669343276",
+      "audit_id": "audit_1769669342727",
+      "merchant_name": "Unknown",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-01-29T06:49:02.727Z",
+      "summary_date": "2026-01-29T06:49:03.276Z",
+      "key_findings": [
+        "All checked items are in good standing."
+      ],
+      "overall_status": "Pass",
+      "additional_recommendations": "None"
+    },
+    {
+      "id": "sum_1769669980078",
+      "audit_id": "audit_1769669979464_538",
+      "merchant_name": "Unknown",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-01-29T06:59:39.469Z",
+      "summary_date": "2026-01-29T06:59:40.078Z",
+      "key_findings": [
+        "All checked items are in good standing."
+      ],
+      "overall_status": "Pass",
+      "additional_recommendations": "None"
+    },
+    {
+      "id": "sum_1769670418614",
+      "audit_id": "audit_1769670418088",
+      "merchant_name": "Sugarfit",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-01-29T07:06:58.614Z",
+      "key_findings": [
+        "All checked items are in good standing."
+      ],
+      "overall_status": "Pass",
+      "additional_recommendations": "None"
+    },
+    {
+      "id": "sum_1769675797424",
+      "audit_id": "audit_1769675796817",
+      "merchant_name": "Unknown",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-01-29T08:36:36.817Z",
+      "summary_date": "2026-01-29T08:36:37.424Z",
+      "key_findings": [
+        "All checked items are in good standing."
+      ],
+      "overall_status": "Pass",
+      "additional_recommendations": "None"
+    },
+    {
+      "id": "sum_1769676540411",
+      "audit_id": "audit_1769676539386",
+      "merchant_name": "Unknown",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-01-29T08:48:59.386Z",
+      "summary_date": "2026-01-29T08:49:00.411Z",
+      "key_findings": [
+        "All checked items are in good standing."
+      ],
+      "overall_status": "Pass",
+      "additional_recommendations": "None"
+    },
+    {
+      "id": "sum_1769676714872",
+      "audit_id": "test_audit_123",
+      "merchant_name": "Test Merchant",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-01-29T08:51:54.278Z",
+      "summary_date": "2026-01-29T08:51:54.872Z",
+      "key_findings": [
+        "Improve: a. Handler Function - Missing handler",
+        "Comment: Merchant needs to implement the handler function immediately"
+      ],
+      "overall_status": "Action Required",
+      "additional_recommendations": "Address points mentioned in comments."
+    },
+    {
+      "id": "sum_1769676727332",
+      "audit_id": "test_breakdown_456",
+      "merchant_name": "Breakdown Merchant",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-01-29T08:52:06.802Z",
+      "summary_date": "2026-01-29T08:52:07.332Z",
+      "key_findings": [
+        "Comment: The merchant needs to update their API version",
+        "Comment: Webhook signatures must be verified on all endpoints",
+        "Comment: Settlement is currently blocked due to missing documentation",
+        "Comment: Please ensure the handler function is optimized for high traffic"
+      ],
+      "overall_status": "Pass",
+      "additional_recommendations": "Address points mentioned in comments."
+    },
+    {
+      "id": "sum_1769676912269",
+      "audit_id": "test_breakdown_456",
+      "merchant_name": "Breakdown Merchant",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-01-29T08:55:11.677Z",
+      "summary_date": "2026-01-29T08:55:12.269Z",
+      "key_findings": [
+        "Comment: The merchant needs to update their API version",
+        "Comment: Webhook signatures must be verified on all endpoints",
+        "Comment: Settlement is currently blocked due to missing documentation",
+        "Comment: Please ensure the handler function is optimized for high traffic"
+      ],
+      "overall_status": "Pass",
+      "additional_recommendations": "Follow the recommendations in additional comments."
+    },
+    {
+      "id": "sum_1769677051350",
+      "audit_id": "test_breakdown_456",
+      "merchant_name": "Breakdown Merchant",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-01-29T08:57:30.526Z",
+      "summary_date": "2026-01-29T08:57:31.350Z",
+      "key_findings": [
+        "Comment: The merchant needs to update their API version",
+        "Comment: Webhook signatures must be verified on all endpoints",
+        "Comment: Settlement is currently blocked due to missing documentation",
+        "Comment: Please ensure the handler function is optimized for high traffic"
+      ],
+      "overall_status": "Pass",
+      "additional_recommendations": "Follow the recommendations in additional comments."
+    },
+    {
+      "id": "sum_1769677184573",
+      "audit_id": "test_breakdown_456",
+      "merchant_name": "Breakdown Merchant",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-01-29T08:59:43.930Z",
+      "summary_date": "2026-01-29T08:59:44.573Z",
+      "key_findings": [
+        "Point 1: The merchant needs to update their API version",
+        "Point 2: Webhook signatures must be verified on all endpoints",
+        "Point 3: Settlement is currently blocked due to missing documentation",
+        "Point 4: Please ensure the handler function is optimized for high traffic"
+      ],
+      "overall_status": "Pass",
+      "additional_recommendations": "Review the specific points mentioned in comments."
+    },
+    {
+      "id": "sum_1769677321009",
+      "audit_id": "test_breakdown_456",
+      "merchant_name": "Breakdown Merchant",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-01-29T09:02:00.482Z",
+      "summary_date": "2026-01-29T09:02:01.009Z",
+      "key_findings": [
+        "Point 1: The merchant needs to update their API version",
+        "Point 2: Webhook signatures must be verified on all endpoints",
+        "Point 3: Settlement is currently blocked due to missing documentation",
+        "Point 4: Please ensure the handler function is optimized for high traffic"
+      ],
+      "overall_status": "Pass",
+      "additional_recommendations": "Review the specific points mentioned in comments."
+    },
+    {
+      "id": "sum_1769677321890",
+      "audit_id": "test_audit_123",
+      "merchant_name": "Test Merchant",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-01-29T09:02:01.087Z",
+      "summary_date": "2026-01-29T09:02:01.890Z",
+      "key_findings": [
+        "Point 1: Merchant needs to",
+        "Point 2: implement the handler",
+        "Point 3: function immediately.",
+        "Checklist: a. Handler Function - Action required"
+      ],
+      "overall_status": "Action Required",
+      "additional_recommendations": "Review the specific points mentioned in comments."
+    },
+    {
+      "id": "sum_1769677414139",
+      "audit_id": "audit_1769677413385",
+      "merchant_name": "Audit Checklist",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-01-29T09:03:33.385Z",
+      "summary_date": "2026-01-29T09:03:34.139Z",
+      "key_findings": [
+        "All checked items are in good standing."
+      ],
+      "overall_status": "Pass",
+      "additional_recommendations": "No major recommendations."
+    },
+    {
+      "id": "sum_1769677722819",
+      "audit_id": "audit_1769677722162",
+      "merchant_name": "Audit Checklist",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-01-29T09:08:42.162Z",
+      "summary_date": "2026-01-29T09:08:42.819Z",
+      "key_findings": [
+        "All checked items are in good standing."
+      ],
+      "overall_status": "Pass",
+      "additional_recommendations": "No major recommendations."
+    },
+    {
+      "id": "sum_1769677781917",
+      "audit_id": "audit_1769677781174",
+      "merchant_name": "Sugarfit",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-01-29T09:09:41.917Z",
+      "key_findings": [
+        "All checked items are in good standing."
+      ],
+      "overall_status": "Pass",
+      "additional_recommendations": "No major recommendations."
+    },
+    {
+      "id": "sum_1769678572710",
+      "audit_id": "audit_1769678572145",
+      "merchant_name": "Audit Checklist",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-01-29T09:22:52.145Z",
+      "summary_date": "2026-01-29T09:22:52.710Z",
+      "key_findings": [
+        "All checked items are in good standing."
+      ],
+      "overall_status": "Pass",
+      "additional_recommendations": "No major recommendations."
+    },
+    {
+      "id": "sum_1769679190490",
+      "audit_id": "audit_1769679189899",
+      "merchant_name": "Audit Checklist",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-01-29T09:33:09.899Z",
+      "summary_date": "2026-01-29T09:33:10.490Z",
+      "key_findings": [
+        "All checked items are in good standing."
+      ],
+      "overall_status": "Pass",
+      "additional_recommendations": "No major recommendations."
+    },
+    {
+      "id": "sum_1769679617281",
+      "audit_id": "audit_1769679616752",
+      "merchant_name": "Audit Checklist",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-01-29T09:40:16.752Z",
+      "summary_date": "2026-01-29T09:40:17.281Z",
+      "key_findings": [
+        "All checked items are in good standing."
+      ],
+      "overall_status": "Pass",
+      "additional_recommendations": "No major recommendations."
+    }
+  ]
+}

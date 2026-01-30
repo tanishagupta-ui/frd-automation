@@ -1,0 +1,84 @@
+{
+  "product": "Standard Checkout",
+  "audit_metadata": {
+    "mx_name": "Audit Checklist",
+    "merchant_name": "Audit Checklist",
+    "merchant_id": "Unknown",
+    "date": ""
+  },
+  "checklist_content": [
+    {
+      "config": "1. Order creation",
+      "source": "Unmapped",
+      "status": "a. Partial Payments",
+      "comment": "N/A"
+    },
+    {
+      "config": "2. Checkout configuration",
+      "source": "Unmapped",
+      "status": "a. Handler Function",
+      "comment": "N/A"
+    },
+    {
+      "config": "3. For successful transactions",
+      "source": "Unmapped",
+      "status": "a. Consumes payment_id, order_id and razorpay_signature",
+      "comment": "Done"
+    },
+    {
+      "config": "4. For failure transactions",
+      "source": "Unmapped",
+      "status": "a. Consumes Error Codes",
+      "comment": "Done"
+    },
+    {
+      "config": "5. Late Auth Scenarios",
+      "source": "Unmapped",
+      "status": "a. Consumes payment state at capture time",
+      "comment": "Done"
+    },
+    {
+      "config": "6. Verify Payment Status",
+      "source": "Unmapped",
+      "status": "a. Webhooks",
+      "comment": "Done"
+    },
+    {
+      "config": "7. Checkout library, server language, version",
+      "source": "Unmapped",
+      "status": "a. Platform",
+      "comment": "Done"
+    },
+    {
+      "config": "8. Offers",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": "N/A"
+    },
+    {
+      "config": "9. Refund APIs",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": "N/A"
+    },
+    {
+      "config": "10. Affordability Widget",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": "N/A"
+    },
+    {
+      "config": "11. UAT Sign Off",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": "Done"
+    },
+    {
+      "config": "Additional Comments",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    }
+  ],
+  "additionalComments": ""
+}

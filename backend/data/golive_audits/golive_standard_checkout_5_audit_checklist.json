@@ -1,0 +1,147 @@
+{
+  "product": "Standard Checkout",
+  "audit_metadata": {
+    "merchant_id": "NEdjgHCoFZR4Zw",
+    "date": ""
+  },
+  "checklist_content": [
+    {
+      "config": "Onboarding flow",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "Account Live (Key/Secret available for live mode)",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "Webhook Configs",
+      "source": "Merchant Dashboard",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "Auto_capture Settings",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "Signature verification",
+      "source": "Coralogix",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "Callback_url",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "Implementing fetch status API",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "Custom solution",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "Refund API",
+      "source": "Admin Dashboard / Payments Table",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "Payment capture settings",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "Failure handler-function",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "Checkout library and platform",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "SDK latest Version",
+      "source": "Admin Dashboard / Payments Table",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "Best practices",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "Rainy day",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "Late Auth",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "UAT Sign off",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "Additional Comments",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "Onboarded Sub-merchants during Audit",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "Uses notes parameter in the order API to identify payments created by them.",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "A cronjob has been set up for tracking tokens expiry which will refresh the tokens for 87 day.",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "pay_id",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "pay_RhVSLxeaCHSSQU",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    }
+  ]
+}

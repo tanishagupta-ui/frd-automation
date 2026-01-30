@@ -31,6 +31,70 @@
       "merchant_name": "Go Live Test Merchant",
       "audit_date": "",
       "created_at": "2026-01-27T06:55:00.438Z"
+    },
+    {
+      "id": 5,
+      "product": "Standard Checkout",
+      "merchant_id": "NEdjgHCoFZR4Zw",
+      "merchant_name": "Audit Checklist",
+      "audit_date": "",
+      "created_at": "2026-01-29T06:49:02.724Z"
+    },
+    {
+      "id": 6,
+      "product": "Standard Checkout",
+      "merchant_id": "Unknown",
+      "merchant_name": "Audit Checklist",
+      "audit_date": "",
+      "created_at": "2026-01-29T08:36:36.815Z"
+    },
+    {
+      "id": 7,
+      "product": "Standard Checkout",
+      "merchant_id": "Unknown",
+      "merchant_name": "Audit Checklist",
+      "audit_date": "",
+      "created_at": "2026-01-29T08:48:59.383Z"
+    },
+    {
+      "id": 8,
+      "product": "Standard Checkout",
+      "merchant_id": "Unknown",
+      "merchant_name": "Audit Checklist",
+      "audit_date": "",
+      "created_at": "2026-01-29T09:03:33.383Z"
+    },
+    {
+      "id": 9,
+      "product": "Standard Checkout",
+      "merchant_id": "Unknown",
+      "merchant_name": "Audit Checklist",
+      "audit_date": "",
+      "created_at": "2026-01-29T09:08:42.161Z"
+    },
+    {
+      "id": 10,
+      "product": "Standard Checkout",
+      "merchant_id": "Unknown",
+      "merchant_name": "Audit Checklist",
+      "audit_date": "",
+      "created_at": "2026-01-29T09:22:52.141Z"
+    },
+    {
+      "id": 11,
+      "product": "Standard Checkout",
+      "merchant_id": "Unknown",
+      "merchant_name": "Audit Checklist",
+      "audit_date": "",
+      "created_at": "2026-01-29T09:33:09.898Z"
+    },
+    {
+      "id": 12,
+      "product": "Standard Checkout",
+      "merchant_id": "Unknown",
+      "merchant_name": "Audit Checklist",
+      "audit_date": "",
+      "created_at": "2026-01-29T09:40:16.749Z"
     }
   ],
   "golive_results": [
@@ -137,6 +201,454 @@
       "source": "Unmapped",
       "status": "N/A",
       "comment": "Should be Unmapped"
+    },
+    {
+      "id": 14,
+      "session_id": 5,
+      "config_item": "Onboarding flow",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 15,
+      "session_id": 5,
+      "config_item": "Account Live (Key/Secret available for live mode)",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 16,
+      "session_id": 5,
+      "config_item": "Webhook Configs",
+      "source": "Merchant Dashboard",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 17,
+      "session_id": 5,
+      "config_item": "Auto_capture Settings",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 18,
+      "session_id": 5,
+      "config_item": "Signature verification",
+      "source": "Coralogix",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 19,
+      "session_id": 5,
+      "config_item": "Callback_url",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 20,
+      "session_id": 5,
+      "config_item": "Implementing fetch status API",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 21,
+      "session_id": 5,
+      "config_item": "Custom solution",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 22,
+      "session_id": 5,
+      "config_item": "Refund API",
+      "source": "Admin Dashboard / Payments Table",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 23,
+      "session_id": 5,
+      "config_item": "Payment capture settings",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 24,
+      "session_id": 5,
+      "config_item": "Failure handler-function",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 25,
+      "session_id": 5,
+      "config_item": "Checkout library and platform",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 26,
+      "session_id": 5,
+      "config_item": "SDK latest Version",
+      "source": "Admin Dashboard / Payments Table",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 27,
+      "session_id": 5,
+      "config_item": "Best practices",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 28,
+      "session_id": 5,
+      "config_item": "Rainy day",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 29,
+      "session_id": 5,
+      "config_item": "Late Auth",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 30,
+      "session_id": 5,
+      "config_item": "UAT Sign off",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 31,
+      "session_id": 5,
+      "config_item": "Additional Comments",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 32,
+      "session_id": 5,
+      "config_item": "Onboarded Sub-merchants during Audit",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 33,
+      "session_id": 5,
+      "config_item": "Uses notes parameter in the order API to identify payments created by them.",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 34,
+      "session_id": 5,
+      "config_item": "A cronjob has been set up for tracking tokens expiry which will refresh the tokens for 87 day.",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 35,
+      "session_id": 5,
+      "config_item": "pay_id",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 36,
+      "session_id": 5,
+      "config_item": "pay_RhVSLxeaCHSSQU",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 37,
+      "session_id": 7,
+      "config_item": "Account Live (Key/Secret available for live mode)",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 38,
+      "session_id": 7,
+      "config_item": "Webhook Configs",
+      "source": "Merchant Dashboard",
+      "status": "NA",
+      "comment": " \npayment.capture,payment.failed,token.confirmed,token.rejected"
+    },
+    {
+      "id": 39,
+      "session_id": 7,
+      "config_item": "Auto_capture Settings",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": "auto 3 days"
+    },
+    {
+      "id": 40,
+      "session_id": 7,
+      "config_item": "Successful Payment IDs",
+      "source": "Admin Dashboard",
+      "status": "Done",
+      "comment": "pay_PzqntDC2ttfaRQ(upi), pay_Q3nmu2eSU2cLrH(netbanking),pay_Q3WU4xtt0oGZbA(card)"
+    },
+    {
+      "id": 41,
+      "session_id": 7,
+      "config_item": "Signature verification",
+      "source": "Coralogix",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 42,
+      "session_id": 7,
+      "config_item": "Callback_url",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 43,
+      "session_id": 7,
+      "config_item": "Implementing fetch status API",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": "suggested"
+    },
+    {
+      "id": 44,
+      "session_id": 7,
+      "config_item": "Custom solution",
+      "source": "Unmapped",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 45,
+      "session_id": 7,
+      "config_item": "Refund API",
+      "source": "Admin Dashboard / Payments Table",
+      "status": "Done",
+      "comment": "Refund created from the dashboard manually"
+    },
+    {
+      "id": 46,
+      "session_id": 7,
+      "config_item": "Fetch API",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": "NA"
+    },
+    {
+      "id": 47,
+      "session_id": 7,
+      "config_item": "Payment capture settings",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": "auto capture set as 3 days"
+    },
+    {
+      "id": 48,
+      "session_id": 7,
+      "config_item": "Failure handler-function",
+      "source": "Unmapped",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 49,
+      "session_id": 7,
+      "config_item": "Backend Language",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": "java,springboot"
+    },
+    {
+      "id": 50,
+      "session_id": 7,
+      "config_item": "Checkout library and platform",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": "Web Standard checkout "
+    },
+    {
+      "id": 51,
+      "session_id": 7,
+      "config_item": "SDK latest Version",
+      "source": "Admin Dashboard / Payments Table",
+      "status": "NA",
+      "comment": "no sdk"
+    },
+    {
+      "id": 52,
+      "session_id": 7,
+      "config_item": "Best practices",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": "shared"
+    },
+    {
+      "id": 53,
+      "session_id": 7,
+      "config_item": "Rainy day",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": "shared"
+    },
+    {
+      "id": 54,
+      "session_id": 7,
+      "config_item": "Late Auth",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 55,
+      "session_id": 7,
+      "config_item": "Sign off",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 56,
+      "session_id": 7,
+      "config_item": "Additional Comments",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 57,
+      "session_id": 7,
+      "config_item": "yes harshit can do it",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 58,
+      "session_id": 12,
+      "config_item": "1. Order creation",
+      "source": "Unmapped",
+      "status": "a. Partial Payments",
+      "comment": "N/A"
+    },
+    {
+      "id": 59,
+      "session_id": 12,
+      "config_item": "2. Checkout configuration",
+      "source": "Unmapped",
+      "status": "a. Handler Function",
+      "comment": "N/A"
+    },
+    {
+      "id": 60,
+      "session_id": 12,
+      "config_item": "3. For successful transactions",
+      "source": "Unmapped",
+      "status": "a. Consumes payment_id, order_id and razorpay_signature",
+      "comment": "Done"
+    },
+    {
+      "id": 61,
+      "session_id": 12,
+      "config_item": "4. For failure transactions",
+      "source": "Unmapped",
+      "status": "a. Consumes Error Codes",
+      "comment": "Done"
+    },
+    {
+      "id": 62,
+      "session_id": 12,
+      "config_item": "5. Late Auth Scenarios",
+      "source": "Unmapped",
+      "status": "a. Consumes payment state at capture time",
+      "comment": "Done"
+    },
+    {
+      "id": 63,
+      "session_id": 12,
+      "config_item": "6. Verify Payment Status",
+      "source": "Unmapped",
+      "status": "a. Webhooks",
+      "comment": "Done"
+    },
+    {
+      "id": 64,
+      "session_id": 12,
+      "config_item": "7. Checkout library, server language, version",
+      "source": "Unmapped",
+      "status": "a. Platform",
+      "comment": "Done"
+    },
+    {
+      "id": 65,
+      "session_id": 12,
+      "config_item": "8. Offers",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": "N/A"
+    },
+    {
+      "id": 66,
+      "session_id": 12,
+      "config_item": "9. Refund APIs",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": "N/A"
+    },
+    {
+      "id": 67,
+      "session_id": 12,
+      "config_item": "10. Affordability Widget",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": "N/A"
+    },
+    {
+      "id": 68,
+      "session_id": 12,
+      "config_item": "11. UAT Sign Off",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": "Done"
+    },
+    {
+      "id": 69,
+      "session_id": 12,
+      "config_item": "Additional Comments",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
     }
   ]
 }

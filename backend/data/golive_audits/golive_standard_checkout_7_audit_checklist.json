@@ -1,0 +1,135 @@
+{
+  "product": "Standard Checkout",
+  "audit_metadata": {
+    "merchant_id": "Unknown",
+    "date": ""
+  },
+  "checklist_content": [
+    {
+      "config": "Account Live (Key/Secret available for live mode)",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "config": "Webhook Configs",
+      "source": "Merchant Dashboard",
+      "status": "NA",
+      "comment": " \npayment.capture,payment.failed,token.confirmed,token.rejected"
+    },
+    {
+      "config": "Auto_capture Settings",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": "auto 3 days"
+    },
+    {
+      "config": "Successful Payment IDs",
+      "source": "Admin Dashboard",
+      "status": "Done",
+      "comment": "pay_PzqntDC2ttfaRQ(upi), pay_Q3nmu2eSU2cLrH(netbanking),pay_Q3WU4xtt0oGZbA(card)"
+    },
+    {
+      "config": "Signature verification",
+      "source": "Coralogix",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "config": "Callback_url",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "config": "Implementing fetch status API",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": "suggested"
+    },
+    {
+      "config": "Custom solution",
+      "source": "Unmapped",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "config": "Refund API",
+      "source": "Admin Dashboard / Payments Table",
+      "status": "Done",
+      "comment": "Refund created from the dashboard manually"
+    },
+    {
+      "config": "Fetch API",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": "NA"
+    },
+    {
+      "config": "Payment capture settings",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": "auto capture set as 3 days"
+    },
+    {
+      "config": "Failure handler-function",
+      "source": "Unmapped",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "config": "Backend Language",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": "java,springboot"
+    },
+    {
+      "config": "Checkout library and platform",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": "Web Standard checkout "
+    },
+    {
+      "config": "SDK latest Version",
+      "source": "Admin Dashboard / Payments Table",
+      "status": "NA",
+      "comment": "no sdk"
+    },
+    {
+      "config": "Best practices",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": "shared"
+    },
+    {
+      "config": "Rainy day",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": "shared"
+    },
+    {
+      "config": "Late Auth",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "config": "Sign off",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "config": "Additional Comments",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "yes harshit can do it",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    }
+  ]
+}
