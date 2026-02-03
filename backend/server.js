@@ -6,6 +6,7 @@ const fs = require("fs");
 const path = require("path");
 const merchantService = require("./services/merchantService");
 const auditSummaryService = require("./services/auditSummaryService");
+const diagramService = require("./services/diagramService");
 const xlsx = require("xlsx");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
@@ -235,6 +236,55 @@ app.post("/upload", (req, res) => {
         console.log("File uploaded successfully:", req.file);
         console.log("Request Body:", req.body);
 
+        // Extract Merchant Name
+        let merchantName = null;
+        let merchantInfo = "Info pending...";
+
+        try {
+            merchantName = merchantService.extractMerchantName(req.file.path);
+            if (merchantName) {
+                console.log(`Extracted Merchant Name: ${merchantName}`);
+                // Fire and forget (or await if fast enough) - basic scraping is slow, so maybe fire and forget?
+                // But for now let's await to see results immediately for testing.
+                // In production, use a queue.
+                merchantInfo = await merchantService.fetchMerchantInfo(merchantName);
+            } else {
+                console.log("Could not extract merchant name.");
+            }
+        } catch (extractionError) {
+            console.error("Error in merchant extraction process:", extractionError);
+        }
+
+        // Generate payment flow diagram
+        let diagramPath = null;
+        try {
+            const productKey = req.body.product ? req.body.product.toLowerCase().replace(/\s+/g, '_') : null;
+
+            // Map product names to keys
+            const productKeyMap = {
+                'charge_at_will': 'caw',
+                'standard_checkout': 'standard_checkout',
+                'custom_checkout': 'custom_checkout',
+                'subscriptions': 'subscriptions',
+                'payment_links': 'payment_links',
+                'qr_codes': 'qr_codes',
+                'route': 'route',
+                'smart_collect': 'smart_collect',
+                's2s': 's2s',
+                'affordability_widget': 'affordability'
+            };
+
+            const mappedKey = productKeyMap[productKey];
+
+            if (mappedKey) {
+                console.log(`Generating payment flow diagram for: ${mappedKey}`);
+                diagramPath = await diagramService.generateDiagram(mappedKey, merchantName);
+            } else {
+                console.log(`No diagram template for product: ${req.body.product}`);
+            }
+        } catch (diagramError) {
+            console.error("Error generating diagram:", diagramError.message);
+        }
         console.log("Processing for product:", req.body.product);
 
         try {
@@ -1546,7 +1596,8 @@ app.post("/upload", (req, res) => {
                 message: "Checklist uploaded and data stored successfully",
                 file: req.file,
                 extractedSections: extractedCount,
-                data: result
+                data: result,
+                diagramPath: diagramPath
             });
 
             // Trigger merchant web search for ALL checklist types (async, don't block response)

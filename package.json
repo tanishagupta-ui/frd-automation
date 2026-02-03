@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^11.12.0"
+  },
+  "dependencies": {
+    "antigravity": "^0.0.0"
+  }
+}
