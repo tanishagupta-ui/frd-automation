@@ -265,6 +265,671 @@
       ],
       "overall_status": "Pass",
       "additional_recommendations": "No major recommendations."
+    },
+    {
+      "id": "sum_1770024074802",
+      "audit_id": "audit_1770024074094",
+      "merchant_name": "Audit Checklist",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-02-02T09:21:14.094Z",
+      "summary_date": "2026-02-02T09:21:14.802Z",
+      "key_findings": [
+        "All checked items are in good standing."
+      ],
+      "overall_status": "Pass",
+      "additional_recommendations": "No major recommendations."
+    },
+    {
+      "id": "sum_1770024370630",
+      "audit_id": "test_audit_123",
+      "merchant_name": "Test Merchant",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-02-02T09:26:10.628Z",
+      "summary_date": "2026-02-02T09:26:10.630Z",
+      "key_findings": [
+        "Improve: a. Handler Function - Missing handler",
+        "Comment: Merchant needs to implement the handler function immediately"
+      ],
+      "keywords": [
+        "order",
+        "creation",
+        "partial",
+        "payments",
+        "capture"
+      ],
+      "overall_status": "Action Required",
+      "additional_recommendations": "Address points mentioned in comments."
+    },
+    {
+      "id": "sum_1770024484922",
+      "audit_id": "audit_1770024484255",
+      "merchant_name": "Sugarfit",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-02T09:28:04.922Z",
+      "key_findings": [
+        "All checked items are in good standing."
+      ],
+      "keywords": [
+        "methods",
+        "enabled",
+        "mandate",
+        "autopay",
+        "mandates"
+      ],
+      "overall_status": "Pass",
+      "additional_recommendations": "No major recommendations."
+    },
+    {
+      "id": "sum_1770024656850",
+      "audit_id": "test_audit_123",
+      "merchant_name": "Test Merchant",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-02-02T09:30:56.849Z",
+      "summary_date": "2026-02-02T09:30:56.850Z",
+      "key_findings": [
+        "Improve: a. Handler Function - Missing handler",
+        "Comment: Merchant needs to implement the handler function immediately"
+      ],
+      "payment_summary": "The merchant has integrated various methods with Auto-capture and webhooks are N/A.",
+      "overall_status": "Action Required",
+      "additional_recommendations": "Address points mentioned in comments."
+    },
+    {
+      "id": "sum_1770025189070",
+      "audit_id": "test_audit_123",
+      "merchant_name": "Test Merchant",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-02-02T09:39:49.068Z",
+      "summary_date": "2026-02-02T09:39:49.070Z",
+      "key_findings": [
+        "Improve: a. Handler Function - Missing handler",
+        "Comment: Merchant needs to implement the handler function immediately"
+      ],
+      "keywords": [
+        "Capture",
+        "merchant",
+        "implement"
+      ],
+      "overall_status": "Action Required",
+      "additional_recommendations": "Address points mentioned in comments."
+    },
+    {
+      "id": "sum_1770027992663",
+      "audit_id": "audit_1770027992002_159",
+      "merchant_name": "Sugarfit",
+      "product_type": "Charge at Will",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-02T10:26:32.663Z",
+      "key_findings": [
+        "All checked items are in good standing."
+      ],
+      "keywords": [
+        "UPI",
+        "Cards",
+        "Capture",
+        "Webhooks",
+        "Refunds"
+      ],
+      "overall_status": "Pass",
+      "additional_recommendations": "No major recommendations."
+    },
+    {
+      "id": "sum_1770028406334",
+      "audit_id": "test_audit_123",
+      "merchant_name": "Test Merchant",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-02-02T10:33:26.334Z",
+      "summary_date": "2026-02-02T10:33:26.334Z",
+      "key_findings": [
+        "Improve: a. Handler Function - Missing handler",
+        "Comment: Merchant needs to implement the handler function immediately"
+      ],
+      "narrative_summary": "The audit conducted on recently for the merchant regarding their their payment integration product has resulted in an overall status of Action Required. The evaluation focused on several critical payment pillars, including core payment methods, Auto-capture settings, Webhooks, and Refund processing. The findings indicate that most items are in need of attention as identified in the key findings. Because of the current integration state, immediate action is recommended to address the identified discrepancies.",
+      "overall_status": "Action Required",
+      "additional_recommendations": "Address points mentioned in comments."
+    },
+    {
+      "id": "sum_1770028630329",
+      "audit_id": "test_audit_123",
+      "merchant_name": "Test Merchant",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-02-02T10:37:10.328Z",
+      "summary_date": "2026-02-02T10:37:10.329Z",
+      "key_findings": [
+        "Improve: a. Handler Function - Missing handler",
+        "Comment: Merchant needs to implement the handler function immediately"
+      ],
+      "narrative_summary": "The audit conducted on recently for the merchant regarding their their payment integration product has resulted in an overall status of Action Required. The evaluation focused on several critical payment pillars, including core payment methods, Auto-capture settings, Webhooks, and Refund processing. The findings indicate that most items are in need of attention as identified in the key findings. Because of the current integration state, immediate action is recommended to address the identified discrepancies.",
+      "overall_status": "Action Required",
+      "additional_recommendations": "Address points mentioned in comments."
+    },
+    {
+      "id": "sum_1770029986136",
+      "audit_id": "test_audit_123",
+      "merchant_name": "Test Merchant",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-02-02T10:59:46.135Z",
+      "summary_date": "2026-02-02T10:59:46.136Z",
+      "key_findings": [
+        "Improve: a. Handler Function - Missing handler",
+        "Comment: Merchant needs to implement the handler function immediately"
+      ],
+      "narrative_summary": "The audit conducted on recently for the merchant regarding their their payment integration product has resulted in an overall status of Action Required. The evaluation focused on several critical payment pillars, including core payment methods, Auto-capture settings, Webhooks, and Refund processing. The findings indicate that most items are in need of attention as identified in the key findings. Because of the current integration state, immediate action is recommended to address the identified discrepancies.",
+      "overall_status": "Action Required",
+      "additional_recommendations": "Address points mentioned in comments."
+    },
+    {
+      "id": "sum_1770030057568",
+      "audit_id": "test_audit_123",
+      "merchant_name": "Test Merchant",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-02-02T11:00:57.567Z",
+      "summary_date": "2026-02-02T11:00:57.568Z",
+      "key_findings": [
+        "Improve: a. Handler Function - Missing handler",
+        "Comment: Merchant needs to implement the handler function immediately"
+      ],
+      "narrative_summary": "The audit conducted on recently for the merchant regarding their their payment integration product has resulted in an overall status of Action Required. The evaluation focused on several critical payment pillars, including core payment methods, Auto-capture settings, Webhooks, and Refund processing. The findings indicate that most items are in need of attention as identified in the key findings. Because of the current integration state, immediate action is recommended to address the identified discrepancies.",
+      "overall_status": "Action Required",
+      "additional_recommendations": "Address points mentioned in comments."
+    },
+    {
+      "id": "sum_1770030282678",
+      "audit_id": "test_audit_123",
+      "merchant_name": "Test Merchant",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-02-02T11:04:42.677Z",
+      "summary_date": "2026-02-02T11:04:42.678Z",
+      "key_findings": [
+        "Improve: a. Handler Function - Missing handler",
+        "Comment: Merchant needs to implement the handler function immediately"
+      ],
+      "narrative_summary": "The audit conducted on recently for the merchant regarding their their payment integration product has resulted in an overall status of Action Required. The evaluation focused on several critical payment pillars, including core payment methods, Auto-capture settings, Webhooks, and Refund processing. The findings indicate that most items are in need of attention as identified in the key findings. Because of the current integration state, immediate action is recommended to address the identified discrepancies.",
+      "overall_status": "Action Required",
+      "additional_recommendations": "Address points mentioned in comments."
+    },
+    {
+      "id": "sum_1770030385480",
+      "audit_id": "test_audit_123",
+      "merchant_name": "Test Merchant",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-02-02T11:06:25.479Z",
+      "summary_date": "2026-02-02T11:06:25.480Z",
+      "key_findings": [
+        "Improve: a. Handler Function - Missing handler",
+        "Comment: Merchant needs to implement the handler function immediately"
+      ],
+      "narrative_summary": "The audit conducted on recently for the merchant regarding their their payment integration product has resulted in an overall status of Action Required. The evaluation focused on several critical payment pillars, including core payment methods, Auto-capture settings, Webhooks, and Refund processing. The findings indicate that most items are in need of attention as identified in the key findings. Because of the current integration state, immediate action is recommended to address the identified discrepancies.",
+      "overall_status": "Action Required",
+      "additional_recommendations": "Address points mentioned in comments."
+    },
+    {
+      "id": "sum_1770030624760",
+      "audit_id": "audit_1770030624157",
+      "merchant_name": "Audit Checklist",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-02-02T11:10:24.157Z",
+      "summary_date": "2026-02-02T11:10:24.760Z",
+      "key_findings": [
+        "All checked items are in good standing."
+      ],
+      "narrative_summary": "The audit conducted on recently for Audit Checklist regarding their Standard Checkout product has resulted in an overall status of Pass. The evaluation focused on several critical payment pillars, including core payment methods, standard mechanisms, Webhooks, and Refund processing. The findings indicate that most items are in good standing with no major operational failures observed. Because of the current integration state, there are no major recommendations for changes or improvements at this time.",
+      "overall_status": "Pass",
+      "additional_recommendations": "No major recommendations."
+    },
+    {
+      "id": "sum_1770035622256",
+      "audit_id": "test_audit_123",
+      "merchant_name": "Test Merchant",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-02-02T12:33:41.384Z",
+      "summary_date": "2026-02-02T12:33:42.256Z",
+      "key_findings": [
+        "Improve: a. Handler Function - Missing handler",
+        "Comment: Merchant needs to implement the handler function immediately"
+      ],
+      "narrative_summary": "The audit conducted on recently for the merchant regarding their their payment integration product has resulted in an overall status of Action Required. The evaluation focused on several critical payment pillars, including core payment methods, Auto-capture settings, Webhooks, and Refund processing. The findings indicate that most items are in need of attention as identified in the key findings. Because of the current integration state, immediate action is recommended to address the identified discrepancies.",
+      "overall_status": "Action Required",
+      "additional_recommendations": "Address points mentioned in comments."
+    },
+    {
+      "id": "sum_1770035754466",
+      "audit_id": "test_audit_123",
+      "merchant_name": "Test Merchant",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-02-02T12:35:53.878Z",
+      "summary_date": "2026-02-02T12:35:54.466Z",
+      "key_findings": [
+        "Improve: a. Handler Function - Missing handler"
+      ],
+      "audit_summary": "Audit for the merchant's their payment integration integration completed with Action Required status. Payment methods reviewed including core payment methods, webhooks evaluated, and Auto-capture settings verified.",
+      "overall_status": "Action Required"
+    },
+    {
+      "id": "sum_1770035898238",
+      "audit_id": "test_audit_123",
+      "merchant_name": "Test Merchant",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-02-02T12:38:17.621Z",
+      "summary_date": "2026-02-02T12:38:18.238Z",
+      "key_findings": [
+        "Improve: a. Handler Function - Missing handler"
+      ],
+      "audit_summary": "Audit for the merchant's their payment integration integration completed with Action Required status. Payment methods reviewed including core payment methods, webhooks evaluated, and Auto-capture settings verified.",
+      "overall_status": "Action Required"
+    },
+    {
+      "id": "sum_1770036231443",
+      "audit_id": "test_audit_123",
+      "merchant_name": "Test Merchant",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-02-02T12:43:50.517Z",
+      "summary_date": "2026-02-02T12:43:51.443Z",
+      "key_findings": [
+        "Improve: a. Handler Function - Missing handler"
+      ],
+      "audit_summary": "A comprehensive Razorpay integration audit was conducted for the merchant on their their payment integration product. The audit focused on critical payment infrastructure components including payment method configurations, API implementations, and security protocols. Payment methods reviewed include core payment methods, with all enabled methods verified for proper functionality. Webhook configurations were evaluated, ensuring proper event handling and payment status updates. Capture settings are configured as Auto-capture settings, appropriate for the merchant's business model. Some critical checks require attention as detailed in the key findings. The merchant should address the identified issues before proceeding to production.",
+      "overall_status": "Action Required"
+    },
+    {
+      "id": "sum_1770036392412",
+      "audit_id": "audit_1770036391830",
+      "merchant_name": "Audit Checklist",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-02-02T12:46:31.830Z",
+      "summary_date": "2026-02-02T12:46:32.412Z",
+      "key_findings": [
+        "All Razorpay integration checks completed"
+      ],
+      "audit_summary": "A comprehensive Razorpay integration audit was conducted for Audit Checklist on their Standard Checkout product. The audit focused on critical payment infrastructure components including payment method configurations, API implementations, and security protocols. Payment methods reviewed include core payment methods, with all enabled methods verified for proper functionality. Webhook configurations were evaluated, ensuring proper event handling and payment status updates. Capture settings are configured as standard mechanisms, appropriate for the merchant's business model. All critical Razorpay integration checks passed successfully, with no major issues identified. The integration follows Razorpay best practices and is production-ready.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770036482667",
+      "audit_id": "test_audit_123",
+      "merchant_name": "Test Merchant",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-02-02T12:47:55.258Z",
+      "summary_date": "2026-02-02T12:48:02.667Z",
+      "key_findings": [
+        "Improve: a. Handler Function - Missing handler"
+      ],
+      "audit_summary": "A comprehensive Razorpay integration audit was conducted for the merchant on their their payment integration product. The audit focused on critical payment infrastructure components including payment method configurations, API implementations, and security protocols. Payment methods reviewed include core payment methods, with all enabled methods verified for proper functionality. Webhook configurations were evaluated, ensuring proper event handling and payment status updates. Capture settings are configured as Auto-capture settings, appropriate for the merchant's business model. Some critical checks require attention as detailed in the key findings. The merchant should address the identified issues before proceeding to production.",
+      "overall_status": "Action Required"
+    },
+    {
+      "id": "sum_1770036516491",
+      "audit_id": "test_audit_123",
+      "merchant_name": "Test Merchant",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-02-02T12:48:35.941Z",
+      "summary_date": "2026-02-02T12:48:36.491Z",
+      "key_findings": [
+        "Improve: a. Handler Function - Missing handler"
+      ],
+      "audit_summary": "A comprehensive Razorpay integration audit was conducted for the merchant on their their payment integration product. The audit focused on critical payment infrastructure components including payment method configurations, API implementations, and security protocols. Payment methods reviewed include core payment methods, with all enabled methods verified for proper functionality. Webhook configurations were evaluated, ensuring proper event handling and payment status updates. Capture settings are configured as Auto-capture settings, appropriate for the merchant's business model. Some critical checks require attention as detailed in the key findings. The merchant should address the identified issues before proceeding to production.",
+      "overall_status": "Action Required"
+    },
+    {
+      "id": "sum_1770095505114",
+      "audit_id": "test_audit_123",
+      "merchant_name": "Test Merchant",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-02-03T05:11:44.355Z",
+      "summary_date": "2026-02-03T05:11:45.114Z",
+      "key_findings": [
+        "a. Partial Payments: N/A",
+        "b. Capture settings: Done"
+      ],
+      "audit_summary": "A comprehensive Razorpay integration audit was conducted for the merchant on their their payment integration product. The audit focused on critical payment infrastructure components including payment method configurations, API implementations, and security protocols. Payment methods reviewed include core payment methods, with all enabled methods verified for proper functionality. Webhook configurations were evaluated, ensuring proper event handling and payment status updates. Capture settings are configured as Auto-capture settings, appropriate for the merchant's business model. All critical Razorpay integration checks passed successfully, with no major issues identified. The integration follows Razorpay best practices and is production-ready.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770096718019",
+      "audit_id": "test_standard_checkout_001",
+      "merchant_name": "Audit Checklist",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-02-03T05:31:57.318Z",
+      "summary_date": "2026-02-03T05:31:58.019Z",
+      "key_findings": [
+        "All Razorpay integration checks completed"
+      ],
+      "audit_summary": "A comprehensive Razorpay integration audit was conducted for Audit Checklist on their Standard Checkout product. The audit focused on critical payment infrastructure components including payment method configurations, API implementations, and security protocols. Payment methods reviewed include core payment methods, with all enabled methods verified for proper functionality. Webhook configurations were evaluated, ensuring proper event handling and payment status updates. Capture settings are configured as standard mechanisms, appropriate for the merchant's business model. All critical Razorpay integration checks passed successfully, with no major issues identified. The integration follows Razorpay best practices and is production-ready.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770096816132",
+      "audit_id": "test_standard_checkout_001",
+      "merchant_name": "Audit Checklist",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-02-03T05:33:35.555Z",
+      "summary_date": "2026-02-03T05:33:36.132Z",
+      "key_findings": [
+        "Account Live (Key/Secret available for live mode): Done",
+        "Webhook Configs: Done",
+        "Successful Payment IDs: Done",
+        "Order API Implementation: Done"
+      ],
+      "audit_summary": "A comprehensive Razorpay integration audit was conducted for Audit Checklist on their Standard Checkout product. The audit focused on critical payment infrastructure components including payment method configurations, API implementations, and security protocols. Payment methods reviewed include core payment methods, with all enabled methods verified for proper functionality. Webhook configurations were fully integrated, ensuring proper event handling and payment status updates. Capture settings are configured as standard mechanisms, appropriate for the merchant's business model. All critical Razorpay integration checks passed successfully, with no major issues identified. The integration follows Razorpay best practices and is production-ready.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770097018343",
+      "audit_id": "audit_1770097016812",
+      "merchant_name": "Sugarfit",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-03T05:36:58.343Z",
+      "key_findings": [
+        "All Razorpay integration checks completed"
+      ],
+      "audit_summary": "A comprehensive Razorpay integration audit was conducted for the merchant on their Subscriptions product. The audit focused on critical payment infrastructure components including payment method configurations, API implementations, and security protocols. Payment methods reviewed include UPI and Cards, with all enabled methods verified for proper functionality. Webhook configurations were fully integrated, ensuring proper event handling and payment status updates. Capture settings are configured as standard mechanisms, appropriate for the merchant's business model. All critical Razorpay integration checks passed successfully, with no major issues identified. The integration follows Razorpay best practices and is production-ready.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770097459360",
+      "audit_id": "test_standard_checkout_001",
+      "merchant_name": "Audit Checklist",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-02-03T05:44:18.503Z",
+      "summary_date": "2026-02-03T05:44:19.360Z",
+      "key_findings": [
+        "Account Live (Key/Secret available for live mode): Done",
+        "Webhook Configs: Done",
+        "Successful Payment IDs: Done",
+        "Order API Implementation: Done"
+      ],
+      "audit_summary": "A comprehensive Razorpay integration audit was conducted for Audit Checklist on their Standard Checkout product. The audit focused on critical payment infrastructure components including payment method configurations, API implementations, and security protocols. Specific critical assessments confirm that Account Live (Key/Secret available for live mode) is Done, and Webhook Configs is Done, and Successful Payment IDs is Done, and Order API Implementation is Done. Payment methods reviewed include core payment methods, with all enabled methods verified for proper functionality. Webhook configurations were fully integrated, ensuring proper event handling and payment status updates. Capture settings are configured as standard mechanisms, appropriate for the merchant's business model. All critical Razorpay integration checks passed successfully, with no major issues identified. The integration follows Razorpay best practices and is production-ready.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770099594038",
+      "audit_id": "audit_1770099593383",
+      "merchant_name": "Sugarfit",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-03T06:19:54.038Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A",
+        "Consumes payment state at capture time: Done"
+      ],
+      "audit_summary": "A comprehensive Razorpay integration audit was conducted for the merchant on their Subscriptions product. The audit focused on critical payment infrastructure components including payment method configurations, API implementations, and security protocols. Specific critical assessments confirm that Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout) is N/A, and Fetch status of Payment_id and Subscription_id is Done, and 2 Days for UPI and 3 Days for other methods is N/A, and Consumes payment state at capture time is Done. Payment methods reviewed include UPI and Cards, with all enabled methods verified for proper functionality. Webhook configurations were fully integrated, ensuring proper event handling and payment status updates. Capture settings are configured as standard mechanisms, appropriate for the merchant's business model. All critical Razorpay integration checks passed successfully, with no major issues identified. The integration follows Razorpay best practices and is production-ready.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770100008726",
+      "audit_id": "test_standard_checkout_001",
+      "merchant_name": "Audit Checklist",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-02-03T06:26:47.679Z",
+      "summary_date": "2026-02-03T06:26:48.726Z",
+      "key_findings": [
+        "Account Live (Key/Secret available for live mode): Done",
+        "Webhook Configs: Done",
+        "Successful Payment IDs: Done",
+        "Order API Implementation: Done"
+      ],
+      "audit_summary": "A comprehensive Razorpay integration audit was conducted for Audit Checklist on their Standard Checkout product. The audit focused on critical payment infrastructure components including payment method configurations, API implementations, and security protocols. Specific critical assessments confirm that Account Live (Key/Secret available for live mode) is Done, and Webhook Configs is Done, and Successful Payment IDs is Done, and Order API Implementation is Done. Payment methods reviewed include core payment methods, with all enabled methods verified for proper functionality. Webhook configurations were fully integrated, ensuring proper event handling and payment status updates. Capture settings are configured as standard mechanisms, appropriate for the merchant's business model. All critical Razorpay integration checks passed successfully, with no major issues identified. The integration follows Razorpay best practices and is production-ready.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770100027065",
+      "audit_id": "test_standard_checkout_001",
+      "merchant_name": "Audit Checklist",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-02-03T06:27:06.156Z",
+      "summary_date": "2026-02-03T06:27:07.065Z",
+      "key_findings": [
+        "Account Live (Key/Secret available for live mode): Done",
+        "Webhook Configs: Done",
+        "Successful Payment IDs: Done",
+        "Order API Implementation: Done"
+      ],
+      "audit_summary": "A comprehensive Razorpay integration audit was conducted for Audit Checklist on their Standard Checkout product. The audit focused on critical payment infrastructure components including payment method configurations, API implementations, and security protocols. Specific critical assessments confirm that Account Live (Key/Secret available for live mode) is Done, and Webhook Configs is Done, and Successful Payment IDs is Done, and Order API Implementation is Done. Payment methods reviewed include core payment methods, with all enabled methods verified for proper functionality. Webhook configurations were fully integrated, ensuring proper event handling and payment status updates. Capture settings are configured as standard mechanisms, appropriate for the merchant's business model. All critical Razorpay integration checks passed successfully, with no major issues identified. The integration follows Razorpay best practices and is production-ready.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770100046813",
+      "audit_id": "test_standard_checkout_001",
+      "merchant_name": "Audit Checklist",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-02-03T06:27:26.274Z",
+      "summary_date": "2026-02-03T06:27:26.813Z",
+      "key_findings": [
+        "Account Live (Key/Secret available for live mode): Done",
+        "Webhook Configs: Done",
+        "Successful Payment IDs: Done",
+        "Order API Implementation: Done"
+      ],
+      "audit_summary": "A comprehensive Razorpay integration audit was conducted for Audit Checklist on their Standard Checkout product. The audit focused on critical payment infrastructure components including payment method configurations, API implementations, and security protocols. Specific critical assessments confirm that Account Live (Key/Secret available for live mode) is Done, and Webhook Configs is Done, and Successful Payment IDs is Done, and Order API Implementation is Done. Payment methods reviewed include core payment methods, with all enabled methods verified for proper functionality. Webhook configurations were fully integrated, ensuring proper event handling and payment status updates. Capture settings are configured as standard mechanisms, appropriate for the merchant's business model. All critical Razorpay integration checks passed successfully, with no major issues identified. The integration follows Razorpay best practices and is production-ready.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770100223155",
+      "audit_id": "audit_1770100222621",
+      "merchant_name": "the merchant",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-03T06:30:23.155Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A"
+      ],
+      "audit_summary": "A comprehensive Razorpay integration audit was conducted for the merchant on their Subscriptions product. The audit focused on critical payment infrastructure components including payment method configurations, API implementations, and security protocols. Specific critical assessments confirm that Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout) is N/A, and Fetch status of Payment_id and Subscription_id is Done, and Consumes Error Codes is Done, and 2 Days for UPI and 3 Days for other methods is N/A. Payment methods reviewed include UPI and Cards, with all enabled methods verified for proper functionality. Webhook configurations were fully integrated, ensuring proper event handling and payment status updates. Capture settings are configured as standard mechanisms, appropriate for the merchant's business model. All critical Razorpay integration checks passed successfully, with no major issues identified. The integration follows Razorpay best practices and is production-ready.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770100278715",
+      "audit_id": "audit_1770100277970",
+      "merchant_name": "Audit Checklist",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-02-03T06:31:17.970Z",
+      "summary_date": "2026-02-03T06:31:18.715Z",
+      "key_findings": [
+        "Account Live (Key/Secret available for live mode): Done",
+        "Webhook Configs: Done",
+        "Successful Payment IDs: Done",
+        "Order API Implementation: Done"
+      ],
+      "audit_summary": "A comprehensive Razorpay integration audit was conducted for Audit Checklist on their Standard Checkout product. The audit focused on critical payment infrastructure components including payment method configurations, API implementations, and security protocols. Specific critical assessments confirm that Account Live (Key/Secret available for live mode) is Done, and Webhook Configs is Done, and Successful Payment IDs is Done, and Order API Implementation is Done. Payment methods reviewed include core payment methods, with all enabled methods verified for proper functionality. Webhook configurations were fully integrated, ensuring proper event handling and payment status updates. Capture settings are configured as standard mechanisms, appropriate for the merchant's business model. All critical Razorpay integration checks passed successfully, with no major issues identified. The integration follows Razorpay best practices and is production-ready.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770100677141",
+      "audit_id": "audit_1770100676479",
+      "merchant_name": "Audit Checklist",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-02-03T06:37:56.479Z",
+      "summary_date": "2026-02-03T06:37:57.141Z",
+      "key_findings": [
+        "Account Live (Key/Secret available for live mode): Done",
+        "Webhook Configs: Done",
+        "Successful Payment IDs: Done",
+        "Order API Implementation: Done"
+      ],
+      "audit_summary": "A comprehensive Razorpay integration audit was conducted for Audit Checklist on their Standard Checkout product. The audit focused on critical payment infrastructure components including payment method configurations, API implementations, and security protocols. Specific critical assessments confirm that Account Live (Key/Secret available for live mode) is Done, and Webhook Configs is Done, and Successful Payment IDs is Done, and Order API Implementation is Done. Payment methods reviewed include core payment methods, with all enabled methods verified for proper functionality. Webhook configurations were fully integrated, ensuring proper event handling and payment status updates. Capture settings are configured as standard mechanisms, appropriate for the merchant's business model. All critical Razorpay integration checks passed successfully, with no major issues identified. The integration follows Razorpay best practices and is production-ready.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770101424859",
+      "audit_id": "audit_1770101424045",
+      "merchant_name": "the merchant",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-03T06:50:24.859Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A"
+      ],
+      "audit_summary": "A comprehensive Razorpay integration audit was conducted for the merchant on their Subscriptions product. The audit focused on critical payment infrastructure components including payment method configurations, API implementations, and security protocols. Specific critical assessments confirm that Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout) is N/A, and Fetch status of Payment_id and Subscription_id is Done, and Consumes Error Codes is Done, and 2 Days for UPI and 3 Days for other methods is N/A. Payment methods reviewed include UPI and Cards, with all enabled methods verified for proper functionality. Webhook configurations were fully integrated, ensuring proper event handling and payment status updates. Capture settings are configured as standard mechanisms, appropriate for the merchant's business model. All critical Razorpay integration checks passed successfully, with no major issues identified. The integration follows Razorpay best practices and is production-ready.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770101984818",
+      "audit_id": "audit_1770101984125",
+      "merchant_name": "the merchant",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-03T06:59:44.818Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A"
+      ],
+      "audit_summary": "A comprehensive Razorpay integration audit was conducted for the merchant on their Subscriptions product. The audit focused on critical payment infrastructure components including payment method configurations, API implementations, and security protocols. Specific critical assessments confirm that Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout) is N/A, and Fetch status of Payment_id and Subscription_id is Done, and Consumes Error Codes is Done, and 2 Days for UPI and 3 Days for other methods is N/A. Payment methods reviewed include UPI and Cards, with all enabled methods verified for proper functionality. Webhook configurations were fully integrated, ensuring proper event handling and payment status updates. Capture settings are configured as standard mechanisms, appropriate for the merchant's business model. All critical Razorpay integration checks passed successfully, with no major issues identified. The integration follows Razorpay best practices and is production-ready.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770102411822",
+      "audit_id": "audit_1770102411201",
+      "merchant_name": "the merchant",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-03T07:06:51.822Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A"
+      ],
+      "audit_summary": "A comprehensive Razorpay integration audit was conducted for the merchant on their Subscriptions product. The audit focused on critical payment infrastructure components including payment method configurations, API implementations, and security protocols. Specific critical assessments confirm that Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout) is N/A, and Fetch status of Payment_id and Subscription_id is Done, and Consumes Error Codes is Done, and 2 Days for UPI and 3 Days for other methods is N/A. Payment methods reviewed include UPI and Cards, with all enabled methods verified for proper functionality. Webhook configurations were fully integrated, ensuring proper event handling and payment status updates. Capture settings are configured as standard mechanisms, appropriate for the merchant's business model. All critical Razorpay integration checks passed successfully, with no major issues identified. The integration follows Razorpay best practices and is production-ready.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770102520328",
+      "audit_id": "audit_1770102519717",
+      "merchant_name": "the merchant",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-03T07:08:40.328Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A"
+      ],
+      "audit_summary": "A comprehensive Razorpay integration audit was conducted for the merchant on their Subscriptions product. The audit focused on critical payment infrastructure components including payment method configurations, API implementations, and security protocols. Specific critical assessments confirm that Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout) is N/A, and Fetch status of Payment_id and Subscription_id is Done, and Consumes Error Codes is Done, and 2 Days for UPI and 3 Days for other methods is N/A. Payment methods reviewed include UPI and Cards, with all enabled methods verified for proper functionality. Webhook configurations were fully integrated, ensuring proper event handling and payment status updates. Capture settings are configured as standard mechanisms, appropriate for the merchant's business model. All critical Razorpay integration checks passed successfully, with no major issues identified. The integration follows Razorpay best practices and is production-ready.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770102761346",
+      "audit_id": "audit_1770102760677",
+      "merchant_name": "the merchant",
+      "product_type": "QR Code",
+      "audit_date": "2026-02-03T07:12:40.677Z",
+      "summary_date": "2026-02-03T07:12:41.346Z",
+      "key_findings": [
+        "Downloading Keys: N/A",
+        "Regenerate Keys: N/A",
+        "API: N/A",
+        "Payment Methods: N/A"
+      ],
+      "audit_summary": "A comprehensive Razorpay integration audit was conducted for the merchant on their QR Code product. The audit focused on critical payment infrastructure components including payment method configurations, API implementations, and security protocols. Specific critical assessments confirm that Downloading Keys is N/A, and Regenerate Keys is N/A, and API is N/A, and Payment Methods is N/A. Payment methods reviewed include core payment methods, with all enabled methods verified for proper functionality. Webhook configurations were evaluated, ensuring proper event handling and payment status updates. Capture settings are configured as standard mechanisms, appropriate for the merchant's business model. All critical Razorpay integration checks passed successfully, with no major issues identified. The integration follows Razorpay best practices and is production-ready.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770102897756",
+      "audit_id": "audit_1770102897162",
+      "merchant_name": "the merchant",
+      "product_type": "QR Code",
+      "audit_date": "2026-02-03T07:14:57.162Z",
+      "summary_date": "2026-02-03T07:14:57.756Z",
+      "key_findings": [
+        "Downloading Keys: N/A",
+        "Regenerate Keys: N/A",
+        "API: N/A",
+        "Payment Methods: N/A"
+      ],
+      "audit_summary": "A comprehensive Razorpay integration audit was conducted for the merchant on their QR Code product. The audit focused on critical payment infrastructure components including payment method configurations, API implementations, and security protocols. Specific critical assessments confirm that Downloading Keys is N/A, and Regenerate Keys is N/A, and API is N/A, and Payment Methods is N/A. Payment methods reviewed include core payment methods, with all enabled methods verified for proper functionality. Webhook configurations were evaluated, ensuring proper event handling and payment status updates. Capture settings are configured as standard mechanisms, appropriate for the merchant's business model. All critical Razorpay integration checks passed successfully, with no major issues identified. The integration follows Razorpay best practices and is production-ready.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770103961480",
+      "audit_id": "audit_1770103960667",
+      "merchant_name": "Audit Checklist",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-02-03T07:32:40.667Z",
+      "summary_date": "2026-02-03T07:32:41.480Z",
+      "key_findings": [
+        "Creation of order: Done",
+        "Config/ ID configured: Not Done",
+        "Callback URL/Handler configured: N/A",
+        "OnDismiss handler configured: Not Done"
+      ],
+      "audit_summary": "The Razorpay Standard Checkout integration audit for Audit Checklist has resulted in an overall Action Required status, indicating that some critical configurations require attention. Technical validation confirms that critical API implementations—specifically Creation of order, Config/ ID configured, Callback URL/Handler configured—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for Cards is robust, supported by fully integrated webhooks for real-time event handling and standard mechanisms. However, addressing the identified gaps is strictly recommended before proceeding to live traffic.",
+      "overall_status": "Action Required"
+    },
+    {
+      "id": "sum_1770104064950",
+      "audit_id": "audit_1770104064407",
+      "merchant_name": "the merchant",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-03T07:34:24.950Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A"
+      ],
+      "audit_summary": "The Razorpay Subscriptions integration audit for the merchant has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout), Fetch status of Payment_id and Subscription_id, Consumes Error Codes—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for UPI and Cards is robust, supported by fully integrated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770112510191",
+      "audit_id": "audit_1770112509510",
+      "merchant_name": "the merchant",
+      "product_type": "QR Code",
+      "audit_date": "2026-02-03T09:55:09.510Z",
+      "summary_date": "2026-02-03T09:55:10.191Z",
+      "key_findings": [
+        "Downloading Keys: N/A",
+        "Regenerate Keys: N/A",
+        "API: N/A",
+        "Payment Methods: N/A"
+      ],
+      "audit_summary": "The Razorpay QR Code integration audit for the merchant has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically Downloading Keys, Regenerate Keys, API—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for core payment methods is robust, supported by evaluated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770112550088",
+      "audit_id": "audit_1770112549596",
+      "merchant_name": "the merchant",
+      "product_type": "QR Code",
+      "audit_date": "2026-02-03T09:55:49.596Z",
+      "summary_date": "2026-02-03T09:55:50.088Z",
+      "key_findings": [
+        "Downloading Keys: N/A",
+        "Regenerate Keys: N/A",
+        "API: N/A",
+        "Payment Methods: N/A"
+      ],
+      "audit_summary": "The Razorpay QR Code integration audit for the merchant has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically Downloading Keys, Regenerate Keys, API—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for core payment methods is robust, supported by evaluated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770112895942",
+      "audit_id": "audit_1770112895271",
+      "merchant_name": "the merchant",
+      "product_type": "QR Code",
+      "audit_date": "2026-02-03T10:01:35.271Z",
+      "summary_date": "2026-02-03T10:01:35.942Z",
+      "key_findings": [
+        "Downloading Keys: N/A",
+        "Regenerate Keys: N/A",
+        "API: N/A",
+        "Payment Methods: N/A"
+      ],
+      "audit_summary": "The Razorpay QR Code integration audit for the merchant has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically Downloading Keys, Regenerate Keys, API—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for core payment methods is robust, supported by evaluated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
+      "overall_status": "Pass"
     }
   ]
 }

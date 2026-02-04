@@ -1,0 +1,144 @@
+{
+  "product": "Standard Checkout",
+  "audit_metadata": {
+    "mx_name": "Audit Checklist",
+    "merchant_name": "Audit Checklist",
+    "merchant_id": "Unknown",
+    "date": ""
+  },
+  "checklist_content": [
+    {
+      "config": "Account Live (Key/Secret available for live mode)",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "config": "Webhook Configs",
+      "source": "Merchant Dashboard",
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "config": "Successful Payment IDs",
+      "source": "Admin Dashboard",
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "config": "Order API Implementation",
+      "source": "Admin Dashboard / Payments Table",
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "config": "Checkout Implementation / Create Payment",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "config": "WebView Implementation (If Applicable)",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "config": "Signature verification",
+      "source": "Coralogix",
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "config": "Callback_url",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "config": "Implementing fetch status API",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "config": "Custom solution",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "config": "Refund API",
+      "source": "Admin Dashboard / Payments Table",
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "config": "Session Timeout - webhooks / fetch api/ create payment API(s2s)",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "config": "Payment capture settings",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "config": "Failure handler-function",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "config": "Backend Language",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "config": "Checkout library and platform",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "config": "SDK latest Version",
+      "source": "Admin Dashboard / Payments Table",
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "config": "Best practices",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "config": "Rainy day",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "config": "Late Auth",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "config": "Sign off",
+      "source": "Unmapped",
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "config": "Additional Comments",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    }
+  ],
+  "additionalComments": ""
+}

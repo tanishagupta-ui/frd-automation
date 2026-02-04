@@ -83,7 +83,7 @@ async function searchMerchantInfo(merchantName, merchantId, retries = 3) {
     }
 
     // Use gemini-1.5-flash (Stable)
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     const prompt = `Search the web and provide JSON info for company "${merchantName}": website, description, industry, company_size, location, products_services.`;
 
@@ -127,7 +127,7 @@ async function searchMerchantInfo(merchantName, merchantId, retries = 3) {
 //     }
 
 //     try {
-//         const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
+//         const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
 //         const prompt = `Search the web and provide comprehensive information about the company "${merchantName}". Include:
 // 1. Official website URL
@@ -1401,6 +1401,7 @@ app.post("/upload", (req, res) => {
                 result = {
                     product: "Affordability Widget",
                     audit_metadata: {
+                        merchant_name: sessionRecord.merchant_name,
                         merchant_id: sessionRecord.merchant_id,
                         date: sessionRecord.audit_date
                     },
@@ -1416,10 +1417,9 @@ app.post("/upload", (req, res) => {
                 console.log(`Individual Affordability audit saved to: affordability_audit_${sessionId}_${safeMxName}.json`);
             }
 
-            // --- QR Code Specific Logic ---
             if (productType === "QR Code") {
                 const qrDataPath = path.join(__dirname, "data", "qr_code_checklist_data.json");
-                const data = xlsx.utils.sheet_to_json(workbook.Sheets[sheetName]);
+                // Use rawData (already parsed as array of arrays) instead of re-parsing
 
                 const QR_CODE_CANONICAL_TEMPLATE = [
                     { cat: "1. Live Keys", item: "Downloading Keys" },
@@ -1470,15 +1470,57 @@ app.post("/upload", (req, res) => {
                     }));
                 }
 
+                // Header & Column Detection
+                let headerRowIndex = -1;
+                let categoryColIdx = 0;
+                let itemColIdx = 1;
+                let statusColIdx = 2;
+                let commentColIdx = 3;
+
+                // Try to find headers dynamically
+                for (let i = 0; i < Math.min(rawData.length, 20); i++) {
+                    const row = rawData[i];
+                    if (!row || !Array.isArray(row)) continue;
+
+                    const lowerRow = row.map(c => String(c || "").trim().toLowerCase());
+                    const catIdx = lowerRow.findIndex(c => c.includes("audit checklist") || c.includes("category"));
+                    const itemIdx = lowerRow.findIndex(c => c.includes("configs") || c.includes("check") || c.includes("item"));
+
+                    if (catIdx !== -1 || itemIdx !== -1) {
+                        headerRowIndex = i;
+                        if (catIdx !== -1) categoryColIdx = catIdx;
+                        // specific logic: if 'Configs' is in same column as 'Audit Checklist' (merged) or separate?
+                        // Usually 'Audit Checklist' is col A, 'Configs' is col B
+                        if (itemIdx !== -1) itemColIdx = itemIdx;
+                        else itemColIdx = categoryColIdx + 1;
+
+                        // Look for Status/Comment relative to Item
+                        const statIdx = lowerRow.findIndex(c => c.includes("status") || c.includes("result") || c.includes("observation"));
+                        if (statIdx !== -1) statusColIdx = statIdx;
+                        else statusColIdx = Math.max(categoryColIdx, itemColIdx) + 1; // Default to next col
+
+                        const comIdx = lowerRow.findIndex(c => c.includes("comment") || c.includes("remark") || c.includes("note"));
+                        if (comIdx !== -1) commentColIdx = comIdx;
+                        else commentColIdx = statusColIdx + 1; // Default to next col
+
+                        console.log(`[QR Code] Headers found at row ${i}: Cat=${categoryColIdx}, Item=${itemColIdx}, Status=${statusColIdx}, Comment=${commentColIdx}`);
+                        break;
+                    }
+                }
+
+                // Metadata Extraction (Scan first 20 rows)
                 let merchantId = "";
                 let merchantName = "";
                 let auditDate = "";
 
-                for (let i = 0; i < rawData.length; i++) {
+                for (let i = 0; i < Math.min(rawData.length, 20); i++) {
                     const row = rawData[i];
+                    if (!row) continue;
+
                     const colA = row[0] ? String(row[0]).trim() : "";
                     const colB = row[1] ? String(row[1]).trim() : "";
                     const lowerA = colA.toLowerCase();
+
                     if (lowerA.includes("mx name")) merchantName = colA.split(":")[1]?.trim() || colB;
                     if (lowerA.includes("mid")) merchantId = colA.split(":")[1]?.trim() || colB;
                     if (lowerA.includes("date of audit")) auditDate = colA.split(":")[1]?.trim() || colB;
@@ -1497,45 +1539,61 @@ app.post("/upload", (req, res) => {
                 let currentCategory = "";
                 let processedItems = [];
 
-                // 1. Process standard body
-                data.forEach(row => {
-                    let cat = row["Audit Checklist"] || currentCategory;
-                    if (row["Audit Checklist"]) currentCategory = cat;
+                // Process Rows
+                const startRow = headerRowIndex !== -1 ? headerRowIndex + 1 : 0;
 
-                    let item = row["Configs"];
-                    let status = row["Status"] || "N/A";
-                    let comment = row["Comment"] || "";
+                for (let i = startRow; i < rawData.length; i++) {
+                    const row = rawData[i];
+                    if (!row || row.length === 0) continue;
 
-                    if (cat) cat = cat.trim();
-                    if (item) item = item.trim();
+                    // Extract cell values based on detected columns
+                    let colCat = row[categoryColIdx] ? String(row[categoryColIdx]).trim() : "";
+                    let colItem = row[itemColIdx] ? String(row[itemColIdx]).trim() : "";
+                    let colStatus = row[statusColIdx] ? String(row[statusColIdx]).trim() : "N/A";
+                    let colComment = row[commentColIdx] ? String(row[commentColIdx]).trim() : "";
 
-                    if (!item) return;
+                    // Reset N/A if empty (unless meant to be N/A)
+                    if (!colStatus || colStatus === "") colStatus = "N/A";
 
-                    // Standard Match
-                    const templateMatch = QR_CODE_CANONICAL_TEMPLATE.find(t => t.item === item);
-                    if (templateMatch) {
-                        const templateItem = qrStorage.qr_checklist_template.find(t => t.item_description === item);
-                        if (templateItem && templateItem.category !== "Additional Comments") {
-                            qrStorage.qr_audit_results.push({
-                                id: qrStorage.qr_audit_results.length + 1,
-                                audit_id: sessionId,
-                                item_id: templateItem.item_id,
-                                status: status,
-                                comment: comment
-                            });
-                            processedItems.push(item);
+                    if (colCat) currentCategory = colCat;
+
+                    // 1. Check for standard check item (Column B usually)
+                    if (colItem) {
+                        const templateMatch = QR_CODE_CANONICAL_TEMPLATE.find(t => t.item.toLowerCase() === colItem.toLowerCase());
+                        if (templateMatch) {
+                            const templateItem = qrStorage.qr_checklist_template.find(t => t.item_description === templateMatch.item);
+                            if (templateItem && templateItem.category !== "Additional Comments") {
+                                qrStorage.qr_audit_results.push({
+                                    id: qrStorage.qr_audit_results.length + 1,
+                                    audit_id: sessionId,
+                                    item_id: templateItem.item_id,
+                                    status: colStatus,
+                                    comment: colComment
+                                });
+                                processedItems.push(templateMatch.item);
+                            }
                         }
                     }
-                });
 
-                // 2. Handle "Additional Comments" specifically 
-                data.forEach(row => {
-                    const label = row["Audit Checklist"];
-                    const value = row["Configs"];
+                    // 2. Check for Additional Comments items (Often in Column A/Category Column)
+                    // "webhook Url for payment" and "Webhook Events" usually appear in the first column
+                    const itemsToCheck = ["webhook Url for payment", "Webhook Events"];
+                    // Check both colCat and colItem
+                    const matchedItem = itemsToCheck.find(it =>
+                        (colCat && colCat.toLowerCase() === it.toLowerCase()) ||
+                        (colItem && colItem.toLowerCase() === it.toLowerCase())
+                    );
 
-                    if (label === "webhook Url for payment" || label === "Webhook Events") {
-                        const templateItem = qrStorage.qr_checklist_template.find(t => t.item_description === label);
-                        if (templateItem && !processedItems.includes(label)) {
+                    if (matchedItem) {
+                        // For these items, the 'Value' is often in the column next to the label
+                        // If label in Cat col, value in Item col
+                        // If label in Item col, value in Status col?
+                        let value = "";
+                        if (colCat.toLowerCase() === matchedItem.toLowerCase()) value = colItem; // Label in Col A, Value in Col B
+                        else if (colItem.toLowerCase() === matchedItem.toLowerCase()) value = colStatus; // Label in Col B, Value in Col C
+
+                        const templateItem = qrStorage.qr_checklist_template.find(t => t.item_description === matchedItem);
+                        if (templateItem && !processedItems.includes(matchedItem)) {
                             qrStorage.qr_audit_results.push({
                                 id: qrStorage.qr_audit_results.length + 1,
                                 audit_id: sessionId,
@@ -1543,10 +1601,10 @@ app.post("/upload", (req, res) => {
                                 status: "N/A",
                                 comment: value
                             });
-                            processedItems.push(label);
+                            processedItems.push(matchedItem);
                         }
                     }
-                });
+                }
 
                 fs.writeFileSync(qrDataPath, JSON.stringify(qrStorage, null, 2));
 

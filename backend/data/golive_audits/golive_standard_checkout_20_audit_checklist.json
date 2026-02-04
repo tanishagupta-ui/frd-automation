@@ -1,0 +1,114 @@
+{
+  "product": "Standard Checkout",
+  "audit_metadata": {
+    "mx_name": "Audit Checklist",
+    "merchant_name": "Audit Checklist",
+    "merchant_id": "Unknown",
+    "date": ""
+  },
+  "checklist_content": [
+    {
+      "config": "Creation of order",
+      "source": "Unmapped",
+      "status": "yes",
+      "comment": ""
+    },
+    {
+      "config": "Config/ ID configured",
+      "source": "Unmapped",
+      "status": "no",
+      "comment": ""
+    },
+    {
+      "config": "Callback URL/Handler configured",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "OnDismiss handler configured",
+      "source": "Unmapped",
+      "status": "no",
+      "comment": ""
+    },
+    {
+      "config": "modal (if appilcable)",
+      "source": "Unmapped",
+      "status": "no",
+      "comment": ""
+    },
+    {
+      "config": "Partial payments allowed (if applicable)",
+      "source": "Unmapped",
+      "status": "no",
+      "comment": ""
+    },
+    {
+      "config": "Save cards functionality enabled",
+      "source": "Unmapped",
+      "status": "no",
+      "comment": ""
+    },
+    {
+      "config": "Save VPA functionality enabled",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "Contact and email hidden (if required)",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "Timeout configured",
+      "source": "Unmapped",
+      "status": "no",
+      "comment": ""
+    },
+    {
+      "config": "Retry enabled (if yes, max count configured)",
+      "source": "Unmapped",
+      "status": "no",
+      "comment": ""
+    },
+    {
+      "config": "Error codes consumption handled",
+      "source": "Unmapped",
+      "status": "yes",
+      "comment": ""
+    },
+    {
+      "config": "Payment signature verification implemented",
+      "source": "Unmapped",
+      "status": "yes",
+      "comment": ""
+    },
+    {
+      "config": "Late Auth scenario handled",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "config": "Webhooks configured and tested",
+      "source": "Unmapped",
+      "status": "yes",
+      "comment": ""
+    },
+    {
+      "config": "API usage implemented correctly",
+      "source": "Unmapped",
+      "status": "yes",
+      "comment": ""
+    },
+    {
+      "config": "pay_RmiWJMA2K5xsjU",
+      "source": "Unmapped",
+      "status": "N/A",
+      "comment": ""
+    }
+  ],
+  "additionalComments": ""
+}

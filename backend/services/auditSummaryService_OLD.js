@@ -220,22 +220,17 @@ function generateFallbackSummary(extractedData) {
 
     // Ensure we handle empty sets/arrays safely
     const methodsStr = payment_methods.size > 0 ? Array.from(payment_methods).join(" and ") : "core payment methods";
+    const findingsText = key_findings.slice(0, 4).map(f => f.replace(/:/g, " is")).join(", and ");
 
-    // Create a natural language list of findings for the "Technical validation" sentence
-    // Example: "the Fetch status for Payment and Subscription IDs and Error Code consumption"
-    const findingsNatural = key_findings.slice(0, 3)
-        .map(f => {
-            // Remove the status part (check name only) for the middle of the sentence
-            return f.split(':')[0].trim();
-        })
-        .join(", ");
-
-    const narrativeSummary = `The Razorpay ${product_type} integration audit for ${merchant_name} has resulted in an overall ${overall_status} status${overall_status === 'Pass' ? ', confirming the system is production-ready and aligned with best practices' : ', indicating that some critical configurations require attention'}. ` +
-        `Technical validation confirms that critical API implementations—specifically ${findingsNatural || "the reviewed checkpoints"}—are fully operational. ` +
-        `While some specific checks may be N/A depending on the flows, the payment infrastructure for ${methodsStr} is robust, supported by ${webhook_status} webhooks for real-time event handling and ${capture_settings}. ` +
+    const narrativeSummary = `A comprehensive Razorpay integration audit was conducted for ${merchant_name} on their ${product_type} product. ` +
+        `The audit focused on critical payment infrastructure components including payment method configurations, API implementations, and security protocols. ` +
+        `Specific critical assessments confirm that ${findingsText}. ` +
+        `Payment methods reviewed include ${methodsStr}, with all enabled methods verified for proper functionality. ` +
+        `Webhook configurations were ${webhook_status}, ensuring proper event handling and payment status updates. ` +
+        `Capture settings are configured as ${capture_settings}, appropriate for the merchant's business model. ` +
         (overall_status === "Pass" ?
-            `With all reviewed security protocols and payment configurations verified as "Done", the integration is stable and optimized for live transaction processing.` :
-            `However, addressing the identified gaps is strictly recommended before proceeding to live traffic.`);
+            `All critical Razorpay integration checks passed successfully, with no major issues identified. The integration follows Razorpay best practices and is production-ready.` :
+            `Some critical checks require attention. The merchant should address the identified issues before proceeding to production.`);
 
     return {
         key_findings: key_findings.slice(0, 4),
