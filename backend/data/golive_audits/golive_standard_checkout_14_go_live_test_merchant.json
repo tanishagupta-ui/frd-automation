@@ -1,0 +1,11 @@
+{
+  "product": "Standard Checkout",
+  "audit_metadata": {
+    "mx_name": "Go Live Test Merchant",
+    "merchant_name": "Go Live Test Merchant",
+    "merchant_id": "GL_MID_123",
+    "date": ""
+  },
+  "checklist_content": [],
+  "additionalComments": ""
+}

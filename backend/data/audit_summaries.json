@@ -554,6 +554,67 @@
       ],
       "audit_summary": "The Razorpay QR Code integration audit for the merchant has resulted in an overall Action Required status, indicating that some critical configurations require attention. Technical validation confirms that critical API implementations—specifically Downloading Keys, Regenerate Keys, API—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for core payment methods is robust, supported by pending optimization webhooks for real-time event handling and Auto-capture settings. However, addressing the identified gaps is strictly recommended before proceeding to live traffic.",
       "overall_status": "Action Required"
+    },
+    {
+      "id": "sum_1770268374459",
+      "audit_id": "audit_1770268374363",
+      "merchant_name": "Go Live Test Merchant",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-02-05T05:12:54.364Z",
+      "summary_date": "2026-02-05T05:12:54.459Z",
+      "key_findings": [
+        "All Razorpay integration checks completed"
+      ],
+      "audit_summary": "The Razorpay Standard Checkout integration audit for Go Live Test Merchant has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically All Razorpay integration checks completed—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for core payment methods is robust, supported by evaluated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770268646666",
+      "audit_id": "audit_1770268646393",
+      "merchant_name": "the merchant",
+      "product_type": "QR Code",
+      "audit_date": "2026-02-05T05:17:26.393Z",
+      "summary_date": "2026-02-05T05:17:26.666Z",
+      "key_findings": [
+        "Downloading Keys: IMPLEMENTED",
+        "Regenerate Keys: N/A",
+        "API: IMPLEMENTED",
+        "Payment Methods: IMPLEMENTED"
+      ],
+      "audit_summary": "The Razorpay QR Code integration audit for the merchant has resulted in an overall Action Required status, indicating that some critical configurations require attention. Technical validation confirms that critical API implementations—specifically Downloading Keys, Regenerate Keys, API—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for core payment methods is robust, supported by pending optimization webhooks for real-time event handling and Auto-capture settings. However, addressing the identified gaps is strictly recommended before proceeding to live traffic.",
+      "overall_status": "Action Required"
+    },
+    {
+      "id": "sum_1770268949280",
+      "audit_id": "audit_1770268949111",
+      "merchant_name": "the merchant",
+      "product_type": "QR Code",
+      "audit_date": "2026-02-05T05:22:29.111Z",
+      "summary_date": "2026-02-05T05:22:29.280Z",
+      "key_findings": [
+        "Downloading Keys: Done",
+        "Regenerate Keys: N/A",
+        "API: N/A",
+        "Payment Methods: N/A"
+      ],
+      "audit_summary": "The Razorpay QR Code integration audit for the merchant has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically Downloading Keys, Regenerate Keys, API—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for core payment methods is robust, supported by evaluated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770268977422",
+      "audit_id": "audit_1770268977238",
+      "merchant_name": "the merchant",
+      "product_type": "QR Code",
+      "audit_date": "2026-02-05T05:22:57.238Z",
+      "summary_date": "2026-02-05T05:22:57.422Z",
+      "key_findings": [
+        "Downloading Keys: Done",
+        "Regenerate Keys: N/A",
+        "API: N/A",
+        "Payment Methods: N/A"
+      ],
+      "audit_summary": "The Razorpay QR Code integration audit for the merchant has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically Downloading Keys, Regenerate Keys, API—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for core payment methods is robust, supported by evaluated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
+      "overall_status": "Pass"
     }
   ]
 }

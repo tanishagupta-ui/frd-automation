@@ -103,6 +103,14 @@
       "merchant_name": "Section",
       "audit_date": "",
       "created_at": "2026-02-03T07:39:44.751Z"
+    },
+    {
+      "id": 14,
+      "product": "Standard Checkout",
+      "merchant_id": "GL_MID_123",
+      "merchant_name": "Go Live Test Merchant",
+      "audit_date": "",
+      "created_at": "2026-02-05T05:12:54.359Z"
     }
   ],
   "golive_results": [

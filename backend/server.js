@@ -10,6 +10,8 @@ const diagramService = require("./services/diagramService");
 const xlsx = require("xlsx");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
+const frdGenerator = require("./services/frdGeneratorService");
+
 // Initialize Gemini AI
 let genAI = null;
 if (process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY !== 'AIzaSyA3ka04wRlpWanOfl-S7hA1Bt_0fxGn_No') {
@@ -268,6 +270,7 @@ app.post("/upload", (req, res) => {
                 'subscriptions': 'subscriptions',
                 'payment_links': 'payment_links',
                 'qr_codes': 'qr_codes',
+                'qr_code': 'qr_codes', // Added alias to match frontend singular
                 'route': 'route',
                 'smart_collect': 'smart_collect',
                 's2s': 's2s',
@@ -1711,6 +1714,40 @@ app.post("/upload", (req, res) => {
                     .catch(err => {
                         console.error("Audit summarization error (non-blocking):", err);
                     });
+            }
+
+            // --- FRD Generation Logic ---
+            if (result && (merchantName || merchantId)) {
+                console.log(`📄 Triggering FRD generation for: ${merchantName || merchantId}`);
+
+                // Fetch relevant enrichment data for the FRD
+                const getEnrichment = async () => {
+                    const dataPath = path.join(__dirname, "data", "merchant_enrichment_data.json");
+                    if (fs.existsSync(dataPath)) {
+                        try {
+                            const storage = JSON.parse(fs.readFileSync(dataPath, "utf8"));
+                            const targetName = merchantName ? merchantName.trim().toLowerCase() : "";
+                            return storage.enrichments.find(e =>
+                                e.merchant_name && e.merchant_name.trim().toLowerCase() === targetName
+                            );
+                        } catch (e) { return null; }
+                    }
+                    return null;
+                };
+
+                // Wait a bit for the async searchMerchantInfo to potentially finish if it's running
+                // or just fetch from cache if it was already stored. 
+                // Since searchMerchantInfo is async and non-blocking, we'll try to get data after a short delay
+                // or just use whatever is in cache.
+                setTimeout(async () => {
+                    try {
+                        const enrichmentData = await getEnrichment();
+                        const frdPaths = await frdGenerator.generateFRD(result, enrichmentData, productType, diagramPath);
+                        console.log(`✅ FRD files generated:`, frdPaths);
+                    } catch (frdError) {
+                        console.error("FRD generation error:", frdError);
+                    }
+                }, 2000); // 2 second delay to wait for Gemini enrichment if running
             }
 
         } catch (parseError) {
