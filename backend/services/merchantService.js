@@ -33,7 +33,7 @@ function extractMerchantName(filePath) {
         const sheet = workbook.Sheets[sheetName];
 
         // Check A1 first, then search first 10 rows if not found
-        const searchRange = ['A1', 'A2', 'B1', 'B2', 'A3', 'B3'];
+        const searchRange = ['A1', 'A2', 'B1', 'B2', 'A3', 'B3', 'A4', 'B4', 'A5', 'B5'];
 
         for (const addr of searchRange) {
             const cell = sheet[addr];
@@ -43,11 +43,25 @@ function extractMerchantName(filePath) {
                 if (match && match[1]) return match[1].trim();
 
                 // If it doesn't have the prefix but looks like a name (not a header)
-                if (val.length > 3 && !['Audit Checklist', 'Tech Checklist', 'Configs', 'Status'].includes(val)) {
+                if (val.length > 3 && !['Audit Checklist', 'Tech Checklist', 'Configs', 'Status', 'Item', 'Comment', 'Metadata'].includes(val)) {
                     // Only return if it's likely a name
                     if (!val.includes(':') && !val.match(/^\d+\./)) {
                         return val;
                     }
+                }
+            }
+        }
+
+        // Expanded search: check first 20 rows, first 3 columns
+        const range = xlsx.utils.decode_range(sheet['!ref'] || 'A1:C20');
+        for (let r = 0; r <= Math.min(range.e.r, 20); r++) {
+            for (let c = 0; c <= Math.min(range.e.c, 2); c++) {
+                const cellAddress = xlsx.utils.encode_cell({ r, c });
+                const cell = sheet[cellAddress];
+                if (cell && cell.v) {
+                    const val = cell.v.toString().trim();
+                    const match = val.match(/mx name[:\s]+(.+)/i) || val.match(/merchant name[:\s]+(.+)/i);
+                    if (match && match[1]) return match[1].trim();
                 }
             }
         }

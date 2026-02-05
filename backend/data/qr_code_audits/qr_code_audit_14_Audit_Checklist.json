@@ -1,8 +1,8 @@
 {
   "product": "QR Code",
   "audit_metadata": {
-    "mx_name": "QR Test Merchant",
-    "mid": "QR_MID_123",
+    "mx_name": "Audit Checklist",
+    "mid": "Unknown",
     "date": ""
   },
   "checklist_content": [
@@ -11,8 +11,8 @@
       "checks": [
         {
           "item": "Downloading Keys",
-          "status": "Pass",
-          "comment": "Keys downloaded"
+          "status": "N/A",
+          "comment": ""
         },
         {
           "item": "Set Expiry",
@@ -31,8 +31,8 @@
       "checks": [
         {
           "item": "Dashboard",
-          "status": "Pass",
-          "comment": "Dash verified"
+          "status": "N/A",
+          "comment": ""
         },
         {
           "item": "API",
@@ -42,7 +42,7 @@
         {
           "item": "Instant QR",
           "status": "N/A",
-          "comment": "Not used"
+          "comment": ""
         },
         {
           "item": "Dynamic QR",
@@ -187,12 +187,12 @@
         {
           "item": "webhook Url for payment",
           "status": "N/A",
-          "comment": "https://example.com/hook"
+          "comment": "webhook Url for payment"
         },
         {
           "item": "Webhook Events",
           "status": "N/A",
-          "comment": "payment.captured, payment.failed"
+          "comment": "Webhook Events"
         }
       ]
     }

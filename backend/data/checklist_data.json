@@ -6442,274 +6442,39 @@
     }
   },
   {
-    "filename": "checklist-1770027991944-444329867.xlsx",
-    "originalName": "Sugarfit.xlsx",
+    "filename": "checklist-1770101012373-488446338.xlsx",
+    "originalName": "Go Live Checklist- ManipalCigna Health Insurance.xlsx",
     "product": "Charge at Will",
-    "uploadDate": "2026-02-02T10:26:32.005Z",
+    "uploadDate": "2026-02-03T06:43:33.922Z",
     "data": {
-      "audit_id": "audit_1770027992002_159",
+      "audit_id": "audit_1770101013920_375",
       "merchant_info": {
-        "name": "Sugarfit",
+        "name": "",
         "mid": "",
-        "date": "7th November"
+        "date": ""
       },
       "audit_data": [
         {
-          "section": "1. Methods Enabled",
+          "section": "General",
           "checks": [
             {
-              "item": "E Mandate",
-              "status": "N/A",
+              "item": "ManipalCigna Health Insurance",
+              "status": null,
               "comment": null
             },
             {
-              "item": "UPI Autopay",
-              "status": "N/A",
+              "item": "Rakshita Sharma",
+              "status": null,
               "comment": null
             },
             {
-              "item": "Card Mandates",
-              "status": "Done",
-              "comment": null
-            }
-          ]
-        },
-        {
-          "section": "2. Plan creation",
-          "checks": [
-            {
-              "item": "Period",
-              "status": "N/A",
+              "item": "Gauthami Bhaskar",
+              "status": null,
               "comment": null
             },
             {
-              "item": "Interval",
-              "status": "N/A",
-              "comment": null
-            }
-          ]
-        },
-        {
-          "section": "3. Subscription creation",
-          "checks": [
-            {
-              "item": "Plan_id",
-              "status": "Done",
-              "comment": null
-            },
-            {
-              "item": "total_count",
-              "status": "Done",
-              "comment": null
-            },
-            {
-              "item": "Addons",
-              "status": "N/A",
-              "comment": null
-            }
-          ]
-        },
-        {
-          "section": "3. Checkout configuration",
-          "checks": [
-            {
-              "item": "Handler Function",
-              "status": "Done",
-              "comment": null
-            },
-            {
-              "item": "Callback function [w/o Redirect]",
-              "status": "N/A",
-              "comment": null
-            },
-            {
-              "item": "Deeplink Handling (S2S Checkout)",
-              "status": "N/A",
-              "comment": null
-            },
-            {
-              "item": "consent_to_save_card / save",
-              "status": "N/A",
-              "comment": null
-            }
-          ]
-        },
-        {
-          "section": "4. For Successful transactions",
-          "checks": [
-            {
-              "item": "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout)",
-              "status": "N/A",
-              "comment": null
-            },
-            {
-              "item": "Fetch status of Payment_id and Subscription_id",
-              "status": "Done",
-              "comment": "sub_RclHY7hxcaS1wD"
-            }
-          ]
-        },
-        {
-          "section": "5. For Failure transactions",
-          "checks": [
-            {
-              "item": "Consumes Error Codes",
-              "status": "Done",
-              "comment": null
-            }
-          ]
-        },
-        {
-          "section": "6. Subscription Management",
-          "checks": [
-            {
-              "item": "Fetch a Plan",
-              "status": "Done",
-              "comment": null
-            },
-            {
-              "item": "Fetch a Subscription",
-              "status": "Done",
-              "comment": null
-            },
-            {
-              "item": "Cancel a Subscription",
-              "status": "Done",
-              "comment": null
-            },
-            {
-              "item": "Update a Subscription",
-              "status": "Done",
-              "comment": null
-            },
-            {
-              "item": "Pause a Subscription",
-              "status": "N/A",
-              "comment": null
-            },
-            {
-              "item": "Resume a Subscription",
-              "status": "N/A",
-              "comment": null
-            }
-          ]
-        },
-        {
-          "section": "7. Auto-capture Settings",
-          "checks": [
-            {
-              "item": "2 Days for UPI and 3 Days for other methods",
-              "status": "Done",
-              "comment": "12 minutes"
-            }
-          ]
-        },
-        {
-          "section": "8. Late Auth Scenarios",
-          "checks": [
-            {
-              "item": "Consumes payment state at capture time",
-              "status": "Done",
-              "comment": null
-            }
-          ]
-        },
-        {
-          "section": "9. Verify Payment / Token Status",
-          "checks": [
-            {
-              "item": "Webhooks",
-              "status": "Done",
-              "comment": "Events: subscription.charged, subscription.authenticated"
-            },
-            {
-              "item": "Fetch payment APIs (Fallback)",
-              "status": "Done",
-              "comment": null
-            }
-          ]
-        },
-        {
-          "section": "10. Checkout library, server language, version",
-          "checks": [
-            {
-              "item": "Platform",
-              "status": "Done",
-              "comment": null
-            },
-            {
-              "item": "Checkout Type",
-              "status": "Done",
-              "comment": "Type: Standard"
-            },
-            {
-              "item": "Server language/SDK",
-              "status": "Done",
-              "comment": "Version: NA"
-            }
-          ]
-        },
-        {
-          "section": "11. Refund Api's",
-          "checks": [
-            {
-              "item": "Using Refund api's",
-              "status": "N/A",
-              "comment": null
-            }
-          ]
-        },
-        {
-          "section": "12. Recurring Terminals",
-          "checks": [
-            {
-              "item": "upi_icici",
-              "status": "N/A",
-              "comment": "Others if applicable:"
-            },
-            {
-              "item": "enach_rbl",
-              "status": "N/A",
-              "comment": null
-            },
-            {
-              "item": "hitachi / fulcrum",
-              "status": "Done",
-              "comment": null
-            }
-          ]
-        },
-        {
-          "section": "13. Feature Flags",
-          "checks": [
-            {
-              "item": "Subscription",
-              "status": "Done",
-              "comment": null
-            },
-            {
-              "item": "recurring_upi_intent",
-              "status": "N/A",
-              "comment": null
-            },
-            {
-              "item": "save_vpa",
-              "status": "N/A",
-              "comment": null
-            },
-            {
-              "item": "allow_dc_recurring",
-              "status": "N/A",
-              "comment": null
-            },
-            {
-              "item": "tokenization flags for cards",
-              "status": "Done",
-              "comment": null
-            },
-            {
-              "item": "allow_billdesk_sihub",
-              "status": "N/A",
+              "item": "10th March, 2025",
+              "status": null,
               "comment": null
             }
           ]

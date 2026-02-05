@@ -167,7 +167,7 @@
         {
           "item": "Offers",
           "status": "N/A",
-          "comment": ""
+          "comment": "No"
         }
       ]
     },
@@ -187,12 +187,12 @@
         {
           "item": "webhook Url for payment",
           "status": "N/A",
-          "comment": ""
+          "comment": "webhook Url for payment"
         },
         {
           "item": "Webhook Events",
           "status": "N/A",
-          "comment": ""
+          "comment": "Webhook Events"
         }
       ]
     }

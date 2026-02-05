@@ -1484,7 +1484,7 @@ app.post("/upload", (req, res) => {
 
                     const lowerRow = row.map(c => String(c || "").trim().toLowerCase());
                     const catIdx = lowerRow.findIndex(c => c.includes("audit checklist") || c.includes("category"));
-                    const itemIdx = lowerRow.findIndex(c => c.includes("configs") || c.includes("check") || c.includes("item"));
+                    const itemIdx = lowerRow.findIndex(c => c === "configs" || c === "items" || c === "item");
 
                     if (catIdx !== -1 || itemIdx !== -1) {
                         headerRowIndex = i;
@@ -1559,7 +1559,12 @@ app.post("/upload", (req, res) => {
 
                     // 1. Check for standard check item (Column B usually)
                     if (colItem) {
-                        const templateMatch = QR_CODE_CANONICAL_TEMPLATE.find(t => t.item.toLowerCase() === colItem.toLowerCase());
+                        // Fuzzy Match: Strip prefixes like "a. ", "b. ", "1. " etc.
+                        const cleanItem = colItem.replace(/^[a-z0-9]+\.\s*/i, "").trim();
+                        const templateMatch = QR_CODE_CANONICAL_TEMPLATE.find(t =>
+                            t.item.toLowerCase() === cleanItem.toLowerCase() ||
+                            t.item.toLowerCase() === colItem.toLowerCase()
+                        );
                         if (templateMatch) {
                             const templateItem = qrStorage.qr_checklist_template.find(t => t.item_description === templateMatch.item);
                             if (templateItem && templateItem.category !== "Additional Comments") {

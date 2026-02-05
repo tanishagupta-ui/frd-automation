@@ -145,70 +145,77 @@
       "merchant_id": "",
       "merchant_name": "Sugarfit",
       "audit_date": "7th November",
-      "created_at": "2026-02-02T09:28:04.250Z"
+      "created_at": "2026-02-03T06:45:40.204Z"
     },
     {
       "id": 22,
       "merchant_id": "",
       "merchant_name": "Sugarfit",
       "audit_date": "7th November",
-      "created_at": "2026-02-03T05:36:56.809Z"
+      "created_at": "2026-02-03T07:01:09.866Z"
     },
     {
       "id": 23,
       "merchant_id": "",
       "merchant_name": "Sugarfit",
       "audit_date": "7th November",
-      "created_at": "2026-02-03T06:19:53.377Z"
+      "created_at": "2026-02-03T07:02:24.559Z"
     },
     {
       "id": 24,
       "merchant_id": "",
       "merchant_name": "Sugarfit",
       "audit_date": "7th November",
-      "created_at": "2026-02-03T06:30:22.616Z"
+      "created_at": "2026-02-03T07:40:07.108Z"
     },
     {
       "id": 25,
       "merchant_id": "",
       "merchant_name": "Sugarfit",
       "audit_date": "7th November",
-      "created_at": "2026-02-03T06:50:24.039Z"
+      "created_at": "2026-02-04T07:22:53.418Z"
     },
     {
       "id": 26,
       "merchant_id": "",
       "merchant_name": "Sugarfit",
       "audit_date": "7th November",
-      "created_at": "2026-02-03T06:59:44.120Z"
+      "created_at": "2026-02-04T08:43:01.037Z"
     },
     {
       "id": 27,
       "merchant_id": "",
       "merchant_name": "Sugarfit",
       "audit_date": "7th November",
-      "created_at": "2026-02-03T07:06:51.196Z"
+      "created_at": "2026-02-04T08:48:47.521Z"
     },
     {
       "id": 28,
       "merchant_id": "",
       "merchant_name": "Sugarfit",
       "audit_date": "7th November",
-      "created_at": "2026-02-03T07:08:39.713Z"
+      "created_at": "2026-02-04T08:56:09.332Z"
     },
     {
       "id": 29,
       "merchant_id": "",
       "merchant_name": "Sugarfit",
       "audit_date": "7th November",
-      "created_at": "2026-02-03T07:25:41.991Z"
+      "created_at": "2026-02-04T09:00:22.436Z"
     },
     {
       "id": 30,
       "merchant_id": "",
       "merchant_name": "Sugarfit",
       "audit_date": "7th November",
-      "created_at": "2026-02-03T07:34:24.400Z"
+      "created_at": "2026-02-04T09:33:51.920Z"
+    },
+    {
+      "id": 31,
+      "merchant_id": "",
+      "merchant_name": "Sugarfit",
+      "audit_date": "7th November",
+      "created_at": "2026-02-04T10:53:12.245Z"
     }
   ],
   "subscription_checklist_template": [
@@ -8890,6 +8897,286 @@
     {
       "id": 1200,
       "audit_id": 30,
+      "item_id": 40,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1201,
+      "audit_id": 31,
+      "item_id": 1,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1202,
+      "audit_id": 31,
+      "item_id": 2,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1203,
+      "audit_id": 31,
+      "item_id": 3,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1204,
+      "audit_id": 31,
+      "item_id": 5,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1205,
+      "audit_id": 31,
+      "item_id": 6,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1206,
+      "audit_id": 31,
+      "item_id": 7,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1207,
+      "audit_id": 31,
+      "item_id": 8,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1208,
+      "audit_id": 31,
+      "item_id": 9,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1209,
+      "audit_id": 31,
+      "item_id": 10,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1210,
+      "audit_id": 31,
+      "item_id": 11,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1211,
+      "audit_id": 31,
+      "item_id": 12,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1212,
+      "audit_id": 31,
+      "item_id": 13,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1213,
+      "audit_id": 31,
+      "item_id": 14,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1214,
+      "audit_id": 31,
+      "item_id": 15,
+      "status": "Done",
+      "comment": "sub_RclHY7hxcaS1wD"
+    },
+    {
+      "id": 1215,
+      "audit_id": 31,
+      "item_id": 16,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1216,
+      "audit_id": 31,
+      "item_id": 17,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1217,
+      "audit_id": 31,
+      "item_id": 18,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1218,
+      "audit_id": 31,
+      "item_id": 19,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1219,
+      "audit_id": 31,
+      "item_id": 20,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1220,
+      "audit_id": 31,
+      "item_id": 21,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1221,
+      "audit_id": 31,
+      "item_id": 22,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1222,
+      "audit_id": 31,
+      "item_id": 24,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1223,
+      "audit_id": 31,
+      "item_id": 25,
+      "status": "Done",
+      "comment": "Events: subscription.charged, subscription.authenticated"
+    },
+    {
+      "id": 1224,
+      "audit_id": 31,
+      "item_id": 26,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1225,
+      "audit_id": 31,
+      "item_id": 27,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1226,
+      "audit_id": 31,
+      "item_id": 28,
+      "status": "Done",
+      "comment": "Type: Standard"
+    },
+    {
+      "id": 1227,
+      "audit_id": 31,
+      "item_id": 29,
+      "status": "Done",
+      "comment": "Version: NA"
+    },
+    {
+      "id": 1228,
+      "audit_id": 31,
+      "item_id": 30,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1229,
+      "audit_id": 31,
+      "item_id": 31,
+      "status": "N/A",
+      "comment": "Others if applicable:"
+    },
+    {
+      "id": 1230,
+      "audit_id": 31,
+      "item_id": 32,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1231,
+      "audit_id": 31,
+      "item_id": 33,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1232,
+      "audit_id": 31,
+      "item_id": 34,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1233,
+      "audit_id": 31,
+      "item_id": 35,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1234,
+      "audit_id": 31,
+      "item_id": 36,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1235,
+      "audit_id": 31,
+      "item_id": 37,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1236,
+      "audit_id": 31,
+      "item_id": 38,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1237,
+      "audit_id": 31,
+      "item_id": 39,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1238,
+      "audit_id": 31,
+      "item_id": 4,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1239,
+      "audit_id": 31,
+      "item_id": 23,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1240,
+      "audit_id": 31,
       "item_id": 40,
       "status": "N/A",
       "comment": ""

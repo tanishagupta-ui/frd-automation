@@ -18,9 +18,7 @@ function App() {
     "Standard Checkout",
     "Custom Checkout",
     "S2S",
-    "Payment Links",
-    "QR Codes",
-    "Affordability Widget"
+    "Payment Links"
   ];
 
   const openFilePicker = () => {

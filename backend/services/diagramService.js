@@ -81,7 +81,7 @@ async function generateDiagram(productKey, merchantName = null) {
         const sanitizedMerchant = displayName
             ? displayName.toLowerCase().replace(/[^a-z0-9]/g, '_')
             : 'default';
-        const filename = `${productKey}_${sanitizedMerchant}_${Date.now()}.png`;
+        const filename = `${productKey}_${sanitizedMerchant}_${Date.now()}.jpg`;
         const filepath = path.join(DIAGRAMS_DIR, filename);
 
         // Save image
