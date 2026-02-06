@@ -1,4 +1,3 @@
-
 body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -40,6 +39,7 @@ h2 {
   padding-bottom: 40px;
   border-bottom: 1px solid #eaeaea;
 }
+
 .section:last-child {
   border-bottom: none;
   margin-bottom: 0;
@@ -105,9 +105,12 @@ button.upload-btn:active {
 }
 
 .product-chip.selected {
-  background-color: #e7f5ff; /* Light blue bg */
-  border-color: #339af0;      /* Blue border */
-  color: #1c7ed6;             /* Blue text */
+  background-color: #e7f5ff;
+  /* Light blue bg */
+  border-color: #339af0;
+  /* Blue border */
+  color: #1c7ed6;
+  /* Blue text */
   box-shadow: 0 2px 8px rgba(51, 154, 240, 0.25);
 }
 
@@ -141,4 +144,82 @@ button.checkout-btn:disabled {
   cursor: not-allowed;
   box-shadow: none;
   transform: none;
+}
+
+.enrichment-card {
+  margin-top: 20px;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  text-align: left;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.enrichment-card h3 {
+  margin-top: 0;
+  color: #1a202c;
+  border-bottom: 2px solid #edf2f7;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.enrichment-content p {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #4a5568;
+}
+
+.enrichment-content ul {
+  padding-left: 20px;
+  margin-top: 5px;
+}
+
+.enrichment-content li {
+  font-size: 0.9rem;
+  color: #4a5568;
+}
+
+.enrichment-content a {
+  color: #3182ce;
+  text-decoration: none;
+}
+
+.enrichment-content a:hover {
+  text-decoration: underline;
+}
+
+.loading-spinner {
+  margin: 20px 0;
+  color: #3182ce;
+  font-weight: 600;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.enrichment-card.error {
+  border-left: 4px solid #e53e3e;
+}
+
+.error-text {
+  color: #c53030 !important;
+  background: #fff5f5;
+  padding: 8px;
+  border-radius: 4px;
 }

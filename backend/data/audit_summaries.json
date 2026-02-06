@@ -615,6 +615,470 @@
       ],
       "audit_summary": "The Razorpay QR Code integration audit for the merchant has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically Downloading Keys, Regenerate Keys, API—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for core payment methods is robust, supported by evaluated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
       "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770271169686",
+      "audit_id": "audit_1770271168849",
+      "merchant_name": "the merchant",
+      "product_type": "QR Code",
+      "audit_date": "2026-02-05T05:59:28.849Z",
+      "summary_date": "2026-02-05T05:59:29.686Z",
+      "key_findings": [
+        "Downloading Keys: IMPLEMENTED",
+        "Regenerate Keys: N/A",
+        "API: IMPLEMENTED",
+        "Payment Methods: IMPLEMENTED"
+      ],
+      "audit_summary": "The Razorpay QR Code integration audit for the merchant has resulted in an overall Action Required status, indicating that some critical configurations require attention. Technical validation confirms that critical API implementations—specifically Downloading Keys, Regenerate Keys, API—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for core payment methods is robust, supported by pending optimization webhooks for real-time event handling and Auto-capture settings. However, addressing the identified gaps is strictly recommended before proceeding to live traffic.",
+      "overall_status": "Action Required"
+    },
+    {
+      "id": "sum_1770272186296",
+      "audit_id": "audit_1770272185104",
+      "merchant_name": "the merchant",
+      "product_type": "QR Code",
+      "audit_date": "2026-02-05T06:16:25.104Z",
+      "summary_date": "2026-02-05T06:16:26.296Z",
+      "key_findings": [
+        "Downloading Keys: IMPLEMENTED",
+        "Regenerate Keys: N/A",
+        "API: IMPLEMENTED",
+        "Payment Methods: IMPLEMENTED"
+      ],
+      "audit_summary": "The Razorpay QR Code integration audit for the merchant has resulted in an overall Action Required status, indicating that some critical configurations require attention. Technical validation confirms that critical API implementations—specifically Downloading Keys, Regenerate Keys, API—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for core payment methods is robust, supported by pending optimization webhooks for real-time event handling and Auto-capture settings. However, addressing the identified gaps is strictly recommended before proceeding to live traffic.",
+      "overall_status": "Action Required"
+    },
+    {
+      "id": "sum_1770272348420",
+      "audit_id": "audit_1770272347233",
+      "merchant_name": "the merchant",
+      "product_type": "QR Code",
+      "audit_date": "2026-02-05T06:19:07.233Z",
+      "summary_date": "2026-02-05T06:19:08.420Z",
+      "key_findings": [
+        "Downloading Keys: IMPLEMENTED",
+        "Regenerate Keys: N/A",
+        "API: IMPLEMENTED",
+        "Payment Methods: IMPLEMENTED"
+      ],
+      "audit_summary": "The Razorpay QR Code integration audit for the merchant has resulted in an overall Action Required status, indicating that some critical configurations require attention. Technical validation confirms that critical API implementations—specifically Downloading Keys, Regenerate Keys, API—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for core payment methods is robust, supported by pending optimization webhooks for real-time event handling and Auto-capture settings. However, addressing the identified gaps is strictly recommended before proceeding to live traffic.",
+      "overall_status": "Action Required"
+    },
+    {
+      "id": "sum_1770272540483",
+      "audit_id": "audit_1770272538414",
+      "merchant_name": "the merchant",
+      "product_type": "QR Code",
+      "audit_date": "2026-02-05T06:22:18.415Z",
+      "summary_date": "2026-02-05T06:22:20.483Z",
+      "key_findings": [
+        "Downloading Keys: IMPLEMENTED",
+        "Regenerate Keys: N/A",
+        "API: IMPLEMENTED",
+        "Payment Methods: IMPLEMENTED"
+      ],
+      "audit_summary": "The Razorpay QR Code integration audit for the merchant has resulted in an overall Action Required status, indicating that some critical configurations require attention. Technical validation confirms that critical API implementations—specifically Downloading Keys, Regenerate Keys, API—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for core payment methods is robust, supported by pending optimization webhooks for real-time event handling and Auto-capture settings. However, addressing the identified gaps is strictly recommended before proceeding to live traffic.",
+      "overall_status": "Action Required"
+    },
+    {
+      "id": "sum_1770273179036",
+      "audit_id": "audit_1770273177215",
+      "merchant_name": "the merchant",
+      "product_type": "QR Code",
+      "audit_date": "2026-02-05T06:32:57.215Z",
+      "summary_date": "2026-02-05T06:32:59.036Z",
+      "key_findings": [
+        "Downloading Keys: IMPLEMENTED",
+        "Regenerate Keys: N/A",
+        "API: IMPLEMENTED",
+        "Payment Methods: IMPLEMENTED"
+      ],
+      "audit_summary": "The Razorpay QR Code integration audit for the merchant has resulted in an overall Action Required status, indicating that some critical configurations require attention. Technical validation confirms that critical API implementations—specifically Downloading Keys, Regenerate Keys, API—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for core payment methods is robust, supported by pending optimization webhooks for real-time event handling and Auto-capture settings. However, addressing the identified gaps is strictly recommended before proceeding to live traffic.",
+      "overall_status": "Action Required"
+    },
+    {
+      "id": "sum_1770273339675",
+      "audit_id": "audit_1770273339106",
+      "merchant_name": "the merchant",
+      "product_type": "QR Code",
+      "audit_date": "2026-02-05T06:35:39.106Z",
+      "summary_date": "2026-02-05T06:35:39.675Z",
+      "key_findings": [
+        "Downloading Keys: IMPLEMENTED",
+        "Regenerate Keys: N/A",
+        "API: IMPLEMENTED",
+        "Payment Methods: IMPLEMENTED"
+      ],
+      "audit_summary": "The Razorpay QR Code integration audit for the merchant has resulted in an overall Action Required status, indicating that some critical configurations require attention. Technical validation confirms that critical API implementations—specifically Downloading Keys, Regenerate Keys, API—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for core payment methods is robust, supported by pending optimization webhooks for real-time event handling and Auto-capture settings. However, addressing the identified gaps is strictly recommended before proceeding to live traffic.",
+      "overall_status": "Action Required"
+    },
+    {
+      "id": "sum_1770280532357",
+      "audit_id": "audit_1770280531524",
+      "merchant_name": "the merchant",
+      "product_type": "QR Code",
+      "audit_date": "2026-02-05T08:35:31.524Z",
+      "summary_date": "2026-02-05T08:35:32.357Z",
+      "key_findings": [
+        "Downloading Keys: IMPLEMENTED",
+        "Regenerate Keys: N/A",
+        "API: IMPLEMENTED",
+        "Payment Methods: IMPLEMENTED"
+      ],
+      "audit_summary": "The Razorpay QR Code integration audit for the merchant has resulted in an overall Action Required status, indicating that some critical configurations require attention. Technical validation confirms that critical API implementations—specifically Downloading Keys, Regenerate Keys, API—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for core payment methods is robust, supported by pending optimization webhooks for real-time event handling and Auto-capture settings. However, addressing the identified gaps is strictly recommended before proceeding to live traffic.",
+      "overall_status": "Action Required"
+    },
+    {
+      "id": "sum_1770280870514",
+      "audit_id": "audit_1770280869950",
+      "merchant_name": "the merchant",
+      "product_type": "QR Code",
+      "audit_date": "2026-02-05T08:41:09.950Z",
+      "summary_date": "2026-02-05T08:41:10.514Z",
+      "key_findings": [
+        "Downloading Keys: IMPLEMENTED",
+        "Regenerate Keys: N/A",
+        "API: IMPLEMENTED",
+        "Payment Methods: IMPLEMENTED"
+      ],
+      "audit_summary": "The Razorpay QR Code integration audit for the merchant has resulted in an overall Action Required status, indicating that some critical configurations require attention. Technical validation confirms that critical API implementations—specifically Downloading Keys, Regenerate Keys, API—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for core payment methods is robust, supported by pending optimization webhooks for real-time event handling and Auto-capture settings. However, addressing the identified gaps is strictly recommended before proceeding to live traffic.",
+      "overall_status": "Action Required"
+    },
+    {
+      "id": "sum_1770280944076",
+      "audit_id": "audit_1770280943145",
+      "merchant_name": "the merchant",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-05T08:42:24.076Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A"
+      ],
+      "audit_summary": "The Razorpay Subscriptions integration audit for the merchant has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout), Fetch status of Payment_id and Subscription_id, Consumes Error Codes—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for UPI and Cards is robust, supported by fully integrated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770281388418",
+      "audit_id": "audit_1770281387707",
+      "merchant_name": "the merchant",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-05T08:49:48.418Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A"
+      ],
+      "audit_summary": "The Razorpay Subscriptions integration audit for the merchant has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout), Fetch status of Payment_id and Subscription_id, Consumes Error Codes—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for UPI and Cards is robust, supported by fully integrated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770281708869",
+      "audit_id": "audit_1770281708079",
+      "merchant_name": "Sugarfit",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-05T08:55:08.869Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A"
+      ],
+      "audit_summary": "The Razorpay Subscriptions integration audit for Sugarfit has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout), Fetch status of Payment_id and Subscription_id, Consumes Error Codes—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for UPI and Cards is robust, supported by fully integrated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770281880761",
+      "audit_id": "audit_1770281880018",
+      "merchant_name": "Sugarfit",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-05T08:58:00.761Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A"
+      ],
+      "audit_summary": "The Razorpay Subscriptions integration audit for Sugarfit has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout), Fetch status of Payment_id and Subscription_id, Consumes Error Codes—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for UPI and Cards is robust, supported by fully integrated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770281976687",
+      "audit_id": "audit_1770281976151",
+      "merchant_name": "Sugarfit",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-05T08:59:36.687Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A"
+      ],
+      "audit_summary": "The Razorpay Subscriptions integration audit for Sugarfit has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout), Fetch status of Payment_id and Subscription_id, Consumes Error Codes—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for UPI and Cards is robust, supported by fully integrated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770283439796",
+      "audit_id": "audit_1770283437601",
+      "merchant_name": "Sugarfit",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-05T09:23:59.796Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A"
+      ],
+      "audit_summary": "The Razorpay Subscriptions integration audit for Sugarfit has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout), Fetch status of Payment_id and Subscription_id, Consumes Error Codes—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for UPI and Cards is robust, supported by fully integrated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770283803946",
+      "audit_id": "audit_1770283803321",
+      "merchant_name": "Sugarfit",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-05T09:30:03.946Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A"
+      ],
+      "audit_summary": "The Razorpay Subscriptions integration audit for Sugarfit has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout), Fetch status of Payment_id and Subscription_id, Consumes Error Codes—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for UPI and Cards is robust, supported by fully integrated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770283874020",
+      "audit_id": "audit_1770283873409",
+      "merchant_name": "Sugarfit",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-05T09:31:14.020Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A"
+      ],
+      "audit_summary": "The Razorpay Subscriptions integration audit for Sugarfit has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout), Fetch status of Payment_id and Subscription_id, Consumes Error Codes—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for UPI and Cards is robust, supported by fully integrated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770284301518",
+      "audit_id": "audit_1770284300807",
+      "merchant_name": "Sugarfit",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-05T09:38:21.518Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A"
+      ],
+      "audit_summary": "The Razorpay Subscriptions integration audit for Sugarfit has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout), Fetch status of Payment_id and Subscription_id, Consumes Error Codes—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for UPI and Cards is robust, supported by fully integrated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770284412551",
+      "audit_id": "audit_1770284412452",
+      "merchant_name": "BPCL QR Code (2)",
+      "product_type": "QR Code",
+      "audit_date": "2026-02-05T09:40:12.452Z",
+      "summary_date": "2026-02-05T09:40:12.551Z",
+      "key_findings": [
+        "Downloading Keys: IMPLEMENTED",
+        "Regenerate Keys: N/A",
+        "API: IMPLEMENTED",
+        "Payment Methods: IMPLEMENTED"
+      ],
+      "audit_summary": "The Razorpay QR Code integration audit for BPCL QR Code (2) has resulted in an overall Action Required status, indicating that some critical configurations require attention. Technical validation confirms that critical API implementations—specifically Downloading Keys, Regenerate Keys, API—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for core payment methods is robust, supported by pending optimization webhooks for real-time event handling and Auto-capture settings. However, addressing the identified gaps is strictly recommended before proceeding to live traffic.",
+      "overall_status": "Action Required"
+    },
+    {
+      "id": "sum_1770284543871",
+      "audit_id": "audit_1770284542943",
+      "merchant_name": "Sugarfit",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-05T09:42:23.871Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A"
+      ],
+      "audit_summary": "The Razorpay Subscriptions integration audit for Sugarfit has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout), Fetch status of Payment_id and Subscription_id, Consumes Error Codes—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for UPI and Cards is robust, supported by fully integrated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770284956258",
+      "audit_id": "audit_1770284955443",
+      "merchant_name": "Sugarfit",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-05T09:49:16.259Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A"
+      ],
+      "audit_summary": "The Razorpay Subscriptions integration audit for Sugarfit has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout), Fetch status of Payment_id and Subscription_id, Consumes Error Codes—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for UPI and Cards is robust, supported by fully integrated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770294398294",
+      "audit_id": "audit_1770294397795",
+      "merchant_name": "Sugarfit",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-05T12:26:38.294Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A"
+      ],
+      "audit_summary": "The Razorpay Subscriptions integration audit for Sugarfit has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout), Fetch status of Payment_id and Subscription_id, Consumes Error Codes—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for UPI and Cards is robust, supported by fully integrated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770299472338",
+      "audit_id": "audit_1770299472197",
+      "merchant_name": "BPCL QR Code (2)",
+      "product_type": "QR Code",
+      "audit_date": "2026-02-05T13:51:12.197Z",
+      "summary_date": "2026-02-05T13:51:12.338Z",
+      "key_findings": [
+        "Downloading Keys: IMPLEMENTED",
+        "Regenerate Keys: N/A",
+        "API: IMPLEMENTED",
+        "Payment Methods: IMPLEMENTED"
+      ],
+      "audit_summary": "The Razorpay QR Code integration audit for BPCL QR Code (2) has resulted in an overall Action Required status, indicating that some critical configurations require attention. Technical validation confirms that critical API implementations—specifically Downloading Keys, Regenerate Keys, API—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for core payment methods is robust, supported by pending optimization webhooks for real-time event handling and Auto-capture settings. However, addressing the identified gaps is strictly recommended before proceeding to live traffic.",
+      "overall_status": "Action Required"
+    },
+    {
+      "id": "sum_1770299549728",
+      "audit_id": "audit_1770299549300",
+      "merchant_name": "Sugarfit",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-05T13:52:29.728Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A"
+      ],
+      "audit_summary": "The Razorpay Subscriptions integration audit for Sugarfit has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout), Fetch status of Payment_id and Subscription_id, Consumes Error Codes—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for UPI and Cards is robust, supported by fully integrated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770299630606",
+      "audit_id": "audit_1770299630330",
+      "merchant_name": "Sugarfit",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-05T13:53:50.606Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A"
+      ],
+      "audit_summary": "The Razorpay Subscriptions integration audit for Sugarfit has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout), Fetch status of Payment_id and Subscription_id, Consumes Error Codes—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for UPI and Cards is robust, supported by fully integrated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770300106804",
+      "audit_id": "audit_1770300106382",
+      "merchant_name": "Sugarfit",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-05T14:01:46.804Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A"
+      ],
+      "audit_summary": "The Razorpay Subscriptions integration audit for Sugarfit has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout), Fetch status of Payment_id and Subscription_id, Consumes Error Codes—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for UPI and Cards is robust, supported by fully integrated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770300540400",
+      "audit_id": "audit_1770300540072",
+      "merchant_name": "Bharat Petroleum Corporation Limited",
+      "product_type": "QR Code",
+      "audit_date": "2026-02-05T14:09:00.072Z",
+      "summary_date": "2026-02-05T14:09:00.400Z",
+      "key_findings": [
+        "Downloading Keys: IMPLEMENTED",
+        "Regenerate Keys: N/A",
+        "API: IMPLEMENTED",
+        "Payment Methods: IMPLEMENTED"
+      ],
+      "audit_summary": "The Razorpay QR Code integration audit for Bharat Petroleum Corporation Limited has resulted in an overall Action Required status, indicating that some critical configurations require attention. Technical validation confirms that critical API implementations—specifically Downloading Keys, Regenerate Keys, API—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for core payment methods is robust, supported by pending optimization webhooks for real-time event handling and Auto-capture settings. However, addressing the identified gaps is strictly recommended before proceeding to live traffic.",
+      "overall_status": "Action Required"
+    },
+    {
+      "id": "sum_1770300607232",
+      "audit_id": "audit_1770300607109",
+      "merchant_name": "Section",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-02-05T14:10:07.109Z",
+      "summary_date": "2026-02-05T14:10:07.232Z",
+      "key_findings": [
+        "Creation of order: Done",
+        "Config/ ID configured: Not Done",
+        "Callback URL/Handler configured: N/A",
+        "OnDismiss handler configured: Not Done"
+      ],
+      "audit_summary": "The Razorpay Standard Checkout integration audit for Section has resulted in an overall Action Required status, indicating that some critical configurations require attention. Technical validation confirms that critical API implementations—specifically Creation of order, Config/ ID configured, Callback URL/Handler configured—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for Cards is robust, supported by fully integrated webhooks for real-time event handling and standard mechanisms. However, addressing the identified gaps is strictly recommended before proceeding to live traffic.",
+      "overall_status": "Action Required"
+    },
+    {
+      "id": "sum_1770301092903",
+      "audit_id": "audit_1770301092643",
+      "merchant_name": "Sugarfit",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-05T14:18:12.903Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A"
+      ],
+      "audit_summary": "The Razorpay Subscriptions integration audit for Sugarfit has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout), Fetch status of Payment_id and Subscription_id, Consumes Error Codes—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for UPI and Cards is robust, supported by fully integrated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770301130875",
+      "audit_id": "audit_1770301130743",
+      "merchant_name": "Sugarfit",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-05T14:18:50.875Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A"
+      ],
+      "audit_summary": "The Razorpay Subscriptions integration audit for Sugarfit has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout), Fetch status of Payment_id and Subscription_id, Consumes Error Codes—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for UPI and Cards is robust, supported by fully integrated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
+      "overall_status": "Pass"
     }
   ]
 }

@@ -62,160 +62,8 @@ const upload = multer({
     },
 });
 
-// Function to search for merchant information using Gemini
-const sleep = (ms) => new Promise(res => setTimeout(res, ms));
-
-async function searchMerchantInfo(merchantName, merchantId, retries = 3) {
-    if (!genAI) return null;
-
-    // 1. Check if already enriched in the LAST 24 HOURS (simple check)
-    const dataPath = path.join(__dirname, "data", "merchant_enrichment_data.json");
-    if (fs.existsSync(dataPath)) {
-        try {
-            const storage = JSON.parse(fs.readFileSync(dataPath, "utf8"));
-            const targetName = merchantName.trim().toLowerCase();
-            const existing = storage.enrichments.find(e =>
-                e.merchant_name && e.merchant_name.trim().toLowerCase() === targetName && e.web_data
-            );
-            if (existing) {
-                console.log(`ℹ️ Merchant "${merchantName}" already enriched. Skipping search.`);
-                return null;
-            }
-        } catch (e) { console.error("Cache read error:", e); }
-    }
-
-    // Use gemini-1.5-flash (Stable)
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
-    const prompt = `Search the web and provide JSON info for company "${merchantName}": website, description, industry, company_size, location, products_services.`;
-
-    for (let i = 0; i < retries; i++) {
-        try {
-            const result = await model.generateContent(prompt);
-            const responseText = result.response.text();
-
-            let parsedData;
-            try {
-                const jsonMatch = responseText.match(/```(?:json)?\s*({[\s\S]*?})\s*```/);
-                parsedData = jsonMatch ? JSON.parse(jsonMatch[1]) : JSON.parse(responseText);
-            } catch (e) {
-                parsedData = { description: responseText };
-            }
-
-            return {
-                merchant_name: merchantName,
-                merchant_id: merchantId,
-                search_date: new Date().toISOString(),
-                web_data: parsedData
-            };
-
-        } catch (error) {
-            if (error.status === 429) {
-                const waitTime = (i + 1) * 20000; // Progressive wait: 20s, 40s, 60s
-                console.warn(`⚠️ Quota exceeded for "${merchantName}". Waiting ${waitTime / 1000}s before retry ${i + 1}/${retries}...`);
-                await sleep(waitTime);
-                continue;
-            }
-            console.error("Search error:", error);
-            break;
-        }
-    }
-    return null;
-}
-// async function searchMerchantInfo(merchantName, merchantId) {
-//     if (!genAI) {
-//         console.log("Gemini API not configured, skipping merchant search");
-//         return null;
-//     }
-
-//     try {
-//         const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-
-//         const prompt = `Search the web and provide comprehensive information about the company "${merchantName}". Include:
-// 1. Official website URL
-// 2. Business description (what they do)
-// 3. Industry/sector
-// 4. Company size (if available)
-// 5. Location/headquarters
-// 6. Key products or services
-
-// Format the response as a JSON object with these exact keys: website, description, industry, company_size, location, products_services. If any information is not available, use "Not found" as the value.`;
-
-//         const result = await model.generateContent(prompt);
-//         const responseText = result.response.text();
-
-//         // Try to parse JSON from response
-//         let parsedData;
-//         try {
-//             // Extract JSON from markdown code blocks if present
-//             const jsonMatch = responseText.match(/```(?:json)?\s*({[\s\S]*?})\s*```/);
-//             if (jsonMatch) {
-//                 parsedData = JSON.parse(jsonMatch[1]);
-//             } else {
-//                 parsedData = JSON.parse(responseText);
-//             }
-//         } catch (parseError) {
-//             // If parsing fails, store the raw response
-//             parsedData = {
-//                 raw_response: responseText,
-//                 website: "Not found",
-//                 description: "Not found",
-//                 industry: "Not found",
-//                 company_size: "Not found",
-//                 location: "Not found",
-//                 products_services: "Not found"
-//             };
-//         }
-
-//         return {
-//             merchant_name: merchantName,
-//             merchant_id: merchantId,
-//             search_date: new Date().toISOString(),
-//             web_data: parsedData
-//         };
-//     } catch (error) {
-//         console.error("Error searching merchant info:", error);
-//         return {
-//             merchant_name: merchantName,
-//             merchant_id: merchantId,
-//             search_date: new Date().toISOString(),
-//             error: error.message,
-//             web_data: null
-//         };
-//     }
-// }
 
 // Function to store merchant enrichment data
-function storeMerchantEnrichment(enrichmentData) {
-    if (!enrichmentData) return;
-
-    const dataPath = path.join(__dirname, "data", "merchant_enrichment_data.json");
-    let storage = { enrichments: [] };
-
-    if (fs.existsSync(dataPath)) {
-        try {
-            const fileData = JSON.parse(fs.readFileSync(dataPath, "utf8"));
-            if (fileData) storage = fileData;
-        } catch (e) {
-            console.error("Error reading merchant enrichment file:", e);
-        }
-    }
-
-    // Check for existing entry to update instead of push
-    const existingIndex = storage.enrichments.findIndex(e => e.merchant_name === enrichmentData.merchant_name);
-
-    if (existingIndex >= 0) {
-        enrichmentData.id = storage.enrichments[existingIndex].id;
-        storage.enrichments[existingIndex] = enrichmentData;
-        console.log(`✅ Merchant enrichment data UPDATED for: ${enrichmentData.merchant_name}`);
-    } else {
-        enrichmentData.id = storage.enrichments.length + 1;
-        storage.enrichments.push(enrichmentData);
-        console.log(`✅ Merchant enrichment data STORED for: ${enrichmentData.merchant_name}`);
-    }
-
-    fs.writeFileSync(dataPath, JSON.stringify(storage, null, 2));
-}
 
 app.post("/upload", (req, res) => {
     upload.single("checklist")(req, res, async function (err) {
@@ -238,20 +86,33 @@ app.post("/upload", (req, res) => {
         console.log("File uploaded successfully:", req.file);
         console.log("Request Body:", req.body);
 
-        // Extract Merchant Name
+        // Centralized Merchant Name Extraction
         let merchantName = null;
-        let merchantInfo = "Info pending...";
+        let merchantId = null;
+        let merchantInfo = null;
 
         try {
-            merchantName = merchantService.extractMerchantName(req.file.path);
+            merchantName = merchantService.extractMerchantName(req.file.path, req.file.originalname);
+            console.log(`[Extraction] Initial extracted name: ${merchantName || 'failing'}`);
+
             if (merchantName) {
-                console.log(`Extracted Merchant Name: ${merchantName}`);
-                // Fire and forget (or await if fast enough) - basic scraping is slow, so maybe fire and forget?
-                // But for now let's await to see results immediately for testing.
-                // In production, use a queue.
-                merchantInfo = await merchantService.fetchMerchantInfo(merchantName);
+                console.log(`✅ Extracted Merchant Name: ${merchantName}`);
+                // Await enrichment to ensure it's stored and available
+                try {
+                    merchantId = null; // Reset for each upload
+                    merchantInfo = await merchantService.fetchMerchantInfo(merchantName);
+                    console.log(`✅ Merchant info enriched for: ${merchantName}`);
+                    if (merchantInfo && merchantInfo.merchant_name) {
+                        // Use the official company name from enrichment if available
+                        merchantName = merchantInfo.merchant_name;
+                        merchantId = merchantInfo.merchant_id || null;
+                    }
+                } catch (enrichError) {
+                    console.error("Enrichment error:", enrichError);
+                    // Don't fail the whole request for enrichment error
+                }
             } else {
-                console.log("Could not extract merchant name.");
+                console.log("⚠️ Could not extract merchant name from Excel or Filename.");
             }
         } catch (extractionError) {
             console.error("Error in merchant extraction process:", extractionError);
@@ -329,7 +190,7 @@ app.post("/upload", (req, res) => {
                     const isHeaderRow = colB === "Audit Checklist" || colB === "Tech Checklist" || colC === "Configs";
 
                     const lowerA = colA.toLowerCase();
-                    if (lowerA.includes("mx name")) {
+                    if (lowerA.includes("mx name") || lowerA.includes("customer name")) {
                         const val = colA.split(":").slice(1).join(":").trim();
                         if (val) result.merchant_info.name = val;
                         else if (colB && !isHeaderRow) result.merchant_info.name = colB;
@@ -337,13 +198,17 @@ app.post("/upload", (req, res) => {
                     if (lowerA.includes("mid")) {
                         const val = colA.split(":").slice(1).join(":").trim();
                         if (val) result.merchant_info.mid = val;
-                        // Avoid picking up section numbers like "1. Methods Enabled" as MID
                         else if (colB && !isHeaderRow && !colB.match(/^\d+\./)) result.merchant_info.mid = colB;
                     }
                     if (lowerA.includes("date of audit")) {
                         const val = colA.split(":").slice(1).join(":").trim();
                         if (val) result.merchant_info.date = val;
                         else if (colB && !isHeaderRow && !colB.match(/^\d+\./)) result.merchant_info.date = colB;
+                    }
+
+                    // Fallback to centralized name if still empty
+                    if ((!result.merchant_info.name || result.merchant_info.name === "Audit Checklist" || result.merchant_info.name === "Unknown") && merchantName) {
+                        result.merchant_info.name = merchantName;
                     }
 
                     if (isHeaderRow) continue;
@@ -459,9 +324,14 @@ app.post("/upload", (req, res) => {
 
                     // Safe Metadata Extraction
                     const lowerA = colA.toLowerCase();
-                    if (lowerA.includes("mx name")) sessionRecord.merchant_name = colA.split(":")[1]?.trim() || colB;
+                    if (lowerA.includes("mx name") || lowerA.includes("customer name")) sessionRecord.merchant_name = colA.split(":")[1]?.trim() || colB;
                     if (lowerA.includes("mid")) sessionRecord.merchant_id = colA.split(":")[1]?.trim() || colB;
                     if (lowerA.includes("date of audit")) sessionRecord.audit_date = colA.split(":")[1]?.trim() || colB;
+
+                    // Fallback to centralized name
+                    if ((!sessionRecord.merchant_name || sessionRecord.merchant_name === "Audit Checklist") && merchantName) {
+                        sessionRecord.merchant_name = merchantName;
+                    }
 
                     if (row.join(" ").includes("Additional Comments")) currentCategory = "Additional Comments";
 
@@ -504,6 +374,10 @@ app.post("/upload", (req, res) => {
                             }
                         }
                     }
+                }
+
+                if ((!sessionRecord.merchant_name || sessionRecord.merchant_name === "Audit Checklist" || sessionRecord.merchant_name === "Unknown") && merchantName) {
+                    sessionRecord.merchant_name = merchantName;
                 }
 
                 // 4. Fill in entries for ANY canonical items that were missing in the uploaded file (Ensure 26 items)
@@ -650,10 +524,21 @@ app.post("/upload", (req, res) => {
                         if (!cell) return;
                         const str = String(cell).trim();
                         const lower = str.toLowerCase();
-                        if (lower.includes("mx name")) sessionRecord.merchant_name = str.split(":")[1]?.trim() || String(row[cellIdx + 1] || "").trim() || sessionRecord.merchant_name;
-                        if (lower.includes("mid")) sessionRecord.merchant_id = str.split(":")[1]?.trim() || String(row[cellIdx + 1] || "").trim() || sessionRecord.merchant_id;
-                        if (lower.includes("date of audit")) sessionRecord.audit_date = str.split(":")[1]?.trim() || String(row[cellIdx + 1] || "").trim() || sessionRecord.audit_date;
+                        if (lower.includes("mx name") || lower.includes("customer name")) {
+                            sessionRecord.merchant_name = str.split(":")[1]?.trim() || String(row[cellIdx + 1] || "").trim() || sessionRecord.merchant_name;
+                        }
+                        if (lower.includes("mid")) {
+                            sessionRecord.merchant_id = str.split(":")[1]?.trim() || String(row[cellIdx + 1] || "").trim() || sessionRecord.merchant_id;
+                        }
+                        if (lower.includes("date of audit")) {
+                            sessionRecord.audit_date = str.split(":")[1]?.trim() || String(row[cellIdx + 1] || "").trim() || sessionRecord.audit_date;
+                        }
                     });
+
+                    // Fallback to centralized name
+                    if ((!sessionRecord.merchant_name || sessionRecord.merchant_name === "Audit Checklist") && merchantName) {
+                        sessionRecord.merchant_name = merchantName;
+                    }
 
                     if (colB && colB.match(/^\d+\./)) currentCategoryForSub = colB;
                     if (row.join(" ").includes("Additional Comments")) currentCategoryForSub = "Additional Comments";
@@ -711,6 +596,10 @@ app.post("/upload", (req, res) => {
                     checklist_content: checklistResp
                 };
 
+                if ((!sessionRecord.merchant_name || sessionRecord.merchant_name === "Audit Checklist" || sessionRecord.merchant_name === "Unknown") && merchantName) {
+                    sessionRecord.merchant_name = merchantName;
+                }
+
                 const subAuditsDir = path.join(__dirname, "data", "subscription_audits");
                 if (!fs.existsSync(subAuditsDir)) fs.mkdirSync(subAuditsDir, { recursive: true });
                 const safeMxNameSub = sessionRecord.merchant_name.replace(/[^a-z0-9]/gi, '_').toLowerCase() || "unknown";
@@ -739,11 +628,11 @@ app.post("/upload", (req, res) => {
                     const colD = row[3] ? String(row[3]).trim() : "";
 
                     const lowerA = colA.toLowerCase();
-                    if (lowerA.startsWith("mx name")) result.audit_metadata.merchant_name = colA.split(":")[1]?.trim() || colB;
-                    if (lowerA.startsWith("mid")) result.audit_metadata.merchant_id = colA.split(":")[1]?.trim() || colB;
-                    if (lowerA.startsWith("date of audit")) result.audit_metadata.date = colA.split(":")[1]?.trim() || colB;
+                    if (lowerA.includes("mx name") || lowerA.includes("customer name")) result.audit_metadata.merchant_name = colA.split(":")[1]?.trim() || colB || merchantName;
+                    if (lowerA.includes("mid")) result.audit_metadata.merchant_id = colA.split(":")[1]?.trim() || colB;
+                    if (lowerA.includes("date of audit")) result.audit_metadata.date = colA.split(":")[1]?.trim() || colB;
 
-                    if (lowerA.startsWith("mx name") || lowerA.startsWith("mid") || lowerA.startsWith("date of audit")) continue;
+                    if (lowerA.includes("mx name") || lowerA.includes("customer name") || lowerA.includes("mid") || lowerA.includes("date of audit")) continue;
 
                     if ((!colA && !colB && !colC && !colD) || colA === "Tech Checklist" || colA === "Audit Checklist") continue;
 
@@ -775,6 +664,11 @@ app.post("/upload", (req, res) => {
                         }
                         currentSection.configs.push(configItem);
                     }
+                }
+
+                // Final safety fallback
+                if (!result.audit_metadata.merchant_name && merchantName) {
+                    result.audit_metadata.merchant_name = merchantName;
                 }
             }
 
@@ -892,8 +786,8 @@ app.post("/upload", (req, res) => {
                 }
 
                 let merchantId = "";
-                let merchantName = "";
-                let auditDate = "";
+                let mxName = "";
+                let mxDate = "";
 
                 // Metadata Loop
                 for (let i = 0; i < rawData.length; i++) {
@@ -901,17 +795,17 @@ app.post("/upload", (req, res) => {
                     const colA = row[0] ? String(row[0]).trim() : "";
                     const colB = row[1] ? String(row[1]).trim() : "";
                     const lowerA = colA.toLowerCase();
-                    if (lowerA.includes("mx name")) merchantName = colA.split(":")[1]?.trim() || colB;
+                    if (lowerA.includes("mx name")) mxName = colA.split(":")[1]?.trim() || colB;
                     if (lowerA.includes("mid")) merchantId = colA.split(":")[1]?.trim() || colB;
-                    if (lowerA.includes("date of audit")) auditDate = colA.split(":")[1]?.trim() || colB;
+                    if (lowerA.includes("date of audit")) mxDate = colA.split(":")[1]?.trim() || colB;
                 }
 
                 const sessionId = ncappsStorage.ncapps_audits.length + 1;
                 const sessionRecord = {
                     id: sessionId,
                     merchant_id: merchantId || "Unknown",
-                    merchant_name: merchantName || "Audit Checklist",
-                    audit_date: auditDate || "",
+                    merchant_name: mxName || merchantName || "Audit Checklist",
+                    audit_date: mxDate || "",
                     created_at: new Date().toISOString()
                 };
                 ncappsStorage.ncapps_audits.push(sessionRecord);
@@ -1120,9 +1014,9 @@ app.post("/upload", (req, res) => {
                 }
 
                 // Metadata Extraction - search ALL cells in a robust way
-                let merchantId = "";
-                let merchantName = "";
-                let auditDate = "";
+                let mxName = "";
+                let mxId = "";
+                let mxDate = "";
 
                 for (let i = 0; i < Math.min(rawData.length, 50); i++) {
                     const row = rawData[i];
@@ -1134,13 +1028,13 @@ app.post("/upload", (req, res) => {
                         const val = str.split(":")[1]?.trim() || String(row[idx + 1] || "").trim();
 
                         if (lower.includes("mx name") || lower.includes("merchant name")) {
-                            merchantName = val || merchantName;
+                            mxName = val || mxName;
                         }
                         if (lower.includes("mid") || lower.includes("merchant id") || (lower.includes("id") && lower.length < 5)) {
-                            merchantId = val || merchantId;
+                            mxId = val || mxId;
                         }
                         if (lower.includes("date of audit") || (lower.includes("date") && !lower.includes("update") && !lower.includes("create") && !/id|key/i.test(lower))) {
-                            auditDate = val || auditDate;
+                            mxDate = val || mxDate;
                         }
                     });
                 }
@@ -1149,9 +1043,9 @@ app.post("/upload", (req, res) => {
                 const sessionRecord = {
                     id: sessionId,
                     product: productType,
-                    merchant_id: merchantId || "Unknown",
-                    merchant_name: merchantName || "Audit Checklist",
-                    audit_date: auditDate || "",
+                    merchant_id: mxId || merchantId || "Unknown",
+                    merchant_name: (mxName && mxName !== "Audit Checklist" && mxName !== "Unknown") ? mxName : (merchantName || "Audit Checklist"),
+                    audit_date: mxDate || "",
                     created_at: new Date().toISOString()
                 };
                 goliveStorage.golive_audits.push(sessionRecord);
@@ -1278,26 +1172,26 @@ app.post("/upload", (req, res) => {
                     }));
                 }
 
-                let merchantId = "";
-                let merchantName = "";
-                let auditDate = "";
+                let mxId = "";
+                let mxName = "";
+                let mxDate = "";
 
                 for (let i = 0; i < rawData.length; i++) {
                     const row = rawData[i];
                     const colA = row[0] ? String(row[0]).trim() : "";
                     const colB = row[1] ? String(row[1]).trim() : "";
                     const lowerA = colA.toLowerCase();
-                    if (lowerA.includes("mx name")) merchantName = colA.split(":")[1]?.trim() || colB;
-                    if (lowerA.includes("mid")) merchantId = colA.split(":")[1]?.trim() || colB;
-                    if (lowerA.includes("date of audit")) auditDate = colA.split(":")[1]?.trim() || colB;
+                    if (lowerA.includes("mx name")) mxName = colA.split(":")[1]?.trim() || colB;
+                    if (lowerA.includes("mid")) mxId = colA.split(":")[1]?.trim() || colB;
+                    if (lowerA.includes("date of audit")) mxDate = colA.split(":")[1]?.trim() || colB;
                 }
 
                 const sessionId = affordabilityStorage.affordability_audits.length + 1;
                 const sessionRecord = {
                     id: sessionId,
-                    merchant_id: merchantId || "Unknown",
-                    merchant_name: merchantName || "Audit Checklist",
-                    audit_date: auditDate || "",
+                    merchant_id: mxId || merchantId || "Unknown",
+                    merchant_name: (mxName && mxName !== "Audit Checklist" && mxName !== "Unknown") ? mxName : (merchantName || "Audit Checklist"),
+                    audit_date: mxDate || "",
                     created_at: new Date().toISOString()
                 };
                 affordabilityStorage.affordability_audits.push(sessionRecord);
@@ -1512,9 +1406,9 @@ app.post("/upload", (req, res) => {
                 }
 
                 // Metadata Extraction (Scan first 20 rows)
-                let merchantId = "";
-                let merchantName = "";
-                let auditDate = "";
+                let mxId = "";
+                let mxName = "";
+                let mxDate = "";
 
                 for (let i = 0; i < Math.min(rawData.length, 20); i++) {
                     const row = rawData[i];
@@ -1524,17 +1418,17 @@ app.post("/upload", (req, res) => {
                     const colB = row[1] ? String(row[1]).trim() : "";
                     const lowerA = colA.toLowerCase();
 
-                    if (lowerA.includes("mx name")) merchantName = colA.split(":")[1]?.trim() || colB;
-                    if (lowerA.includes("mid")) merchantId = colA.split(":")[1]?.trim() || colB;
-                    if (lowerA.includes("date of audit")) auditDate = colA.split(":")[1]?.trim() || colB;
+                    if (lowerA.includes("mx name")) mxName = colA.split(":")[1]?.trim() || colB;
+                    if (lowerA.includes("mid")) mxId = colA.split(":")[1]?.trim() || colB;
+                    if (lowerA.includes("date of audit")) mxDate = colA.split(":")[1]?.trim() || colB;
                 }
 
                 const sessionId = qrStorage.qr_audits.length + 1;
                 const sessionRecord = {
                     id: sessionId,
-                    merchant_id: merchantId || "Unknown",
-                    merchant_name: merchantName || "Audit Checklist",
-                    audit_date: auditDate || "",
+                    merchant_id: mxId || merchantId || "Unknown",
+                    merchant_name: (mxName && mxName !== "Audit Checklist" && mxName !== "Unknown") ? mxName : (merchantName || "Audit Checklist"),
+                    audit_date: mxDate || "",
                     created_at: new Date().toISOString()
                 };
                 qrStorage.qr_audits.push(sessionRecord);
@@ -1662,38 +1556,14 @@ app.post("/upload", (req, res) => {
                 message: "Checklist uploaded and data stored successfully",
                 file: req.file,
                 extractedSections: extractedCount,
+                merchantName: merchantName,
+                merchantEnrichment: merchantInfo,
                 data: result,
                 diagramPath: diagramPath
             });
 
-            // Trigger merchant web search for ALL checklist types (async, don't block response)
-            let merchantName = null;
-            let merchantId = null;
-
-            // Extract merchant info based on result structure
-            if (result && result.audit_metadata) {
-                merchantName = result.audit_metadata.mx_name || result.audit_metadata.merchant_name;
-                merchantId = result.audit_metadata.mid || result.audit_metadata.merchant_id;
-            } else if (result && result.merchant_info) {
-                // For CAW and similar formats
-                merchantName = result.merchant_info.name;
-                merchantId = result.merchant_info.mid;
-            }
-
-            // Trigger search if valid merchant found
-            if (merchantName && merchantName !== "Unknown" && merchantName !== "Audit Checklist" && merchantName.trim() !== "") {
-                console.log(`🔍 Triggering merchant web search for: ${merchantName}`);
-                // Run search asynchronously without blocking the response
-                searchMerchantInfo(merchantName, merchantId)
-                    .then(enrichmentData => {
-                        if (enrichmentData) {
-                            storeMerchantEnrichment(enrichmentData);
-                        }
-                    })
-                    .catch(err => {
-                        console.error("Merchant enrichment error (non-blocking):", err);
-                    });
-            }
+            // Enrichment search is now triggered at the start of the handler
+            // for better performance and consistency.
 
             // Trigger audit summarization (async, non-blocking)
             if (result && (merchantName || merchantId)) {
@@ -1720,34 +1590,31 @@ app.post("/upload", (req, res) => {
             if (result && (merchantName || merchantId)) {
                 console.log(`📄 Triggering FRD generation for: ${merchantName || merchantId}`);
 
-                // Fetch relevant enrichment data for the FRD
-                const getEnrichment = async () => {
-                    const dataPath = path.join(__dirname, "data", "merchant_enrichment_data.json");
-                    if (fs.existsSync(dataPath)) {
-                        try {
-                            const storage = JSON.parse(fs.readFileSync(dataPath, "utf8"));
-                            const targetName = merchantName ? merchantName.trim().toLowerCase() : "";
-                            return storage.enrichments.find(e =>
-                                e.merchant_name && e.merchant_name.trim().toLowerCase() === targetName
-                            );
-                        } catch (e) { return null; }
-                    }
-                    return null;
-                };
-
-                // Wait a bit for the async searchMerchantInfo to potentially finish if it's running
-                // or just fetch from cache if it was already stored. 
-                // Since searchMerchantInfo is async and non-blocking, we'll try to get data after a short delay
-                // or just use whatever is in cache.
-                setTimeout(async () => {
+                // Use the already fetched merchantInfo or attempt to fall back to cache
+                const generateFRDProcess = async () => {
                     try {
-                        const enrichmentData = await getEnrichment();
-                        const frdPaths = await frdGenerator.generateFRD(result, enrichmentData, productType, diagramPath);
+                        let finalEnrichment = merchantInfo;
+
+                        if (!finalEnrichment) {
+                            const dataPath = path.join(__dirname, "data", "merchant_enrichment_data.json");
+                            if (fs.existsSync(dataPath)) {
+                                const storage = JSON.parse(fs.readFileSync(dataPath, "utf8"));
+                                const targetName = merchantName ? merchantName.trim().toLowerCase() : "";
+                                finalEnrichment = storage.enrichments.find(e =>
+                                    e.merchant_name && e.merchant_name.trim().toLowerCase() === targetName
+                                );
+                            }
+                        }
+
+                        const frdPaths = await frdGenerator.generateFRD(result, finalEnrichment, productType, diagramPath);
                         console.log(`✅ FRD files generated:`, frdPaths);
                     } catch (frdError) {
                         console.error("FRD generation error:", frdError);
                     }
-                }, 2000); // 2 second delay to wait for Gemini enrichment if running
+                };
+
+                // Run FRD generation (still non-blocking for the main response)
+                generateFRDProcess();
             }
 
         } catch (parseError) {

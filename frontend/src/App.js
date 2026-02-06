@@ -6,6 +6,8 @@ function App() {
   const [selectedProducts, setSelectedProducts] = useState([]);
   const fileInputRef = useRef(null);
   const [message, setMessage] = useState("");
+  const [merchantEnrichment, setMerchantEnrichment] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const products = [
     "Route",
@@ -27,6 +29,7 @@ function App() {
 
   const handleFileChange = async (e) => {
     setMessage(""); // Clear previous messages
+    setMerchantEnrichment(null);
     const file = e.target.files[0];
     if (!file) return;
 
@@ -59,6 +62,7 @@ function App() {
     formData.append("product", selectedProducts[0]);
     formData.append("checklist", file);
 
+    setIsLoading(true);
     try {
       const res = await axios.post(
         "http://localhost:5001/upload",
@@ -66,9 +70,18 @@ function App() {
       );
       console.log("Upload response:", res.data);
       setMessage(res.data.message);
+      if (res.data.merchantEnrichment) {
+        console.log("Setting merchant enrichment:", res.data.merchantEnrichment);
+        setMerchantEnrichment(res.data.merchantEnrichment);
+      } else {
+        console.warn("No merchant enrichment found in response");
+        setMerchantEnrichment(null);
+      }
     } catch (error) {
       console.error("Upload error:", error);
       setMessage(error.response?.data?.message || "Upload failed");
+    } finally {
+      setIsLoading(false);
     }
   };
 

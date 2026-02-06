@@ -20,3 +20,10 @@ backend/uploads/
 # IDEs
 .vscode/
 .idea/
+
+# Generated Data
+backend/data/golive_audits/
+backend/data/qr_code_audits/
+backend/data/subscription_audits/
+backend/diagrams/
+backend/generated_frds/

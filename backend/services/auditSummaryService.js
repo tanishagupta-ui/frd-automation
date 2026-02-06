@@ -24,7 +24,7 @@ if (!fs.existsSync(SUMMARY_DATA_FILE)) {
  */
 async function generateAndStoreSummary(auditResult, metadata) {
     // Extract structured data first to give Gemini better context
-    const extractedData = extractAuditData(auditResult);
+    const extractedData = extractAuditData(auditResult, metadata);
 
     // Check if we should use AI
     let summaryBody = null;
@@ -113,7 +113,7 @@ async function generateAndStoreSummary(auditResult, metadata) {
     return fullSummary;
 }
 
-function extractAuditData(auditResult) {
+function extractAuditData(auditResult, metadata = {}) {
     const keyFindings = [];
     const paymentMethods = new Set();
     let captureSettings = "standard mechanisms";
@@ -201,8 +201,8 @@ function extractAuditData(auditResult) {
         keyFindings.push("All Razorpay integration checks completed");
     }
 
-    const merchantName = auditResult.audit_metadata?.merchant_name || auditResult.merchant_info?.name || "the merchant";
-    const productType = auditResult.product || "their payment integration";
+    const merchantName = metadata.merchant_name || auditResult.audit_metadata?.merchant_name || auditResult.merchant_info?.name || "the merchant";
+    const productType = metadata.product_type || auditResult.product || "their payment integration";
 
     return {
         key_findings: keyFindings,

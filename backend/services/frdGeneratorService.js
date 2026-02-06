@@ -48,7 +48,9 @@ async function generateFRD(auditResult, enrichmentData, productType, diagramPath
         markdown += `### 1.2 Industry & Location\n`;
         markdown += `- **Industry:** ${webData.industry || 'Not specified'}\n`;
         markdown += `- **Location:** ${webData.location || 'Not specified'}\n`;
-        markdown += `- **Website:** ${webData.website || 'Not specified'}\n\n`;
+        markdown += `- **Website:** ${webData.website || 'Not specified'}\n`;
+        markdown += `- **Business Model:** ${webData.business_model || 'Not specified'}\n`;
+        markdown += `- **Target Audience:** ${webData.target_audience || 'Not specified'}\n\n`;
 
         // 2. Technical Specifications
         markdown += `## 2. Technical Specifications\n\n`;
