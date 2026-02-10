@@ -36,7 +36,7 @@ async function generateAndStoreSummary(auditResult, metadata) {
             const findingsList = extractedData.key_findings.map(f => `- ${f}`).join("\n");
 
             const prompt = `
-                You are a Razorpay payment integration auditor. Analyze the provided audit findings and create a professional, narrative audit summary.
+                You are a Razorpay payment integration auditor. Analyze the provided audit findings and create a professional, bulleted technical audit summary.
                 
                 MERCHANT: ${extractedData.merchant_name}
                 PRODUCT: ${extractedData.product_type}
@@ -47,22 +47,23 @@ async function generateAndStoreSummary(auditResult, metadata) {
                 PAYMENT METHODS: ${Array.from(extractedData.payment_methods).join(", ")}
                 WEBHOOK STATUS: ${extractedData.webhook_status}
                 CAPTURE SETTINGS: ${extractedData.capture_settings}
+                TEST IDs FOUND: ${extractedData.test_ids.join(", ") || "None"}
                 
                 IMPORTANT: 
-                1. Write a SINGLE, PROFESSIONAL paragraph (5-8 sentences).
-                2. Tone: Formal, authoritative, and flowy. Avoid robotic lists.
-                3. Structure to follow (emulate this style):
-                   - Start with: "The Razorpay [Product] integration audit for [Merchant] has resulted in an overall [Status] status..."
-                   - specific technical details: "Technical validation confirms that critical API implementations—specifically [mention key checks found]—are [status description]."
-                   - Balance: "While [mention any N/A or minor issues], the payment infrastructure for [Payment Methods] is robust..."
-                   - Support: "...supported by [Webhook Status] webhooks for real-time event handling..."
-                   - Conclusion: "With all reviewed security protocols verified, the integration is [stable/optimized/etc]."
-                4. DO NOT include recommendations. ONLY factual statements.
+                1. Write 5-8 PROFESSIONAL BULLET POINTS.
+                2. Tone: Formal, authoritative, and concise.
+                3. Content to include (emulate this style):
+                   - Observation of user journey (e.g. "The user selects a policy/service on the platform.")
+                   - Specific webhook events and their purpose.
+                   - Auto-capture settings and where they are configured.
+                   - Mention of error handling kits shared.
+                   - A bullet for "Successful Test IDs" listing pay_IDs found (Group by method like UPI, Card, NB if possible).
+                4. DO NOT include recommendations. ONLY technical observations.
                 
                 JSON response format:
                 {
                     "key_findings": ${JSON.stringify(extractedData.key_findings.slice(0, 4))},
-                    "audit_summary": "The professional narrative summary...",
+                    "audit_summary": "- Bullet 1\\n- Bullet 2\\n- Bullet 3...",
                     "overall_status": "${extractedData.overall_status}"
                 }
             `;
@@ -116,6 +117,7 @@ async function generateAndStoreSummary(auditResult, metadata) {
 function extractAuditData(auditResult, metadata = {}) {
     const keyFindings = [];
     const paymentMethods = new Set();
+    const testIds = [];
     let captureSettings = "standard mechanisms";
     let webhookStatus = "evaluated";
     let overallStatus = "Pass";
@@ -130,6 +132,10 @@ function extractAuditData(auditResult, metadata = {}) {
         if (itemText.includes("card") || status.includes("card")) paymentMethods.add("Cards");
         if (itemText.includes("netbanking") || status.includes("netbanking")) paymentMethods.add("Netbanking");
         if (itemText.includes("wallet") || status.includes("wallet")) paymentMethods.add("Wallets");
+
+        // Extract test IDs (pay_...)
+        const payMatch = comment.match(/pay_[a-z0-9]+/gi) || status.match(/pay_[a-z0-9]+/gi);
+        if (payMatch) testIds.push(...payMatch);
 
         // Track capture settings
         if (itemText.includes("capture")) {
@@ -211,35 +217,28 @@ function extractAuditData(auditResult, metadata = {}) {
         webhook_status: webhookStatus,
         overall_status: overallStatus,
         merchant_name: merchantName,
-        product_type: productType
+        product_type: productType,
+        test_ids: [...new Set(testIds)]
     };
 }
 
 function generateFallbackSummary(extractedData) {
-    const { key_findings, payment_methods, capture_settings, webhook_status, overall_status, merchant_name, product_type } = extractedData;
+    const { key_findings, payment_methods, capture_settings, webhook_status, overall_status, merchant_name, product_type, test_ids } = extractedData;
 
-    // Ensure we handle empty sets/arrays safely
-    const methodsStr = payment_methods.size > 0 ? Array.from(payment_methods).join(" and ") : "core payment methods";
+    const methodsStr = payment_methods.size > 0 ? Array.from(payment_methods).join(", ") : "core payment methods";
+    const testIdsStr = test_ids.length > 0 ? test_ids.join(", ") : "Validated in test environment";
 
-    // Create a natural language list of findings for the "Technical validation" sentence
-    // Example: "the Fetch status for Payment and Subscription IDs and Error Code consumption"
-    const findingsNatural = key_findings.slice(0, 3)
-        .map(f => {
-            // Remove the status part (check name only) for the middle of the sentence
-            return f.split(':')[0].trim();
-        })
-        .join(", ");
-
-    const narrativeSummary = `The Razorpay ${product_type} integration audit for ${merchant_name} has resulted in an overall ${overall_status} status${overall_status === 'Pass' ? ', confirming the system is production-ready and aligned with best practices' : ', indicating that some critical configurations require attention'}. ` +
-        `Technical validation confirms that critical API implementations—specifically ${findingsNatural || "the reviewed checkpoints"}—are fully operational. ` +
-        `While some specific checks may be N/A depending on the flows, the payment infrastructure for ${methodsStr} is robust, supported by ${webhook_status} webhooks for real-time event handling and ${capture_settings}. ` +
-        (overall_status === "Pass" ?
-            `With all reviewed security protocols and payment configurations verified as "Done", the integration is stable and optimized for live transaction processing.` :
-            `However, addressing the identified gaps is strictly recommended before proceeding to live traffic.`);
+    const bullets = [
+        `- The user completes the payment journey on the ${merchant_name} platform.`,
+        `- Technical validation confirms critical API implementations are ${overall_status === 'Pass' ? 'fully stable' : 'under review'}.`,
+        `- Payment status is determined via webhooks for ${methodsStr}.`,
+        `- ${capture_settings.charAt(0).toUpperCase() + capture_settings.slice(1)} are active as per dashboard configuration.`,
+        `- Successful Test IDs: ${testIdsStr}.`
+    ];
 
     return {
         key_findings: key_findings.slice(0, 4),
-        audit_summary: narrativeSummary,
+        audit_summary: bullets.join("\n"),
         overall_status: overall_status
     };
 }

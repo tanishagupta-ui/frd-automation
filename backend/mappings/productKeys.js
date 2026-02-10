@@ -1,6 +1,7 @@
 const PRODUCT_KEYS = {
     "Route": "route",
     "Subscription": "subscriptions",
+    "Subscriptions": "subscriptions",
     "Smart Collect": "smart_collect",
     "Charge at Will": "caw",
     "Standard Checkout": "standard_checkout",

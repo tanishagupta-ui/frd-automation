@@ -1,0 +1,325 @@
+{
+  "product": "Subscriptions",
+  "audit_metadata": {
+    "mx_name": "",
+    "mid": "RkEjszisfeRggX",
+    "date": ""
+  },
+  "checklist_content": [
+    {
+      "category": "1. Methods Enabled",
+      "checks": [
+        {
+          "item": "E Mandate",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        },
+        {
+          "item": "UPI Autopay",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        },
+        {
+          "item": "Card Mandates",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        },
+        {
+          "item": "Paper Nach",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "2. Plan creation",
+      "checks": [
+        {
+          "item": "Period",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        },
+        {
+          "item": "Interval",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "3. Subscription creation",
+      "checks": [
+        {
+          "item": "Plan_id",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        },
+        {
+          "item": "total_count",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        },
+        {
+          "item": "Addons",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "3. Checkout configuration",
+      "checks": [
+        {
+          "item": "Handler Function",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        },
+        {
+          "item": "Callback function [w/o Redirect]",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        },
+        {
+          "item": "Deeplink Handling (S2S Checkout)",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        },
+        {
+          "item": "consent_to_save_card / save",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "4. For Successful transactions",
+      "checks": [
+        {
+          "item": "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout)",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        },
+        {
+          "item": "Fetch status of Payment_id and Subscription_id",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "5. For Failure transactions",
+      "checks": [
+        {
+          "item": "Consumes Error Codes",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "6. Subscription Management",
+      "checks": [
+        {
+          "item": "Fetch a Plan",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        },
+        {
+          "item": "Fetch a Subscription",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        },
+        {
+          "item": "Cancel a Subscription",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        },
+        {
+          "item": "Update a Subscription",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        },
+        {
+          "item": "Pause a Subscription",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        },
+        {
+          "item": "Resume a Subscription",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "7. Autoacapture Settings",
+      "checks": [
+        {
+          "item": "2 Days for UPI and 3 Days for other methods",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "8. Late Auth Scenarios",
+      "checks": [
+        {
+          "item": "Consumes payment state at capture time",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "9. Verify Payment / Token Status",
+      "checks": [
+        {
+          "item": "Webhooks",
+          "status": "N/A",
+          "hint": "Events:",
+          "comment": ""
+        },
+        {
+          "item": "Fetch payment APIs (Fallback)",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "10. Checkout library, server language, version",
+      "checks": [
+        {
+          "item": "Platform",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        },
+        {
+          "item": "Checkout Type",
+          "status": "N/A",
+          "hint": "Type:",
+          "comment": ""
+        },
+        {
+          "item": "Server language/SDK",
+          "status": "N/A",
+          "hint": "Version:",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "11. Refund Api's",
+      "checks": [
+        {
+          "item": "Using Refund api's",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "12. Recurring Terminals",
+      "checks": [
+        {
+          "item": "upi_icici",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        },
+        {
+          "item": "enach_rbl",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        },
+        {
+          "item": "hitachi / fulcrum",
+          "status": "N/A",
+          "hint": "Others:",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "13. Feature Flags",
+      "checks": [
+        {
+          "item": "Subscription",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        },
+        {
+          "item": "recurring_upi_intent",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        },
+        {
+          "item": "save_vpa",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        },
+        {
+          "item": "allow_dc_recurring",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        },
+        {
+          "item": "tokenization flags for cards",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        },
+        {
+          "item": "allow_billdesk_sihub",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "Additional Comments",
+      "checks": [
+        {
+          "item": "Additional Comments",
+          "status": "N/A",
+          "hint": "",
+          "comment": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+/* FRD Styling for MCHI Exact Design */
+
+body {
+    font-family: 'Calibri', 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #000;
+}
+
+/* All headers should be blue #2F5597 */
+h1,
+h2,
+h3,
+h4 {
+    color: #2F5597;
+    margin-top: 1.2em;
+    margin-bottom: 0.5em;
+}
+
+/* Cover Page Specifics */
+.cover-page {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+h1:first-of-type {
+    font-size: 28pt;
+    margin-top: 0.6em;
+    font-weight: bold;
+}
+
+h2:first-of-type {
+    font-size: 16pt;
+    margin-top: 0.2em;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* Bullet info black */
+li,
+li strong {
+    color: #000 !important;
+}
+
+/* Cover Image Centering */
+img {
+    display: block;
+    margin: 20px auto;
+    max-width: 60%;
+}
+
+/* Ensure images in the flow aren't forced auto margin if they shouldn't be, 
+   but for FRD usually images are centered */
+img {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Header Info (Owner Name etc) */
+p>strong {
+    color: #000;
+}
+
+/* Table of Contents and Lists */
+ul,
+ol {
+    margin-left: 2em;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+.cover-page ul,
+.cover-page ol {
+    margin: 10px auto 0;
+    width: fit-content;
+    text-align: left;
+}
+
+.cover-page li {
+    margin-bottom: 2px;
+    font-size: 10pt;
+}
+
+/* TOC links color if they appear blue */
+a {
+    color: #2F5597;
+    text-decoration: none;
+}
+
+/* Section headers following the cover page should be left aligned */
+h1:not(:first-of-type),
+h2:not(:first-of-type),
+h3,
+h4 {
+    text-align: left;
+}
+
+/* Section Divider */
+hr {
+    border: none;
+    border-top: 10px solid #808080;
+    margin: 15px 0 25px 0;
+}
+
+/* Page Break specifically */
+.page-break {
+    page-break-after: always;
+}
+
+/* Table Styling matching screenshot */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f7f7f7;
+    color: #2F5597;
+}
+
+/* Cover page owner info usually fits better with some margin */
+p:has(strong) {
+    margin-left: 50px;
+}
+
+.cover-page > p,
+.cover-page > ul,
+.cover-page > ol {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cover-page > p {
+    margin-top: 10px;
+}
