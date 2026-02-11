@@ -1079,6 +1079,38 @@
       ],
       "audit_summary": "The Razorpay Subscriptions integration audit for Sugarfit has resulted in an overall Pass status, confirming the system is production-ready and aligned with best practices. Technical validation confirms that critical API implementations—specifically Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout), Fetch status of Payment_id and Subscription_id, Consumes Error Codes—are fully operational. While some specific checks may be N/A depending on the flows, the payment infrastructure for UPI and Cards is robust, supported by fully integrated webhooks for real-time event handling and standard mechanisms. With all reviewed security protocols and payment configurations verified as \"Done\", the integration is stable and optimized for live transaction processing.",
       "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770792244739",
+      "audit_id": "audit_1770792244599",
+      "merchant_name": "Sugarfit",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-11T06:44:04.739Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Sugarfit platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for UPI, Cards.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1770792326312",
+      "audit_id": "audit_1770792326205",
+      "merchant_name": "Sugarfit",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-11T06:45:26.312Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: N/A"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Sugarfit platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for UPI, Cards.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
     }
   ]
 }

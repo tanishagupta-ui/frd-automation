@@ -335,6 +335,20 @@
       "merchant_name": "Sugarfit",
       "audit_date": "7th November",
       "created_at": "2026-02-05T14:18:50.741Z"
+    },
+    {
+      "id": 49,
+      "merchant_id": "",
+      "merchant_name": "Sugarfit",
+      "audit_date": "7th November",
+      "created_at": "2026-02-11T06:44:04.593Z"
+    },
+    {
+      "id": 50,
+      "merchant_id": "",
+      "merchant_name": "Sugarfit",
+      "audit_date": "7th November",
+      "created_at": "2026-02-11T06:45:26.202Z"
     }
   ],
   "subscription_checklist_template": [
@@ -14056,6 +14070,566 @@
     {
       "id": 1920,
       "audit_id": 48,
+      "item_id": 40,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1921,
+      "audit_id": 49,
+      "item_id": 1,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1922,
+      "audit_id": 49,
+      "item_id": 2,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1923,
+      "audit_id": 49,
+      "item_id": 3,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1924,
+      "audit_id": 49,
+      "item_id": 5,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1925,
+      "audit_id": 49,
+      "item_id": 6,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1926,
+      "audit_id": 49,
+      "item_id": 7,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1927,
+      "audit_id": 49,
+      "item_id": 8,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1928,
+      "audit_id": 49,
+      "item_id": 9,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1929,
+      "audit_id": 49,
+      "item_id": 10,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1930,
+      "audit_id": 49,
+      "item_id": 11,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1931,
+      "audit_id": 49,
+      "item_id": 12,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1932,
+      "audit_id": 49,
+      "item_id": 13,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1933,
+      "audit_id": 49,
+      "item_id": 14,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1934,
+      "audit_id": 49,
+      "item_id": 15,
+      "status": "Done",
+      "comment": "sub_RclHY7hxcaS1wD"
+    },
+    {
+      "id": 1935,
+      "audit_id": 49,
+      "item_id": 16,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1936,
+      "audit_id": 49,
+      "item_id": 17,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1937,
+      "audit_id": 49,
+      "item_id": 18,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1938,
+      "audit_id": 49,
+      "item_id": 19,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1939,
+      "audit_id": 49,
+      "item_id": 20,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1940,
+      "audit_id": 49,
+      "item_id": 21,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1941,
+      "audit_id": 49,
+      "item_id": 22,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1942,
+      "audit_id": 49,
+      "item_id": 24,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1943,
+      "audit_id": 49,
+      "item_id": 25,
+      "status": "Done",
+      "comment": "Events: subscription.charged, subscription.authenticated"
+    },
+    {
+      "id": 1944,
+      "audit_id": 49,
+      "item_id": 26,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1945,
+      "audit_id": 49,
+      "item_id": 27,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1946,
+      "audit_id": 49,
+      "item_id": 28,
+      "status": "Done",
+      "comment": "Type: Standard"
+    },
+    {
+      "id": 1947,
+      "audit_id": 49,
+      "item_id": 29,
+      "status": "Done",
+      "comment": "Version: NA"
+    },
+    {
+      "id": 1948,
+      "audit_id": 49,
+      "item_id": 30,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1949,
+      "audit_id": 49,
+      "item_id": 31,
+      "status": "N/A",
+      "comment": "Others if applicable:"
+    },
+    {
+      "id": 1950,
+      "audit_id": 49,
+      "item_id": 32,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1951,
+      "audit_id": 49,
+      "item_id": 33,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1952,
+      "audit_id": 49,
+      "item_id": 34,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1953,
+      "audit_id": 49,
+      "item_id": 35,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1954,
+      "audit_id": 49,
+      "item_id": 36,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1955,
+      "audit_id": 49,
+      "item_id": 37,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1956,
+      "audit_id": 49,
+      "item_id": 38,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1957,
+      "audit_id": 49,
+      "item_id": 39,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1958,
+      "audit_id": 49,
+      "item_id": 4,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1959,
+      "audit_id": 49,
+      "item_id": 23,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1960,
+      "audit_id": 49,
+      "item_id": 40,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1961,
+      "audit_id": 50,
+      "item_id": 1,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1962,
+      "audit_id": 50,
+      "item_id": 2,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1963,
+      "audit_id": 50,
+      "item_id": 3,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1964,
+      "audit_id": 50,
+      "item_id": 5,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1965,
+      "audit_id": 50,
+      "item_id": 6,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1966,
+      "audit_id": 50,
+      "item_id": 7,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1967,
+      "audit_id": 50,
+      "item_id": 8,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1968,
+      "audit_id": 50,
+      "item_id": 9,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1969,
+      "audit_id": 50,
+      "item_id": 10,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1970,
+      "audit_id": 50,
+      "item_id": 11,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1971,
+      "audit_id": 50,
+      "item_id": 12,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1972,
+      "audit_id": 50,
+      "item_id": 13,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1973,
+      "audit_id": 50,
+      "item_id": 14,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1974,
+      "audit_id": 50,
+      "item_id": 15,
+      "status": "Done",
+      "comment": "sub_RclHY7hxcaS1wD"
+    },
+    {
+      "id": 1975,
+      "audit_id": 50,
+      "item_id": 16,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1976,
+      "audit_id": 50,
+      "item_id": 17,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1977,
+      "audit_id": 50,
+      "item_id": 18,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1978,
+      "audit_id": 50,
+      "item_id": 19,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1979,
+      "audit_id": 50,
+      "item_id": 20,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1980,
+      "audit_id": 50,
+      "item_id": 21,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1981,
+      "audit_id": 50,
+      "item_id": 22,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1982,
+      "audit_id": 50,
+      "item_id": 24,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1983,
+      "audit_id": 50,
+      "item_id": 25,
+      "status": "Done",
+      "comment": "Events: subscription.charged, subscription.authenticated"
+    },
+    {
+      "id": 1984,
+      "audit_id": 50,
+      "item_id": 26,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1985,
+      "audit_id": 50,
+      "item_id": 27,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1986,
+      "audit_id": 50,
+      "item_id": 28,
+      "status": "Done",
+      "comment": "Type: Standard"
+    },
+    {
+      "id": 1987,
+      "audit_id": 50,
+      "item_id": 29,
+      "status": "Done",
+      "comment": "Version: NA"
+    },
+    {
+      "id": 1988,
+      "audit_id": 50,
+      "item_id": 30,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1989,
+      "audit_id": 50,
+      "item_id": 31,
+      "status": "N/A",
+      "comment": "Others if applicable:"
+    },
+    {
+      "id": 1990,
+      "audit_id": 50,
+      "item_id": 32,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1991,
+      "audit_id": 50,
+      "item_id": 33,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1992,
+      "audit_id": 50,
+      "item_id": 34,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1993,
+      "audit_id": 50,
+      "item_id": 35,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1994,
+      "audit_id": 50,
+      "item_id": 36,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1995,
+      "audit_id": 50,
+      "item_id": 37,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1996,
+      "audit_id": 50,
+      "item_id": 38,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 1997,
+      "audit_id": 50,
+      "item_id": 39,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1998,
+      "audit_id": 50,
+      "item_id": 4,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 1999,
+      "audit_id": 50,
+      "item_id": 23,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2000,
+      "audit_id": 50,
       "item_id": 40,
       "status": "N/A",
       "comment": ""
