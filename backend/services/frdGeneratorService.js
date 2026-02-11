@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const markdownpdf = require("markdown-pdf");
+const { resolveProductDocs } = require("./productResolver");
 
 const FRD_EXPORTS_DIR = path.join(__dirname, "../generated_frds");
 
@@ -45,7 +46,10 @@ async function generateFRD(
       auditResult.audit_metadata?.mid ||
       "Pending";
 
-        const coverImagePath = path.resolve(__dirname, "../../frontend/public/image.png");
+    const coverImagePath = path.resolve(
+      __dirname,
+      "../../frontend/public/image.png"
+    );
     let markdown = "";
     let pdfMarkdown = "";
 
@@ -61,6 +65,10 @@ async function generateFRD(
       markdown += `![Cover Image](${dataURI})\n\n`;
       pdfMarkdown += `![Cover Image](${coverImagePath})\n\n`;
     }
+
+    const titleText = `# Functional Requirements Document\n## ${merchantName.toUpperCase()}`;
+    markdown += titleText + "\n\n";
+    pdfMarkdown += titleText + "\n\n";
 
     const toc =
       `### Table of Contents\n\n` +
@@ -78,23 +86,19 @@ async function generateFRD(
       `   3.2 [Audit Findings](#32-audit-findings)\n` +
       `   3.3 [Checklist Link](#33-checklist-link)\n` +
       `   3.4 [Best Practice Suggestions](#34-best-practice-suggestions)\n` +
-      `4. [Ready Reckoner Analysis](#4-ready-reckoner-analysis)\n\n`;
-
-    markdown += `</div>\n\n`;
-    pdfMarkdown += `</div>\n\n`;
-
-    markdown += `<div class="page-break"></div>\n<div style="page-break-after:always;"></div>\n\n`;
-    pdfMarkdown += `<div class="page-break"></div>\n<div style="page-break-after:always;"></div>\n\n`;
-
-    const titleText = `# Functional Requirements Document\n## ${merchantName.toUpperCase()}`;
-    markdown += titleText + "\n\n";
-    pdfMarkdown += titleText + "\n\n";
+      `4. [Integration Best Practices](#4-integration-best-practices)\n\n`;
 
     markdown += `- **Owner Name: Rakshita Sharma**\n\n`;
     pdfMarkdown += `- **Owner Name: Rakshita Sharma**\n\n`;
 
     markdown += toc;
     pdfMarkdown += toc;
+
+    markdown += `</div>\n\n`;
+    pdfMarkdown += `</div>\n\n`;
+
+    markdown += `<div class="page-break"></div>\n<div style="page-break-after:always;"></div>\n\n`;
+    pdfMarkdown += `<div class="page-break"></div>\n<div style="page-break-after:always;"></div>\n\n`;
 
     const formattedDate = new Date().toLocaleDateString("en-US", {
       month: "long",
@@ -171,10 +175,31 @@ async function generateFRD(
 
     markdown += `#### 2.3.1 API Documentation\n`;
     pdfMarkdown += `#### 2.3.1 API Documentation\n`;
-    markdown += `- [Charge At Will (CAW)](https://razorpay.com/docs/payments/recurring/charge-at-will/)\n`;
-    markdown += `- [Fetch APIs](https://razorpay.com/docs/api/payments/)\n\n`;
-    pdfMarkdown += `- [Charge At Will (CAW)](https://razorpay.com/docs/payments/recurring/charge-at-will/)\n`;
-    pdfMarkdown += `- [Fetch APIs](https://razorpay.com/docs/api/payments/)\n\n`;
+    let docConfig = null;
+    try {
+      docConfig = resolveProductDocs(productType);
+    } catch (e) {
+      console.warn(`Doc resolve failed for ${productType}: ${e.message}`);
+    }
+
+    if (
+      docConfig &&
+      Array.isArray(docConfig.docs) &&
+      docConfig.docs.length > 0
+    ) {
+      docConfig.docs.forEach((doc) => {
+        const line = `- [${doc.label}](${doc.url})\n`;
+        markdown += line;
+        pdfMarkdown += line;
+      });
+      markdown += `\n`;
+      pdfMarkdown += `\n`;
+    } else {
+      markdown += `- [Charge At Will (CAW)](https://razorpay.com/docs/payments/recurring/charge-at-will/)\n`;
+      markdown += `- [Fetch APIs](https://razorpay.com/docs/api/payments/)\n\n`;
+      pdfMarkdown += `- [Charge At Will (CAW)](https://razorpay.com/docs/payments/recurring/charge-at-will/)\n`;
+      pdfMarkdown += `- [Fetch APIs](https://razorpay.com/docs/api/payments/)\n\n`;
+    }
 
     markdown += `#### 2.3.2 Test Credentials\n`;
     markdown += `N/A (Shared internally)\n\n`;
