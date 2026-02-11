@@ -45,8 +45,7 @@ async function generateFRD(
       auditResult.audit_metadata?.mid ||
       "Pending";
 
-    const coverImagePath =
-      "/Users/rakshita.sharma/.gemini/antigravity/brain/fc0e128b-f4a5-4c4c-a0dd-d3643b34dc74/uploaded_media_1_1770361941879.png";
+        const coverImagePath = path.resolve(__dirname, "../../frontend/public/image.png");
     let markdown = "";
     let pdfMarkdown = "";
 
@@ -84,8 +83,8 @@ async function generateFRD(
     markdown += `</div>\n\n`;
     pdfMarkdown += `</div>\n\n`;
 
-    markdown += `<div class="page-break"></div>\n\n`;
-    pdfMarkdown += `<div class="page-break"></div>\n\n`;
+    markdown += `<div class="page-break"></div>\n<div style="page-break-after:always;"></div>\n\n`;
+    pdfMarkdown += `<div class="page-break"></div>\n<div style="page-break-after:always;"></div>\n\n`;
 
     const titleText = `# Functional Requirements Document\n## ${merchantName.toUpperCase()}`;
     markdown += titleText + "\n\n";
