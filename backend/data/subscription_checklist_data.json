@@ -349,6 +349,27 @@
       "merchant_name": "Sugarfit",
       "audit_date": "7th November",
       "created_at": "2026-02-11T06:45:26.202Z"
+    },
+    {
+      "id": 51,
+      "merchant_id": "",
+      "merchant_name": "Sugarfit",
+      "audit_date": "7th November",
+      "created_at": "2026-02-11T06:54:10.203Z"
+    },
+    {
+      "id": 52,
+      "merchant_id": "",
+      "merchant_name": "Sugarfit",
+      "audit_date": "7th November",
+      "created_at": "2026-02-11T07:16:38.850Z"
+    },
+    {
+      "id": 53,
+      "merchant_id": "",
+      "merchant_name": "Sugarfit",
+      "audit_date": "7th November",
+      "created_at": "2026-02-11T07:20:35.256Z"
     }
   ],
   "subscription_checklist_template": [
@@ -14630,6 +14651,846 @@
     {
       "id": 2000,
       "audit_id": 50,
+      "item_id": 40,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2001,
+      "audit_id": 51,
+      "item_id": 1,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2002,
+      "audit_id": 51,
+      "item_id": 2,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2003,
+      "audit_id": 51,
+      "item_id": 3,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2004,
+      "audit_id": 51,
+      "item_id": 5,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2005,
+      "audit_id": 51,
+      "item_id": 6,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2006,
+      "audit_id": 51,
+      "item_id": 7,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2007,
+      "audit_id": 51,
+      "item_id": 8,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2008,
+      "audit_id": 51,
+      "item_id": 9,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2009,
+      "audit_id": 51,
+      "item_id": 10,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2010,
+      "audit_id": 51,
+      "item_id": 11,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2011,
+      "audit_id": 51,
+      "item_id": 12,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2012,
+      "audit_id": 51,
+      "item_id": 13,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2013,
+      "audit_id": 51,
+      "item_id": 14,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2014,
+      "audit_id": 51,
+      "item_id": 15,
+      "status": "Done",
+      "comment": "sub_RclHY7hxcaS1wD"
+    },
+    {
+      "id": 2015,
+      "audit_id": 51,
+      "item_id": 16,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2016,
+      "audit_id": 51,
+      "item_id": 17,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2017,
+      "audit_id": 51,
+      "item_id": 18,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2018,
+      "audit_id": 51,
+      "item_id": 19,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2019,
+      "audit_id": 51,
+      "item_id": 20,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2020,
+      "audit_id": 51,
+      "item_id": 21,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2021,
+      "audit_id": 51,
+      "item_id": 22,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2022,
+      "audit_id": 51,
+      "item_id": 24,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2023,
+      "audit_id": 51,
+      "item_id": 25,
+      "status": "Done",
+      "comment": "Events: subscription.charged, subscription.authenticated"
+    },
+    {
+      "id": 2024,
+      "audit_id": 51,
+      "item_id": 26,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2025,
+      "audit_id": 51,
+      "item_id": 27,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2026,
+      "audit_id": 51,
+      "item_id": 28,
+      "status": "Done",
+      "comment": "Type: Standard"
+    },
+    {
+      "id": 2027,
+      "audit_id": 51,
+      "item_id": 29,
+      "status": "Done",
+      "comment": "Version: NA"
+    },
+    {
+      "id": 2028,
+      "audit_id": 51,
+      "item_id": 30,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2029,
+      "audit_id": 51,
+      "item_id": 31,
+      "status": "N/A",
+      "comment": "Others if applicable:"
+    },
+    {
+      "id": 2030,
+      "audit_id": 51,
+      "item_id": 32,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2031,
+      "audit_id": 51,
+      "item_id": 33,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2032,
+      "audit_id": 51,
+      "item_id": 34,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2033,
+      "audit_id": 51,
+      "item_id": 35,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2034,
+      "audit_id": 51,
+      "item_id": 36,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2035,
+      "audit_id": 51,
+      "item_id": 37,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2036,
+      "audit_id": 51,
+      "item_id": 38,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2037,
+      "audit_id": 51,
+      "item_id": 39,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2038,
+      "audit_id": 51,
+      "item_id": 4,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2039,
+      "audit_id": 51,
+      "item_id": 23,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2040,
+      "audit_id": 51,
+      "item_id": 40,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2041,
+      "audit_id": 52,
+      "item_id": 1,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2042,
+      "audit_id": 52,
+      "item_id": 2,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2043,
+      "audit_id": 52,
+      "item_id": 3,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2044,
+      "audit_id": 52,
+      "item_id": 5,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2045,
+      "audit_id": 52,
+      "item_id": 6,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2046,
+      "audit_id": 52,
+      "item_id": 7,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2047,
+      "audit_id": 52,
+      "item_id": 8,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2048,
+      "audit_id": 52,
+      "item_id": 9,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2049,
+      "audit_id": 52,
+      "item_id": 10,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2050,
+      "audit_id": 52,
+      "item_id": 11,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2051,
+      "audit_id": 52,
+      "item_id": 12,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2052,
+      "audit_id": 52,
+      "item_id": 13,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2053,
+      "audit_id": 52,
+      "item_id": 14,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2054,
+      "audit_id": 52,
+      "item_id": 15,
+      "status": "Done",
+      "comment": "sub_RclHY7hxcaS1wD"
+    },
+    {
+      "id": 2055,
+      "audit_id": 52,
+      "item_id": 16,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2056,
+      "audit_id": 52,
+      "item_id": 17,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2057,
+      "audit_id": 52,
+      "item_id": 18,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2058,
+      "audit_id": 52,
+      "item_id": 19,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2059,
+      "audit_id": 52,
+      "item_id": 20,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2060,
+      "audit_id": 52,
+      "item_id": 21,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2061,
+      "audit_id": 52,
+      "item_id": 22,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2062,
+      "audit_id": 52,
+      "item_id": 24,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2063,
+      "audit_id": 52,
+      "item_id": 25,
+      "status": "Done",
+      "comment": "Events: subscription.charged, subscription.authenticated"
+    },
+    {
+      "id": 2064,
+      "audit_id": 52,
+      "item_id": 26,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2065,
+      "audit_id": 52,
+      "item_id": 27,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2066,
+      "audit_id": 52,
+      "item_id": 28,
+      "status": "Done",
+      "comment": "Type: Standard"
+    },
+    {
+      "id": 2067,
+      "audit_id": 52,
+      "item_id": 29,
+      "status": "Done",
+      "comment": "Version: NA"
+    },
+    {
+      "id": 2068,
+      "audit_id": 52,
+      "item_id": 30,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2069,
+      "audit_id": 52,
+      "item_id": 31,
+      "status": "N/A",
+      "comment": "Others if applicable:"
+    },
+    {
+      "id": 2070,
+      "audit_id": 52,
+      "item_id": 32,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2071,
+      "audit_id": 52,
+      "item_id": 33,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2072,
+      "audit_id": 52,
+      "item_id": 34,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2073,
+      "audit_id": 52,
+      "item_id": 35,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2074,
+      "audit_id": 52,
+      "item_id": 36,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2075,
+      "audit_id": 52,
+      "item_id": 37,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2076,
+      "audit_id": 52,
+      "item_id": 38,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2077,
+      "audit_id": 52,
+      "item_id": 39,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2078,
+      "audit_id": 52,
+      "item_id": 4,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2079,
+      "audit_id": 52,
+      "item_id": 23,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2080,
+      "audit_id": 52,
+      "item_id": 40,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2081,
+      "audit_id": 53,
+      "item_id": 1,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2082,
+      "audit_id": 53,
+      "item_id": 2,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2083,
+      "audit_id": 53,
+      "item_id": 3,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2084,
+      "audit_id": 53,
+      "item_id": 5,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2085,
+      "audit_id": 53,
+      "item_id": 6,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2086,
+      "audit_id": 53,
+      "item_id": 7,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2087,
+      "audit_id": 53,
+      "item_id": 8,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2088,
+      "audit_id": 53,
+      "item_id": 9,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2089,
+      "audit_id": 53,
+      "item_id": 10,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2090,
+      "audit_id": 53,
+      "item_id": 11,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2091,
+      "audit_id": 53,
+      "item_id": 12,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2092,
+      "audit_id": 53,
+      "item_id": 13,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2093,
+      "audit_id": 53,
+      "item_id": 14,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2094,
+      "audit_id": 53,
+      "item_id": 15,
+      "status": "Done",
+      "comment": "sub_RclHY7hxcaS1wD"
+    },
+    {
+      "id": 2095,
+      "audit_id": 53,
+      "item_id": 16,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2096,
+      "audit_id": 53,
+      "item_id": 17,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2097,
+      "audit_id": 53,
+      "item_id": 18,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2098,
+      "audit_id": 53,
+      "item_id": 19,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2099,
+      "audit_id": 53,
+      "item_id": 20,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2100,
+      "audit_id": 53,
+      "item_id": 21,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2101,
+      "audit_id": 53,
+      "item_id": 22,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2102,
+      "audit_id": 53,
+      "item_id": 24,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2103,
+      "audit_id": 53,
+      "item_id": 25,
+      "status": "Done",
+      "comment": "Events: subscription.charged, subscription.authenticated"
+    },
+    {
+      "id": 2104,
+      "audit_id": 53,
+      "item_id": 26,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2105,
+      "audit_id": 53,
+      "item_id": 27,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2106,
+      "audit_id": 53,
+      "item_id": 28,
+      "status": "Done",
+      "comment": "Type: Standard"
+    },
+    {
+      "id": 2107,
+      "audit_id": 53,
+      "item_id": 29,
+      "status": "Done",
+      "comment": "Version: NA"
+    },
+    {
+      "id": 2108,
+      "audit_id": 53,
+      "item_id": 30,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2109,
+      "audit_id": 53,
+      "item_id": 31,
+      "status": "N/A",
+      "comment": "Others if applicable:"
+    },
+    {
+      "id": 2110,
+      "audit_id": 53,
+      "item_id": 32,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2111,
+      "audit_id": 53,
+      "item_id": 33,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2112,
+      "audit_id": 53,
+      "item_id": 34,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2113,
+      "audit_id": 53,
+      "item_id": 35,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2114,
+      "audit_id": 53,
+      "item_id": 36,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2115,
+      "audit_id": 53,
+      "item_id": 37,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2116,
+      "audit_id": 53,
+      "item_id": 38,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 2117,
+      "audit_id": 53,
+      "item_id": 39,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2118,
+      "audit_id": 53,
+      "item_id": 4,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2119,
+      "audit_id": 53,
+      "item_id": 23,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 2120,
+      "audit_id": 53,
       "item_id": 40,
       "status": "N/A",
       "comment": ""

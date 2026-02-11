@@ -5,7 +5,7 @@
       "merchant_name": "Sugarfit",
       "original_name": "Sugarfit",
       "merchant_id": null,
-      "search_date": "2026-02-11T06:45:25.927Z",
+      "search_date": "2026-02-11T07:20:35.054Z",
       "error": "[GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-pro-latest:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.",
       "web_data": null
     }
