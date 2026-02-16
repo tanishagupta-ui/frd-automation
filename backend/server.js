@@ -26,6 +26,11 @@ const PORT = 5001; // Changed to 5001 to avoid macOS AirPlay/ControlCenter confl
 
 
 app.use(express.json());
+const publicDir = path.join(__dirname, "public");
+if (!fs.existsSync(publicDir)) {
+    fs.mkdirSync(publicDir, { recursive: true });
+}
+app.use("/public", express.static(publicDir));
 // Ensure uploads directory exists
 const uploadDir = path.join(__dirname, "uploads");
 if (!fs.existsSync(uploadDir)) {

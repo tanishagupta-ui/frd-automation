@@ -48,10 +48,17 @@ async function generateFRD(
       auditResult.audit_metadata?.mid ||
       "Pending";
 
-    const coverImagePath = path.resolve(
+    const backendCoverImagePath = path.resolve(
+      __dirname,
+      "../public/image.png"
+    );
+    const frontendCoverImagePath = path.resolve(
       __dirname,
       "../../frontend/public/image.png"
     );
+    const coverImagePath = fs.existsSync(backendCoverImagePath)
+      ? backendCoverImagePath
+      : frontendCoverImagePath;
     let markdown = "";
     let pdfMarkdown = "";
 
