@@ -18,3 +18,4 @@ function resolveProductDocs(uiProductName) {
 }
 
 module.exports = { resolveProductDocs };
+

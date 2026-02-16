@@ -22,7 +22,9 @@ async function generateFRD(
   auditResult,
   enrichmentData,
   productType,
-  diagramPath
+  diagramPath,
+  checklistFilename = null,
+  originalFilename = null
 ) {
   try {
     const merchantName =
@@ -157,11 +159,10 @@ async function generateFRD(
     pdfMarkdown += techSpecs;
 
     const methods = extractPaymentMethods(auditResult);
-    const methodStr = `- **Payment methods:** ${
-      methods.length > 0
-        ? methods.join(", ")
-        : "UPI, Emandate (Netbanking), Cards"
-    }\n\n`;
+    const methodStr = `- **Payment methods:** ${methods.length > 0
+      ? methods.join(", ")
+      : "UPI, Emandate (Netbanking), Cards"
+      }\n\n`;
     markdown += methodStr;
     pdfMarkdown += methodStr;
 
@@ -218,11 +219,10 @@ async function generateFRD(
 
     markdown += `#### 2.4.1 Test and Production Domains\n`;
     pdfMarkdown += `#### 2.4.1 Test and Production Domains\n`;
-    const prod = `- **Production:** ${
-      webData.website && webData.website !== "Not found"
-        ? webData.website
-        : "N/A"
-    }\n\n`;
+    const prod = `- **Production:** ${webData.website && webData.website !== "Not found"
+      ? webData.website
+      : "N/A"
+      }\n\n`;
     markdown += prod;
     pdfMarkdown += prod;
 
@@ -308,16 +308,45 @@ async function generateFRD(
 
     markdown += `### 3.3 Checklist Link\n`;
     pdfMarkdown += `### 3.3 Checklist Link\n`;
-    markdown += `\n`;
-    pdfMarkdown += `\n`;
+    if (checklistFilename) {
+      const checklistUrl = `http://localhost:5001/uploads/${checklistFilename}`;
+      const linkText = originalFilename || checklistFilename;
+      markdown += `[${linkText}](${checklistUrl})\n\n`;
+      pdfMarkdown += `[${linkText}](${checklistUrl})\n\n`;
+    } else {
+      markdown += `N/A\n\n`;
+      pdfMarkdown += `N/A\n\n`;
+    }
 
-    markdown += `### 3.4 Best Practice Suggestions\n`;
-    pdfMarkdown += `### 3.4 Best Practice Suggestions\n`;
-    const bestPractices =
-      `- **Fetch APIs:** Suggested use of Fetch APIs for status reconciliation.\n` +
-      `- **Late Auth:** Discussed late authorization scenarios for robustness.\n\n`;
-    markdown += bestPractices;
-    pdfMarkdown += bestPractices;
+    markdown += `### 3.4 Auto Capture Configuration\n`;
+    pdfMarkdown += `### 3.4 Auto Capture Configuration\n`;
+
+    // Extract auto-capture settings for subscriptions
+    const autoCaptureInfo = extractAutoCaptureSettings(auditResult);
+    if (autoCaptureInfo) {
+      markdown += autoCaptureInfo + `\n\n`;
+      pdfMarkdown += autoCaptureInfo + `\n\n`;
+    } else {
+      markdown += `Standard auto-capture timing applies: 2 days for UPI and 3 days for other payment methods.\n\n`;
+      pdfMarkdown += `Standard auto-capture timing applies: 2 days for UPI and 3 days for other payment methods.\n\n`;
+    }
+
+    markdown += `### 3.5 Additional Implementation Notes\n`;
+    pdfMarkdown += `### 3.5 Additional Implementation Notes\n`;
+
+    // Extract additional comments/practices
+    const additionalNotes = extractAdditionalPractices(auditResult);
+    if (additionalNotes) {
+      markdown += additionalNotes + `\n\n`;
+      pdfMarkdown += additionalNotes + `\n\n`;
+    } else {
+      const bestPractices =
+        `- **API Integration:** Fetch APIs recommended for status reconciliation and edge case handling.\n` +
+        `- **Authorization Flow:** Late authorization scenarios have been reviewed for system robustness.\n` +
+        `- **Error Handling:** Comprehensive error code consumption ensures graceful failure management.\n\n`;
+      markdown += bestPractices;
+      pdfMarkdown += bestPractices;
+    }
 
     markdown += `---\n\n`;
     pdfMarkdown += `---\n\n`;
@@ -574,12 +603,11 @@ function buildWebDataSummary(webData, merchantName) {
       : "";
     const services =
       Array.isArray(webData.products_services) &&
-      webData.products_services.length > 0
+        webData.products_services.length > 0
         ? `Key offerings include ${webData.products_services
-            .slice(0, 4)
-            .join(", ")}${
-            webData.products_services.length > 4 ? ", and more" : ""
-          }.`
+          .slice(0, 4)
+          .join(", ")}${webData.products_services.length > 4 ? ", and more" : ""
+        }.`
         : "";
 
     const prefix = location || size ? `${location}${size}`.trim() + " " : "";
@@ -592,6 +620,80 @@ function buildWebDataSummary(webData, merchantName) {
   const fallback = `${merchantName} is a key business entity looking to optimize its payment infrastructure. This document outlines the functional and technical requirements for integrating Razorpay's payment solutions to enhance user experience and operational efficiency.`;
   return fallback;
 }
+
+function extractAutoCaptureSettings(auditResult) {
+  const sources = [
+    auditResult.audit_data,
+    auditResult.checklist,
+    auditResult.checklist_content,
+    auditResult.auditChecklist,
+    auditResult.results,
+  ];
+
+  let autoCaptureComment = '';
+
+  sources.forEach((source) => {
+    if (Array.isArray(source)) {
+      source.forEach((section) => {
+        const categoryName = (section.category || section.categoryName || '').toLowerCase();
+
+        if (categoryName.includes('auto') || categoryName.includes('capture')) {
+          const checks = section.checks || section.items || [];
+          checks.forEach((check) => {
+            if (check.comment && check.comment.trim() !== '') {
+              autoCaptureComment = check.comment.trim();
+            } else if (check.status && check.status !== 'N/A' && check.status !== 'Done') {
+              autoCaptureComment = check.status;
+            }
+          });
+        }
+      });
+    }
+  });
+
+  if (autoCaptureComment) {
+    return `The integration implements auto-capture functionality with the following configuration: **${autoCaptureComment}**. This ensures optimal payment processing timing while maintaining compliance with payment gateway requirements.`;
+  }
+
+  return null;
+}
+
+function extractAdditionalPractices(auditResult) {
+  const sources = [
+    auditResult.audit_data,
+    auditResult.checklist,
+    auditResult.checklist_content,
+    auditResult.auditChecklist,
+    auditResult.results,
+  ];
+
+  const additionalComments = [];
+
+  sources.forEach((source) => {
+    if (Array.isArray(source)) {
+      source.forEach((section) => {
+        const categoryName = (section.category || section.categoryName || '').toLowerCase();
+
+        if (categoryName.includes('additional') || categoryName.includes('comment') || categoryName.includes('note')) {
+          const checks = section.checks || section.items || [];
+          checks.forEach((check) => {
+            if (check.comment && check.comment.trim() !== '' && check.comment.trim() !== 'N/A') {
+              additionalComments.push(check.comment.trim());
+            }
+          });
+        }
+      });
+    }
+  });
+
+  if (additionalComments.length > 0) {
+    let notes = additionalComments.map((comment, index) => `- ${comment}`).join('\\n');
+    return `The following implementation notes and observations were documented during the audit:\\n\\n${notes}`;
+  }
+
+  return null;
+}
+
 
 module.exports = {
   generateFRD,

@@ -209,6 +209,41 @@
       "merchant_name": "Bharat Petroleum Corporation Limited",
       "audit_date": "",
       "created_at": "2026-02-05T14:09:00.068Z"
+    },
+    {
+      "id": 31,
+      "merchant_id": "Unknown",
+      "merchant_name": "Bharat Petroleum Corporation Limited (BPCL)",
+      "audit_date": "",
+      "created_at": "2026-02-12T08:56:19.429Z"
+    },
+    {
+      "id": 32,
+      "merchant_id": "Unknown",
+      "merchant_name": "Bharat Petroleum Corporation Limited (BPCL)",
+      "audit_date": "",
+      "created_at": "2026-02-12T08:57:47.447Z"
+    },
+    {
+      "id": 33,
+      "merchant_id": "Unknown",
+      "merchant_name": "Bharat Petroleum Corporation Limited (BPCL)",
+      "audit_date": "",
+      "created_at": "2026-02-16T06:38:34.742Z"
+    },
+    {
+      "id": 34,
+      "merchant_id": "Unknown",
+      "merchant_name": "Bharat Petroleum Corporation Limited (BPCL)",
+      "audit_date": "",
+      "created_at": "2026-02-16T06:38:34.773Z"
+    },
+    {
+      "id": 35,
+      "merchant_id": "Unknown",
+      "merchant_name": "Bharat Petroleum Corporation Limited (BPCL)",
+      "audit_date": "",
+      "created_at": "2026-02-16T06:47:51.587Z"
     }
   ],
   "qr_checklist_template": [
@@ -2615,6 +2650,741 @@
     {
       "id": 323,
       "audit_id": 30,
+      "item_id": 24,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 324,
+      "audit_id": 31,
+      "item_id": 1,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 325,
+      "audit_id": 31,
+      "item_id": 2,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 326,
+      "audit_id": 31,
+      "item_id": 3,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 327,
+      "audit_id": 31,
+      "item_id": 4,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 328,
+      "audit_id": 31,
+      "item_id": 5,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 329,
+      "audit_id": 31,
+      "item_id": 6,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 330,
+      "audit_id": 31,
+      "item_id": 7,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 331,
+      "audit_id": 31,
+      "item_id": 8,
+      "status": "Implemented",
+      "comment": "Set to 21 days, If not set then by default it is 45days."
+    },
+    {
+      "id": 332,
+      "audit_id": 31,
+      "item_id": 9,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 333,
+      "audit_id": 31,
+      "item_id": 10,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 334,
+      "audit_id": 31,
+      "item_id": 11,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 335,
+      "audit_id": 31,
+      "item_id": 12,
+      "status": "Implemented",
+      "comment": "UPI"
+    },
+    {
+      "id": 336,
+      "audit_id": 31,
+      "item_id": 13,
+      "status": "Implemented",
+      "comment": "Auto Capture, 12mins"
+    },
+    {
+      "id": 337,
+      "audit_id": 31,
+      "item_id": 15,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 338,
+      "audit_id": 31,
+      "item_id": 16,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 339,
+      "audit_id": 31,
+      "item_id": 17,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 340,
+      "audit_id": 31,
+      "item_id": 18,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 341,
+      "audit_id": 31,
+      "item_id": 19,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 342,
+      "audit_id": 31,
+      "item_id": 20,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 343,
+      "audit_id": 31,
+      "item_id": 23,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 344,
+      "audit_id": 31,
+      "item_id": 24,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 345,
+      "audit_id": 32,
+      "item_id": 1,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 346,
+      "audit_id": 32,
+      "item_id": 2,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 347,
+      "audit_id": 32,
+      "item_id": 3,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 348,
+      "audit_id": 32,
+      "item_id": 4,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 349,
+      "audit_id": 32,
+      "item_id": 5,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 350,
+      "audit_id": 32,
+      "item_id": 6,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 351,
+      "audit_id": 32,
+      "item_id": 7,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 352,
+      "audit_id": 32,
+      "item_id": 8,
+      "status": "Implemented",
+      "comment": "Set to 21 days, If not set then by default it is 45days."
+    },
+    {
+      "id": 353,
+      "audit_id": 32,
+      "item_id": 9,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 354,
+      "audit_id": 32,
+      "item_id": 10,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 355,
+      "audit_id": 32,
+      "item_id": 11,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 356,
+      "audit_id": 32,
+      "item_id": 12,
+      "status": "Implemented",
+      "comment": "UPI"
+    },
+    {
+      "id": 357,
+      "audit_id": 32,
+      "item_id": 13,
+      "status": "Implemented",
+      "comment": "Auto Capture, 12mins"
+    },
+    {
+      "id": 358,
+      "audit_id": 32,
+      "item_id": 15,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 359,
+      "audit_id": 32,
+      "item_id": 16,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 360,
+      "audit_id": 32,
+      "item_id": 17,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 361,
+      "audit_id": 32,
+      "item_id": 18,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 362,
+      "audit_id": 32,
+      "item_id": 19,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 363,
+      "audit_id": 32,
+      "item_id": 20,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 364,
+      "audit_id": 32,
+      "item_id": 23,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 365,
+      "audit_id": 32,
+      "item_id": 24,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 366,
+      "audit_id": 33,
+      "item_id": 1,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 367,
+      "audit_id": 33,
+      "item_id": 2,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 368,
+      "audit_id": 33,
+      "item_id": 3,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 369,
+      "audit_id": 33,
+      "item_id": 4,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 370,
+      "audit_id": 33,
+      "item_id": 5,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 371,
+      "audit_id": 33,
+      "item_id": 6,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 372,
+      "audit_id": 33,
+      "item_id": 7,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 373,
+      "audit_id": 33,
+      "item_id": 8,
+      "status": "Implemented",
+      "comment": "Set to 21 days, If not set then by default it is 45days."
+    },
+    {
+      "id": 374,
+      "audit_id": 33,
+      "item_id": 9,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 375,
+      "audit_id": 33,
+      "item_id": 10,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 376,
+      "audit_id": 33,
+      "item_id": 11,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 377,
+      "audit_id": 33,
+      "item_id": 12,
+      "status": "Implemented",
+      "comment": "UPI"
+    },
+    {
+      "id": 378,
+      "audit_id": 33,
+      "item_id": 13,
+      "status": "Implemented",
+      "comment": "Auto Capture, 12mins"
+    },
+    {
+      "id": 379,
+      "audit_id": 33,
+      "item_id": 15,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 380,
+      "audit_id": 33,
+      "item_id": 16,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 381,
+      "audit_id": 33,
+      "item_id": 17,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 382,
+      "audit_id": 33,
+      "item_id": 18,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 383,
+      "audit_id": 33,
+      "item_id": 19,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 384,
+      "audit_id": 33,
+      "item_id": 20,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 385,
+      "audit_id": 33,
+      "item_id": 23,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 386,
+      "audit_id": 33,
+      "item_id": 24,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 387,
+      "audit_id": 34,
+      "item_id": 1,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 388,
+      "audit_id": 34,
+      "item_id": 2,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 389,
+      "audit_id": 34,
+      "item_id": 3,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 390,
+      "audit_id": 34,
+      "item_id": 4,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 391,
+      "audit_id": 34,
+      "item_id": 5,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 392,
+      "audit_id": 34,
+      "item_id": 6,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 393,
+      "audit_id": 34,
+      "item_id": 7,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 394,
+      "audit_id": 34,
+      "item_id": 8,
+      "status": "Implemented",
+      "comment": "Set to 21 days, If not set then by default it is 45days."
+    },
+    {
+      "id": 395,
+      "audit_id": 34,
+      "item_id": 9,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 396,
+      "audit_id": 34,
+      "item_id": 10,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 397,
+      "audit_id": 34,
+      "item_id": 11,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 398,
+      "audit_id": 34,
+      "item_id": 12,
+      "status": "Implemented",
+      "comment": "UPI"
+    },
+    {
+      "id": 399,
+      "audit_id": 34,
+      "item_id": 13,
+      "status": "Implemented",
+      "comment": "Auto Capture, 12mins"
+    },
+    {
+      "id": 400,
+      "audit_id": 34,
+      "item_id": 15,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 401,
+      "audit_id": 34,
+      "item_id": 16,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 402,
+      "audit_id": 34,
+      "item_id": 17,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 403,
+      "audit_id": 34,
+      "item_id": 18,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 404,
+      "audit_id": 34,
+      "item_id": 19,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 405,
+      "audit_id": 34,
+      "item_id": 20,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 406,
+      "audit_id": 34,
+      "item_id": 23,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 407,
+      "audit_id": 34,
+      "item_id": 24,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 408,
+      "audit_id": 35,
+      "item_id": 1,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 409,
+      "audit_id": 35,
+      "item_id": 2,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 410,
+      "audit_id": 35,
+      "item_id": 3,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 411,
+      "audit_id": 35,
+      "item_id": 4,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 412,
+      "audit_id": 35,
+      "item_id": 5,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 413,
+      "audit_id": 35,
+      "item_id": 6,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 414,
+      "audit_id": 35,
+      "item_id": 7,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 415,
+      "audit_id": 35,
+      "item_id": 8,
+      "status": "Implemented",
+      "comment": "Set to 21 days, If not set then by default it is 45days."
+    },
+    {
+      "id": 416,
+      "audit_id": 35,
+      "item_id": 9,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 417,
+      "audit_id": 35,
+      "item_id": 10,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 418,
+      "audit_id": 35,
+      "item_id": 11,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 419,
+      "audit_id": 35,
+      "item_id": 12,
+      "status": "Implemented",
+      "comment": "UPI"
+    },
+    {
+      "id": 420,
+      "audit_id": 35,
+      "item_id": 13,
+      "status": "Implemented",
+      "comment": "Auto Capture, 12mins"
+    },
+    {
+      "id": 421,
+      "audit_id": 35,
+      "item_id": 15,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 422,
+      "audit_id": 35,
+      "item_id": 16,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 423,
+      "audit_id": 35,
+      "item_id": 17,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 424,
+      "audit_id": 35,
+      "item_id": 18,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 425,
+      "audit_id": 35,
+      "item_id": 19,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 426,
+      "audit_id": 35,
+      "item_id": 20,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 427,
+      "audit_id": 35,
+      "item_id": 23,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 428,
+      "audit_id": 35,
       "item_id": 24,
       "status": "N/A",
       "comment": ""
