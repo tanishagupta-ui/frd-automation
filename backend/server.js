@@ -40,6 +40,7 @@ if (!fs.existsSync(uploadDir)) {
 
 /* ✅ CORS requests */
 app.use(cors()); // Allow all origins to fix Network IP issues
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // app.options("*", cors()); // Removed for Express 5 compatibility
 
@@ -588,12 +589,41 @@ app.post("/upload", (req, res) => {
                                 }
                                 commentParts.push(value);
                             }
+
+                            let statusVal = status || colD || "N/A";
+                            let commentVal = commentParts.join(" ").trim() || colE || "";
+
+                            // Custom Mapping for Subscription recommendations
+                            if (templateItem.item_description === "2 Days for UPI and 3 Days for other methods") {
+                                if (!commentVal) commentVal = "12 minutes";
+                                if (statusVal === "N/A") statusVal = "Done";
+                            } else if (templateItem.item_description === "Additional Comments") {
+                                if (!commentVal) {
+                                    commentVal = "Subscription.completed, subscription.halted, subscription.activated webhook events have been recommended to be implemented at the merchant end. In case of payment failure or auto-refund, using the same subscription_id generated previously has been recommended to the merchant to reduce API calls.";
+                                }
+                            } else if (templateItem.item_description === "hitachi / fulcrum") {
+                                if (!commentVal) commentVal = "";
+                                if (statusVal === "N/A") statusVal = "Done";
+                            } else if (templateItem.item_description === "upi_icici") {
+                                if (!commentVal) commentVal = "Others if applicable:";
+                                statusVal = "N/A";
+                            } else if (templateItem.item_description === "Webhooks") {
+                                if (!commentVal) commentVal = "Events: subscription.charged, subscription.authenticated";
+                                if (statusVal === "N/A") statusVal = "Done";
+                            } else if (templateItem.item_description === "Checkout Type") {
+                                if (!commentVal) commentVal = "Type: Standard";
+                                if (statusVal === "N/A") statusVal = "Done";
+                            } else if (templateItem.item_description === "Server language/SDK") {
+                                if (!commentVal) commentVal = "Version: NA";
+                                if (statusVal === "N/A") statusVal = "Done";
+                            }
+
                             subStorage.subscription_audit_results.push({
                                 id: subStorage.subscription_audit_results.length + 1,
                                 audit_id: sessionId,
                                 item_id: templateItem.item_id,
-                                status: status || colD || "N/A",
-                                comment: commentParts.join(" ").trim() || colE || ""
+                                status: statusVal,
+                                comment: commentVal
                             });
                         } else if (normalizedCategory.includes("additionalcomments")) {
                             const additionalTemplate = subStorage.subscription_checklist_template.find(t =>
@@ -631,12 +661,39 @@ app.post("/upload", (req, res) => {
                 // Fill missing 
                 subStorage.subscription_checklist_template.forEach(t => {
                     if (!subStorage.subscription_audit_results.find(r => r.audit_id === sessionId && r.item_id === t.item_id)) {
+                        let statusVal = "N/A";
+                        let commentVal = "";
+
+                        // Inject recommendations even if missing from Excel
+                        if (t.item_description === "2 Days for UPI and 3 Days for other methods") {
+                            statusVal = "Done";
+                            commentVal = "12 minutes";
+                        } else if (t.item_description === "Additional Comments") {
+                            statusVal = "Done";
+                            commentVal = "Subscription.completed, subscription.halted, subscription.activated webhook events have been recommended to be implemented at the merchant end. In case of payment failure or auto-refund, using the same subscription_id generated previously has been recommended to the merchant to reduce API calls.";
+                        } else if (t.item_description === "hitachi / fulcrum") {
+                            statusVal = "Done";
+                            commentVal = "";
+                        } else if (t.item_description === "upi_icici") {
+                            statusVal = "N/A";
+                            commentVal = "Others if applicable:";
+                        } else if (t.item_description === "Webhooks") {
+                            statusVal = "Done";
+                            commentVal = "Events: subscription.charged, subscription.authenticated";
+                        } else if (t.item_description === "Checkout Type") {
+                            statusVal = "Done";
+                            commentVal = "Type: Standard";
+                        } else if (t.item_description === "Server language/SDK") {
+                            statusVal = "Done";
+                            commentVal = "Version: NA";
+                        }
+
                         subStorage.subscription_audit_results.push({
                             id: subStorage.subscription_audit_results.length + 1,
                             audit_id: sessionId,
                             item_id: t.item_id,
-                            status: "N/A",
-                            comment: ""
+                            status: statusVal,
+                            comment: commentVal
                         });
                     }
                 });
@@ -1674,7 +1731,14 @@ app.post("/upload", (req, res) => {
                             }
                         }
 
-                        const frdPaths = await frdGenerator.generateFRD(result, finalEnrichment, productType, diagramPath);
+                        const frdPaths = await frdGenerator.generateFRD(
+                            result,
+                            finalEnrichment,
+                            productType,
+                            diagramPath,
+                            req.file.filename,
+                            req.file.originalname
+                        );
                         console.log(`✅ FRD files generated:`, frdPaths);
                     } catch (frdError) {
                         console.error("FRD generation error:", frdError);
