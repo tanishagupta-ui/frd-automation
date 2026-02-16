@@ -32,6 +32,12 @@ async function generateFRD(
       enrichmentData?.merchant_name ||
       "Merchant";
 
+    auditResult = hydrateChecklistFromDataFolder(
+      auditResult,
+      productType,
+      merchantName
+    );
+
     const safeMerchantName = merchantName
       .replace(/[^a-z0-9]/gi, "_")
       .toLowerCase();
@@ -93,6 +99,7 @@ async function generateFRD(
       `   3.2 [Audit Findings](#32-audit-findings)\n` +
       `   3.3 [Checklist Link](#33-checklist-link)\n` +
       `   3.4 [Best Practice Suggestions](#34-best-practice-suggestions)\n` +
+      `   3.5 [Additional Comments](#35-additional-comments)\n` +
       `4. [Integration Best Practices](#4-integration-best-practices)\n\n`;
 
     markdown += `- **Owner Name: Rakshita Sharma**\n\n`;
@@ -241,7 +248,14 @@ async function generateFRD(
     markdown += `#### 2.4.3 Checkout Configuration\n`;
     pdfMarkdown += `#### 2.4.3 Checkout Configuration\n`;
     const capture = extractCaptureSetting(auditResult);
-    const captureStr = `- **Automatic capture:** ${capture}\n- **Test payments:** Validated in test mode.\n\n`;
+    const checkoutType = extractCheckoutType(auditResult);
+    const checkoutTypeStr = checkoutType
+      ? `- **Checkout type:** ${checkoutType}\n`
+      : "";
+    const captureStr =
+      `- **Automatic capture:** ${capture}\n` +
+      checkoutTypeStr +
+      `- **Test payments:** Validated in test mode.\n\n`;
     markdown += captureStr;
     pdfMarkdown += captureStr;
 
@@ -253,9 +267,13 @@ async function generateFRD(
     markdown += `#### 2.4.5 Webhook URLs and events\n`;
     pdfMarkdown += `#### 2.4.5 Webhook URLs and events\n`;
     const webhooks = extractWebhooks(auditResult);
+    const productLabel = (auditResult.product || productType || "").toLowerCase();
+    const isSubscription = productLabel.includes("subscription");
     const webhookList =
       webhooks.length > 0
         ? webhooks.map((w) => `\`${w}\``).join(", ")
+        : isSubscription
+        ? "Not provided in checklist"
         : "`payment.captured`, `payment.failed`";
     const webhookStr = `- **Events:** ${webhookList}\n\n`;
     markdown += webhookStr;
@@ -326,6 +344,12 @@ async function generateFRD(
     markdown += bestPractices;
     pdfMarkdown += bestPractices;
 
+    const additionalComments = extractAdditionalComments(auditResult);
+    markdown += `### 3.5 Additional Comments\n`;
+    pdfMarkdown += `### 3.5 Additional Comments\n`;
+    markdown += `${additionalComments || "N/A"}\n\n`;
+    pdfMarkdown += `${additionalComments || "N/A"}\n\n`;
+
     markdown += `---\n\n`;
     pdfMarkdown += `---\n\n`;
 
@@ -385,127 +409,65 @@ async function generateFRD(
 
 function extractPaymentMethods(auditResult) {
   const methods = new Set();
-  const sources = [
-    auditResult.audit_data,
-    auditResult.checklist,
-    auditResult.checklist_content,
-    auditResult.auditChecklist,
-    auditResult.results,
-  ];
-
-  sources.forEach((source) => {
-    if (Array.isArray(source)) {
-      source.forEach((section) => {
-        const checks =
-          section.checks ||
-          section.configs ||
-          section.sub_items ||
-          section.results ||
-          [];
-        if (Array.isArray(checks)) {
-          checks.forEach((check) => {
-            const label = (
-              check.item ||
-              check.label ||
-              check.config ||
-              ""
-            ).toLowerCase();
-            const status = (check.status || "").toLowerCase();
-            if (label.includes("upi") || status.includes("upi"))
-              methods.add("UPI");
-            if (label.includes("card") || status.includes("card"))
-              methods.add("Cards");
-            if (
-              label.includes("netbanking") ||
-              status.includes("netbanking") ||
-              label.includes("emandate")
-            )
-              methods.add("Netbanking/Emandate");
-            if (label.includes("wallet") || status.includes("wallet"))
-              methods.add("Wallets");
-          });
-        }
-      });
-    }
+  const checks = collectChecklistChecks(auditResult);
+  checks.forEach((check) => {
+    const label = getCheckLabel(check);
+    const status = (check.status || "").toLowerCase();
+    if (label.includes("upi") || status.includes("upi")) methods.add("UPI");
+    if (label.includes("card") || status.includes("card"))
+      methods.add("Cards");
+    if (
+      label.includes("netbanking") ||
+      status.includes("netbanking") ||
+      label.includes("emandate")
+    )
+      methods.add("Netbanking/Emandate");
+    if (label.includes("wallet") || status.includes("wallet"))
+      methods.add("Wallets");
   });
   return Array.from(methods);
 }
 
 function extractCaptureSetting(auditResult) {
   let capture = "3 days (Default)";
-  const sources = [
-    auditResult.audit_data,
-    auditResult.checklist,
-    auditResult.checklist_content,
-    auditResult.auditChecklist,
-    auditResult.results,
-  ];
-
-  sources.forEach((source) => {
-    if (Array.isArray(source)) {
-      source.forEach((section) => {
-        const checks =
-          section.checks ||
-          section.configs ||
-          section.sub_items ||
-          section.results ||
-          [];
-        if (Array.isArray(checks)) {
-          checks.forEach((check) => {
-            const label = (
-              check.item ||
-              check.label ||
-              check.config ||
-              ""
-            ).toLowerCase();
-            if (label.includes("capture")) {
-              capture = check.comment || check.status || capture;
-            }
-          });
-        }
-      });
+  const checks = collectChecklistChecks(auditResult);
+  for (const check of checks) {
+    const section = (check._section || "").toLowerCase();
+    if (section.includes("autoacapture")) {
+      const value =
+        getMeaningfulValue(check.comment) ||
+        getMeaningfulValue(check.status) ||
+        getMeaningfulValue(check.item);
+      if (value) return value;
     }
-  });
+  }
+
+  for (const check of checks) {
+    const label = getCheckLabel(check);
+    if (label.includes("auto capture") || label.includes("autoacapture")) {
+      const value =
+        getMeaningfulValue(check.comment) ||
+        getMeaningfulValue(check.status) ||
+        getMeaningfulValue(check.item);
+      if (value) return value;
+    }
+  }
+
   return capture;
 }
 
 function extractWebhooks(auditResult) {
   const webhooks = [];
-  const sources = [
-    auditResult.audit_data,
-    auditResult.checklist,
-    auditResult.checklist_content,
-    auditResult.auditChecklist,
-    auditResult.results,
-  ];
-
-  sources.forEach((source) => {
-    if (Array.isArray(source)) {
-      source.forEach((section) => {
-        const checks =
-          section.checks ||
-          section.configs ||
-          section.sub_items ||
-          section.results ||
-          [];
-        if (Array.isArray(checks)) {
-          checks.forEach((check) => {
-            const label = (
-              check.item ||
-              check.label ||
-              check.config ||
-              ""
-            ).toLowerCase();
-            if (
-              label.includes("webhook") &&
-              (label.includes("event") || label.includes("url"))
-            ) {
-              if (check.comment)
-                webhooks.push(...check.comment.split(/[,;\s]+/));
-            }
-          });
-        }
-      });
+  const checks = collectChecklistChecks(auditResult);
+  checks.forEach((check) => {
+    const label = getCheckLabel(check);
+    if (!label.includes("webhook")) return;
+    const combined = [check.comment, check.hint].filter(Boolean).join(" ");
+    const eventList = parseWebhookEvents(combined);
+    if (eventList.length > 0) {
+      webhooks.push(...eventList);
+    } else if (combined) {
+      webhooks.push(...combined.split(/[,;\s]+/));
     }
   });
   return [...new Set(webhooks)].filter(
@@ -515,57 +477,194 @@ function extractWebhooks(auditResult) {
 
 function extractPlatform(auditResult) {
   let platform = "Website";
-  const sources = [
-    auditResult.audit_data,
-    auditResult.checklist,
-    auditResult.results,
-  ];
-  sources.forEach((source) => {
-    if (!Array.isArray(source)) return;
-    source.forEach((section) => {
-      const checks = section.checks || section.results || [];
-      checks.forEach((check) => {
-        const label = (check.item || check.label || "").toLowerCase();
-        const comment = (check.comment || "").toLowerCase();
-        if (label.includes("platform")) {
-          platform = check.comment || check.status || platform;
-        } else if (
-          comment.includes("android") ||
-          comment.includes("ios") ||
-          comment.includes("mobile")
-        ) {
-          platform = "Mobile App (Android/iOS)";
-        }
-      });
-    });
+  const checks = collectChecklistChecks(auditResult);
+  checks.forEach((check) => {
+    const label = getCheckLabel(check);
+    const comment = (check.comment || "").toLowerCase();
+    if (label.includes("platform")) {
+      const value = getMeaningfulValue(check.comment) || getMeaningfulValue(check.status);
+      if (value) platform = value;
+    } else if (
+      comment.includes("android") ||
+      comment.includes("ios") ||
+      comment.includes("mobile")
+    ) {
+      platform = "Mobile App (Android/iOS)";
+    }
   });
   return platform;
 }
 
 function extractBackendLanguage(auditResult) {
   let language = "Java (Spring Boot)";
+  const checks = collectChecklistChecks(auditResult);
+  checks.forEach((check) => {
+    const label = getCheckLabel(check);
+    if (
+      label.includes("server language") ||
+      label.includes("backend") ||
+      label.includes("language")
+    ) {
+      const value =
+        extractLabeledValue(check.comment, ["language", "sdk"]) ||
+        getMeaningfulValue(check.comment) ||
+        getMeaningfulValue(check.status);
+      if (value) language = value;
+    }
+  });
+  return language;
+}
+
+function extractCheckoutType(auditResult) {
+  let checkoutType = "";
+  const checks = collectChecklistChecks(auditResult);
+  checks.forEach((check) => {
+    const label = getCheckLabel(check);
+    if (label.includes("checkout type")) {
+      const value =
+        extractLabeledValue(check.comment, ["type"]) ||
+        getMeaningfulValue(check.comment) ||
+        getMeaningfulValue(check.status);
+      if (value) checkoutType = value;
+    }
+  });
+  return checkoutType;
+}
+
+function extractAdditionalComments(auditResult) {
+  const checks = collectChecklistChecks(auditResult);
+  for (const check of checks) {
+    const label = getCheckLabel(check);
+    if (label.includes("additional comments")) {
+      const value =
+        getMeaningfulValue(check.comment) ||
+        getMeaningfulValue(check.hint) ||
+        getMeaningfulValue(check.status);
+      if (value) return value;
+    }
+  }
+  return "";
+}
+
+function collectChecklistChecks(auditResult) {
   const sources = [
     auditResult.audit_data,
     auditResult.checklist,
+    auditResult.checklist_content,
+    auditResult.auditChecklist,
     auditResult.results,
   ];
+  const checks = [];
   sources.forEach((source) => {
     if (!Array.isArray(source)) return;
     source.forEach((section) => {
-      const checks = section.checks || section.results || [];
-      checks.forEach((check) => {
-        const label = (check.item || check.label || "").toLowerCase();
-        if (
-          label.includes("server language") ||
-          label.includes("backend") ||
-          label.includes("language")
-        ) {
-          language = check.comment || check.status || language;
-        }
+      const items =
+        section.checks ||
+        section.configs ||
+        section.sub_items ||
+        section.results ||
+        [];
+      if (!Array.isArray(items)) return;
+      items.forEach((check) => {
+        checks.push({ ...check, _section: section.category || section.title });
       });
     });
   });
-  return language;
+  return checks;
+}
+
+function getCheckLabel(check) {
+  return (check.item || check.label || check.config || "").toLowerCase();
+}
+
+function getMeaningfulValue(value) {
+  if (!value) return "";
+  const cleaned = String(value).trim();
+  if (!cleaned) return "";
+  const lowered = cleaned.toLowerCase();
+  if (["done", "n/a", "na", "yes", "no"].includes(lowered)) return "";
+  if (lowered.startsWith("version:")) return "";
+  return cleaned;
+}
+
+function extractLabeledValue(raw, labels) {
+  if (!raw) return "";
+  const text = String(raw);
+  for (const label of labels) {
+    const match = text.match(new RegExp(`${label}\\s*:\\s*([^,;]+)`, "i"));
+    if (match && match[1]) {
+      return match[1].trim();
+    }
+  }
+  return "";
+}
+
+function parseWebhookEvents(raw) {
+  if (!raw) return [];
+  const text = String(raw);
+  const match = text.match(/events?\s*:\s*([^\n]+)/i);
+  const source = match ? match[1] : text;
+  const normalized = source.replace(/events?\s*:/gi, "").trim();
+  return normalized
+    .split(/[,;]+/)
+    .map((part) => part.replace(/events?\s*:/gi, "").trim())
+    .filter(Boolean);
+}
+
+function hydrateChecklistFromDataFolder(auditResult, productType, merchantName) {
+  const productLabel = (auditResult.product || productType || "").toLowerCase();
+  if (!productLabel.includes("subscription")) return auditResult;
+
+  const needsChecklist =
+    !Array.isArray(auditResult.checklist_content) ||
+    auditResult.checklist_content.length === 0 ||
+    extractWebhooks(auditResult).length === 0;
+
+  if (!needsChecklist) {
+    return auditResult;
+  }
+
+  const slug = slugifyName(
+    merchantName ||
+      auditResult.audit_metadata?.mx_name ||
+      auditResult.audit_metadata?.merchant_name ||
+      ""
+  );
+  if (!slug) return auditResult;
+
+  const auditsDir = path.join(__dirname, "../data/subscription_audits");
+  if (!fs.existsSync(auditsDir)) return auditResult;
+
+  const files = fs
+    .readdirSync(auditsDir)
+    .filter(
+      (filename) =>
+        filename.startsWith("subscription_audit_") &&
+        filename.endsWith(`_${slug}.json`)
+    );
+  if (files.length === 0) return auditResult;
+
+  const latest = files.sort((a, b) => extractAuditIndex(a) - extractAuditIndex(b)).pop();
+  const auditPath = path.join(auditsDir, latest);
+  try {
+    const parsed = JSON.parse(fs.readFileSync(auditPath, "utf8"));
+    if (Array.isArray(parsed.checklist_content)) {
+      return { ...auditResult, checklist_content: parsed.checklist_content };
+    }
+  } catch (error) {
+    console.warn(`Checklist hydrate failed for ${auditPath}:`, error.message);
+  }
+
+  return auditResult;
+}
+
+function extractAuditIndex(filename) {
+  const match = filename.match(/subscription_audit_(\d+)_/);
+  return match ? Number(match[1]) : 0;
+}
+
+function slugifyName(value) {
+  return String(value).trim().replace(/[^a-z0-9]+/gi, "_").toLowerCase();
 }
 
 function buildWebDataSummary(webData, merchantName) {

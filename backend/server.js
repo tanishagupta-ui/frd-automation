@@ -517,13 +517,18 @@ app.post("/upload", (req, res) => {
                 };
 
                 let currentCategoryForSub = "";
+                const normalizeCategory = (value) =>
+                    String(value || "")
+                        .toLowerCase()
+                        .replace(/[^a-z0-9]+/g, "");
                 for (let i = 0; i < rawData.length; i++) {
                     const row = rawData[i];
-                    const colA = row[0] ? String(row[0]).trim() : "";
-                    const colB = row[1] ? String(row[1]).trim() : "";
-                    const colC = row[2] ? String(row[2]).trim() : "";
-                    const colD = row[3] ? String(row[3]).trim() : "";
-                    const colE = row[4] ? String(row[4]).trim() : "";
+                    const cells = row.map(cell => (cell == null ? "" : String(cell).trim()));
+                    const colA = cells[0] || "";
+                    const colB = cells[1] || "";
+                    const colC = cells[2] || "";
+                    const colD = cells[3] || "";
+                    const colE = cells[4] || "";
 
                     row.forEach((cell, cellIdx) => {
                         if (!cell) return;
@@ -545,22 +550,80 @@ app.post("/upload", (req, res) => {
                         sessionRecord.merchant_name = merchantName;
                     }
 
+                    if (colA && colA.match(/^\d+\./)) currentCategoryForSub = colA;
                     if (colB && colB.match(/^\d+\./)) currentCategoryForSub = colB;
                     if (row.join(" ").includes("Additional Comments")) currentCategoryForSub = "Additional Comments";
 
-                    if (colC && colC !== "Configs" && colC !== "Status") {
-                        const templateItem = subStorage.subscription_checklist_template.find(t =>
-                            t.category === currentCategoryForSub && (t.item_description === colC || t.item_description.includes(colC))
-                        );
+                    const normalizedCells = cells.map(c => c.toLowerCase());
+                    const normalizedCategory = normalizeCategory(currentCategoryForSub);
+                    const isStatusValue = (value) => {
+                        const v = value.toLowerCase();
+                        return ["done", "n/a", "na", "yes", "no", "pending", "partial"].includes(v);
+                    };
+
+                    if (currentCategoryForSub) {
+                        const templateItem = subStorage.subscription_checklist_template.find(t => {
+                            if (normalizeCategory(t.category) !== normalizedCategory) return false;
+                            return normalizedCells.some(cell =>
+                                cell &&
+                                (cell === t.item_description.toLowerCase() ||
+                                    cell.includes(t.item_description.toLowerCase()))
+                            );
+                        });
 
                         if (templateItem) {
+                            const matchIdx = normalizedCells.findIndex(cell =>
+                                cell &&
+                                (cell === templateItem.item_description.toLowerCase() ||
+                                    cell.includes(templateItem.item_description.toLowerCase()))
+                            );
+                            let status = "";
+                            const commentParts = [];
+                            for (let j = Math.max(matchIdx + 1, 0); j < cells.length; j++) {
+                                const value = cells[j];
+                                if (!value) continue;
+                                if (!status && isStatusValue(value)) {
+                                    status = value;
+                                    continue;
+                                }
+                                commentParts.push(value);
+                            }
                             subStorage.subscription_audit_results.push({
                                 id: subStorage.subscription_audit_results.length + 1,
                                 audit_id: sessionId,
                                 item_id: templateItem.item_id,
-                                status: colD || "N/A",
-                                comment: colE || ""
+                                status: status || colD || "N/A",
+                                comment: commentParts.join(" ").trim() || colE || ""
                             });
+                        } else if (normalizedCategory.includes("additionalcomments")) {
+                            const additionalTemplate = subStorage.subscription_checklist_template.find(t =>
+                                normalizeCategory(t.category) === "additionalcomments"
+                            );
+                            if (additionalTemplate) {
+                                const comment = cells
+                                    .filter((value) => value && value.toLowerCase() !== "additional comments")
+                                    .filter((value) => !isStatusValue(value))
+                                    .join(" ")
+                                    .trim();
+                                if (comment) {
+                                    const existing = subStorage.subscription_audit_results.find(r =>
+                                        r.audit_id === sessionId && r.item_id === additionalTemplate.item_id
+                                    );
+                                    if (existing) {
+                                        existing.comment = existing.comment
+                                            ? `${existing.comment} ${comment}`
+                                            : comment;
+                                    } else {
+                                        subStorage.subscription_audit_results.push({
+                                            id: subStorage.subscription_audit_results.length + 1,
+                                            audit_id: sessionId,
+                                            item_id: additionalTemplate.item_id,
+                                            status: colD || "N/A",
+                                            comment
+                                        });
+                                    }
+                                }
+                            }
                         }
                     }
                 }

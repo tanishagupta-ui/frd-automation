@@ -2,12 +2,51 @@
   "enrichments": [
     {
       "id": 1,
-      "merchant_name": "Sugarfit",
+      "merchant_name": "Sugarfit Health Solutions Private Limited",
       "original_name": "Sugarfit",
       "merchant_id": null,
-      "search_date": "2026-02-11T07:20:35.054Z",
-      "error": "[GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-pro-latest:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.",
-      "web_data": null
+      "search_date": "2026-02-12T08:55:31.939Z",
+      "web_data": {
+        "company_name": "Sugarfit Health Solutions Private Limited",
+        "website": "https://www.sugar.fit",
+        "description": "A health-tech startup focused on managing and reversing Type 2 diabetes and pre-diabetes through a data-driven approach combining continuous glucose monitoring (CGM) technology, personalized coaching, and lifestyle interventions.",
+        "industry": "HealthTech",
+        "products_services": [
+          "Diabetes Reversal Programs",
+          "Continuous Glucose Monitoring (CGM) devices",
+          "Personalized health and nutrition coaching",
+          "Metabolic health tracking mobile application",
+          "Doctor-led clinical consultations",
+          "Fitness and lifestyle management plans"
+        ],
+        "business_model": "D2C",
+        "target_audience": "Individuals diagnosed with Type 2 diabetes, people with pre-diabetes, and those seeking to improve metabolic health or manage blood sugar levels."
+      },
+      "model_used": "gemini-flash-latest"
+    },
+    {
+      "id": 2,
+      "merchant_name": "Bharat Petroleum Corporation Limited (BPCL)",
+      "original_name": "BPCL QR Code (1)",
+      "merchant_id": null,
+      "search_date": "2026-02-12T09:57:08.812Z",
+      "web_data": {
+        "company_name": "Bharat Petroleum Corporation Limited (BPCL)",
+        "website": "https://www.bharatpetroleum.in",
+        "description": "Bharat Petroleum Corporation Limited (BPCL) is an Indian central public sector undertaking under the Ministry of Petroleum and Natural Gas. It is one of India's leading oil and gas companies, engaged in refining, marketing, and distribution of petroleum products, and has integrated digital payment systems including QR-code based transactions across its retail outlets.",
+        "industry": "Oil & Gas",
+        "products_services": [
+          "Petrol and Diesel",
+          "LPG (Bharatgas)",
+          "Aviation Turbine Fuel",
+          "Lubricants (MAK)",
+          "Refining and Marketing of Petroleum Products",
+          "Digital Payment Solutions (HelloBPCL App, SmartDrive)"
+        ],
+        "business_model": "B2B, B2C",
+        "target_audience": "Individual vehicle owners, households, industrial enterprises, and aviation companies"
+      },
+      "model_used": "gemini-flash-latest"
     }
   ]
 }
