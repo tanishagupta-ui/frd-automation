@@ -98,7 +98,7 @@ async function generateFRD(
       `   2.5 [Process Flow](#25-process-flow)\n` +
       `3. [Exception Scenarios](#3-exception-scenarios)\n` +
       `   3.1 [Error Handling](#31-error-handling)\n` +
-      `   3.2 [Audit Caughts](#32-audit-caughts)\n` +
+      `   3.2 [Audit Findings](#32-audit-findings)\n` +
       `   3.3 [Checklist Link](#33-checklist-link)\n` +
       `   3.4 [Auto Capture Configuration](#34-auto-capture-configuration)\n` +
       `4. [Integration Best Practices](#4-integration-best-practices)\n\n`;
@@ -172,10 +172,11 @@ async function generateFRD(
     pdfMarkdown += techSpecs;
 
     const methods = extractPaymentMethods(auditResult);
-    const methodStr = `- **Payment methods:** ${methods.length > 0
-      ? methods.join(", ")
-      : "UPI, Emandate (Netbanking), Cards"
-      }\n\n`;
+    const methodStr = `- **Payment methods:** ${
+      methods.length > 0
+        ? methods.join(", ")
+        : "UPI, Emandate (Netbanking), Cards"
+    }\n\n`;
     markdown += methodStr;
     pdfMarkdown += methodStr;
 
@@ -232,10 +233,11 @@ async function generateFRD(
 
     markdown += `#### 2.4.1 Test and Production Domains\n`;
     pdfMarkdown += `#### 2.4.1 Test and Production Domains\n`;
-    const prod = `- **Production:** ${webData.website && webData.website !== "Not found"
-      ? webData.website
-      : "N/A"
-      }\n\n`;
+    const prod = `- **Production:** ${
+      webData.website && webData.website !== "Not found"
+        ? webData.website
+        : "N/A"
+    }\n\n`;
     markdown += prod;
     pdfMarkdown += prod;
 
@@ -266,14 +268,18 @@ async function generateFRD(
     markdown += `#### 2.4.5 Webhook URLs and events\n`;
     pdfMarkdown += `#### 2.4.5 Webhook URLs and events\n`;
     const webhooks = extractWebhooks(auditResult);
-    const productLabel = (auditResult.product || productType || "").toLowerCase();
+    const productLabel = (
+      auditResult.product ||
+      productType ||
+      ""
+    ).toLowerCase();
     const isSubscription = productLabel.includes("subscription");
     const webhookList =
       webhooks.length > 0
         ? webhooks.map((w) => `\`${w}\``).join(", ")
         : isSubscription
-          ? "Not provided in checklist"
-          : "`payment.captured`, `payment.failed`";
+        ? "Not provided in checklist"
+        : "`payment.captured`, `payment.failed`";
     const webhookStr = `- **Events:** ${webhookList}\n\n`;
     markdown += webhookStr;
     pdfMarkdown += webhookStr;
@@ -325,11 +331,15 @@ async function generateFRD(
     markdown += errorHandling;
     pdfMarkdown += errorHandling;
 
-    markdown += `### 3.2 Audit Caughts\n`;
-    pdfMarkdown += `### 3.2 Audit Caughts\n`;
-    const auditDefault = `The technical audit for **${merchantName}** confirms that the integration aligns with Razorpay standards. No major blockers were identified during the review.\n\n`;
-    markdown += auditDefault;
-    pdfMarkdown += auditDefault;
+    markdown += `### 3.2 Audit Findings\n`;
+    pdfMarkdown += `### 3.2 Audit Findings\n`;
+    const auditFindingsSummary = buildAuditFindingsSummary(
+      auditResult,
+      merchantName,
+      productType
+    );
+    markdown += auditFindingsSummary;
+    pdfMarkdown += auditFindingsSummary;
 
     markdown += `### 3.3 Checklist Link\n`;
     pdfMarkdown += `### 3.3 Checklist Link\n`;
@@ -380,7 +390,7 @@ async function generateFRD(
     pdfMarkdown += `### 4 Integration Best Practices\n`;
 
     // Add professional combined implementation notes and additional comments
-    const combinedNotes = extractCombinedAdditionalInfo(auditResult);
+    const combinedNotes = extractCombinedAdditionalInfo(auditResult, productType);
 
     if (combinedNotes) {
       markdown += `${combinedNotes}\n\n`;
@@ -430,8 +440,7 @@ function extractPaymentMethods(auditResult) {
     const label = getCheckLabel(check);
     const status = (check.status || "").toLowerCase();
     if (label.includes("upi") || status.includes("upi")) methods.add("UPI");
-    if (label.includes("card") || status.includes("card"))
-      methods.add("Cards");
+    if (label.includes("card") || status.includes("card")) methods.add("Cards");
     if (
       label.includes("netbanking") ||
       status.includes("netbanking") ||
@@ -498,7 +507,8 @@ function extractPlatform(auditResult) {
     const label = getCheckLabel(check);
     const comment = (check.comment || "").toLowerCase();
     if (label.includes("platform")) {
-      const value = getMeaningfulValue(check.comment) || getMeaningfulValue(check.status);
+      const value =
+        getMeaningfulValue(check.comment) || getMeaningfulValue(check.status);
       if (value) platform = value;
     } else if (
       comment.includes("android") ||
@@ -547,7 +557,6 @@ function extractCheckoutType(auditResult) {
   return checkoutType;
 }
 
-
 function collectChecklistChecks(auditResult) {
   const sources = [
     auditResult.audit_data,
@@ -568,7 +577,15 @@ function collectChecklistChecks(auditResult) {
         [];
       if (!Array.isArray(items)) return;
       items.forEach((check) => {
-        checks.push({ ...check, _section: section.category || section.title });
+        checks.push({
+          ...check,
+          _section:
+            section.category ||
+            section.categoryName ||
+            section.title ||
+            section.section ||
+            section.name,
+        });
       });
     });
   });
@@ -601,6 +618,229 @@ function extractLabeledValue(raw, labels) {
   return "";
 }
 
+function buildAuditFindingsSummary(auditResult, merchantName, productType) {
+  const checks = collectChecklistChecks(auditResult);
+  if (checks.length === 0) {
+    return `The technical audit for **${merchantName}** confirms that the integration aligns with Razorpay standards. No major blockers were identified during the review.\n\n`;
+  }
+
+  const narrativeLines = buildNarrativeFindings(checks, auditResult, merchantName);
+  const counts = {
+    done: 0,
+    pending: 0,
+    failed: 0,
+    na: 0,
+    other: 0,
+  };
+  const sectionStats = new Map();
+  const actionItems = [];
+
+  checks.forEach((check) => {
+    const rawStatus =
+      check.status || check.result || check.state || check.value || "";
+    const normalized = normalizeChecklistStatus(rawStatus, check.comment);
+
+    if (Object.prototype.hasOwnProperty.call(counts, normalized)) {
+      counts[normalized] += 1;
+    } else {
+      counts.other += 1;
+    }
+
+    const sectionName =
+      (check._section && String(check._section).trim()) || "General";
+    const stats = sectionStats.get(sectionName) || { total: 0, done: 0 };
+    stats.total += 1;
+    if (normalized === "done") stats.done += 1;
+    sectionStats.set(sectionName, stats);
+
+    if (normalized === "pending" || normalized === "failed") {
+      const label =
+        check.item || check.label || check.config || check.check || "Checklist";
+      const comment = getMeaningfulValue(check.comment);
+      const statusText = rawStatus ? ` (${rawStatus})` : "";
+      const note = comment ? ` - ${comment}` : "";
+      actionItems.push(`${label}${statusText}${note}`);
+    }
+  });
+
+  const total = checks.length;
+  const sectionCount = sectionStats.size;
+  const orderedSections = Array.from(sectionStats.entries())
+    .sort((a, b) => b[1].done - a[1].done)
+    .map(([name]) => name);
+  const highlightSections = orderedSections.slice(0, 4);
+
+  const summaryLines = [];
+  if (narrativeLines.length > 0) {
+    summaryLines.push(narrativeLines.map((line) => `- ${line}`).join("\n"));
+  }
+
+  if (highlightSections.length > 0) {
+    summaryLines.push(
+      `Best-practice coverage is validated in key areas including ${highlightSections
+        .map((s) => `**${s}**`)
+        .join(", ")}.`
+    );
+  } else {
+    summaryLines.push(
+      `Best-practice coverage is validated across checklist items marked as done.`
+    );
+  }
+
+  if (actionItems.length > 0) {
+    const topItems = actionItems.slice(0, 5).map((i) => `- ${i}`).join("\n");
+    summaryLines.push(
+      `Open checklist items to address:\n${topItems}${
+        actionItems.length > 5 ? "\n- Additional items omitted for brevity." : ""
+      }`
+    );
+  } else {
+    summaryLines.push(`No open checklist items were identified.`);
+  }
+
+  return summaryLines.join("\n") + "\n\n";
+}
+
+function normalizeChecklistStatus(status, comment) {
+  const raw = `${status || ""}`.trim().toLowerCase();
+  const commentText = `${comment || ""}`.trim().toLowerCase();
+  const value = raw || commentText;
+  if (!value) return "other";
+  if (value.includes("n/a") || value === "na" || value.includes("not applicable"))
+    return "na";
+  if (
+    value.includes("done") ||
+    value.includes("pass") ||
+    value.includes("ok") ||
+    value.includes("success") ||
+    value.includes("complete") ||
+    value.includes("verified")
+  )
+    return "done";
+  if (
+    value.includes("pending") ||
+    value.includes("wip") ||
+    value.includes("in progress") ||
+    value.includes("todo") ||
+    value.includes("tbd")
+  )
+    return "pending";
+  if (
+    value.includes("fail") ||
+    value.includes("error") ||
+    value.includes("issue") ||
+    value.includes("block") ||
+    value.includes("missing")
+  )
+    return "failed";
+  return "other";
+}
+
+function buildNarrativeFindings(checks, auditResult, merchantName) {
+  const lines = [];
+
+  const policySignal = findChecklistSignal(checks, ["policy", "plan", "product"]);
+  if (policySignal) {
+    const normalized = policySignal.toLowerCase();
+    const generic =
+      normalized === "policy" || normalized === "plan" || normalized === "product";
+    lines.push(
+      `The user enters the ${merchantName} platform and selects the ${
+        generic ? "policy" : policySignal
+      }.`
+    );
+  }
+
+  const paymentSignal = findChecklistSignal(checks, [
+    "payment method",
+    "payment flow",
+    "checkout",
+  ]);
+  const bankAck = findChecklistSignal(checks, ["bank", "acknowledg", "ack"]);
+  if (paymentSignal || bankAck) {
+    const suffix = bankAck
+      ? `, and Razorpay receives an acknowledgement from the bank`
+      : "";
+    lines.push(
+      `Upon proceeding to the selected payment method and completing the payment${suffix}.`
+    );
+  }
+
+  const webhookEvents = extractWebhooks(auditResult);
+  if (webhookEvents.length > 0) {
+    lines.push(
+      `Payment status is determined using the webhooks (${webhookEvents
+        .slice(0, 6)
+        .map((w) => `\`${w}\``)
+        .join(", ")}).`
+    );
+  } else if (findChecklistSignal(checks, ["webhook"])) {
+    lines.push(`Payment status is determined using the webhooks.`);
+  }
+
+  const errorHandlingNote = findChecklistSignal(checks, [
+    "error handling",
+    "exception",
+    "failure",
+    "rainy",
+    "runbook",
+    "playbook",
+    "kit",
+  ]);
+  if (errorHandlingNote) {
+    const normalized = errorHandlingNote.toLowerCase();
+    const generic =
+      normalized === "error handling" ||
+      normalized === "exception" ||
+      normalized === "failure" ||
+      normalized === "kit";
+    lines.push(
+      generic
+        ? `Error-handling guidance has been shared with the merchant.`
+        : `A ${errorHandlingNote} for error handling has been shared with the merchant.`
+    );
+  }
+
+  const autoCaptureSignal = findChecklistSignal(checks, [
+    "auto capture",
+    "auto-capture",
+    "capture timing",
+    "capture window",
+  ]);
+  if (autoCaptureSignal) {
+    const captureSetting = extractCaptureSetting(auditResult);
+    if (captureSetting) {
+      lines.push(
+        `The merchant has set the auto-capture for ${captureSetting} from the Razorpay dashboard.`
+      );
+    }
+  }
+
+  return lines.filter(Boolean);
+}
+
+function findChecklistSignal(checks, keywords) {
+  if (!Array.isArray(checks) || checks.length === 0) return "";
+  const patterns = keywords.map((k) => k.toLowerCase());
+  for (const check of checks) {
+    const label = `${check.item || check.label || check.config || ""}`.toLowerCase();
+    const comment = `${check.comment || check.hint || ""}`.toLowerCase();
+    const status = `${check.status || ""}`.toLowerCase();
+    const combined = `${label} ${comment} ${status}`;
+    const hit = patterns.find((k) => combined.includes(k));
+    if (hit) {
+      const raw =
+        getMeaningfulValue(check.comment) ||
+        getMeaningfulValue(check.status) ||
+        getMeaningfulValue(check.item) ||
+        getMeaningfulValue(check.label) ||
+        hit;
+      return raw;
+    }
+  }
+  return "";
+}
+
 function parseWebhookEvents(raw) {
   if (!raw) return [];
   const text = String(raw);
@@ -613,7 +853,11 @@ function parseWebhookEvents(raw) {
     .filter(Boolean);
 }
 
-function hydrateChecklistFromDataFolder(auditResult, productType, merchantName) {
+function hydrateChecklistFromDataFolder(
+  auditResult,
+  productType,
+  merchantName
+) {
   const productLabel = (auditResult.product || productType || "").toLowerCase();
   if (!productLabel.includes("subscription")) return auditResult;
 
@@ -628,9 +872,9 @@ function hydrateChecklistFromDataFolder(auditResult, productType, merchantName) 
 
   const slug = slugifyName(
     merchantName ||
-    auditResult.audit_metadata?.mx_name ||
-    auditResult.audit_metadata?.merchant_name ||
-    ""
+      auditResult.audit_metadata?.mx_name ||
+      auditResult.audit_metadata?.merchant_name ||
+      ""
   );
   if (!slug) return auditResult;
 
@@ -646,7 +890,9 @@ function hydrateChecklistFromDataFolder(auditResult, productType, merchantName) 
     );
   if (files.length === 0) return auditResult;
 
-  const latest = files.sort((a, b) => extractAuditIndex(a) - extractAuditIndex(b)).pop();
+  const latest = files
+    .sort((a, b) => extractAuditIndex(a) - extractAuditIndex(b))
+    .pop();
   const auditPath = path.join(auditsDir, latest);
   try {
     const parsed = JSON.parse(fs.readFileSync(auditPath, "utf8"));
@@ -666,7 +912,10 @@ function extractAuditIndex(filename) {
 }
 
 function slugifyName(value) {
-  return String(value).trim().replace(/[^a-z0-9]+/gi, "_").toLowerCase();
+  return String(value)
+    .trim()
+    .replace(/[^a-z0-9]+/gi, "_")
+    .toLowerCase();
 }
 
 function buildWebDataSummary(webData, merchantName) {
@@ -682,11 +931,12 @@ function buildWebDataSummary(webData, merchantName) {
       : "";
     const services =
       Array.isArray(webData.products_services) &&
-        webData.products_services.length > 0
+      webData.products_services.length > 0
         ? `Key offerings include ${webData.products_services
-          .slice(0, 4)
-          .join(", ")}${webData.products_services.length > 4 ? ", and more" : ""
-        }.`
+            .slice(0, 4)
+            .join(", ")}${
+            webData.products_services.length > 4 ? ", and more" : ""
+          }.`
         : "";
 
     const prefix = location || size ? `${location}${size}`.trim() + " " : "";
@@ -709,19 +959,27 @@ function extractAutoCaptureSettings(auditResult) {
     auditResult.results,
   ];
 
-  let autoCaptureComment = '';
+  let autoCaptureComment = "";
 
   sources.forEach((source) => {
     if (Array.isArray(source)) {
       source.forEach((section) => {
-        const categoryName = (section.category || section.categoryName || '').toLowerCase();
+        const categoryName = (
+          section.category ||
+          section.categoryName ||
+          ""
+        ).toLowerCase();
 
-        if (categoryName.includes('auto') || categoryName.includes('capture')) {
+        if (categoryName.includes("auto") || categoryName.includes("capture")) {
           const checks = section.checks || section.items || [];
           checks.forEach((check) => {
-            if (check.comment && check.comment.trim() !== '') {
+            if (check.comment && check.comment.trim() !== "") {
               autoCaptureComment = check.comment.trim();
-            } else if (check.status && check.status !== 'N/A' && check.status !== 'Done') {
+            } else if (
+              check.status &&
+              check.status !== "N/A" &&
+              check.status !== "Done"
+            ) {
               autoCaptureComment = check.status;
             }
           });
@@ -737,7 +995,7 @@ function extractAutoCaptureSettings(auditResult) {
   return null;
 }
 
-function extractCombinedAdditionalInfo(auditResult) {
+function extractCombinedAdditionalInfo(auditResult, productType) {
   const sources = [
     auditResult.audit_data,
     auditResult.checklist,
@@ -746,21 +1004,47 @@ function extractCombinedAdditionalInfo(auditResult) {
     auditResult.results,
   ];
 
+  const productLabel = (auditResult.product || productType || "").toLowerCase();
+  const isQrCode = productLabel.includes("qr");
+
   const uniqueComments = new Set();
+  const labeledComments = new Map();
 
   sources.forEach((source) => {
     if (Array.isArray(source)) {
       source.forEach((section) => {
-        const categoryName = (section.category || section.categoryName || '').toLowerCase();
+        const categoryName = (
+          section.category ||
+          section.categoryName ||
+          ""
+        ).toLowerCase();
 
         // Match sections like "Additional Comments", "Notes", etc.
-        if (categoryName.includes('additional') || categoryName.includes('comment') || categoryName.includes('note')) {
+        if (
+          categoryName.includes("additional") ||
+          categoryName.includes("comment") ||
+          categoryName.includes("note")
+        ) {
           const checks = section.checks || section.items || [];
           checks.forEach((check) => {
-            if (check.comment && check.comment.trim() !== '' && check.comment.trim() !== 'N/A') {
-              uniqueComments.add(check.comment.trim());
-            } else if (check.status && !['n/a', 'done', 'yes', 'no'].includes(check.status.toLowerCase())) {
-              uniqueComments.add(check.status.trim());
+            const label = check.item || check.label || check.config || "";
+            const commentValue = check.comment ? check.comment.trim() : "";
+            const statusValue = check.status ? check.status.trim() : "";
+            if (isQrCode && label) {
+              const value =
+                commentValue ||
+                (statusValue ? statusValue : "N/A");
+              labeledComments.set(label, value);
+              return;
+            }
+
+            if (commentValue && commentValue !== "N/A") {
+              uniqueComments.add(commentValue);
+            } else if (
+              statusValue &&
+              !["n/a", "done", "yes", "no"].includes(statusValue.toLowerCase())
+            ) {
+              uniqueComments.add(statusValue);
             }
           });
         }
@@ -772,20 +1056,32 @@ function extractCombinedAdditionalInfo(auditResult) {
   const checks = collectChecklistChecks(auditResult);
   checks.forEach((check) => {
     const label = getCheckLabel(check);
-    if (label.includes("additional comments") || label.includes("integration notes")) {
-      const val = getMeaningfulValue(check.comment) || getMeaningfulValue(check.status);
+    if (
+      label.includes("additional comments") ||
+      label.includes("integration notes")
+    ) {
+      const val =
+        getMeaningfulValue(check.comment) || getMeaningfulValue(check.status);
       if (val) uniqueComments.add(val);
     }
   });
 
+  if (isQrCode && labeledComments.size > 0) {
+    const notes = Array.from(labeledComments.entries())
+      .map(([label, value]) => `- ${label}: ${value}`)
+      .join("\n");
+    return `Best-practice checklist observations for QR Codes:\n\n${notes}`;
+  }
+
   if (uniqueComments.size > 0) {
-    const notes = Array.from(uniqueComments).map(comment => `- ${comment}`).join('\n\n');
+    const notes = Array.from(uniqueComments)
+      .map((comment) => `- ${comment}`)
+      .join("\n\n");
     return `The following implementation notes and observations were documented during the audit to ensure a professional and robust integration:\n\n${notes}`;
   }
 
   return null;
 }
-
 
 module.exports = {
   generateFRD,
