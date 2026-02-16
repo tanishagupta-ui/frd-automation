@@ -1591,6 +1591,22 @@
       ],
       "audit_summary": "- The user completes the payment journey on the Bharat Petroleum Corporation Limited (BPCL) platform.\n- Technical validation confirms critical API implementations are under review.\n- Payment status is determined via webhooks for core payment methods.\n- Auto-capture settings are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
       "overall_status": "Action Required"
+    },
+    {
+      "id": "sum_1771225289053",
+      "audit_id": "audit_1771225288776",
+      "merchant_name": "Sugar.fit",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-16T07:01:29.053Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: Done"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Sugar.fit platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for UPI, Cards.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
     }
   ]
 }
