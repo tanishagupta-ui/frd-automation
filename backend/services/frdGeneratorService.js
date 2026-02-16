@@ -100,8 +100,7 @@ async function generateFRD(
       `   3.1 [Error Handling](#31-error-handling)\n` +
       `   3.2 [Audit Caughts](#32-audit-caughts)\n` +
       `   3.3 [Checklist Link](#33-checklist-link)\n` +
-      `   3.4 [Best Practice Suggestions](#34-best-practice-suggestions)\n` +
-      `   3.5 [Additional Comments](#35-additional-comments)\n` +
+      `   3.4 [Auto Capture Configuration](#34-auto-capture-configuration)\n` +
       `4. [Integration Best Practices](#4-integration-best-practices)\n\n`;
 
     markdown += `- **Owner Name: Rakshita Sharma**\n\n`;
@@ -344,10 +343,12 @@ async function generateFRD(
       pdfMarkdown += `N/A\n\n`;
     }
 
+    markdown += `---\n\n`;
+    pdfMarkdown += `---\n\n`;
+
     markdown += `### 3.4 Auto Capture Configuration\n`;
     pdfMarkdown += `### 3.4 Auto Capture Configuration\n`;
 
-    // Extract auto-capture settings for subscriptions
     const autoCaptureInfo = extractAutoCaptureSettings(auditResult);
     if (autoCaptureInfo) {
       markdown += autoCaptureInfo + `\n\n`;
@@ -356,29 +357,6 @@ async function generateFRD(
       markdown += `Standard auto-capture timing applies: 2 days for UPI and 3 days for other payment methods.\n\n`;
       pdfMarkdown += `Standard auto-capture timing applies: 2 days for UPI and 3 days for other payment methods.\n\n`;
     }
-
-    markdown += `### 3.5 Additional Implementation Notes\n`;
-    pdfMarkdown += `### 3.5 Additional Implementation Notes\n`;
-
-    // Extract additional comments/practices
-    const additionalNotes = extractAdditionalPractices(auditResult);
-    if (additionalNotes) {
-      markdown += additionalNotes + `\n\n`;
-      pdfMarkdown += additionalNotes + `\n\n`;
-    } else {
-      const bestPractices =
-        `- **API Integration:** Fetch APIs recommended for status reconciliation and edge case handling.\n` +
-        `- **Authorization Flow:** Late authorization scenarios have been reviewed for system robustness.\n` +
-        `- **Error Handling:** Comprehensive error code consumption ensures graceful failure management.\n\n`;
-      markdown += bestPractices;
-      pdfMarkdown += bestPractices;
-    }
-
-    const additionalComments = extractAdditionalComments(auditResult);
-    markdown += `### 3.5 Additional Comments\n`;
-    pdfMarkdown += `### 3.5 Additional Comments\n`;
-    markdown += `${additionalComments || "N/A"}\n\n`;
-    pdfMarkdown += `${additionalComments || "N/A"}\n\n`;
 
     markdown += `---\n\n`;
     pdfMarkdown += `---\n\n`;
@@ -400,12 +378,20 @@ async function generateFRD(
 
     markdown += `### 4 Integration Best Practices\n`;
     pdfMarkdown += `### 4 Integration Best Practices\n`;
-    markdown +=
-      `- Verification via webhooks is the primary source of truth.\n` +
-      `- Periodic reconciliation using Fetch APIs for edge cases.\n\n`;
-    pdfMarkdown +=
-      `- Verification via webhooks is the primary source of truth.\n` +
-      `- Periodic reconciliation using Fetch APIs for edge cases.\n\n`;
+
+    // Add professional combined implementation notes and additional comments
+    const combinedNotes = extractCombinedAdditionalInfo(auditResult);
+
+    if (combinedNotes) {
+      markdown += `${combinedNotes}\n\n`;
+      pdfMarkdown += `${combinedNotes}\n\n`;
+    } else {
+      const defaultPractices =
+        `- Verification via webhooks is the primary source of truth.\n` +
+        `- Periodic reconciliation using Fetch APIs for edge cases.\n\n`;
+      markdown += defaultPractices;
+      pdfMarkdown += defaultPractices;
+    }
 
     fs.writeFileSync(filepath, markdown);
     console.log(`✅ Automated FRD generated: ${filename} `);
@@ -561,20 +547,6 @@ function extractCheckoutType(auditResult) {
   return checkoutType;
 }
 
-function extractAdditionalComments(auditResult) {
-  const checks = collectChecklistChecks(auditResult);
-  for (const check of checks) {
-    const label = getCheckLabel(check);
-    if (label.includes("additional comments")) {
-      const value =
-        getMeaningfulValue(check.comment) ||
-        getMeaningfulValue(check.hint) ||
-        getMeaningfulValue(check.status);
-      if (value) return value;
-    }
-  }
-  return "";
-}
 
 function collectChecklistChecks(auditResult) {
   const sources = [
@@ -765,7 +737,7 @@ function extractAutoCaptureSettings(auditResult) {
   return null;
 }
 
-function extractAdditionalPractices(auditResult) {
+function extractCombinedAdditionalInfo(auditResult) {
   const sources = [
     auditResult.audit_data,
     auditResult.checklist,
@@ -774,18 +746,21 @@ function extractAdditionalPractices(auditResult) {
     auditResult.results,
   ];
 
-  const additionalComments = [];
+  const uniqueComments = new Set();
 
   sources.forEach((source) => {
     if (Array.isArray(source)) {
       source.forEach((section) => {
         const categoryName = (section.category || section.categoryName || '').toLowerCase();
 
+        // Match sections like "Additional Comments", "Notes", etc.
         if (categoryName.includes('additional') || categoryName.includes('comment') || categoryName.includes('note')) {
           const checks = section.checks || section.items || [];
           checks.forEach((check) => {
             if (check.comment && check.comment.trim() !== '' && check.comment.trim() !== 'N/A') {
-              additionalComments.push(check.comment.trim());
+              uniqueComments.add(check.comment.trim());
+            } else if (check.status && !['n/a', 'done', 'yes', 'no'].includes(check.status.toLowerCase())) {
+              uniqueComments.add(check.status.trim());
             }
           });
         }
@@ -793,9 +768,19 @@ function extractAdditionalPractices(auditResult) {
     }
   });
 
-  if (additionalComments.length > 0) {
-    let notes = additionalComments.map((comment, index) => `- ${comment}`).join('\\n');
-    return `The following implementation notes and observations were documented during the audit:\\n\\n${notes}`;
+  // Also check individual check labels for "additional comments" across all sections
+  const checks = collectChecklistChecks(auditResult);
+  checks.forEach((check) => {
+    const label = getCheckLabel(check);
+    if (label.includes("additional comments") || label.includes("integration notes")) {
+      const val = getMeaningfulValue(check.comment) || getMeaningfulValue(check.status);
+      if (val) uniqueComments.add(val);
+    }
+  });
+
+  if (uniqueComments.size > 0) {
+    const notes = Array.from(uniqueComments).map(comment => `- ${comment}`).join('\n\n');
+    return `The following implementation notes and observations were documented during the audit to ensure a professional and robust integration:\n\n${notes}`;
   }
 
   return null;
