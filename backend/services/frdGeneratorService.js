@@ -53,7 +53,6 @@ async function generateFRD(
       auditResult.audit_metadata?.merchant_id ||
       auditResult.audit_metadata?.mid ||
       "Pending";
-
     const backendCoverImagePath = path.resolve(
       __dirname,
       "../public/image.png"
@@ -77,8 +76,9 @@ async function generateFRD(
       const base64Image = Buffer.from(bitmap).toString("base64");
       const dataURI = `data:image/png;base64,${base64Image}`;
 
-      markdown += `![Cover Image](${dataURI})\n\n`;
-      pdfMarkdown += `![Cover Image](${coverImagePath})\n\n`;
+      const imgTag = `<img src="${dataURI}" alt="Razorpay Curlec" class="h-8 object-contain" style="height: auto; max-height: 100px; display: block; margin: 20px auto;" />\n\n`;
+      markdown += imgTag;
+      pdfMarkdown += imgTag;
     }
 
     const titleText = `# Functional Requirements Document\n## ${merchantName.toUpperCase()}`;
@@ -87,7 +87,7 @@ async function generateFRD(
 
     const toc =
       `### Table of Contents\n\n` +
-      `1. [Requirements Description](#1-requirements-description)\n` +
+      `1. [Requirement Specification:](#1-requirement-specification)\n` +
       `   1.1 [Background and Objectives](#11-background-and-objectives)\n` +
       `   1.2 [Business Requirement](#12-business-requirement)\n` +
       `2. [Detailed Requirements](#2-detailed-requirements)\n` +
@@ -98,7 +98,7 @@ async function generateFRD(
       `   2.5 [Process Flow](#25-process-flow)\n` +
       `3. [Exception Scenarios](#3-exception-scenarios)\n` +
       `   3.1 [Error Handling](#31-error-handling)\n` +
-      `   3.2 [Audit Findings](#32-audit-findings)\n` +
+      `   3.2 [Audit Caughts](#32-audit-caughts)\n` +
       `   3.3 [Checklist Link](#33-checklist-link)\n` +
       `   3.4 [Best Practice Suggestions](#34-best-practice-suggestions)\n` +
       `   3.5 [Additional Comments](#35-additional-comments)\n` +
@@ -129,8 +129,8 @@ async function generateFRD(
     markdown += `---\n\n`;
     pdfMarkdown += `---\n\n`;
 
-    markdown += `## 1. Requirements Description\n\n`;
-    pdfMarkdown += `## 1. Requirements Description\n\n`;
+    markdown += `## 1. Requirement Specification:\n\n`;
+    pdfMarkdown += `## 1. Requirement Specification:\n\n`;
 
     markdown += `---\n\n`;
     pdfMarkdown += `---\n\n`;
@@ -273,8 +273,8 @@ async function generateFRD(
       webhooks.length > 0
         ? webhooks.map((w) => `\`${w}\``).join(", ")
         : isSubscription
-        ? "Not provided in checklist"
-        : "`payment.captured`, `payment.failed`";
+          ? "Not provided in checklist"
+          : "`payment.captured`, `payment.failed`";
     const webhookStr = `- **Events:** ${webhookList}\n\n`;
     markdown += webhookStr;
     pdfMarkdown += webhookStr;
@@ -302,8 +302,9 @@ async function generateFRD(
       const mimeType = ext === ".png" ? "image/png" : "image/jpeg";
       const dataURI = `data:${mimeType};base64,${base64Image}`;
 
-      markdown += `![Process Flow](${dataURI})\n\n`;
-      pdfMarkdown += `![Process Flow](${diagramPath})\n\n`;
+      const imgTag = `<img src="${dataURI}" alt="Process Flow" style="display: block; margin: 20px auto; max-width: 100%;" />\n\n`;
+      markdown += imgTag;
+      pdfMarkdown += imgTag;
     } else {
       const noDiagramMsg = `*Diagram pending generation.*\n\n`;
       markdown += noDiagramMsg;
@@ -325,8 +326,8 @@ async function generateFRD(
     markdown += errorHandling;
     pdfMarkdown += errorHandling;
 
-    markdown += `### 3.2 Audit Findings\n`;
-    pdfMarkdown += `### 3.2 Audit Findings\n`;
+    markdown += `### 3.2 Audit Caughts\n`;
+    pdfMarkdown += `### 3.2 Audit Caughts\n`;
     const auditDefault = `The technical audit for **${merchantName}** confirms that the integration aligns with Razorpay standards. No major blockers were identified during the review.\n\n`;
     markdown += auditDefault;
     pdfMarkdown += auditDefault;
@@ -655,9 +656,9 @@ function hydrateChecklistFromDataFolder(auditResult, productType, merchantName) 
 
   const slug = slugifyName(
     merchantName ||
-      auditResult.audit_metadata?.mx_name ||
-      auditResult.audit_metadata?.merchant_name ||
-      ""
+    auditResult.audit_metadata?.mx_name ||
+    auditResult.audit_metadata?.merchant_name ||
+    ""
   );
   if (!slug) return auditResult;
 
