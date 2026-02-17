@@ -1195,6 +1195,19 @@ app.post("/upload", (req, res) => {
 
                 const startIdx = headerRowIndex !== -1 ? headerRowIndex + 1 : 0;
 
+                const isMeaningfulNote = (value) => {
+                    if (!value) return false;
+                    const lowered = String(value).trim().toLowerCase();
+                    if (!lowered) return false;
+                    return !["n/a", "na", "done", "pass", "fail", "yes", "no"].includes(lowered);
+                };
+
+                const resolveAdditionalNote = (commentValue, statusValue) => {
+                    if (commentValue && String(commentValue).trim()) return String(commentValue).trim();
+                    if (isMeaningfulNote(statusValue)) return String(statusValue).trim();
+                    return "";
+                };
+
                 for (let i = startIdx; i < rawData.length; i++) {
                     const row = rawData[i];
                     if (!row || !Array.isArray(row)) continue;
@@ -1210,14 +1223,18 @@ app.post("/upload", (req, res) => {
                     if (lowerConfig === "configs" || lowerConfig === "tech checklist" || lowerConfig === "audit checklist" || lowerConfig === "status") continue;
 
                     if (lowerConfig.includes("additional comments") || lowerConfig.includes("remarks")) {
-                        additionalComments = comment;
+                        const note = resolveAdditionalNote(comment, status);
+                        if (note) {
+                            additionalComments = additionalComments ? `${additionalComments}; ${note}` : note;
+                        }
                     }
 
                     if (lowerConfig.includes("late auth scenario to be handled")) {
-                        if (comment) {
+                        const note = resolveAdditionalNote(comment, status) || configItem;
+                        if (note) {
                             additionalComments = additionalComments
-                                ? `${additionalComments}; ${comment}`
-                                : comment;
+                                ? `${additionalComments}; ${note}`
+                                : note;
                         }
                         continue;
                     }

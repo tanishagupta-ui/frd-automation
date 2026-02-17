@@ -391,7 +391,10 @@ async function generateFRD(
 
     // Add best practices (based on checkout type) and any additional notes
     const bestPractices = extractBestPractices(auditResult);
-    const combinedNotes = extractCombinedAdditionalInfo(auditResult, productType);
+    const combinedNotes = extractCombinedAdditionalInfo(
+      auditResult,
+      productType
+    );
 
     if (bestPractices) {
       const header = `Based on the detected checkout type, the following integration best practices apply:\n\n`;
@@ -633,7 +636,11 @@ function buildAuditFindingsSummary(auditResult, merchantName, productType) {
     return `The technical audit for **${merchantName}** confirms that the integration aligns with Razorpay standards. No major blockers were identified during the review.\n\n`;
   }
 
-  const narrativeLines = buildNarrativeFindings(checks, auditResult, merchantName);
+  const narrativeLines = buildNarrativeFindings(
+    checks,
+    auditResult,
+    merchantName
+  );
   const counts = {
     done: 0,
     pending: 0,
@@ -697,10 +704,15 @@ function buildAuditFindingsSummary(auditResult, merchantName, productType) {
   }
 
   if (actionItems.length > 0) {
-    const topItems = actionItems.slice(0, 5).map((i) => `- ${i}`).join("\n");
+    const topItems = actionItems
+      .slice(0, 5)
+      .map((i) => `- ${i}`)
+      .join("\n");
     summaryLines.push(
       `Open checklist items to address:\n${topItems}${
-        actionItems.length > 5 ? "\n- Additional items omitted for brevity." : ""
+        actionItems.length > 5
+          ? "\n- Additional items omitted for brevity."
+          : ""
       }`
     );
   } else {
@@ -715,7 +727,11 @@ function normalizeChecklistStatus(status, comment) {
   const commentText = `${comment || ""}`.trim().toLowerCase();
   const value = raw || commentText;
   if (!value) return "other";
-  if (value.includes("n/a") || value === "na" || value.includes("not applicable"))
+  if (
+    value.includes("n/a") ||
+    value === "na" ||
+    value.includes("not applicable")
+  )
     return "na";
   if (
     value.includes("done") ||
@@ -748,11 +764,17 @@ function normalizeChecklistStatus(status, comment) {
 function buildNarrativeFindings(checks, auditResult, merchantName) {
   const lines = [];
 
-  const policySignal = findChecklistSignal(checks, ["policy", "plan", "product"]);
+  const policySignal = findChecklistSignal(checks, [
+    "policy",
+    "plan",
+    "product",
+  ]);
   if (policySignal) {
     const normalized = policySignal.toLowerCase();
     const generic =
-      normalized === "policy" || normalized === "plan" || normalized === "product";
+      normalized === "policy" ||
+      normalized === "plan" ||
+      normalized === "product";
     lines.push(
       `The user enters the ${merchantName} platform and selects the ${
         generic ? "policy" : policySignal
@@ -832,7 +854,9 @@ function findChecklistSignal(checks, keywords) {
   if (!Array.isArray(checks) || checks.length === 0) return "";
   const patterns = keywords.map((k) => k.toLowerCase());
   for (const check of checks) {
-    const label = `${check.item || check.label || check.config || ""}`.toLowerCase();
+    const label = `${
+      check.item || check.label || check.config || ""
+    }`.toLowerCase();
     const comment = `${check.comment || check.hint || ""}`.toLowerCase();
     const status = `${check.status || ""}`.toLowerCase();
     const combined = `${label} ${comment} ${status}`;
@@ -1019,6 +1043,13 @@ function extractCombinedAdditionalInfo(auditResult, productType) {
   const uniqueComments = new Set();
   const labeledComments = new Map();
 
+  if (
+    auditResult.additionalComments &&
+    String(auditResult.additionalComments).trim()
+  ) {
+    uniqueComments.add(String(auditResult.additionalComments).trim());
+  }
+
   sources.forEach((source) => {
     if (Array.isArray(source)) {
       source.forEach((section) => {
@@ -1040,9 +1071,7 @@ function extractCombinedAdditionalInfo(auditResult, productType) {
             const commentValue = check.comment ? check.comment.trim() : "";
             const statusValue = check.status ? check.status.trim() : "";
             if (isQrCode && label) {
-              const value =
-                commentValue ||
-                (statusValue ? statusValue : "N/A");
+              const value = commentValue || (statusValue ? statusValue : "N/A");
               labeledComments.set(label, value);
               return;
             }
@@ -1086,7 +1115,7 @@ function extractCombinedAdditionalInfo(auditResult, productType) {
     const notes = Array.from(uniqueComments)
       .map((comment) => `- ${comment}`)
       .join("\n\n");
-    return `The following implementation notes and observations were documented during the audit to ensure a professional and robust integration:\n\n${notes}`;
+    return `${notes}`;
   }
 
   return null;
@@ -1116,8 +1145,7 @@ function extractBestPractices(auditResult) {
     const label = getCheckLabel(check);
     if (label.includes("best practices")) {
       const val =
-        getMeaningfulValue(check.comment) ||
-        getMeaningfulValue(check.status);
+        getMeaningfulValue(check.comment) || getMeaningfulValue(check.status);
       if (!val) return null;
       return formatBestPractices(val);
     }
@@ -1126,11 +1154,19 @@ function extractBestPractices(auditResult) {
 }
 
 function formatBestPractices(val) {
-  const parts = val.split(";").map((s) => s.trim()).filter(Boolean);
+  const normalize = (input) =>
+    String(input || "")
+      .trim()
+      .replace(/^\d+\.\s*/, "");
+  const parts = val
+    .split(";")
+    .map((s) => normalize(s))
+    .filter(Boolean);
   if (parts.length > 1) {
     return parts.map((p) => `- ${p}${p.endsWith(".") ? "" : "."}`).join("\n");
   }
-  return `- ${val}${val.endsWith(".") ? "" : "."}`;
+  const normalized = normalize(val);
+  return `- ${normalized}${normalized.endsWith(".") ? "" : "."}`;
 }
 module.exports = {
   generateFRD,
