@@ -1122,6 +1122,22 @@ app.post("/upload", (req, res) => {
 
                 let additionalComments = "";
                 let processedItems = [];
+                let checkoutType = null;
+
+                const CHECKOUT_BEST_PRACTICES = {
+                    standard: "Capture authorized payments using Payment Capture Settings; create orders via Orders API and pass the order_id to Checkout; verify the payment signature; confirm payment/order status is captured/paid before providing service (via fetch payment/order APIs); implement webhooks (payment.captured, payment.failed, order.paid); use callback_url for in-app browsers that do not support iframes.",
+                    custom: "Integrate the Payments Rainy Day kit for late auth, downtime, and errors; integrate Orders API and pass order_id to Checkout to prevent duplicate payments; verify payment signature; check payment/order status before providing services (via fetch payment/order APIs); implement webhooks or query API (payment.captured, payment.failed, order.paid); implement callback_url for in-app browsers; validate and save cards; validate and save VPA for UPI collect.",
+                    s2s: "Use the S2S JSON API; open the HTML returned in the API response in the customer's browser; pass actual user_agent, customer IP, and referrer; integrate webhooks for server-to-server callbacks; use the Payments Rainy Day kit for late auth, downtimes, and errors."
+                };
+
+                const detectCheckoutType = (text) => {
+                    if (!text) return null;
+                    const t = text.toLowerCase();
+                    if (t.includes("s2s") || t.includes("server to server") || t.includes("server-to-server")) return "s2s";
+                    if (t.includes("custom checkout") || (t.includes("custom") && t.includes("checkout"))) return "custom";
+                    if (t.includes("standard checkout") || (t.includes("standard") && t.includes("checkout"))) return "standard";
+                    return null;
+                };
 
 
                 let goliveStorage = {
@@ -1197,15 +1213,12 @@ app.post("/upload", (req, res) => {
                         additionalComments = comment;
                     }
 
-                    // Determine Source
-                    let source = "Unknown";
-                    const templateMatch = GOLIVE_CANONICAL_TEMPLATE.find(t => t.config.toLowerCase() === lowerConfig);
-                    if (templateMatch) source = templateMatch.source;
-                    else source = "Unmapped";
+                    if (!checkoutType) {
+                        checkoutType = detectCheckoutType(`${configItem} ${comment}`);
+                    }
 
                     const itemData = {
                         config: configItem,
-                        source: source,
                         status: status,
                         comment: comment
                     };
@@ -1217,9 +1230,22 @@ app.post("/upload", (req, res) => {
                         id: goliveStorage.golive_results.length + 1,
                         session_id: sessionId,
                         config_item: configItem,
-                        source: source,
                         status: status,
                         comment: comment
+                    });
+                }
+
+                const bestPracticeSummary = CHECKOUT_BEST_PRACTICES[checkoutType];
+                if (bestPracticeSummary) {
+                    currentAuditResults.forEach(item => {
+                        if (String(item.config).toLowerCase().includes("best practices")) {
+                            item.comment = bestPracticeSummary;
+                        }
+                    });
+                    goliveStorage.golive_results.forEach(item => {
+                        if (item.session_id === sessionId && String(item.config_item).toLowerCase().includes("best practices")) {
+                            item.comment = bestPracticeSummary;
+                        }
                     });
                 }
 
@@ -1758,9 +1784,9 @@ app.post("/upload", (req, res) => {
 
 app.use("/api", require("./routes/docRoute"));
 
-
-const server = app.listen(PORT, () => {
-    console.log(`✅ Server running on http://localhost:${PORT}`);
+const HOST = process.env.HOST || "127.0.0.1";
+const server = app.listen(PORT, HOST, () => {
+    console.log(`✅ Server running on http://${HOST}:${PORT}`);
 });
 
 server.on('error', (error) => {

@@ -389,13 +389,22 @@ async function generateFRD(
     markdown += `### 4 Integration Best Practices\n`;
     pdfMarkdown += `### 4 Integration Best Practices\n`;
 
-    // Add professional combined implementation notes and additional comments
+    // Add best practices (based on checkout type) and any additional notes
+    const bestPractices = extractBestPractices(auditResult);
     const combinedNotes = extractCombinedAdditionalInfo(auditResult, productType);
+
+    if (bestPractices) {
+      const header = `Based on the detected checkout type, the following integration best practices apply:\n\n`;
+      markdown += header + bestPractices + `\n\n`;
+      pdfMarkdown += header + bestPractices + `\n\n`;
+    }
 
     if (combinedNotes) {
       markdown += `${combinedNotes}\n\n`;
       pdfMarkdown += `${combinedNotes}\n\n`;
-    } else {
+    }
+
+    if (!bestPractices && !combinedNotes) {
       const defaultPractices =
         `- Verification via webhooks is the primary source of truth.\n` +
         `- Periodic reconciliation using Fetch APIs for edge cases.\n\n`;
@@ -1083,6 +1092,46 @@ function extractCombinedAdditionalInfo(auditResult, productType) {
   return null;
 }
 
+function extractBestPractices(auditResult) {
+  if (Array.isArray(auditResult.checklist_content)) {
+    for (const item of auditResult.checklist_content) {
+      const label = (
+        item.config ||
+        item.config_item ||
+        item.item ||
+        ""
+      ).toLowerCase();
+      if (label.includes("best practices")) {
+        const val =
+          getMeaningfulValue(item.comment) ||
+          getMeaningfulValue(item.status) ||
+          getMeaningfulValue(item.item);
+        if (val) return formatBestPractices(val);
+      }
+    }
+  }
+
+  const checks = collectChecklistChecks(auditResult);
+  for (const check of checks) {
+    const label = getCheckLabel(check);
+    if (label.includes("best practices")) {
+      const val =
+        getMeaningfulValue(check.comment) ||
+        getMeaningfulValue(check.status);
+      if (!val) return null;
+      return formatBestPractices(val);
+    }
+  }
+  return null;
+}
+
+function formatBestPractices(val) {
+  const parts = val.split(";").map((s) => s.trim()).filter(Boolean);
+  if (parts.length > 1) {
+    return parts.map((p) => `- ${p}${p.endsWith(".") ? "" : "."}`).join("\n");
+  }
+  return `- ${val}${val.endsWith(".") ? "" : "."}`;
+}
 module.exports = {
   generateFRD,
 };

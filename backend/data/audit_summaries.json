@@ -1689,28 +1689,12 @@
       "overall_status": "Pass"
     },
     {
-      "id": "sum_1771236183803",
-      "audit_id": "audit_1771236183462",
-      "merchant_name": "Bharat Petroleum Corporation Limited (BPCL)",
-      "product_type": "QR Code",
-      "audit_date": "2026-02-16T10:03:03.462Z",
-      "summary_date": "2026-02-16T10:03:03.803Z",
-      "key_findings": [
-        "Downloading Keys: IMPLEMENTED",
-        "Regenerate Keys: N/A",
-        "API: IMPLEMENTED",
-        "Payment Methods: IMPLEMENTED"
-      ],
-      "audit_summary": "- The user completes the payment journey on the Bharat Petroleum Corporation Limited (BPCL) platform.\n- Technical validation confirms critical API implementations are under review.\n- Payment status is determined via webhooks for core payment methods.\n- Auto-capture settings are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
-      "overall_status": "Action Required"
-    },
-    {
-      "id": "sum_1771236471880",
-      "audit_id": "audit_1771236471423",
+      "id": "sum_1771235757111",
+      "audit_id": "audit_1771235756647",
       "merchant_name": "Sugarfit Health Solutions Private Limited",
       "product_type": "Subscriptions",
       "audit_date": "7th November",
-      "summary_date": "2026-02-16T10:07:51.880Z",
+      "summary_date": "2026-02-16T09:55:57.111Z",
       "key_findings": [
         "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
         "Fetch status of Payment_id and Subscription_id: Done",
@@ -1721,12 +1705,12 @@
       "overall_status": "Pass"
     },
     {
-      "id": "sum_1771236519040",
-      "audit_id": "audit_1771236518756",
+      "id": "sum_1771244212203",
+      "audit_id": "audit_1771244211957",
       "merchant_name": "Sugarfit Health Solutions Private Limited",
       "product_type": "Subscriptions",
       "audit_date": "7th November",
-      "summary_date": "2026-02-16T10:08:39.040Z",
+      "summary_date": "2026-02-16T12:16:52.203Z",
       "key_findings": [
         "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
         "Fetch status of Payment_id and Subscription_id: Done",
@@ -1737,68 +1721,177 @@
       "overall_status": "Pass"
     },
     {
-      "id": "sum_1771236704356",
-      "audit_id": "audit_1771236703778",
-      "merchant_name": "Bharat Petroleum Corporation Limited (BPCL)",
-      "product_type": "QR Code",
-      "audit_date": "2026-02-16T10:11:43.778Z",
-      "summary_date": "2026-02-16T10:11:44.356Z",
+      "id": "sum_1771305933879",
+      "audit_id": "audit_1771305933760",
+      "merchant_name": "Go Live Test Merchant",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-02-17T05:25:33.760Z",
+      "summary_date": "2026-02-17T05:25:33.879Z",
       "key_findings": [
-        "Downloading Keys: IMPLEMENTED",
-        "Regenerate Keys: N/A",
-        "API: IMPLEMENTED",
-        "Payment Methods: IMPLEMENTED"
+        "All Razorpay integration checks completed"
       ],
-      "audit_summary": "- The user completes the payment journey on the Bharat Petroleum Corporation Limited (BPCL) platform.\n- Technical validation confirms critical API implementations are under review.\n- Payment status is determined via webhooks for core payment methods.\n- Auto-capture settings are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
-      "overall_status": "Action Required"
-    },
-    {
-      "id": "sum_1771236792674",
-      "audit_id": "audit_1771236792379",
-      "merchant_name": "Sugarfit Health Solutions Private Limited",
-      "product_type": "Subscriptions",
-      "audit_date": "7th November",
-      "summary_date": "2026-02-16T10:13:12.674Z",
-      "key_findings": [
-        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
-        "Fetch status of Payment_id and Subscription_id: Done",
-        "Consumes Error Codes: Done",
-        "2 Days for UPI and 3 Days for other methods: Done"
-      ],
-      "audit_summary": "- The user completes the payment journey on the Sugarfit Health Solutions Private Limited platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for UPI, Cards.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "audit_summary": "- The user completes the payment journey on the Go Live Test Merchant platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
       "overall_status": "Pass"
     },
     {
-      "id": "sum_1771237014703",
-      "audit_id": "audit_1771237014015",
-      "merchant_name": "Bharat Petroleum Corporation Limited (BPCL)",
-      "product_type": "QR Code",
-      "audit_date": "2026-02-16T10:16:54.015Z",
-      "summary_date": "2026-02-16T10:16:54.703Z",
+      "id": "sum_1771305999011",
+      "audit_id": "audit_1771305998684",
+      "merchant_name": "Webhook.site",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-02-17T05:26:38.684Z",
+      "summary_date": "2026-02-17T05:26:39.011Z",
       "key_findings": [
-        "Downloading Keys: IMPLEMENTED",
-        "Regenerate Keys: N/A",
-        "API: IMPLEMENTED",
-        "Payment Methods: IMPLEMENTED"
+        "Account Live (Key/Secret available for live mode): N/A",
+        "Webhook Configs: N/A",
+        "Successful Payment IDs: N/A",
+        "Order API Implementation: N/A"
       ],
-      "audit_summary": "- The user completes the payment journey on the Bharat Petroleum Corporation Limited (BPCL) platform.\n- Technical validation confirms critical API implementations are under review.\n- Payment status is determined via webhooks for core payment methods.\n- Auto-capture settings are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
-      "overall_status": "Action Required"
+      "audit_summary": "- The user completes the payment journey on the Webhook.site platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
     },
     {
-      "id": "sum_1771237193932",
-      "audit_id": "audit_1771237193593",
-      "merchant_name": "Bharat Petroleum Corporation Limited (BPCL)",
-      "product_type": "QR Code",
-      "audit_date": "2026-02-16T10:19:53.593Z",
-      "summary_date": "2026-02-16T10:19:53.932Z",
+      "id": "sum_1771306151600",
+      "audit_id": "audit_1771306151348",
+      "merchant_name": "Webhook.site",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-02-17T05:29:11.348Z",
+      "summary_date": "2026-02-17T05:29:11.600Z",
       "key_findings": [
-        "Downloading Keys: IMPLEMENTED",
-        "Regenerate Keys: N/A",
-        "API: IMPLEMENTED",
-        "Payment Methods: IMPLEMENTED"
+        "Account Live (Key/Secret available for live mode): N/A",
+        "Webhook Configs: N/A",
+        "Successful Payment IDs: N/A",
+        "Order API Implementation: N/A"
       ],
-      "audit_summary": "- The user completes the payment journey on the Bharat Petroleum Corporation Limited (BPCL) platform.\n- Technical validation confirms critical API implementations are under review.\n- Payment status is determined via webhooks for core payment methods.\n- Auto-capture settings are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
-      "overall_status": "Action Required"
+      "audit_summary": "- The user completes the payment journey on the Webhook.site platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1771310052640",
+      "audit_id": "audit_1771310051941",
+      "merchant_name": "Webhook.site",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-02-17T06:34:11.941Z",
+      "summary_date": "2026-02-17T06:34:12.640Z",
+      "key_findings": [
+        "Account Live (Key/Secret available for live mode): N/A",
+        "Webhook Configs: N/A",
+        "Successful Payment IDs: N/A",
+        "Order API Implementation: N/A"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Webhook.site platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1771310442301",
+      "audit_id": "audit_1771310441966",
+      "merchant_name": "Webhook.site",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-02-17T06:40:41.966Z",
+      "summary_date": "2026-02-17T06:40:42.301Z",
+      "key_findings": [
+        "Account Live (Key/Secret available for live mode): N/A",
+        "Webhook Configs: N/A",
+        "Successful Payment IDs: N/A",
+        "Order API Implementation: N/A"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Webhook.site platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1771310492452",
+      "audit_id": "audit_1771310492212",
+      "merchant_name": "Webhook.site",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-02-17T06:41:32.212Z",
+      "summary_date": "2026-02-17T06:41:32.452Z",
+      "key_findings": [
+        "Account Live (Key/Secret available for live mode): Done",
+        "Webhook Configs: N/A",
+        "Auto_capture Settings: Done",
+        "Successful Payment IDs: Done"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Webhook.site platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Auto-capture settings are active as per dashboard configuration.\n- Successful Test IDs: pay_pzqntdc2ttfarq, pay_q3nmu2esu2clrh, pay_q3wu4xtt0ogzba.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1771310825332",
+      "audit_id": "audit_1771310824417",
+      "merchant_name": "Webhook.site",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-02-17T06:47:04.417Z",
+      "summary_date": "2026-02-17T06:47:05.332Z",
+      "key_findings": [
+        "Account Live (Key/Secret available for live mode): Done",
+        "Webhook Configs: N/A",
+        "Auto_capture Settings: Done",
+        "Successful Payment IDs: Done"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Webhook.site platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Auto-capture settings are active as per dashboard configuration.\n- Successful Test IDs: pay_pzqntdc2ttfarq, pay_q3nmu2esu2clrh, pay_q3wu4xtt0ogzba.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1771310843260",
+      "audit_id": "audit_1771310843018",
+      "merchant_name": "Webhook.site",
+      "product_type": "Custom Checkout",
+      "audit_date": "2026-02-17T06:47:23.018Z",
+      "summary_date": "2026-02-17T06:47:23.260Z",
+      "key_findings": [
+        "Account Live (Key/Secret available for live mode): Done",
+        "Webhook Configs: N/A",
+        "Auto_capture Settings: Done",
+        "Successful Payment IDs: Done"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Webhook.site platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Auto-capture settings are active as per dashboard configuration.\n- Successful Test IDs: pay_pzqntdc2ttfarq, pay_q3nmu2esu2clrh, pay_q3wu4xtt0ogzba.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1771310861925",
+      "audit_id": "audit_1771310861565",
+      "merchant_name": "Webhook.site",
+      "product_type": "S2S",
+      "audit_date": "2026-02-17T06:47:41.565Z",
+      "summary_date": "2026-02-17T06:47:41.925Z",
+      "key_findings": [
+        "Account Live (Key/Secret available for live mode): Done",
+        "Webhook Configs: N/A",
+        "Auto_capture Settings: Done",
+        "Successful Payment IDs: Done"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Webhook.site platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Auto-capture settings are active as per dashboard configuration.\n- Successful Test IDs: pay_pzqntdc2ttfarq, pay_q3nmu2esu2clrh, pay_q3wu4xtt0ogzba.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1771311510248",
+      "audit_id": "audit_1771311509523",
+      "merchant_name": "Webhook.site",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-02-17T06:58:29.523Z",
+      "summary_date": "2026-02-17T06:58:30.248Z",
+      "key_findings": [
+        "Account Live (Key/Secret available for live mode): Done",
+        "Webhook Configs: N/A",
+        "Auto_capture Settings: Done",
+        "Successful Payment IDs: Done"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Webhook.site platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Auto-capture settings are active as per dashboard configuration.\n- Successful Test IDs: pay_pzqntdc2ttfarq, pay_q3nmu2esu2clrh, pay_q3wu4xtt0ogzba.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1771311833379",
+      "audit_id": "audit_1771311832976",
+      "merchant_name": "Webhook.site",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-02-17T07:03:52.976Z",
+      "summary_date": "2026-02-17T07:03:53.379Z",
+      "key_findings": [
+        "Account Live (Key/Secret available for live mode): Done",
+        "Webhook Configs: N/A",
+        "Auto_capture Settings: Done",
+        "Successful Payment IDs: Done"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Webhook.site platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Auto-capture settings are active as per dashboard configuration.\n- Successful Test IDs: pay_pzqntdc2ttfarq, pay_q3nmu2esu2clrh, pay_q3wu4xtt0ogzba.",
+      "overall_status": "Pass"
     }
   ]
 }

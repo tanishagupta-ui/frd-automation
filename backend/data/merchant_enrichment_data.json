@@ -47,6 +47,52 @@
         "target_audience": "Individual vehicle owners, households, industrial enterprises, and aviation companies"
       },
       "model_used": "gemini-flash-latest"
+    },
+    {
+      "id": 3,
+      "merchant_name": "Go Live Test Merchant",
+      "original_name": "Go Live Test Merchant",
+      "merchant_id": null,
+      "search_date": "2026-02-17T05:25:32.353Z",
+      "web_data": {
+        "company_name": "Go Live Test Merchant",
+        "website": "N/A",
+        "description": "A placeholder or dummy entity used primarily by payment gateways and e-commerce platforms to represent a merchant account during the integration and testing phase. It allows developers to simulate 'live' environment transitions and verify payment flows without processing actual commercial transactions.",
+        "industry": "Fintech / Software Testing",
+        "products_services": [
+          "Payment gateway integration testing",
+          "API sandbox environment simulation",
+          "Transaction workflow verification",
+          "Onboarding process simulation"
+        ],
+        "business_model": "N/A (Developer Tooling)",
+        "target_audience": "Software developers, QA engineers, and system integrators working with payment service providers (PSPs)."
+      },
+      "model_used": "gemini-flash-latest"
+    },
+    {
+      "id": 4,
+      "merchant_name": "Webhook.site",
+      "original_name": "Webhook Configs",
+      "merchant_id": null,
+      "search_date": "2026-02-17T05:26:33.217Z",
+      "web_data": {
+        "company_name": "Webhook.site",
+        "website": "https://webhook.site",
+        "description": "A developer utility and middleware platform that allows users to capture, inspect, and debug webhooks and HTTP requests, as well as automate responses using custom actions and scripting.",
+        "industry": "SaaS",
+        "products_services": [
+          "Instant Webhook URL generation",
+          "HTTP Request Inspection and Logging",
+          "Custom Actions (Workflow Automation)",
+          "Webhook.site CLI",
+          "Cloud Scripting (JavaScript-based automation)",
+          "Enterprise/Self-hosted instances"
+        ],
+        "business_model": "B2B",
+        "target_audience": "Software Developers, QA Engineers, API Integrators, and DevOps Professionals"
+      },
+      "model_used": "gemini-flash-latest"
     }
   ]
 }
