@@ -587,10 +587,31 @@ function collectChecklistChecks(auditResult) {
         section.sub_items ||
         section.results ||
         [];
-      if (!Array.isArray(items)) return;
-      items.forEach((check) => {
+      if (Array.isArray(items) && items.length > 0) {
+        items.forEach((check) => {
+          checks.push({
+            ...check,
+            _section:
+              section.category ||
+              section.categoryName ||
+              section.title ||
+              section.section ||
+              section.name,
+          });
+        });
+        return;
+      }
+
+      const isCheckLike =
+        section &&
+        (section.item ||
+          section.label ||
+          section.config ||
+          section.status ||
+          section.comment);
+      if (isCheckLike) {
         checks.push({
-          ...check,
+          ...section,
           _section:
             section.category ||
             section.categoryName ||
@@ -598,7 +619,7 @@ function collectChecklistChecks(auditResult) {
             section.section ||
             section.name,
         });
-      });
+      }
     });
   });
   return checks;
@@ -636,90 +657,16 @@ function buildAuditFindingsSummary(auditResult, merchantName, productType) {
     return `The technical audit for **${merchantName}** confirms that the integration aligns with Razorpay standards. No major blockers were identified during the review.\n\n`;
   }
 
-  const narrativeLines = buildNarrativeFindings(
+  const bullets = buildChecklistFindingsBullets(
     checks,
     auditResult,
     merchantName
   );
-  const counts = {
-    done: 0,
-    pending: 0,
-    failed: 0,
-    na: 0,
-    other: 0,
-  };
-  const sectionStats = new Map();
-  const actionItems = [];
-
-  checks.forEach((check) => {
-    const rawStatus =
-      check.status || check.result || check.state || check.value || "";
-    const normalized = normalizeChecklistStatus(rawStatus, check.comment);
-
-    if (Object.prototype.hasOwnProperty.call(counts, normalized)) {
-      counts[normalized] += 1;
-    } else {
-      counts.other += 1;
-    }
-
-    const sectionName =
-      (check._section && String(check._section).trim()) || "General";
-    const stats = sectionStats.get(sectionName) || { total: 0, done: 0 };
-    stats.total += 1;
-    if (normalized === "done") stats.done += 1;
-    sectionStats.set(sectionName, stats);
-
-    if (normalized === "pending" || normalized === "failed") {
-      const label =
-        check.item || check.label || check.config || check.check || "Checklist";
-      const comment = getMeaningfulValue(check.comment);
-      const statusText = rawStatus ? ` (${rawStatus})` : "";
-      const note = comment ? ` - ${comment}` : "";
-      actionItems.push(`${label}${statusText}${note}`);
-    }
-  });
-
-  const total = checks.length;
-  const sectionCount = sectionStats.size;
-  const orderedSections = Array.from(sectionStats.entries())
-    .sort((a, b) => b[1].done - a[1].done)
-    .map(([name]) => name);
-  const highlightSections = orderedSections.slice(0, 4);
-
-  const summaryLines = [];
-  if (narrativeLines.length > 0) {
-    summaryLines.push(narrativeLines.map((line) => `- ${line}`).join("\n"));
+  if (bullets.length === 0) {
+    return `The technical audit for **${merchantName}** confirms that the integration aligns with Razorpay standards. No major blockers were identified during the review.\n\n`;
   }
 
-  if (highlightSections.length > 0) {
-    summaryLines.push(
-      `Best-practice coverage is validated in key areas including ${highlightSections
-        .map((s) => `**${s}**`)
-        .join(", ")}.`
-    );
-  } else {
-    summaryLines.push(
-      `Best-practice coverage is validated across checklist items marked as done.`
-    );
-  }
-
-  if (actionItems.length > 0) {
-    const topItems = actionItems
-      .slice(0, 5)
-      .map((i) => `- ${i}`)
-      .join("\n");
-    summaryLines.push(
-      `Open checklist items to address:\n${topItems}${
-        actionItems.length > 5
-          ? "\n- Additional items omitted for brevity."
-          : ""
-      }`
-    );
-  } else {
-    summaryLines.push(`No open checklist items were identified.`);
-  }
-
-  return summaryLines.join("\n") + "\n\n";
+  return bullets.map((line) => `- ${line}`).join("\n") + "\n\n";
 }
 
 function normalizeChecklistStatus(status, comment) {
@@ -759,6 +706,109 @@ function normalizeChecklistStatus(status, comment) {
   )
     return "failed";
   return "other";
+}
+
+function cleanChecklistText(value) {
+  if (!value) return "";
+  return String(value)
+    .trim()
+    .replace(/^[\u2022\-\*]\s*/, "")
+    .replace(/^\d+\.\s*/, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function toSentence(text) {
+  const cleaned = cleanChecklistText(text);
+  if (!cleaned) return "";
+  const withUpper =
+    cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
+  return withUpper.endsWith(".") ? withUpper : `${withUpper}.`;
+}
+
+function buildChecklistFindingsBullets(checks, auditResult, merchantName) {
+  const bullets = [];
+  const seen = new Set();
+  const skipLabels = [
+    "account live",
+    "successful payment ids",
+    "signature verification",
+    "callback url",
+    "refund api",
+    "fetch api",
+    "payment capture settings",
+    "backend language",
+  ];
+  const allowLabels = [
+    "auto_capture settings",
+    "auto capture settings",
+    "implementing fetch status api",
+  ];
+
+  const pushUnique = (text) => {
+    const sentence = toSentence(text);
+    if (!sentence) return;
+    const key = sentence.toLowerCase();
+    if (seen.has(key)) return;
+    seen.add(key);
+    bullets.push(sentence);
+  };
+
+  const narrativeLines = buildNarrativeFindings(
+    checks,
+    auditResult,
+    merchantName
+  );
+  narrativeLines.forEach((line) => pushUnique(line));
+
+  const openItems = [];
+
+  checks.forEach((check) => {
+    const rawStatus =
+      check.status || check.result || check.state || check.value || "";
+    const normalized = normalizeChecklistStatus(rawStatus, check.comment);
+    const labelRaw =
+      check.item || check.label || check.config || check.check || "";
+    const label = cleanChecklistText(labelRaw);
+    const comment = getMeaningfulValue(check.comment);
+    const statusNote = getMeaningfulValue(rawStatus);
+
+    if (label && label.toLowerCase().includes("additional comments")) return;
+    if (label && label.toLowerCase().includes("best practices")) return;
+    if (label && skipLabels.some((skip) => label.toLowerCase().includes(skip)))
+      return;
+
+    if (normalized === "done") {
+      if (
+        label &&
+        !allowLabels.some((allow) => label.toLowerCase().includes(allow))
+      ) {
+        return;
+      }
+      if (comment && label && !comment.toLowerCase().includes(label.toLowerCase())) {
+        pushUnique(`${label}: ${comment}`);
+      } else if (label) {
+        pushUnique(label);
+      } else if (comment) {
+        pushUnique(comment);
+      }
+      return;
+    }
+
+    if (normalized === "pending" || normalized === "failed") {
+      const note = label || comment || statusNote;
+      if (note) openItems.push(note);
+    }
+  });
+
+  if (openItems.length > 0) {
+    const summarized = openItems.slice(0, 3).map((item) => cleanChecklistText(item)).filter(Boolean);
+    if (summarized.length > 0) {
+      pushUnique(`Open checklist items to address: ${summarized.join(", ")}`);
+    }
+  }
+
+  return bullets;
 }
 
 function buildNarrativeFindings(checks, auditResult, merchantName) {
