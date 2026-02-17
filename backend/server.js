@@ -1213,6 +1213,15 @@ app.post("/upload", (req, res) => {
                         additionalComments = comment;
                     }
 
+                    if (lowerConfig.includes("late auth scenario to be handled")) {
+                        if (comment) {
+                            additionalComments = additionalComments
+                                ? `${additionalComments}; ${comment}`
+                                : comment;
+                        }
+                        continue;
+                    }
+
                     if (!checkoutType) {
                         checkoutType = detectCheckoutType(`${configItem} ${comment}`);
                     }
@@ -1248,6 +1257,21 @@ app.post("/upload", (req, res) => {
                         }
                     });
                 }
+
+                // Guard: never overwrite "Additional Comments" beyond the uploaded value
+                currentAuditResults.forEach(item => {
+                    const label = String(item.config).toLowerCase();
+                    if (label.includes("additional comments") || label.includes("remarks")) {
+                        item.comment = additionalComments || "";
+                    }
+                });
+                goliveStorage.golive_results.forEach(item => {
+                    if (item.session_id !== sessionId) return;
+                    const label = String(item.config_item).toLowerCase();
+                    if (label.includes("additional comments") || label.includes("remarks")) {
+                        item.comment = additionalComments || "";
+                    }
+                });
 
                 fs.writeFileSync(goliveDataPath, JSON.stringify(goliveStorage, null, 2));
 
