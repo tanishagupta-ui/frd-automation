@@ -93,6 +93,29 @@
         "target_audience": "Software Developers, QA Engineers, API Integrators, and DevOps Professionals"
       },
       "model_used": "gemini-flash-latest"
+    },
+    {
+      "id": 5,
+      "merchant_name": "AGF Management Limited",
+      "original_name": "Copy of AGF (1)",
+      "merchant_id": null,
+      "search_date": "2026-02-18T08:45:44.959Z",
+      "web_data": {
+        "company_name": "AGF Management Limited",
+        "website": "https://www.agf.com",
+        "description": "A diversified global asset management firm that delivers investment solutions to institutions, advisors, and individual investors through a range of quantitative, fundamental, and alternative strategies.",
+        "industry": "Financial Services",
+        "products_services": [
+          "Mutual Funds",
+          "Exchange Traded Funds (ETFs)",
+          "Private Wealth Management",
+          "Institutional Investment Strategies",
+          "Sustainable Investing (ESG)"
+        ],
+        "business_model": "B2B, B2C",
+        "target_audience": "Individual retail investors, financial advisors, and institutional clients such as pension funds and endowments."
+      },
+      "model_used": "gemini-flash-latest"
     }
   ]
 }

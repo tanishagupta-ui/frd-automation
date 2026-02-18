@@ -23,6 +23,14 @@
       "merchant_name": "Webhook.site",
       "audit_date": "",
       "created_at": "2026-02-17T07:28:36.782Z"
+    },
+    {
+      "id": 4,
+      "product": "Standard Checkout",
+      "merchant_id": "Unknown",
+      "merchant_name": "Webhook.site",
+      "audit_date": "",
+      "created_at": "2026-02-17T12:43:47.805Z"
     }
   ],
   "golive_results": [
@@ -442,6 +450,146 @@
     {
       "id": 60,
       "session_id": 3,
+      "config_item": "Additional Comments",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 61,
+      "session_id": 4,
+      "config_item": "Account Live (Key/Secret available for live mode)",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 62,
+      "session_id": 4,
+      "config_item": "Webhook Configs",
+      "status": "NA",
+      "comment": "payment.capture,payment.failed,token.confirmed,token.rejected"
+    },
+    {
+      "id": 63,
+      "session_id": 4,
+      "config_item": "Auto_capture Settings",
+      "status": "Done",
+      "comment": "auto 3 days"
+    },
+    {
+      "id": 64,
+      "session_id": 4,
+      "config_item": "Successful Payment IDs",
+      "status": "Done",
+      "comment": "pay_PzqntDC2ttfaRQ(upi), pay_Q3nmu2eSU2cLrH(netbanking),pay_Q3WU4xtt0oGZbA(card)"
+    },
+    {
+      "id": 65,
+      "session_id": 4,
+      "config_item": "Signature verification",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 66,
+      "session_id": 4,
+      "config_item": "Callback_url",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 67,
+      "session_id": 4,
+      "config_item": "Implementing fetch status API",
+      "status": "Done",
+      "comment": "suggested"
+    },
+    {
+      "id": 68,
+      "session_id": 4,
+      "config_item": "Custom solution",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 69,
+      "session_id": 4,
+      "config_item": "Refund API",
+      "status": "Done",
+      "comment": "Refund created from the dashboard manually"
+    },
+    {
+      "id": 70,
+      "session_id": 4,
+      "config_item": "Fetch API",
+      "status": "Done",
+      "comment": "NA"
+    },
+    {
+      "id": 71,
+      "session_id": 4,
+      "config_item": "Payment capture settings",
+      "status": "Done",
+      "comment": "auto capture set as 3 days"
+    },
+    {
+      "id": 72,
+      "session_id": 4,
+      "config_item": "Failure handler-function",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 73,
+      "session_id": 4,
+      "config_item": "Backend Language",
+      "status": "Done",
+      "comment": "java,springboot"
+    },
+    {
+      "id": 74,
+      "session_id": 4,
+      "config_item": "Checkout library and platform",
+      "status": "Done",
+      "comment": "Web Standard checkout"
+    },
+    {
+      "id": 75,
+      "session_id": 4,
+      "config_item": "SDK latest Version",
+      "status": "NA",
+      "comment": "no sdk"
+    },
+    {
+      "id": 76,
+      "session_id": 4,
+      "config_item": "Best practices",
+      "status": "Done",
+      "comment": "Capture authorized payments using Payment Capture Settings; create orders via Orders API and pass the order_id to Checkout; verify the payment signature; confirm payment/order status is captured/paid before providing service (via fetch payment/order APIs); implement webhooks (payment.captured, payment.failed, order.paid); use callback_url for in-app browsers that do not support iframes."
+    },
+    {
+      "id": 77,
+      "session_id": 4,
+      "config_item": "Rainy day",
+      "status": "Done",
+      "comment": "shared"
+    },
+    {
+      "id": 78,
+      "session_id": 4,
+      "config_item": "Late Auth",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 79,
+      "session_id": 4,
+      "config_item": "Sign off",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 80,
+      "session_id": 4,
       "config_item": "Additional Comments",
       "status": "N/A",
       "comment": ""

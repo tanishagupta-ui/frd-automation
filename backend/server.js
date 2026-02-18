@@ -11,6 +11,7 @@ const xlsx = require("xlsx");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 const frdGenerator = require("./services/frdGeneratorService");
+const googleDriveService = require("./services/googleDriveService");
 
 // Initialize Gemini AI
 let genAI = null;
@@ -178,7 +179,8 @@ app.post("/upload", (req, res) => {
                         mid: "",
                         date: ""
                     },
-                    audit_data: []
+                    audit_data: [],
+                    additionalComments: ""
                 };
 
                 let currentSectionName = null;
@@ -220,18 +222,30 @@ app.post("/upload", (req, res) => {
                     if (isHeaderRow) continue;
 
                     // Section Detection (Col B has value)
-                    // Ensure it's not a metadata row label
-                    if (colB && !lowerA.includes("mx name") && !lowerA.includes("mid") && !lowerA.includes("date of audit")) {
-                        currentSectionName = colB;
+                    // If colB is one of the metadata row labels, don't treat it as a section
+                    const isMetadataLabel = lowerA.includes("mx name") || lowerA.includes("mid") || lowerA.includes("date of audit");
+
+                    if (colB && colB !== "Audit Checklist" && colB !== "Tech Checklist") {
+                        const lowColB = colB.toLowerCase();
+                        if (colB.match(/^\d+\./) || lowColB.includes("additional comments") || lowColB === "remarks" || lowColB === "comments") {
+                            currentSectionName = colB;
+                            console.log(`[ChargeAtWill] Switched to section: ${currentSectionName}`);
+                        }
                     }
 
                     // Item Detection (Col C has value)
-                    if (colC) {
+                    if (colC && colC !== "Configs") {
                         const checkItem = {
                             item: colC,
                             status: colD || null,
                             comment: colE || null
                         };
+
+                        // Special handling for Additional Comments if it appears in colB/C
+                        if (currentSectionName === "Additional Comments" && !colC) {
+                            // If it's just the section header, we might want to capture text from following rows
+                            // But the current structure expects checks. For now, let's just ensure the section exists.
+                        }
 
                         // Find section or create if missing
                         let sectionObj = result.audit_data.find(s => s.section === currentSectionName);
@@ -244,7 +258,23 @@ app.post("/upload", (req, res) => {
                             }
                         }
 
-                        sectionObj.checks.push(checkItem);
+                        if (colC !== "Status" && colC !== "Comment") {
+                            sectionObj.checks.push(checkItem);
+                        }
+                    }
+
+                    // Special Post-capture for Additional Comments field
+                    const lowSection = currentSectionName ? currentSectionName.toLowerCase() : "";
+                    if (lowSection.includes("additional comments") || lowSection === "remarks" || lowSection === "comments") {
+                        const rowText = [colA, colB, colC, colD, colE].filter(val => {
+                            if (!val) return false;
+                            const low = String(val).toLowerCase();
+                            return !low.includes("additional comments") && low !== "remarks" && low !== "comments" && low !== "status" && low !== "comment";
+                        }).join(" ").trim();
+                        if (rowText) {
+                            console.log(`[ChargeAtWill] Captured comment row: ${rowText}`);
+                            result.additionalComments += (result.additionalComments ? "\n" : "") + rowText;
+                        }
                     }
                 }
             } else if (productType.toLowerCase() === "route") {
@@ -761,13 +791,14 @@ app.post("/upload", (req, res) => {
 
                     if ((!colA && !colB && !colC && !colD) || colA === "Tech Checklist" || colA === "Audit Checklist") continue;
 
-                    if (colA === "Additional Comments") {
+                    if (colA === "Additional Comments" || colB === "Additional Comments") {
                         captureComments = true;
                         continue;
                     }
 
                     if (captureComments) {
-                        if (colA) result.additionalComments += (result.additionalComments ? "\n" : "") + colA;
+                        const rowText = [colA, colB, colC, colD].filter(Boolean).join(" ").trim();
+                        if (rowText) result.additionalComments += (result.additionalComments ? "\n" : "") + rowText;
                         continue;
                     }
 
@@ -1121,6 +1152,7 @@ app.post("/upload", (req, res) => {
                 console.log(`[GoLive] Header detection: row=${headerRowIndex}, configCol=${configColIdx}, statusCol=${statusColIdx}, commentCol=${commentColIdx}`);
 
                 let additionalComments = "";
+                let captureComments = false;
                 let processedItems = [];
                 let checkoutType = null;
 
@@ -1223,10 +1255,20 @@ app.post("/upload", (req, res) => {
                     if (lowerConfig === "configs" || lowerConfig === "tech checklist" || lowerConfig === "audit checklist" || lowerConfig === "status") continue;
 
                     if (lowerConfig.includes("additional comments") || lowerConfig.includes("remarks")) {
+                        captureComments = true;
                         const note = resolveAdditionalNote(comment, status);
                         if (note) {
                             additionalComments = additionalComments ? `${additionalComments}; ${note}` : note;
                         }
+                        continue;
+                    }
+
+                    if (captureComments) {
+                        const rowText = [configItem, status, comment].filter(val => val && !["N/A", "Done", "Pass", "Fail", "Yes", "No"].includes(val)).join(" ").trim();
+                        if (rowText) {
+                            additionalComments = additionalComments ? `${additionalComments}; ${rowText}` : rowText;
+                        }
+                        continue;
                     }
 
                     if (lowerConfig.includes("late auth scenario to be handled")) {
@@ -1807,6 +1849,30 @@ app.post("/upload", (req, res) => {
                             req.file.originalname
                         );
                         console.log(`✅ FRD files generated:`, frdPaths);
+
+                        // --- Upload to Google Drive ---
+                        try {
+                            // 1. Upload the Excel Checklist
+                            console.log(`📤 Uploading checklist to Google Drive: ${req.file.originalname}...`);
+                            await googleDriveService.uploadFile(
+                                req.file.path,
+                                `Checklist_${req.file.originalname}`,
+                                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                            );
+
+                            // 2. Upload the Generated FRD PDF
+                            if (frdPaths.pdf) {
+                                const pdfName = path.basename(frdPaths.pdf);
+                                console.log(`📤 Uploading FRD PDF to Google Drive: ${pdfName}...`);
+                                await googleDriveService.uploadFile(
+                                    frdPaths.pdf,
+                                    pdfName,
+                                    'application/pdf'
+                                );
+                            }
+                        } catch (uploadError) {
+                            console.error("❌ Error uploading to Google Drive:", uploadError);
+                        }
                     } catch (frdError) {
                         console.error("FRD generation error:", frdError);
                     }
