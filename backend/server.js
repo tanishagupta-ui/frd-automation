@@ -357,6 +357,7 @@ app.post("/upload", (req, res) => {
                     const colC = row[2] ? String(row[2]).trim() : "";
                     const colD = row[3] ? String(row[3]).trim() : "";
                     const colE = row[4] ? String(row[4]).trim() : "";
+                    const cells = [colA, colB, colC, colD, colE];
 
                     // Safe Metadata Extraction
                     const lowerA = colA.toLowerCase();
@@ -369,28 +370,61 @@ app.post("/upload", (req, res) => {
                         sessionRecord.merchant_name = merchantName;
                     }
 
+                    // Category detection: categories are in colA or colB (e.g., "1. Linked account creation")
+                    if (colA && colA.match(/^\d+\./)) currentCategory = colA;
+                    if (colB && colB.match(/^\d+\./)) currentCategory = colB;
                     if (row.join(" ").includes("Additional Comments")) currentCategory = "Additional Comments";
 
-                    if (colB && colB.match(/^\d+\./)) {
-                        currentCategory = colB;
+                    // Skip header rows
+                    if (colA === "Audit Checklist" || colA === "Tech Checklist" || colB === "Configs") continue;
+
+                    if (!currentCategory) continue;
+
+                    const isStatusValue = (value) => {
+                        const v = String(value).toLowerCase();
+                        return ["done", "n/a", "na", "yes", "no", "pending", "partial"].includes(v) || v.includes("pass") || v.includes("fail");
+                    };
+
+                    // Route Excel format: colA=category, colB=item/config, colC=status, colD=comment
+                    // Determine which cell has the item: try colB first (most common), then colC
+                    let itemCell = "";
+                    let statusCell = "";
+                    let commentCell = "";
+
+                    if (colB && !colB.match(/^\d+\./) && colB !== "Audit Checklist" && colB !== "Tech Checklist") {
+                        itemCell = colB;
+                        statusCell = colC;
+                        commentCell = colD;
+                    } else if (colC && colC !== "Status" && colC !== "Configs") {
+                        itemCell = colC;
+                        statusCell = colD;
+                        commentCell = colE;
                     }
 
-                    // Map specific row to canonical item
-                    if (colC && colC !== "Configs" && colC !== "Status") {
-                        // Detect Sub-Category Marker (e.g., "a. Batch upload")
-                        if (colC.match(/^[a-hj-z]\./) || ["API", "Dashboard"].includes(colC)) {
-                            currentSubCategory = colC;
-                        }
+                    if (itemCell) {
+                        // Normalize: strip letter prefix like "a. ", "b. ", "i." etc for matching
+                        const itemNorm = itemCell.replace(/\s+/g, "").toLowerCase();
 
-                        // Find the best matching canonical item
-                        const templateItem = routeStorage.route_template_items.find(t => {
-                            // Match by category and (item description OR sub-category)
-                            return t.category_name === currentCategory &&
-                                (t.item_description === colC || t.sub_category === colC);
+                        // Sort possible items by description length descending for most-specific-first matching
+                        const possibleItems = routeStorage.route_template_items
+                            .filter(t => t.category_name === currentCategory)
+                            .sort((a, b) => b.item_description.length - a.item_description.length);
+
+                        const templateItem = possibleItems.find(t => {
+                            const descNorm = t.item_description.replace(/\s+/g, "").toLowerCase();
+                            // Exact match (ignoring whitespace)
+                            if (itemNorm === descNorm) return true;
+                            // Cell contains item description (e.g., "a.batchupload" contains "batchupload")
+                            if (itemNorm.includes(descNorm) && descNorm.length > 2) return true;
+                            // Item description contains cell content (fuzzy, e.g., typos)
+                            if (descNorm.includes(itemNorm) && itemNorm.length > 2) return true;
+                            return false;
                         });
 
                         if (templateItem) {
-                            // Update or Insert result
+                            const statusVal = statusCell || "N/A";
+                            const commentVal = commentCell || "";
+
                             let resultEntry = routeStorage.route_audit_results.find(r =>
                                 r.session_id === sessionId && r.template_item_id === templateItem.id
                             );
@@ -400,13 +434,35 @@ app.post("/upload", (req, res) => {
                                     id: routeStorage.route_audit_results.length + 1,
                                     session_id: sessionId,
                                     template_item_id: templateItem.id,
-                                    status: colD || "N/A",
-                                    comment: colE || ""
+                                    status: statusVal,
+                                    comment: commentVal
                                 };
                                 routeStorage.route_audit_results.push(resultEntry);
                             } else {
-                                if (colD) resultEntry.status = colD;
-                                if (colE) resultEntry.comment = colE;
+                                if (statusVal) resultEntry.status = statusVal;
+                                if (commentVal) resultEntry.comment = commentVal;
+                            }
+                        }
+                    }
+
+                    // Handle Additional Comments rows
+                    if (currentCategory === "Additional Comments") {
+                        const additionalTemplate = routeStorage.route_template_items.find(t => t.category_name === "Additional Comments");
+                        if (additionalTemplate) {
+                            const comment = cells.filter(value => value && value.toLowerCase() !== "additional comments" && !isStatusValue(value)).join(" ").trim();
+                            if (comment) {
+                                const existing = routeStorage.route_audit_results.find(r => r.session_id === sessionId && r.template_item_id === additionalTemplate.id);
+                                if (existing) {
+                                    existing.comment = existing.comment ? `${existing.comment} ${comment}` : comment;
+                                } else {
+                                    routeStorage.route_audit_results.push({
+                                        id: routeStorage.route_audit_results.length + 1,
+                                        session_id: sessionId,
+                                        template_item_id: additionalTemplate.id,
+                                        status: "N/A",
+                                        comment: comment
+                                    });
+                                }
                             }
                         }
                     }
@@ -833,7 +889,21 @@ app.post("/upload", (req, res) => {
 
             // Skip general storage for specific products (saved in their own files)
             const lowerProduct = productType.toLowerCase();
-            if (!lowerProduct.startsWith("route") &&
+            if (lowerProduct.startsWith("smart collect") || lowerProduct.startsWith("smart_collect")) {
+                const smartCollectDir = path.join(__dirname, "data", "smart_collect_audits");
+                if (!fs.existsSync(smartCollectDir)) fs.mkdirSync(smartCollectDir, { recursive: true });
+
+                const existingFiles = fs.readdirSync(smartCollectDir).filter(f => f.endsWith('.json'));
+                const sessionId = existingFiles.length + 1;
+                const safeMxName = (result.audit_metadata?.merchant_name || merchantName || "unknown").replace(/[^a-z0-9]/gi, '_').toLowerCase();
+                const sessionFilename = `smart_collect_audit_${sessionId}_${safeMxName}.json`;
+
+                result.product = "Smart Collect";
+                result.session_id = sessionId;
+
+                fs.writeFileSync(path.join(smartCollectDir, sessionFilename), JSON.stringify(result, null, 2));
+                console.log(`Individual Smart Collect audit saved to: ${sessionFilename}`);
+            } else if (!lowerProduct.startsWith("route") &&
                 !lowerProduct.startsWith("subscription") &&
                 !lowerProduct.startsWith("qr code") &&
                 !lowerProduct.startsWith("ncapps") &&

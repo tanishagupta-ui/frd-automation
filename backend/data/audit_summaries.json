@@ -2132,6 +2132,102 @@
       ],
       "audit_summary": "- The user completes the payment journey on the AGF Management Limited platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for UPI, Cards.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
       "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1771564919826",
+      "audit_id": 6,
+      "merchant_name": "Dish TV India Limited",
+      "product_type": "Route",
+      "audit_date": "2026-02-20T05:21:59.699Z",
+      "summary_date": "2026-02-20T05:21:59.826Z",
+      "key_findings": [
+        "i. Dashboard access to linked account: N/A",
+        "API: N/A",
+        "i. Create linked account API: N/A",
+        "iii. Request product config: N/A"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Dish TV India Limited platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1771568297365",
+      "audit_id": 7,
+      "merchant_name": "Copy of Dishtv",
+      "product_type": "Route",
+      "audit_date": "2026-02-20T06:18:16.745Z",
+      "summary_date": "2026-02-20T06:18:17.365Z",
+      "key_findings": [
+        "i. Dashboard access to linked account: N/A",
+        "API: N/A",
+        "i. Create linked account API: N/A",
+        "iii. Request product config: N/A"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Copy of Dishtv platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1771568894230",
+      "audit_id": 8,
+      "merchant_name": "N/A (Generic File Name)",
+      "product_type": "Route",
+      "audit_date": "2026-02-20T06:28:14.073Z",
+      "summary_date": "2026-02-20T06:28:14.230Z",
+      "key_findings": [
+        "i. Dashboard access to linked account: N/A",
+        "API: N/A",
+        "i. Create linked account API: N/A",
+        "iii. Request product config: N/A"
+      ],
+      "audit_summary": "- The user completes the payment journey on the N/A (Generic File Name) platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1771569032253",
+      "audit_id": 9,
+      "merchant_name": "N/A (Generic File Name)",
+      "product_type": "Route",
+      "audit_date": "2026-02-20T06:30:31.616Z",
+      "summary_date": "2026-02-20T06:30:32.253Z",
+      "key_findings": [
+        "i. Dashboard access to linked account: N/A",
+        "API: N/A",
+        "i. Create linked account API: N/A",
+        "iii. Request product config: N/A"
+      ],
+      "audit_summary": "- The user completes the payment journey on the N/A (Generic File Name) platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1771569059780",
+      "audit_id": "audit_1771569059462",
+      "merchant_name": "N/A (Generic File Name)",
+      "product_type": "Smart Collect",
+      "audit_date": "2026-02-20T06:30:59.462Z",
+      "summary_date": "2026-02-20T06:30:59.780Z",
+      "key_findings": [
+        "i.Dashboard access to linked account: N/A",
+        "c. API: N/A",
+        "i. Create linked account API: N/A",
+        "iii. Request product config: N/A"
+      ],
+      "audit_summary": "- The user completes the payment journey on the N/A (Generic File Name) platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1771569963979",
+      "audit_id": 1,
+      "merchant_name": "N/A (Generic File Name)",
+      "product_type": "Smart Collect",
+      "audit_date": "2026-02-20T06:46:03.366Z",
+      "summary_date": "2026-02-20T06:46:03.979Z",
+      "key_findings": [
+        "i.Dashboard access to linked account: N/A",
+        "c. API: N/A",
+        "i. Create linked account API: N/A",
+        "iii. Request product config: N/A"
+      ],
+      "audit_summary": "- The user completes the payment journey on the N/A (Generic File Name) platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
     }
   ]
 }

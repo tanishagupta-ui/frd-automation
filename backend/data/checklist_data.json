@@ -290,5 +290,146 @@
       ],
       "additionalComments": "Fetch api and late auth scanario was discussed."
     }
+  },
+  {
+    "filename": "checklist-1771569057004-31603502.xlsx",
+    "originalName": "Untitled spreadsheet (3).xlsx",
+    "product": "Smart Collect",
+    "uploadDate": "2026-02-20T06:30:59.460Z",
+    "data": {
+      "audit_metadata": {
+        "merchant_name": "N/A (Generic File Name)",
+        "merchant_id": "",
+        "date": ""
+      },
+      "auditChecklist": [
+        {
+          "section": "Tech Checklist For Route",
+          "configs": [
+            {
+              "item": "a. Batch upload",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "b. Dashboard",
+              "status": "Done",
+              "comment": "Since they have only two linked accounts, they created the linked account from the dashboard."
+            },
+            {
+              "item": "i.Dashboard access to linked account",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "c. API",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "i. Create linked account API",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "ii. Create stackholedr",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "iii. Request product config",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "iv. Update product config",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "a. Batch upload",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "b. Dashboard",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "c. API",
+              "status": "Done",
+              "comment": ""
+            },
+            {
+              "item": "i. Transfer via order",
+              "status": "Done",
+              "comment": ""
+            },
+            {
+              "item": "ii. Transfer via payment",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "iii. Direct transfer",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "a. Consumes Error Codes",
+              "status": "Done",
+              "comment": ""
+            },
+            {
+              "item": "a.Platform",
+              "status": "Done",
+              "comment": "web and android"
+            },
+            {
+              "item": "b. Server language/SDK",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "a. Webhooks (url and events )",
+              "status": "Done",
+              "comment": ""
+            },
+            {
+              "item": "b. Verify webhook signature",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "c. Fetch payment APIs",
+              "status": "Done",
+              "comment": ""
+            },
+            {
+              "item": "a.Dashboard",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "b.API",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "a.Normal settlement",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "b.Instent settlement",
+              "status": "Done",
+              "comment": "time :"
+            }
+          ]
+        }
+      ],
+      "additionalComments": "The merchant will create linked accounts manually through the dashboard, as only a small number of linked accounts are required. Transactions will be created through the order flow."
+    }
   }
 ]
