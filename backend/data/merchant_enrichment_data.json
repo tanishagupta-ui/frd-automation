@@ -120,24 +120,23 @@
     {
       "id": 6,
       "merchant_name": "Dish TV India Limited",
-      "original_name": "Dishtv",
+      "original_name": "Dishtv (1)",
       "merchant_id": null,
-      "search_date": "2026-02-20T05:21:56.714Z",
+      "search_date": "2026-02-20T10:09:53.923Z",
       "web_data": {
         "company_name": "Dish TV India Limited",
-        "website": "https://www.dishtv.in/",
-        "description": "Dish TV India Limited is India's leading direct-to-home (DTH) satellite television provider, offering a wide range of digital channels and entertainment services to millions of subscribers across India.",
+        "website": "https://www.dishtv.in",
+        "description": "Dish TV India Limited is India's leading direct-to-home (DTH) satellite television service provider, offering a wide array of digital channels and entertainment services to millions of subscribers across the country.",
         "industry": "Media & Entertainment",
         "products_services": [
-          "Direct-to-Home (DTH) Broadcasting",
-          "HD and SD Set-top Boxes",
-          "DishSMRT Hub (Android-based Set-top Box)",
-          "Watcho OTT Platform",
-          "Value Added Services (VAS)",
-          "DishSMRT Stick"
+          "Direct-to-Home (DTH) Television Services",
+          "DishSMRT Hub (Android Set-Top Box)",
+          "HD and SD Set-Top Boxes",
+          "Watcho (OTT Aggregation Platform)",
+          "Value Added Services (VAS) like Active Channels"
         ],
         "business_model": "B2C",
-        "target_audience": "Residential households, television viewers, and digital entertainment consumers in India."
+        "target_audience": "Residential households, television viewers in India, and commercial establishments such as hotels and hospitals."
       },
       "model_used": "gemini-flash-latest"
     },

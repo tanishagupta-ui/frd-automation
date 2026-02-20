@@ -62,6 +62,34 @@
       "merchant_name": "N/A (Generic File Name)",
       "audit_date": "",
       "created_at": "2026-02-20T06:30:31.608Z"
+    },
+    {
+      "id": 10,
+      "merchant_id": "",
+      "merchant_name": "Dish TV India Limited",
+      "audit_date": "",
+      "created_at": "2026-02-20T10:09:54.754Z"
+    },
+    {
+      "id": 11,
+      "merchant_id": "",
+      "merchant_name": "Dish TV India Limited",
+      "audit_date": "",
+      "created_at": "2026-02-20T10:10:29.629Z"
+    },
+    {
+      "id": 12,
+      "merchant_id": "",
+      "merchant_name": "Dish TV India Limited",
+      "audit_date": "",
+      "created_at": "2026-02-20T10:33:08.475Z"
+    },
+    {
+      "id": 13,
+      "merchant_id": "",
+      "merchant_name": "N/A (Generic File Name)",
+      "audit_date": "",
+      "created_at": "2026-02-20T10:39:51.666Z"
     }
   ],
   "route_template_items": [
@@ -1909,6 +1937,734 @@
     {
       "id": 234,
       "session_id": 9,
+      "template_item_id": 25,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 235,
+      "session_id": 10,
+      "template_item_id": 26,
+      "status": "N/A",
+      "comment": "QrfBjbubfaKPkb The merchant has implemented the standard checkout on both web and Android apps, using UPI as the standalone payment method. Settlement is blocked on the main MID. The payments made by customers are transferred to the relevant linked accounts, and these transfers are completed through the order transfer using the order ID."
+    },
+    {
+      "id": 236,
+      "session_id": 10,
+      "template_item_id": 1,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 237,
+      "session_id": 10,
+      "template_item_id": 2,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 238,
+      "session_id": 10,
+      "template_item_id": 3,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 239,
+      "session_id": 10,
+      "template_item_id": 4,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 240,
+      "session_id": 10,
+      "template_item_id": 5,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 241,
+      "session_id": 10,
+      "template_item_id": 6,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 242,
+      "session_id": 10,
+      "template_item_id": 7,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 243,
+      "session_id": 10,
+      "template_item_id": 8,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 244,
+      "session_id": 10,
+      "template_item_id": 9,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 245,
+      "session_id": 10,
+      "template_item_id": 10,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 246,
+      "session_id": 10,
+      "template_item_id": 11,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 247,
+      "session_id": 10,
+      "template_item_id": 12,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 248,
+      "session_id": 10,
+      "template_item_id": 13,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 249,
+      "session_id": 10,
+      "template_item_id": 14,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 250,
+      "session_id": 10,
+      "template_item_id": 15,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 251,
+      "session_id": 10,
+      "template_item_id": 16,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 252,
+      "session_id": 10,
+      "template_item_id": 17,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 253,
+      "session_id": 10,
+      "template_item_id": 18,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 254,
+      "session_id": 10,
+      "template_item_id": 19,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 255,
+      "session_id": 10,
+      "template_item_id": 20,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 256,
+      "session_id": 10,
+      "template_item_id": 21,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 257,
+      "session_id": 10,
+      "template_item_id": 22,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 258,
+      "session_id": 10,
+      "template_item_id": 23,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 259,
+      "session_id": 10,
+      "template_item_id": 24,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 260,
+      "session_id": 10,
+      "template_item_id": 25,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 261,
+      "session_id": 11,
+      "template_item_id": 26,
+      "status": "N/A",
+      "comment": "QrfBjbubfaKPkb The merchant has implemented the standard checkout on both web and Android apps, using UPI as the standalone payment method. Settlement is blocked on the main MID. The payments made by customers are transferred to the relevant linked accounts, and these transfers are completed through the order transfer using the order ID."
+    },
+    {
+      "id": 262,
+      "session_id": 11,
+      "template_item_id": 1,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 263,
+      "session_id": 11,
+      "template_item_id": 2,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 264,
+      "session_id": 11,
+      "template_item_id": 3,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 265,
+      "session_id": 11,
+      "template_item_id": 4,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 266,
+      "session_id": 11,
+      "template_item_id": 5,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 267,
+      "session_id": 11,
+      "template_item_id": 6,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 268,
+      "session_id": 11,
+      "template_item_id": 7,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 269,
+      "session_id": 11,
+      "template_item_id": 8,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 270,
+      "session_id": 11,
+      "template_item_id": 9,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 271,
+      "session_id": 11,
+      "template_item_id": 10,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 272,
+      "session_id": 11,
+      "template_item_id": 11,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 273,
+      "session_id": 11,
+      "template_item_id": 12,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 274,
+      "session_id": 11,
+      "template_item_id": 13,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 275,
+      "session_id": 11,
+      "template_item_id": 14,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 276,
+      "session_id": 11,
+      "template_item_id": 15,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 277,
+      "session_id": 11,
+      "template_item_id": 16,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 278,
+      "session_id": 11,
+      "template_item_id": 17,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 279,
+      "session_id": 11,
+      "template_item_id": 18,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 280,
+      "session_id": 11,
+      "template_item_id": 19,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 281,
+      "session_id": 11,
+      "template_item_id": 20,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 282,
+      "session_id": 11,
+      "template_item_id": 21,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 283,
+      "session_id": 11,
+      "template_item_id": 22,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 284,
+      "session_id": 11,
+      "template_item_id": 23,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 285,
+      "session_id": 11,
+      "template_item_id": 24,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 286,
+      "session_id": 11,
+      "template_item_id": 25,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 287,
+      "session_id": 12,
+      "template_item_id": 26,
+      "status": "N/A",
+      "comment": "QrfBjbubfaKPkb The merchant has implemented the standard checkout on both web and Android apps, using UPI as the standalone payment method. Settlement is blocked on the main MID. The payments made by customers are transferred to the relevant linked accounts, and these transfers are completed through the order transfer using the order ID."
+    },
+    {
+      "id": 288,
+      "session_id": 12,
+      "template_item_id": 1,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 289,
+      "session_id": 12,
+      "template_item_id": 2,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 290,
+      "session_id": 12,
+      "template_item_id": 3,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 291,
+      "session_id": 12,
+      "template_item_id": 4,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 292,
+      "session_id": 12,
+      "template_item_id": 5,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 293,
+      "session_id": 12,
+      "template_item_id": 6,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 294,
+      "session_id": 12,
+      "template_item_id": 7,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 295,
+      "session_id": 12,
+      "template_item_id": 8,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 296,
+      "session_id": 12,
+      "template_item_id": 9,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 297,
+      "session_id": 12,
+      "template_item_id": 10,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 298,
+      "session_id": 12,
+      "template_item_id": 11,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 299,
+      "session_id": 12,
+      "template_item_id": 12,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 300,
+      "session_id": 12,
+      "template_item_id": 13,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 301,
+      "session_id": 12,
+      "template_item_id": 14,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 302,
+      "session_id": 12,
+      "template_item_id": 15,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 303,
+      "session_id": 12,
+      "template_item_id": 16,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 304,
+      "session_id": 12,
+      "template_item_id": 17,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 305,
+      "session_id": 12,
+      "template_item_id": 18,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 306,
+      "session_id": 12,
+      "template_item_id": 19,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 307,
+      "session_id": 12,
+      "template_item_id": 20,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 308,
+      "session_id": 12,
+      "template_item_id": 21,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 309,
+      "session_id": 12,
+      "template_item_id": 22,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 310,
+      "session_id": 12,
+      "template_item_id": 23,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 311,
+      "session_id": 12,
+      "template_item_id": 24,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 312,
+      "session_id": 12,
+      "template_item_id": 25,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 313,
+      "session_id": 13,
+      "template_item_id": 1,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 314,
+      "session_id": 13,
+      "template_item_id": 2,
+      "status": "Done",
+      "comment": "Since they have only two linked accounts, they created the linked account from the dashboard."
+    },
+    {
+      "id": 315,
+      "session_id": 13,
+      "template_item_id": 3,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 316,
+      "session_id": 13,
+      "template_item_id": 4,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 317,
+      "session_id": 13,
+      "template_item_id": 5,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 318,
+      "session_id": 13,
+      "template_item_id": 7,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 319,
+      "session_id": 13,
+      "template_item_id": 8,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 320,
+      "session_id": 13,
+      "template_item_id": 9,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 321,
+      "session_id": 13,
+      "template_item_id": 10,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 322,
+      "session_id": 13,
+      "template_item_id": 11,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 323,
+      "session_id": 13,
+      "template_item_id": 12,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 324,
+      "session_id": 13,
+      "template_item_id": 13,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 325,
+      "session_id": 13,
+      "template_item_id": 14,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 326,
+      "session_id": 13,
+      "template_item_id": 15,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 327,
+      "session_id": 13,
+      "template_item_id": 16,
+      "status": "Done",
+      "comment": "web and android"
+    },
+    {
+      "id": 328,
+      "session_id": 13,
+      "template_item_id": 17,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 329,
+      "session_id": 13,
+      "template_item_id": 18,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 330,
+      "session_id": 13,
+      "template_item_id": 19,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 331,
+      "session_id": 13,
+      "template_item_id": 20,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 332,
+      "session_id": 13,
+      "template_item_id": 21,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 333,
+      "session_id": 13,
+      "template_item_id": 22,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 334,
+      "session_id": 13,
+      "template_item_id": 26,
+      "status": "N/A",
+      "comment": "The merchant will create linked accounts manually through the dashboard, as only a small number of linked accounts are required. Transactions will be created through the order flow."
+    },
+    {
+      "id": 335,
+      "session_id": 13,
+      "template_item_id": 6,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 336,
+      "session_id": 13,
+      "template_item_id": 23,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 337,
+      "session_id": 13,
+      "template_item_id": 24,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 338,
+      "session_id": 13,
       "template_item_id": 25,
       "status": "N/A",
       "comment": ""

@@ -2228,6 +2228,86 @@
       ],
       "audit_summary": "- The user completes the payment journey on the N/A (Generic File Name) platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
       "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1771582195001",
+      "audit_id": 10,
+      "merchant_name": "Dish TV India Limited",
+      "product_type": "Route",
+      "audit_date": "2026-02-20T10:09:54.758Z",
+      "summary_date": "2026-02-20T10:09:55.001Z",
+      "key_findings": [
+        "i. Dashboard access to linked account: N/A",
+        "API: N/A",
+        "i. Create linked account API: N/A",
+        "iii. Request product config: N/A"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Dish TV India Limited platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1771582230121",
+      "audit_id": 11,
+      "merchant_name": "Dish TV India Limited",
+      "product_type": "Route",
+      "audit_date": "2026-02-20T10:10:29.634Z",
+      "summary_date": "2026-02-20T10:10:30.121Z",
+      "key_findings": [
+        "i. Dashboard access to linked account: N/A",
+        "API: N/A",
+        "i. Create linked account API: N/A",
+        "iii. Request product config: N/A"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Dish TV India Limited platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1771583563621",
+      "audit_id": "audit_1771583563144_648",
+      "merchant_name": "AGF Management Limited",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-02-20T10:32:43.151Z",
+      "summary_date": "2026-02-20T10:32:43.621Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id: N/A",
+        "Fetch Token by Payment ID: N/A",
+        "2 Days for UPI and 3 Days for other methods: Done"
+      ],
+      "audit_summary": "- The user completes the payment journey on the AGF Management Limited platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for UPI, Cards.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1771583588994",
+      "audit_id": 12,
+      "merchant_name": "Dish TV India Limited",
+      "product_type": "Route",
+      "audit_date": "2026-02-20T10:33:08.480Z",
+      "summary_date": "2026-02-20T10:33:08.994Z",
+      "key_findings": [
+        "i. Dashboard access to linked account: N/A",
+        "API: N/A",
+        "i. Create linked account API: N/A",
+        "iii. Request product config: N/A"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Dish TV India Limited platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1771583992184",
+      "audit_id": 13,
+      "merchant_name": "N/A (Generic File Name)",
+      "product_type": "Route",
+      "audit_date": "2026-02-20T10:39:51.670Z",
+      "summary_date": "2026-02-20T10:39:52.184Z",
+      "key_findings": [
+        "i. Dashboard access to linked account: N/A",
+        "API: N/A",
+        "i. Create linked account API: N/A",
+        "iii. Request product config: N/A"
+      ],
+      "audit_summary": "- The user completes the payment journey on the N/A (Generic File Name) platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
     }
   ]
 }

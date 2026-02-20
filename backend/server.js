@@ -1961,6 +1961,26 @@ app.post("/upload", (req, res) => {
 
 app.use("/api", require("./routes/docRoute"));
 
+// Serve generated FRDs as static files
+const frdDir = path.join(__dirname, "generated_frds");
+if (!fs.existsSync(frdDir)) fs.mkdirSync(frdDir, { recursive: true });
+app.use("/generated_frds", express.static(frdDir));
+
+// GET latest FRD PDF info
+app.get("/api/latest-frd", (req, res) => {
+    try {
+        const files = fs.readdirSync(frdDir)
+            .filter(f => f.endsWith(".pdf"))
+            .map(f => ({ name: f, time: fs.statSync(path.join(frdDir, f)).mtime.getTime() }))
+            .sort((a, b) => b.time - a.time);
+
+        if (files.length === 0) return res.status(404).json({ message: "No FRD found" });
+        res.json({ filename: files[0].name, url: `/generated_frds/${encodeURIComponent(files[0].name)}` });
+    } catch (e) {
+        res.status(500).json({ message: "Error fetching FRD", error: e.message });
+    }
+});
+
 const HOST = process.env.HOST || "127.0.0.1";
 const server = app.listen(PORT, HOST, () => {
     console.log(`✅ Server running on http://${HOST}:${PORT}`);
