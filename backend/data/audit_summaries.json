@@ -2310,6 +2310,7 @@
       "overall_status": "Pass"
     },
     {
+<<<<<<< Updated upstream
       "id": "sum_1771831020173",
       "audit_id": "audit_1771831019934",
       "merchant_name": "NCApps Test Merchant",
@@ -2339,6 +2340,21 @@
         "Auto Capture & Manual Capture: N/A"
       ],
       "audit_summary": "- The user completes the payment journey on the NCApps Test Merchant platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+=======
+      "id": "sum_1771594978157",
+      "audit_id": 14,
+      "merchant_name": "N/A (Generic File Name)",
+      "product_type": "Route",
+      "audit_date": "2026-02-20T13:42:57.673Z",
+      "summary_date": "2026-02-20T13:42:58.157Z",
+      "key_findings": [
+        "i. Dashboard access to linked account: N/A",
+        "API: N/A",
+        "i. Create linked account API: N/A",
+        "iii. Request product config: N/A"
+      ],
+      "audit_summary": "- The user completes the payment journey on the N/A (Generic File Name) platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+>>>>>>> Stashed changes
       "overall_status": "Pass"
     },
     {
