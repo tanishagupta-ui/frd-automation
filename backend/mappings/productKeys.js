@@ -17,7 +17,7 @@ const PRODUCT_KEYS = {
     "smart collect": "smart_collect",
     "charge at will": "caw",
     "standard checkout": "standard_checkout",
-    "custom checkout": "custom_checkout",
+    "custom_checkout": "custom_checkout",
     "s2s": "s2s",
     "payment links": "payment_links",
     "qr codes": "qr_codes",

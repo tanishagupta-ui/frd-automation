@@ -723,5 +723,123 @@
       ],
       "additionalComments": "Fetch api and late auth scanario was discussed."
     }
+  },
+  {
+    "filename": "checklist-1771840933013-765303853.xlsx",
+    "originalName": "NCApps.xlsx",
+    "product": "Payment Links",
+    "uploadDate": "2026-02-23T10:02:15.621Z",
+    "data": {
+      "audit_metadata": {
+        "merchant_name": "",
+        "merchant_id": "",
+        "date": ""
+      },
+      "auditChecklist": [
+        {
+          "section": "General",
+          "configs": [
+            {
+              "item": "a. Downloading Keys",
+              "status": "Implemented",
+              "comment": ""
+            },
+            {
+              "item": "b. Set Expiry",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "c. Regenerate Keys",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "a. Payment Links",
+              "status": "N/A",
+              "comment": "plink_tyhdie"
+            },
+            {
+              "item": "b. Payment Pages",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "c. Payment Buttons",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "a. Dashboard or API's",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "a. Partially Paid",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "a. pl_batch_upload_feature",
+              "status": "N/A",
+              "comment": "not applicable"
+            },
+            {
+              "item": "a. Expiry Set",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "a. Manual and Auto Capture",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "a. Manual and Instant Refund",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "a. Consumes Error Codes",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "a. Consumes payment state at capture time",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "a. Webhooks",
+              "status": "N/A",
+              "comment": "payment.captured"
+            },
+            {
+              "item": "b. Verify webhook signature",
+              "status": "N/A",
+              "comment": ""
+            },
+            {
+              "item": "c. Fetch payment APIs",
+              "status": "N/A",
+              "comment": ""
+            }
+          ]
+        },
+        {
+          "section": "12.  Offers",
+          "configs": []
+        },
+        {
+          "section": "13. Refund APIs",
+          "configs": []
+        },
+        {
+          "section": "14. Fetch Payment API's",
+          "configs": []
+        }
+      ],
+      "additionalComments": "webhook Url for payment\nWebhook Events"
+    }
   }
 ]

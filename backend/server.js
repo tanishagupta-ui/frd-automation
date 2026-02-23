@@ -906,7 +906,7 @@ app.post("/upload", (req, res) => {
             } else if (!lowerProduct.startsWith("route") &&
                 !lowerProduct.startsWith("subscription") &&
                 !lowerProduct.startsWith("qr code") &&
-                !lowerProduct.startsWith("ncapps") &&
+                !lowerProduct.startsWith("payment links") &&
                 !lowerProduct.startsWith("affordability") &&
                 !lowerProduct.startsWith("standard checkout") &&
                 !lowerProduct.startsWith("custom checkout") &&
@@ -943,7 +943,7 @@ app.post("/upload", (req, res) => {
                     (result.results ? result.results.length : 0));
 
             // --- NCApps Specific Logic ---
-            if (productType.toLowerCase() === "ncapps") {
+            if (productType.toLowerCase() === "payment links") {
                 console.log("Entering NCApps logic...");
                 const ncappsDataPath = path.join(__dirname, "data", "ncapps_checklist_data.json");
 
@@ -1203,7 +1203,7 @@ app.post("/upload", (req, res) => {
                 });
 
                 result = {
-                    product: "NCApps",
+                    product: "Payment Links",
                     audit_metadata: { mx_name: sessionRecord.merchant_name, mid: sessionRecord.merchant_id, date: sessionRecord.audit_date },
                     checklist_content: checklistResp,
                     additional_comments: additionalCommentsResp
