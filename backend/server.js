@@ -946,7 +946,6 @@ app.post("/upload", (req, res) => {
             if (productType.toLowerCase() === "ncapps") {
                 console.log("Entering NCApps logic...");
                 const ncappsDataPath = path.join(__dirname, "data", "ncapps_checklist_data.json");
-                const data = xlsx.utils.sheet_to_json(workbook.Sheets[sheetName]);
 
                 const NCAPPS_CANONICAL_TEMPLATE = [
                     { cat: "1. Live Keys", item: "Downloading Keys" },
@@ -991,7 +990,6 @@ app.post("/upload", (req, res) => {
                         if (fileData) ncappsStorage = fileData;
                     } catch (e) {
                         console.error("Error reading NCApps data file:", e);
-                        // Keep default structure if error
                     }
                 }
 
@@ -1011,26 +1009,78 @@ app.post("/upload", (req, res) => {
                     }));
                 }
 
-                let merchantId = "";
+                // Robust Column Detection
+                let configColIdx = -1;
+                let statusColIdx = -1;
+                let commentColIdx = -1;
+                let catColIdx = -1;
+                let headerRowIndex = -1;
+
+                for (let i = 0; i < Math.min(rawData.length, 40); i++) {
+                    const row = rawData[i];
+                    if (!row || !Array.isArray(row)) continue;
+
+                    const configIdx = row.findIndex(c => c && /configs|requirement|item|description/i.test(String(c)));
+                    if (configIdx !== -1) {
+                        headerRowIndex = i;
+                        configColIdx = configIdx;
+                        catColIdx = row.findIndex(c => c && /audit checklist|category|section/i.test(String(c)));
+                        statusColIdx = row.findIndex(c => c && /status|result/i.test(String(c)));
+                        commentColIdx = row.findIndex(c => /comment|remark|note/i.test(String(c)));
+                        break;
+                    }
+
+                    // Fallback to finding by template items
+                    let matches = 0;
+                    row.forEach((cell, idx) => {
+                        if (!cell) return;
+                        const cellVal = String(cell).toLowerCase();
+                        if (NCAPPS_CANONICAL_TEMPLATE.some(t => cellVal.includes(t.item.toLowerCase()))) {
+                            matches++;
+                            if (configColIdx === -1) configColIdx = idx;
+                        }
+                    });
+                    if (matches >= 1) {
+                        headerRowIndex = i - 1;
+                        break;
+                    }
+                }
+
+                // Final fallbacks for indices
+                if (configColIdx === -1) configColIdx = 1;
+                if (statusColIdx === -1) statusColIdx = configColIdx + 1;
+                if (commentColIdx === -1) commentColIdx = configColIdx + 2;
+                if (catColIdx === -1) catColIdx = 0;
+
+                console.log(`[NCApps] Header detection: row=${headerRowIndex}, catCol=${catColIdx}, configCol=${configColIdx}, statusCol=${statusColIdx}, commentCol=${commentColIdx}`);
+
                 let mxName = "";
+                let mxId = "";
                 let mxDate = "";
 
-                // Metadata Loop
-                for (let i = 0; i < rawData.length; i++) {
+                // metadata extraction (all cells)
+                for (let i = 0; i < Math.min(rawData.length, 50); i++) {
                     const row = rawData[i];
-                    const colA = row[0] ? String(row[0]).trim() : "";
-                    const colB = row[1] ? String(row[1]).trim() : "";
-                    const lowerA = colA.toLowerCase();
-                    if (lowerA.includes("mx name")) mxName = colA.split(":")[1]?.trim() || colB;
-                    if (lowerA.includes("mid")) merchantId = colA.split(":")[1]?.trim() || colB;
-                    if (lowerA.includes("date of audit")) mxDate = colA.split(":")[1]?.trim() || colB;
+                    if (!row || !Array.isArray(row)) continue;
+                    row.forEach((cell, idx) => {
+                        if (!cell) return;
+                        const str = String(cell).trim();
+                        const lower = str.toLowerCase();
+                        const nextVal = String(row[idx + 1] || "").trim();
+                        const splitVal = str.split(":")[1]?.trim();
+                        const val = splitVal || nextVal;
+
+                        if (lower.includes("mx name") || lower.includes("merchant name")) mxName = val || mxName;
+                        if (lower.includes("mid") || (lower.includes("id") && lower.length < 5)) mxId = val || mxId;
+                        if (lower.includes("date of audit") || (lower.includes("date") && !lower.includes("update"))) mxDate = val || mxDate;
+                    });
                 }
 
                 const sessionId = ncappsStorage.ncapps_audits.length + 1;
                 const sessionRecord = {
                     id: sessionId,
-                    merchant_id: merchantId || "Unknown",
-                    merchant_name: mxName || merchantName || "Audit Checklist",
+                    merchant_id: mxId || "Unknown",
+                    merchant_name: (mxName && !/audit checklist|merchant name/i.test(mxName)) ? mxName : (merchantName || "Audit Checklist"),
                     audit_date: mxDate || "",
                     created_at: new Date().toISOString()
                 };
@@ -1038,71 +1088,79 @@ app.post("/upload", (req, res) => {
 
                 let currentCategory = "";
                 let processedChecklistItems = [];
-                // processedCommentItems not strictly needed if we just append, but good for tracking uniqueness if required.
 
-                data.forEach(row => {
-                    let cat = row["Audit Checklist"] || currentCategory;
-                    if (row["Audit Checklist"]) currentCategory = cat;
+                const startIdx = headerRowIndex !== -1 ? headerRowIndex + 1 : 0;
 
-                    let item = row["Configs"];
-                    let status = row["Status"] || "N/A";
-                    let comment = row["Comment"] || "";
+                for (let i = startIdx; i < rawData.length; i++) {
+                    const row = rawData[i];
+                    if (!row || !Array.isArray(row)) continue;
 
-                    if (!item) return;
-                    item = item.trim();
+                    const catVal = catColIdx !== -1 ? String(row[catColIdx] || "").trim() : "";
+                    if (catVal) currentCategory = catVal;
+
+                    const itemVal = String(row[configColIdx] || "").trim();
+                    const statusVal = statusColIdx !== -1 ? String(row[statusColIdx] || "N/A").trim() : "N/A";
+                    const commentVal = commentColIdx !== -1 ? String(row[commentColIdx] || "").trim() : "";
+
+                    if (!itemVal) {
+                        // Check if the label is in the Audit Checklist column for comments
+                        const labelInCat = catVal;
+                        const commentTemplate = ncappsStorage.ncapps_comment_templates.find(t => t.field_label.toLowerCase() === labelInCat.toLowerCase());
+                        if (commentTemplate) {
+                            ncappsStorage.ncapps_comment_values.push({
+                                id: ncappsStorage.ncapps_comment_values.length + 1,
+                                session_id: sessionId,
+                                comment_template_id: commentTemplate.id,
+                                field_value: statusVal !== "N/A" ? statusVal : commentVal || ""
+                            });
+                        }
+                        continue;
+                    }
 
                     // Check if it's a checklist item
-                    const templateMatch = NCAPPS_CANONICAL_TEMPLATE.find(t => t.item === item && (t.cat === (cat ? cat.trim() : "") || !cat));
+                    const templateMatch = NCAPPS_CANONICAL_TEMPLATE.find(t =>
+                        itemVal.toLowerCase().includes(t.item.toLowerCase()) ||
+                        t.item.toLowerCase().includes(itemVal.toLowerCase())
+                    );
 
                     if (templateMatch) {
-                        const templateItem = ncappsStorage.ncapps_checklist_template.find(t => t.item_description === item && t.category === templateMatch.cat);
+                        const templateItem = ncappsStorage.ncapps_checklist_template.find(t => t.item_description === templateMatch.item);
                         if (templateItem) {
                             ncappsStorage.ncapps_audit_results.push({
                                 id: ncappsStorage.ncapps_audit_results.length + 1,
                                 session_id: sessionId,
                                 template_id: templateItem.item_id,
-                                status: status,
-                                specific_comment: comment
+                                status: statusVal,
+                                specific_comment: commentVal
                             });
                             processedChecklistItems.push(templateItem.item_id);
                         }
                     }
 
-                    // Check if it's a comment field (split-brain logic)
-                    const commentTemplate = ncappsStorage.ncapps_comment_templates.find(t => t.field_label === item);
+
+                    // Check if it's a comment field
+                    const commentTemplate = ncappsStorage.ncapps_comment_templates.find(t =>
+                        itemVal.toLowerCase().includes(t.field_label.toLowerCase()) ||
+                        (catVal && catVal.toLowerCase().includes(t.field_label.toLowerCase()))
+                    );
+
                     if (commentTemplate) {
-                        // Use status or comment as the value, usually configs for these rows might be in 'Configs' or 'Status' column? 
-                        // Based on user request/previous QR code logic examples: 
-                        // "webhook Url for payment" -> Value "https://..."
-                        // In QR code logic we took 'Configs' as item and 'Comment' or 'Status' as value? 
-                        // Actually in QR Code logic: 
-                        // const label = row["Audit Checklist"];
-                        // const value = row["Configs"];
-                        // So here we should probably check if 'item' (from Configs) is the label? 
-                        // Wait, data.forEach(row => ... item = row["Configs"]
+                        // If the template matched the category column, then the item column likely contains the value
+                        let val = "";
+                        if (catVal && catVal.toLowerCase().includes(commentTemplate.field_label.toLowerCase())) {
+                            val = itemVal;
+                        } else {
+                            val = statusVal !== "N/A" ? statusVal : commentVal;
+                        }
 
-                        // Revised loop for Comments to match QR Code logic if structure is similar
-                        // Use 'Audit Checklist' col for Label and 'Configs' col for Value?
-                        // Let's do a separate pass or check row["Audit Checklist"]
-                    }
-                });
-
-                // Re-iterate for strictly Comment Template Items where Label is in Column A (Audit Checklist)
-                data.forEach(row => {
-                    const label = row["Audit Checklist"];
-                    const value = row["Configs"]; // This is likely the value for comment fields
-                    if (!label) return;
-
-                    const commentTemplate = ncappsStorage.ncapps_comment_templates.find(t => t.field_label === label.trim());
-                    if (commentTemplate) {
                         ncappsStorage.ncapps_comment_values.push({
                             id: ncappsStorage.ncapps_comment_values.length + 1,
                             session_id: sessionId,
                             comment_template_id: commentTemplate.id,
-                            field_value: value || ""
+                            field_value: val || ""
                         });
                     }
-                });
+                }
 
                 // Fill in N/A for missing checklist items
                 ncappsStorage.ncapps_checklist_template.forEach(t => {
@@ -1138,8 +1196,10 @@ app.post("/upload", (req, res) => {
                 }
 
                 let additionalCommentsResp = ncappsStorage.ncapps_comment_templates.map(ct => {
-                    const val = ncappsStorage.ncapps_comment_values.find(v => v.session_id === sessionId && v.comment_template_id === ct.id);
-                    return { label: ct.field_label, value: val ? val.field_value : "" };
+                    // Get all values for this session and template
+                    const vals = ncappsStorage.ncapps_comment_values.filter(v => v.session_id === sessionId && v.comment_template_id === ct.id);
+                    const mergedVal = vals.map(v => v.field_value).filter(Boolean).join("; ");
+                    return { label: ct.field_label, value: mergedVal || "" };
                 });
 
                 result = {
@@ -1149,7 +1209,6 @@ app.post("/upload", (req, res) => {
                     additional_comments: additionalCommentsResp
                 };
 
-                // Save individual audit file
                 const ncappsAuditsDir = path.join(__dirname, "data", "ncapps_audits");
                 if (!fs.existsSync(ncappsAuditsDir)) fs.mkdirSync(ncappsAuditsDir, { recursive: true });
                 const safeMxName = sessionRecord.merchant_name.replace(/[^a-z0-9]/gi, '_').toLowerCase() || "unknown";

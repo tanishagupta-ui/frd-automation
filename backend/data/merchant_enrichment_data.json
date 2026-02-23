@@ -165,6 +165,28 @@
         "target_audience": "N/A"
       },
       "model_used": "gemini-flash-latest"
+    },
+    {
+      "id": 9,
+      "merchant_name": "NCApps Test Merchant",
+      "original_name": "NCApps Test Merchant",
+      "merchant_id": null,
+      "search_date": "2026-02-23T07:16:59.917Z",
+      "web_data": {
+        "company_name": "NCApps Test Merchant",
+        "website": "https://www.namecheap.com/apps/",
+        "description": "An internal testing and sandbox entity utilized by Namecheap's application ecosystem (NCApps) to facilitate the development, debugging, and verification of payment gateway integrations and merchant services.",
+        "industry": "Fintech / Software Development",
+        "products_services": [
+          "Sandbox Payment Processing",
+          "API Integration Testing",
+          "Merchant Transaction Simulation",
+          "Billing Flow Verification"
+        ],
+        "business_model": "B2B (Internal/Developer Tools)",
+        "target_audience": "Software Developers, QA Engineers, and Third-party Application Integrators within the Namecheap ecosystem"
+      },
+      "model_used": "gemini-flash-latest"
     }
   ]
 }

@@ -2308,6 +2308,38 @@
       ],
       "audit_summary": "- The user completes the payment journey on the N/A (Generic File Name) platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
       "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1771831020173",
+      "audit_id": "audit_1771831019934",
+      "merchant_name": "NCApps Test Merchant",
+      "product_type": "NCApps",
+      "audit_date": "2026-02-23T07:16:59.934Z",
+      "summary_date": "2026-02-23T07:17:00.173Z",
+      "key_findings": [
+        "Downloading Keys: Done",
+        "Regenerate Keys: N/A",
+        "Payment Methods: N/A",
+        "Auto Capture & Manual Capture: N/A"
+      ],
+      "audit_summary": "- The user completes the payment journey on the NCApps Test Merchant platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1771831285128",
+      "audit_id": "audit_1771831284525",
+      "merchant_name": "NCApps Test Merchant",
+      "product_type": "NCApps",
+      "audit_date": "2026-02-23T07:21:24.526Z",
+      "summary_date": "2026-02-23T07:21:25.128Z",
+      "key_findings": [
+        "Downloading Keys: Done",
+        "Regenerate Keys: N/A",
+        "Payment Methods: N/A",
+        "Auto Capture & Manual Capture: N/A"
+      ],
+      "audit_summary": "- The user completes the payment journey on the NCApps Test Merchant platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
     }
   ]
 }
