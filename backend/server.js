@@ -1072,7 +1072,12 @@ app.post("/upload", (req, res) => {
 
                         if (lower.includes("mx name") || lower.includes("merchant name")) mxName = val || mxName;
                         if (lower.includes("mid") || (lower.includes("id") && lower.length < 5)) mxId = val || mxId;
-                        if (lower.includes("date of audit") || (lower.includes("date") && !lower.includes("update"))) mxDate = val || mxDate;
+                        if (lower.includes("audit date") || lower.includes("date of audit") || (lower.includes("date") && !lower.includes("update"))) {
+                            // Only capture if val doesn't look like another label
+                            if (val && !val.toLowerCase().includes("date") && !val.toLowerCase().includes("name")) {
+                                mxDate = val;
+                            }
+                        }
                     });
                 }
 
@@ -1081,7 +1086,8 @@ app.post("/upload", (req, res) => {
                     id: sessionId,
                     merchant_id: mxId || "Unknown",
                     merchant_name: (mxName && !/audit checklist|merchant name/i.test(mxName)) ? mxName : (merchantName || "Audit Checklist"),
-                    audit_date: mxDate || "",
+                    audit_date: mxDate || result?.audit_metadata?.date || "",
+                    product: productType,
                     created_at: new Date().toISOString()
                 };
                 ncappsStorage.ncapps_audits.push(sessionRecord);
@@ -1211,9 +1217,12 @@ app.post("/upload", (req, res) => {
 
                 const ncappsAuditsDir = path.join(__dirname, "data", "ncapps_audits");
                 if (!fs.existsSync(ncappsAuditsDir)) fs.mkdirSync(ncappsAuditsDir, { recursive: true });
-                const safeMxName = sessionRecord.merchant_name.replace(/[^a-z0-9]/gi, '_').toLowerCase() || "unknown";
-                fs.writeFileSync(path.join(ncappsAuditsDir, `ncapps_audit_${sessionId}_${safeMxName}.json`), JSON.stringify(result, null, 2));
-                console.log(`Individual NCApps audit saved to: ncapps_audit_${sessionId}_${safeMxName}.json`);
+                const individualAuditFilename = productType.toLowerCase() === "payment links"
+                    ? `payment_links_audit_${sessionId}_${safeMxName}.json`
+                    : `ncapps_audit_${sessionId}_${safeMxName}.json`;
+
+                fs.writeFileSync(path.join(ncappsAuditsDir, individualAuditFilename), JSON.stringify(result, null, 2));
+                console.log(`Individual audit saved to: ${individualAuditFilename}`);
             }
 
             // --- Go Live Checklist - PG Specific Logic ---
