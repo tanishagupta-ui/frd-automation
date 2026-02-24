@@ -1217,6 +1217,7 @@ app.post("/upload", (req, res) => {
 
                 const ncappsAuditsDir = path.join(__dirname, "data", "ncapps_audits");
                 if (!fs.existsSync(ncappsAuditsDir)) fs.mkdirSync(ncappsAuditsDir, { recursive: true });
+                const safeMxName = sessionRecord.merchant_name.replace(/[^a-z0-9]/gi, '_').toLowerCase() || "unknown";
                 const individualAuditFilename = productType.toLowerCase() === "payment links"
                     ? `payment_links_audit_${sessionId}_${safeMxName}.json`
                     : `ncapps_audit_${sessionId}_${safeMxName}.json`;
