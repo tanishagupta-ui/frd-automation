@@ -2340,6 +2340,38 @@
       ],
       "audit_summary": "- The user completes the payment journey on the NCApps Test Merchant platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
       "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1771925339869",
+      "audit_id": "audit_1771925339454",
+      "merchant_name": "Sugarfit Health Solutions Private Limited",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-02-24T09:28:59.869Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: Done"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Sugarfit Health Solutions Private Limited platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for UPI, Cards.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1771925555969",
+      "audit_id": "audit_1771925555827",
+      "merchant_name": "Stripe, Inc.",
+      "product_type": "Payment Links",
+      "audit_date": "2026-02-24T09:32:35.827Z",
+      "summary_date": "2026-02-24T09:32:35.969Z",
+      "key_findings": [
+        "Downloading Keys: IMPLEMENTED",
+        "Regenerate Keys: N/A",
+        "Payment Methods: N/A",
+        "Auto Capture & Manual Capture: N/A"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Stripe, Inc. platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
     }
   ]
 }

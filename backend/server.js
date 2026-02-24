@@ -1215,7 +1215,7 @@ app.post("/upload", (req, res) => {
                     product: "Payment Links",
                     audit_metadata: { mx_name: sessionRecord.merchant_name, mid: sessionRecord.merchant_id, date: sessionRecord.audit_date },
                     checklist_content: checklistResp,
-                    additional_comments: additionalCommentsResp
+                    additional_comments: additionalCommentsResp.filter(c => c.value && String(c.value).trim() && String(c.value).toLowerCase() !== "n/a")
                 };
 
                 const ncappsAuditsDir = path.join(__dirname, "data", "ncapps_audits");

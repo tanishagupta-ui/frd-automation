@@ -187,6 +187,31 @@
         "target_audience": "Software Developers, QA Engineers, and Third-party Application Integrators within the Namecheap ecosystem"
       },
       "model_used": "gemini-flash-latest"
+    },
+    {
+      "id": 10,
+      "merchant_name": "Stripe, Inc.",
+      "original_name": "Payment links",
+      "merchant_id": null,
+      "search_date": "2026-02-24T09:32:33.101Z",
+      "web_data": {
+        "company_name": "Stripe, Inc.",
+        "website": "https://stripe.com",
+        "description": "A financial infrastructure platform for the internet that provides a suite of payment processing software and application programming interfaces. Its 'Payment Links' product allows businesses to create a hosted payment page and share a link with customers to collect payments without requiring a website or custom code.",
+        "industry": "Fintech",
+        "products_services": [
+          "Stripe Payment Links",
+          "Stripe Checkout",
+          "Billing & Subscriptions",
+          "Invoicing",
+          "Stripe Connect",
+          "Fraud Prevention (Radar)",
+          "Online Payment Processing"
+        ],
+        "business_model": "B2B",
+        "target_audience": "E-commerce businesses, SaaS companies, non-profits, freelancers, and enterprises."
+      },
+      "model_used": "gemini-flash-latest"
     }
   ]
 }

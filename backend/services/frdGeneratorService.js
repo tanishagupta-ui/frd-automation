@@ -172,11 +172,10 @@ async function generateFRD(
     pdfMarkdown += techSpecs;
 
     const methods = extractPaymentMethods(auditResult);
-    const methodStr = `- **Payment methods:** ${
-      methods.length > 0
-        ? methods.join(", ")
-        : "UPI, Emandate (Netbanking), Cards"
-    }\n\n`;
+    const methodStr = `- **Payment methods:** ${methods.length > 0
+      ? methods.join(", ")
+      : "UPI, Emandate (Netbanking), Cards"
+      }\n\n`;
     markdown += methodStr;
     pdfMarkdown += methodStr;
 
@@ -233,11 +232,10 @@ async function generateFRD(
 
     markdown += `#### 2.4.1 Test and Production Domains\n`;
     pdfMarkdown += `#### 2.4.1 Test and Production Domains\n`;
-    const prod = `- **Production:** ${
-      webData.website && webData.website !== "Not found"
-        ? webData.website
-        : "N/A"
-    }\n\n`;
+    const prod = `- **Production:** ${webData.website && webData.website !== "Not found"
+      ? webData.website
+      : "N/A"
+      }\n\n`;
     markdown += prod;
     pdfMarkdown += prod;
 
@@ -278,8 +276,8 @@ async function generateFRD(
       webhooks.length > 0
         ? webhooks.map((w) => `\`${w}\``).join(", ")
         : isSubscription
-        ? "Not provided in checklist"
-        : "`payment.captured`, `payment.failed`";
+          ? "Not provided in checklist"
+          : "`payment.captured`, `payment.failed`";
     const webhookStr = `- **Events:** ${webhookList}\n\n`;
     markdown += webhookStr;
     pdfMarkdown += webhookStr;
@@ -826,8 +824,7 @@ function buildNarrativeFindings(checks, auditResult, merchantName) {
       normalized === "plan" ||
       normalized === "product";
     lines.push(
-      `The user enters the ${merchantName} platform and selects the ${
-        generic ? "policy" : policySignal
+      `The user enters the ${merchantName} platform and selects the ${generic ? "policy" : policySignal
       }.`
     );
   }
@@ -904,9 +901,8 @@ function findChecklistSignal(checks, keywords) {
   if (!Array.isArray(checks) || checks.length === 0) return "";
   const patterns = keywords.map((k) => k.toLowerCase());
   for (const check of checks) {
-    const label = `${
-      check.item || check.label || check.config || ""
-    }`.toLowerCase();
+    const label = `${check.item || check.label || check.config || ""
+      }`.toLowerCase();
     const comment = `${check.comment || check.hint || ""}`.toLowerCase();
     const status = `${check.status || ""}`.toLowerCase();
     const combined = `${label} ${comment} ${status}`;
@@ -955,9 +951,9 @@ function hydrateChecklistFromDataFolder(
 
   const slug = slugifyName(
     merchantName ||
-      auditResult.audit_metadata?.mx_name ||
-      auditResult.audit_metadata?.merchant_name ||
-      ""
+    auditResult.audit_metadata?.mx_name ||
+    auditResult.audit_metadata?.merchant_name ||
+    ""
   );
   if (!slug) return auditResult;
 
@@ -1014,12 +1010,11 @@ function buildWebDataSummary(webData, merchantName) {
       : "";
     const services =
       Array.isArray(webData.products_services) &&
-      webData.products_services.length > 0
+        webData.products_services.length > 0
         ? `Key offerings include ${webData.products_services
-            .slice(0, 4)
-            .join(", ")}${
-            webData.products_services.length > 4 ? ", and more" : ""
-          }.`
+          .slice(0, 4)
+          .join(", ")}${webData.products_services.length > 4 ? ", and more" : ""
+        }.`
         : "";
 
     const prefix = location || size ? `${location}${size}`.trim() + " " : "";
@@ -1100,6 +1095,15 @@ function extractCombinedAdditionalInfo(auditResult, productType) {
     uniqueComments.add(String(auditResult.additionalComments).trim());
   }
 
+  // Handle snake_case additional_comments from Payment Links logic
+  if (Array.isArray(auditResult.additional_comments)) {
+    auditResult.additional_comments.forEach(c => {
+      if (c.label && c.value && String(c.value).trim()) {
+        labeledComments.set(c.label, String(c.value).trim());
+      }
+    });
+  }
+
   sources.forEach((source) => {
     if (Array.isArray(source)) {
       source.forEach((section) => {
@@ -1154,11 +1158,20 @@ function extractCombinedAdditionalInfo(auditResult, productType) {
     }
   });
 
-  if (isQrCode && labeledComments.size > 0) {
+  if (labeledComments.size > 0) {
+    const header = isQrCode
+      ? `Best-practice checklist observations for QR Codes:\n\n`
+      : `The following integration details and best practices were identified during the audit:\n\n`;
+
     const notes = Array.from(labeledComments.entries())
       .map(([label, value]) => `- ${label}: ${value}`)
       .join("\n");
-    return `Best-practice checklist observations for QR Codes:\n\n${notes}`;
+
+    let combined = header + notes;
+    if (uniqueComments.size > 0) {
+      combined += "\n\n" + Array.from(uniqueComments).map(c => `- ${c}`).join("\n\n");
+    }
+    return combined;
   }
 
   if (uniqueComments.size > 0) {
