@@ -1082,10 +1082,13 @@ app.post("/upload", (req, res) => {
                 }
 
                 const sessionId = ncappsStorage.ncapps_audits.length + 1;
+                const merchantNameForSafe = (mxName && !/audit checklist|merchant name/i.test(mxName)) ? mxName : (merchantName || "Audit Checklist");
+                const safeMxNameForAudit = merchantNameForSafe.replace(/[^a-z0-9]/gi, '_').toLowerCase() || "unknown";
+
                 const sessionRecord = {
                     id: sessionId,
                     merchant_id: mxId || "Unknown",
-                    merchant_name: (mxName && !/audit checklist|merchant name/i.test(mxName)) ? mxName : (merchantName || "Audit Checklist"),
+                    merchant_name: merchantNameForSafe,
                     audit_date: mxDate || result?.audit_metadata?.date || "",
                     product: productType,
                     created_at: new Date().toISOString()
@@ -1217,10 +1220,10 @@ app.post("/upload", (req, res) => {
 
                 const ncappsAuditsDir = path.join(__dirname, "data", "ncapps_audits");
                 if (!fs.existsSync(ncappsAuditsDir)) fs.mkdirSync(ncappsAuditsDir, { recursive: true });
-                const safeMxName = sessionRecord.merchant_name.replace(/[^a-z0-9]/gi, '_').toLowerCase() || "unknown";
+
                 const individualAuditFilename = productType.toLowerCase() === "payment links"
-                    ? `payment_links_audit_${sessionId}_${safeMxName}.json`
-                    : `ncapps_audit_${sessionId}_${safeMxName}.json`;
+                    ? `payment_links_audit_${sessionId}_${safeMxNameForAudit}.json`
+                    : `ncapps_audit_${sessionId}_${safeMxNameForAudit}.json`;
 
                 fs.writeFileSync(path.join(ncappsAuditsDir, individualAuditFilename), JSON.stringify(result, null, 2));
                 console.log(`Individual audit saved to: ${individualAuditFilename}`);
