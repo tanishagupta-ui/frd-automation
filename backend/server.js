@@ -1501,19 +1501,24 @@ app.post("/upload", (req, res) => {
             // --- Affordability Widget Specific Logic ---
             if (productType === "Affordability Widget") {
                 const affordabilityDataPath = path.join(__dirname, "data", "affordability_checklist_data.json");
-                const data = xlsx.utils.sheet_to_json(workbook.Sheets[sheetName]);
 
                 const AFFORDABILITY_CANONICAL_TEMPLATE = [
                     { cat: "1. Live Keys", item: "a. Downloading Keys" },
                     { cat: "1. Live Keys", item: "b. Set Expiry" },
+                    { cat: "1. Live Keys", item: "c. Regenerate Keys" },
                     { cat: "2. Affordability Widget with", item: "a. Shopify" },
                     { cat: "2. Affordability Widget with", item: "b. WooCommerce" },
-                    { cat: "2. Affordability Widget with", item: "c. Native Website" }
+                    { cat: "2. Affordability Widget with", item: "c. Native Website" },
+                    { cat: "2. Affordability Widget with", item: "d. Android App" },
+                    { cat: "3. Enable Razorpay Watermark", item: "a. affordability_white_label" },
+                    { cat: "4. Enable Widget", item: "a. Production" },
+                    { cat: "5 Methods", item: "a. EMI, Cardless EMI, Paylater" },
+                    { cat: "6. Offers", item: "a. Enable Offers" },
+                    { cat: "7. Affordability Widget Custom Theme", item: "a. Shopify" }
                 ];
 
                 const AFFORDABILITY_COMMENT_TEMPLATE = [
-                    "webhook Url for payment",
-                    "Webhook Events",
+                    "webhook url events",
                     "General Notes"
                 ];
 
@@ -1548,15 +1553,52 @@ app.post("/upload", (req, res) => {
                     }));
                 }
 
+                // Header & Column Detection
+                let headerRowIndex = -1;
+                let categoryColIdx = 0;
+                let itemColIdx = 1;
+                let statusColIdx = 2;
+                let commentColIdx = 3;
+
+                // Try to find headers dynamically
+                for (let i = 0; i < Math.min(rawData.length, 20); i++) {
+                    const row = rawData[i];
+                    if (!row || !Array.isArray(row)) continue;
+
+                    const lowerRow = row.map(c => String(c || "").trim().toLowerCase());
+                    const catIdx = lowerRow.findIndex(c => c.includes("audit checklist") || c.includes("category"));
+                    const itemIdx = lowerRow.findIndex(c => c === "configs" || c === "items" || c === "item");
+
+                    if (catIdx !== -1 || itemIdx !== -1) {
+                        headerRowIndex = i;
+                        if (catIdx !== -1) categoryColIdx = catIdx;
+                        if (itemIdx !== -1) itemColIdx = itemIdx;
+                        else itemColIdx = categoryColIdx + 1;
+
+                        const statIdx = lowerRow.findIndex(c => c.includes("status") || c.includes("result") || c.includes("observation"));
+                        if (statIdx !== -1) statusColIdx = statIdx;
+                        else statusColIdx = Math.max(categoryColIdx, itemColIdx) + 1;
+
+                        const comIdx = lowerRow.findIndex(c => c.includes("comment") || c.includes("remark") || c.includes("note"));
+                        if (comIdx !== -1) commentColIdx = comIdx;
+                        else commentColIdx = statusColIdx + 1;
+
+                        console.log(`[Affordability] Headers found at row ${i}: Cat=${categoryColIdx}, Item=${itemColIdx}, Status=${statusColIdx}, Comment=${commentColIdx}`);
+                        break;
+                    }
+                }
+
                 let mxId = "";
                 let mxName = "";
                 let mxDate = "";
 
-                for (let i = 0; i < rawData.length; i++) {
+                for (let i = 0; i < Math.min(rawData.length, 20); i++) {
                     const row = rawData[i];
+                    if (!row || !Array.isArray(row)) continue;
                     const colA = row[0] ? String(row[0]).trim() : "";
                     const colB = row[1] ? String(row[1]).trim() : "";
                     const lowerA = colA.toLowerCase();
+
                     if (lowerA.includes("mx name")) mxName = colA.split(":")[1]?.trim() || colB;
                     if (lowerA.includes("mid")) mxId = colA.split(":")[1]?.trim() || colB;
                     if (lowerA.includes("date of audit")) mxDate = colA.split(":")[1]?.trim() || colB;
@@ -1574,55 +1616,123 @@ app.post("/upload", (req, res) => {
 
                 let currentCategory = "";
                 let processedChecklistItems = [];
+                let rawAdditionalComments = "";
+                let adHocChecklistResults = [];
 
-                data.forEach(row => {
-                    let cat = row["Audit Checklist"] || currentCategory;
-                    if (row["Audit Checklist"]) currentCategory = cat;
+                // Process Rows
+                const startRow = headerRowIndex !== -1 ? headerRowIndex + 1 : 0;
 
-                    let item = row["Configs"];
-                    let status = row["Status"] || "N/A";
-                    let comment = row["Comment"] || "";
+                for (let i = startRow; i < rawData.length; i++) {
+                    const row = rawData[i];
+                    if (!row || row.length === 0) continue;
 
-                    if (cat) cat = cat.trim();
-                    if (item) item = item.trim();
+                    let colCat = row[categoryColIdx] ? String(row[categoryColIdx]).trim() : "";
+                    let colItem = row[itemColIdx] ? String(row[itemColIdx]).trim() : "";
+                    let colStatus = row[statusColIdx] ? String(row[statusColIdx]).trim() : "N/A";
+                    let colComment = row[commentColIdx] ? String(row[commentColIdx]).trim() : "";
 
-                    if (!item) return;
-
-                    const templateMatch = AFFORDABILITY_CANONICAL_TEMPLATE.find(t => t.item === item && (t.cat === (cat || "") || !cat));
-
-                    if (templateMatch) {
-                        const templateItem = affordabilityStorage.affordability_checklist_template.find(t => t.item_description === item && t.category === templateMatch.cat);
-                        if (templateItem) {
-                            affordabilityStorage.affordability_audit_results.push({
-                                id: affordabilityStorage.affordability_audit_results.length + 1,
-                                session_id: sessionId,
-                                template_id: templateItem.item_id,
-                                status: status,
-                                specific_comment: comment
+                    if (colCat) {
+                        const lowCat = colCat.toLowerCase();
+                        if (lowCat.includes("additional comment") || lowCat.includes("remark") || lowCat.includes("information") || lowCat.includes("info") || lowCat.includes("feedback") || lowCat.includes("note") || lowCat.includes("header") || lowCat.includes("generic")) {
+                            // Capture anything in Item, Status, or Comment
+                            const potentialTexts = [colItem, colStatus !== "N/A" ? colStatus : "", colComment].filter(Boolean);
+                            potentialTexts.forEach(txt => {
+                                // Only add if it's not a known template label
+                                if (!AFFORDABILITY_COMMENT_TEMPLATE.some(t => txt.toLowerCase().includes(t.toLowerCase()))) {
+                                    rawAdditionalComments += (rawAdditionalComments ? " " : "") + txt;
+                                }
                             });
-                            processedChecklistItems.push(templateItem.item_id);
+
+                            // Also capture as ad-hoc checklist row if it has any content
+                            if (colItem || colComment || (colStatus && colStatus !== "N/A")) {
+                                adHocChecklistResults.push({
+                                    category: colCat,
+                                    config: colItem || "Note",
+                                    status: colStatus,
+                                    comment: colComment
+                                });
+                            }
                         }
                     }
-                });
 
-                // Process Comments
-                data.forEach(row => {
-                    const label = row["Audit Checklist"];
-                    const value = row["Configs"];
-                    if (!label) return;
+                    if (!colStatus || colStatus === "") colStatus = "N/A";
+                    if (colCat) currentCategory = colCat;
 
-                    // Match loosely or exact
-                    const commentTemplate = affordabilityStorage.affordability_comment_templates.find(t => t.field_label.toLowerCase() === label.trim().toLowerCase());
+                    // 1. Check for standard check item
+                    if (colItem) {
+                        const cleanItem = colItem.replace(/^[a-z0-9]+\.\s*/i, "").trim();
+                        const templateMatch = AFFORDABILITY_CANONICAL_TEMPLATE.find(t =>
+                            t.item.toLowerCase() === cleanItem.toLowerCase() ||
+                            t.item.toLowerCase() === colItem.toLowerCase() ||
+                            t.item.toLowerCase().includes(colItem.toLowerCase())
+                        );
 
-                    if (commentTemplate) {
-                        affordabilityStorage.affordability_comment_values.push({
-                            id: affordabilityStorage.affordability_comment_values.length + 1,
-                            session_id: sessionId,
-                            comment_template_id: commentTemplate.id,
-                            field_value: value || ""
-                        });
+                        if (templateMatch) {
+                            const templateItem = affordabilityStorage.affordability_checklist_template.find(t => t.item_description === templateMatch.item && t.category === templateMatch.cat);
+                            if (templateItem && !processedChecklistItems.includes(templateItem.item_id)) {
+                                affordabilityStorage.affordability_audit_results.push({
+                                    id: affordabilityStorage.affordability_audit_results.length + 1,
+                                    session_id: sessionId,
+                                    template_id: templateItem.item_id,
+                                    status: colStatus,
+                                    specific_comment: colComment
+                                });
+                                processedChecklistItems.push(templateItem.item_id);
+                            }
+                        }
                     }
-                });
+
+                    // 2. Check for Additional Comments items
+                    const itemsToCheck = AFFORDABILITY_COMMENT_TEMPLATE;
+                    const matchedItemIdx = itemsToCheck.findIndex(it =>
+                        (colCat && colCat.toLowerCase() === it.toLowerCase()) ||
+                        (colItem && colItem.toLowerCase() === it.toLowerCase())
+                    );
+
+                    if (matchedItemIdx !== -1) {
+                        const matchedItem = itemsToCheck[matchedItemIdx];
+                        let value = "";
+                        if (colCat.toLowerCase() === matchedItem.toLowerCase()) {
+                            value = colItem;
+                        } else if (colItem.toLowerCase() === matchedItem.toLowerCase()) {
+                            // If it's in the item column, the value is usually in Status or Comment
+                            value = colStatus !== "N/A" ? colStatus : colComment;
+                        }
+
+                        const commentTemplate = affordabilityStorage.affordability_comment_templates.find(t => t.field_label.toLowerCase() === matchedItem.toLowerCase());
+                        if (commentTemplate) {
+                            const existingValIdx = affordabilityStorage.affordability_comment_values.findIndex(v => v.session_id === sessionId && v.comment_template_id === commentTemplate.id);
+                            if (existingValIdx === -1) {
+                                affordabilityStorage.affordability_comment_values.push({
+                                    id: affordabilityStorage.affordability_comment_values.length + 1,
+                                    session_id: sessionId,
+                                    comment_template_id: commentTemplate.id,
+                                    field_value: value || ""
+                                });
+                            } else {
+                                affordabilityStorage.affordability_comment_values[existingValIdx].field_value = value || "";
+                            }
+                        }
+                    }
+                }
+
+                // Append any raw additional comments captured to the meta storage if needed
+                if (rawAdditionalComments) {
+                    const generalNoteTemplate = affordabilityStorage.affordability_comment_templates.find(t => t.field_label.toLowerCase().includes("general") || t.field_label.toLowerCase().includes("note"));
+                    if (generalNoteTemplate) {
+                        const existingValIdx = affordabilityStorage.affordability_comment_values.findIndex(v => v.session_id === sessionId && v.comment_template_id === generalNoteTemplate.id);
+                        if (existingValIdx === -1) {
+                            affordabilityStorage.affordability_comment_values.push({
+                                id: affordabilityStorage.affordability_comment_values.length + 1,
+                                session_id: sessionId,
+                                comment_template_id: generalNoteTemplate.id,
+                                field_value: rawAdditionalComments.trim()
+                            });
+                        } else {
+                            affordabilityStorage.affordability_comment_values[existingValIdx].field_value += " " + rawAdditionalComments.trim();
+                        }
+                    }
+                }
 
                 // Fill N/A
                 affordabilityStorage.affordability_checklist_template.forEach(t => {
@@ -1648,28 +1758,25 @@ app.post("/upload", (req, res) => {
                     const res = affordabilityStorage.affordability_audit_results.find(r => r.session_id === sessionId && r.template_id === t.item_id);
                     groupedCategories[t.category].push({
                         config: t.item_description,
-                        status: res ? res.status : "N/A"
+                        status: res ? res.status : "N/A",
+                        comment: res ? res.specific_comment : ""
                     });
                 });
 
-                // Convert groupedCategories object to array
                 for (const [cat, items] of Object.entries(groupedCategories)) {
                     checklistResp.push({ category: cat, checks: items });
                 }
 
-                // Map comments to the user's specific keys if possible, or just dynamic
-                const KEY_MAP = {
-                    "webhook Url for payment": "webhook_url_for_payment",
-                    "Webhook Events": "webhook_events",
-                    "General Notes": "general_notes"
-                };
+                // Map comments to the user's specific string format
+                let additionalCommentsStr = "webhook url events";
+                const webhookVal = affordabilityStorage.affordability_comment_values.find(v =>
+                    v.session_id === sessionId &&
+                    v.comment_template_id === affordabilityStorage.affordability_comment_templates.find(t => t.field_label.toLowerCase() === "webhook url events")?.id
+                );
 
-                let additionalCommentsResp = {};
-                affordabilityStorage.affordability_comment_templates.forEach(ct => {
-                    const val = affordabilityStorage.affordability_comment_values.find(v => v.session_id === sessionId && v.comment_template_id === ct.id);
-                    const key = KEY_MAP[ct.field_label] || ct.field_label.toLowerCase().replace(/ /g, "_");
-                    additionalCommentsResp[key] = val ? val.field_value : "";
-                });
+                if (webhookVal && webhookVal.field_value) {
+                    additionalCommentsStr += ` ${webhookVal.field_value}`;
+                }
 
                 result = {
                     product: "Affordability Widget",
@@ -1679,7 +1786,7 @@ app.post("/upload", (req, res) => {
                         date: sessionRecord.audit_date
                     },
                     tech_checklist: checklistResp,
-                    additional_comments: additionalCommentsResp
+                    additional_comments: additionalCommentsStr
                 };
 
                 // Save individual audit file
@@ -1941,6 +2048,15 @@ app.post("/upload", (req, res) => {
             // Enrichment search is now triggered at the start of the handler
             // for better performance and consistency.
 
+            // --- Google Drive Upload (Checklist) ---
+            // Upload immediately and independently of other processes
+            console.log(`📤 Uploading checklist to Google Drive: ${req.file.originalname}...`);
+            googleDriveService.uploadFile(
+                req.file.path,
+                `Checklist_${req.file.originalname}`,
+                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            ).catch(err => console.error("❌ Checklist upload error:", err));
+
             // Trigger audit summarization (async, non-blocking)
             if (result && (merchantName || merchantId)) {
                 console.log(`📝 Triggering audit summarization for: ${merchantName || merchantId}`);
@@ -1992,28 +2108,15 @@ app.post("/upload", (req, res) => {
                         );
                         console.log(`✅ FRD files generated:`, frdPaths);
 
-                        // --- Upload to Google Drive ---
-                        try {
-                            // 1. Upload the Excel Checklist
-                            console.log(`📤 Uploading checklist to Google Drive: ${req.file.originalname}...`);
+                        // --- Upload Generated FRD PDF to Google Drive ---
+                        if (frdPaths.pdf) {
+                            const pdfName = path.basename(frdPaths.pdf);
+                            console.log(`📤 Uploading FRD PDF to Google Drive: ${pdfName}...`);
                             await googleDriveService.uploadFile(
-                                req.file.path,
-                                `Checklist_${req.file.originalname}`,
-                                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                                frdPaths.pdf,
+                                pdfName,
+                                'application/pdf'
                             );
-
-                            // 2. Upload the Generated FRD PDF
-                            if (frdPaths.pdf) {
-                                const pdfName = path.basename(frdPaths.pdf);
-                                console.log(`📤 Uploading FRD PDF to Google Drive: ${pdfName}...`);
-                                await googleDriveService.uploadFile(
-                                    frdPaths.pdf,
-                                    pdfName,
-                                    'application/pdf'
-                                );
-                            }
-                        } catch (uploadError) {
-                            console.error("❌ Error uploading to Google Drive:", uploadError);
                         }
                     } catch (frdError) {
                         console.error("FRD generation error:", frdError);

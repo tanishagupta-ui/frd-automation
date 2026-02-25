@@ -1,6 +1,7 @@
 {
   "product": "Affordability Widget",
   "audit_metadata": {
+    "merchant_name": "Affordability Test Merchant",
     "merchant_id": "AFF_MID_999",
     "date": ""
   },
@@ -10,10 +11,14 @@
       "checks": [
         {
           "config": "a. Downloading Keys",
-          "status": "Pass"
+          "status": "Implemented"
         },
         {
           "config": "b. Set Expiry",
+          "status": "N/A"
+        },
+        {
+          "config": "c. Regenerate Keys",
           "status": "N/A"
         }
       ]
@@ -27,18 +32,63 @@
         },
         {
           "config": "b. WooCommerce",
-          "status": "Fail"
+          "status": "N/A"
         },
         {
           "config": "c. Native Website",
+          "status": "N/A"
+        },
+        {
+          "config": "d. Android App",
+          "status": "N/A"
+        }
+      ]
+    },
+    {
+      "category": "3. Enable Razorpay Watermark",
+      "checks": [
+        {
+          "config": "a. affordability_white_label",
+          "status": "Pass"
+        }
+      ]
+    },
+    {
+      "category": "4. Enable Widget",
+      "checks": [
+        {
+          "config": "a. Production",
+          "status": "Pass"
+        }
+      ]
+    },
+    {
+      "category": "5 Methods",
+      "checks": [
+        {
+          "config": "a. EMI, Cardless EMI, Paylater",
+          "status": "Pass"
+        }
+      ]
+    },
+    {
+      "category": "6. Offers",
+      "checks": [
+        {
+          "config": "a. Enable Offers",
+          "status": "Pass"
+        }
+      ]
+    },
+    {
+      "category": "7. Affordability Widget Custom Theme",
+      "checks": [
+        {
+          "config": "a. Shopify",
           "status": "N/A"
         }
       ]
     }
   ],
-  "additional_comments": {
-    "webhook_url_for_payment": "https://aff-webhook.com",
-    "webhook_events": "",
-    "general_notes": "Testing Affordability"
-  }
+  "additional_comments": "webhook url events https://aff-webhook.com"
 }

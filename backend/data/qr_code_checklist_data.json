@@ -279,6 +279,13 @@
       "merchant_name": "Bharat Petroleum Corporation Limited (BPCL)",
       "audit_date": "",
       "created_at": "2026-02-16T10:19:53.589Z"
+    },
+    {
+      "id": 41,
+      "merchant_id": "Unknown",
+      "merchant_name": "Bharat Petroleum Corporation Limited (BPCL)",
+      "audit_date": "",
+      "created_at": "2026-02-25T09:52:21.621Z"
     }
   ],
   "qr_checklist_template": [
@@ -4155,6 +4162,153 @@
     {
       "id": 533,
       "audit_id": 40,
+      "item_id": 24,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 534,
+      "audit_id": 41,
+      "item_id": 1,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 535,
+      "audit_id": 41,
+      "item_id": 2,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 536,
+      "audit_id": 41,
+      "item_id": 3,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 537,
+      "audit_id": 41,
+      "item_id": 4,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 538,
+      "audit_id": 41,
+      "item_id": 5,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 539,
+      "audit_id": 41,
+      "item_id": 6,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 540,
+      "audit_id": 41,
+      "item_id": 7,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 541,
+      "audit_id": 41,
+      "item_id": 8,
+      "status": "Implemented",
+      "comment": "Set to 21 days, If not set then by default it is 45days."
+    },
+    {
+      "id": 542,
+      "audit_id": 41,
+      "item_id": 9,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 543,
+      "audit_id": 41,
+      "item_id": 10,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 544,
+      "audit_id": 41,
+      "item_id": 11,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 545,
+      "audit_id": 41,
+      "item_id": 12,
+      "status": "Implemented",
+      "comment": "UPI"
+    },
+    {
+      "id": 546,
+      "audit_id": 41,
+      "item_id": 13,
+      "status": "Implemented",
+      "comment": "Auto Capture, 12mins"
+    },
+    {
+      "id": 547,
+      "audit_id": 41,
+      "item_id": 15,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 548,
+      "audit_id": 41,
+      "item_id": 16,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 549,
+      "audit_id": 41,
+      "item_id": 17,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 550,
+      "audit_id": 41,
+      "item_id": 18,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 551,
+      "audit_id": 41,
+      "item_id": 19,
+      "status": "No",
+      "comment": ""
+    },
+    {
+      "id": 552,
+      "audit_id": 41,
+      "item_id": 20,
+      "status": "Implemented",
+      "comment": ""
+    },
+    {
+      "id": 553,
+      "audit_id": 41,
+      "item_id": 23,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 554,
+      "audit_id": 41,
       "item_id": 24,
       "status": "N/A",
       "comment": ""

@@ -505,6 +505,41 @@ function extractWebhooks(auditResult) {
       webhooks.push(...combined.split(/[,;\s]+/));
     }
   });
+
+  // Also check structured or string additional_comments if available (e.g. Affordability)
+  const addComments = auditResult.additional_comments || auditResult.additionalComments;
+  if (addComments) {
+    if (typeof addComments === 'object' && addComments.webhook_url_events) {
+      const eventList = parseWebhookEvents(addComments.webhook_url_events);
+      if (eventList.length > 0) {
+        webhooks.push(...eventList);
+      } else {
+        webhooks.push(...addComments.webhook_url_events.split(/[,;\s]+/));
+      }
+    } else if (typeof addComments === 'string') {
+      const eventList = parseWebhookEvents(addComments);
+      if (eventList.length > 0) webhooks.push(...eventList);
+      else {
+        // Look for typical URL patterns in the string
+        const urlMatch = addComments.match(/https?:\/\/[^\s,;]+/gi);
+        if (urlMatch) webhooks.push(...urlMatch);
+      }
+    }
+  }
+
+  if (webhooks.length === 0) {
+    const raw = auditResult.raw_additional_comments || auditResult.rawAdditionalComments;
+    if (raw && typeof raw === 'string') {
+      const eventList = parseWebhookEvents(raw);
+      if (eventList.length > 0) webhooks.push(...eventList);
+      else {
+        // Look for typical URL patterns
+        const urlMatch = raw.match(/https?:\/\/[^\s,;]+/gi);
+        if (urlMatch) webhooks.push(...urlMatch);
+      }
+    }
+  }
+
   return [...new Set(webhooks)].filter(
     (w) => w.includes(".") || w.includes("_")
   );
@@ -528,6 +563,25 @@ function extractPlatform(auditResult) {
       platform = "Mobile App (Android/iOS)";
     }
   });
+
+  // Specifically for Affordability checklist items
+  if (platform === "Website") {
+    const affPlatforms = ["shopify", "woocommerce", "magento", "native", "android", "ios"];
+    for (const check of checks) {
+      const label = getCheckLabel(check).toLowerCase();
+      const status = (check.status || "").toLowerCase();
+      const comment = (check.comment || "").toLowerCase();
+      // Look for a pass/implemented signal on a platform-specific label
+      if (status === "pass" || status === "done" || status === "implemented" || comment.includes("yes") || comment.includes("pass")) {
+        const found = affPlatforms.find(p => label.includes(p));
+        if (found) {
+          platform = found.charAt(0).toUpperCase() + found.slice(1);
+          break;
+        }
+      }
+    }
+  }
+
   return platform;
 }
 
@@ -574,6 +628,7 @@ function collectChecklistChecks(auditResult) {
     auditResult.checklist_content,
     auditResult.auditChecklist,
     auditResult.results,
+    auditResult.tech_checklist,
   ];
   const checks = [];
   sources.forEach((source) => {
@@ -684,7 +739,9 @@ function normalizeChecklistStatus(status, comment) {
     value.includes("ok") ||
     value.includes("success") ||
     value.includes("complete") ||
-    value.includes("verified")
+    value.includes("verified") ||
+    value.includes("implemented") ||
+    value.includes("available")
   )
     return "done";
   if (
@@ -741,6 +798,17 @@ function buildChecklistFindingsBullets(checks, auditResult, merchantName) {
     "auto_capture settings",
     "auto capture settings",
     "implementing fetch status api",
+    "shopify",
+    "woocommerce",
+    "magento",
+    "native",
+    "ios",
+    "android",
+    "keys",
+    "white label",
+    "razorpay watermark",
+    "production",
+    "live",
   ];
 
   const pushUnique = (text) => {
@@ -777,18 +845,25 @@ function buildChecklistFindingsBullets(checks, auditResult, merchantName) {
       return;
 
     if (normalized === "done") {
+      // If there's a meaningful comment, we always want to show it
+      if (comment) {
+        if (label && !comment.toLowerCase().includes(label.toLowerCase())) {
+          pushUnique(`${label}: ${comment}`);
+        } else {
+          pushUnique(comment || label);
+        }
+        return;
+      }
+
+      // Otherwise only show if it's in the allow list
       if (
         label &&
         !allowLabels.some((allow) => label.toLowerCase().includes(allow))
       ) {
         return;
       }
-      if (comment && label && !comment.toLowerCase().includes(label.toLowerCase())) {
-        pushUnique(`${label}: ${comment}`);
-      } else if (label) {
+      if (label) {
         pushUnique(label);
-      } else if (comment) {
-        pushUnique(comment);
       }
       return;
     }
@@ -891,6 +966,18 @@ function buildNarrativeFindings(checks, auditResult, merchantName) {
       lines.push(
         `The merchant has set the auto-capture for ${captureSetting} from the Razorpay dashboard.`
       );
+    }
+  }
+
+  // Add generic observations from additional comments if not already covered
+  const additionalRaw = auditResult.raw_additional_comments || auditResult.rawAdditionalComments;
+  if (additionalRaw && typeof additionalRaw === 'string' && additionalRaw.length > 15) {
+    const clean = additionalRaw
+      .replace(/webhook url events[:\s]*/i, "")
+      .replace(/https?:\/\/[^\s,;]+/gi, "")
+      .trim();
+    if (clean.length > 10) {
+      lines.push(`Additional observations: ${toSentence(clean)}`);
     }
   }
 
@@ -1035,6 +1122,7 @@ function extractAutoCaptureSettings(auditResult) {
     auditResult.checklist_content,
     auditResult.auditChecklist,
     auditResult.results,
+    auditResult.tech_checklist,
   ];
 
   let autoCaptureComment = "";
@@ -1080,6 +1168,7 @@ function extractCombinedAdditionalInfo(auditResult, productType) {
     auditResult.checklist_content,
     auditResult.auditChecklist,
     auditResult.results,
+    auditResult.tech_checklist,
   ];
 
   const productLabel = (auditResult.product || productType || "").toLowerCase();
@@ -1088,11 +1177,26 @@ function extractCombinedAdditionalInfo(auditResult, productType) {
   const uniqueComments = new Set();
   const labeledComments = new Map();
 
-  if (
-    auditResult.additionalComments &&
-    String(auditResult.additionalComments).trim()
-  ) {
-    uniqueComments.add(String(auditResult.additionalComments).trim());
+  const addComments = auditResult.additional_comments || auditResult.additionalComments;
+  if (addComments) {
+    if (typeof addComments === 'string' && addComments.trim()) {
+      uniqueComments.add(addComments.trim());
+    } else if (typeof addComments === 'object') {
+      // For objects (Affordability), grab general_notes specifically or all values except webhook/platform info if needed
+      if (addComments.general_notes) uniqueComments.add(addComments.general_notes.trim());
+      // Include all keys from structured comments for completeness
+      Object.keys(addComments).forEach(k => {
+        if (k !== 'general_notes' && addComments[k]) {
+          uniqueComments.add(`${k}: ${addComments[k]}`);
+        }
+      });
+    }
+  }
+
+  // Pick up raw strings if present
+  if (auditResult.raw_additional_comments) uniqueComments.add(auditResult.raw_additional_comments.trim());
+  if (auditResult.rawAdditionalComments && typeof auditResult.rawAdditionalComments === 'string') {
+    uniqueComments.add(auditResult.rawAdditionalComments.trim());
   }
 
   // Handle snake_case additional_comments from Payment Links logic

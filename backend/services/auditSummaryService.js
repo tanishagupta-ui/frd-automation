@@ -29,61 +29,81 @@ async function generateAndStoreSummary(auditResult, metadata) {
     // Check if we should use AI
     let summaryBody = null;
     if (process.env.GEMINI_API_KEY && genAI) {
-        try {
-            const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+        // Try multiple models in case of quota issues
+        const modelsToTry = ["gemini-2.0-flash", "gemini-flash-latest", "gemini-pro-latest"];
+        let lastError = null;
+        let success = false;
 
-            // Prepare context from extracted data
-            const findingsList = extractedData.key_findings.map(f => `- ${f}`).join("\n");
-
-            const prompt = `
-                You are a Razorpay payment integration auditor. Analyze the provided audit findings and create a professional, bulleted technical audit summary.
-                
-                MERCHANT: ${extractedData.merchant_name}
-                PRODUCT: ${extractedData.product_type}
-                
-                CRITICAL CHECK FINDINGS:
-                ${findingsList}
-                
-                PAYMENT METHODS: ${Array.from(extractedData.payment_methods).join(", ")}
-                WEBHOOK STATUS: ${extractedData.webhook_status}
-                CAPTURE SETTINGS: ${extractedData.capture_settings}
-                TEST IDs FOUND: ${extractedData.test_ids.join(", ") || "None"}
-                
-                IMPORTANT: 
-                1. Write 5-8 PROFESSIONAL BULLET POINTS.
-                2. Tone: Formal, authoritative, and concise.
-                3. Content to include (emulate this style):
-                   - Observation of user journey (e.g. "The user selects a policy/service on the platform.")
-                   - Specific webhook events and their purpose.
-                   - Auto-capture settings and where they are configured.
-                   - Mention of error handling kits shared.
-                   - A bullet for "Successful Test IDs" listing pay_IDs found (Group by method like UPI, Card, NB if possible).
-                4. DO NOT include recommendations. ONLY technical observations.
-                
-                JSON response format:
-                {
-                    "key_findings": ${JSON.stringify(extractedData.key_findings.slice(0, 4))},
-                    "audit_summary": "- Bullet 1\\n- Bullet 2\\n- Bullet 3...",
-                    "overall_status": "${extractedData.overall_status}"
-                }
-            `;
-
-            const result = await model.generateContent(prompt);
-            const responseText = result.response.text();
-
+        for (const modelName of modelsToTry) {
             try {
-                const jsonMatch = responseText.match(/```(?:json)?\s*({[\s\S]*?})\s*```/);
-                summaryBody = jsonMatch ? JSON.parse(jsonMatch[1]) : JSON.parse(responseText);
+                console.log(`Attempting summary generation with ${modelName}...`);
+                const model = genAI.getGenerativeModel({
+                    model: modelName,
+                    tools: modelName.includes('2.0') ? [{ googleSearchRetrieval: {} }] : []
+                });
 
-                // Ensure key_findings are preserved from our extraction if AI hallucinates
-                if (!summaryBody.key_findings || summaryBody.key_findings.length === 0) {
-                    summaryBody.key_findings = extractedData.key_findings.slice(0, 4);
+                // Prepare context from extracted data
+                const findingsList = extractedData.key_findings.map(f => `- ${f}`).join("\n");
+
+                const prompt = `
+                        You are a Razorpay payment integration auditor. Analyze the provided audit findings and create a professional, bulleted technical audit summary.
+                        
+                        MERCHANT: ${extractedData.merchant_name}
+                        PRODUCT: ${extractedData.product_type}
+                        
+                        CRITICAL CHECK FINDINGS:
+                        ${findingsList}
+                        
+                        PAYMENT METHODS: ${Array.from(extractedData.payment_methods).join(", ")}
+                        WEBHOOK STATUS: ${extractedData.webhook_status}
+                        CAPTURE SETTINGS: ${extractedData.capture_settings}
+                        TEST IDs FOUND: ${extractedData.test_ids.join(", ") || "None"}
+                        
+                        IMPORTANT: 
+                        1. Write 5-8 PROFESSIONAL BULLET POINTS.
+                        2. Tone: Formal, authoritative, and concise.
+                        3. Content to include (emulate this style):
+                           - Observation of user journey (e.g. "The user selects a policy/service on the platform.")
+                           - Specific webhook events and their purpose.
+                           - Auto-capture settings and where they are configured.
+                           - Mention of error handling kits shared.
+                           - A bullet for "Successful Test IDs" listing pay_IDs found (Group by method like UPI, Card, NB if possible).
+                        4. DO NOT include recommendations. ONLY technical observations.
+                        
+                        JSON response format:
+                        {
+                            "key_findings": ${JSON.stringify(extractedData.key_findings.slice(0, 4))},
+                            "audit_summary": "- Bullet 1\\n- Bullet 2\\n- Bullet 3...",
+                            "overall_status": "${extractedData.overall_status}"
+                        }
+                    `;
+
+                const result = await model.generateContent(prompt);
+                const responseText = result.response.text();
+
+                try {
+                    const jsonMatch = responseText.match(/```(?:json)?\s*({[\s\S]*?})\s*```/);
+                    summaryBody = jsonMatch ? JSON.parse(jsonMatch[1]) : JSON.parse(responseText);
+
+                    // Ensure key_findings are preserved from our extraction if AI hallucinates
+                    if (!summaryBody.key_findings || summaryBody.key_findings.length === 0) {
+                        summaryBody.key_findings = extractedData.key_findings.slice(0, 4);
+                    }
+                    success = true;
+                    console.log(`✅ Audit summary generated successfully using ${modelName}`);
+                    break;
+                } catch (e) {
+                    console.warn(`AI response parsing failed for ${modelName}, using manual fallback.`);
+                    lastError = e;
                 }
-            } catch (e) {
-                console.warn("AI response parsing failed, using manual fallback.");
+            } catch (error) {
+                console.error(`Gemini error with ${modelName}:`, error.message);
+                lastError = error;
             }
-        } catch (error) {
-            console.error('Gemini error:', error.message);
+        }
+
+        if (!success) {
+            console.warn("All Gemini models failed for summary generation, using fallback.");
         }
     }
 

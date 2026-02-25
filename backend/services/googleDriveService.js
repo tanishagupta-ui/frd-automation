@@ -6,6 +6,11 @@ const path = require('path');
 const SERVICE_ACCOUNT_KEY_PATH = process.env.GOOGLE_DRIVE_SERVICE_ACCOUNT_PATH;
 const FOLDER_ID = process.env.GOOGLE_DRIVE_FOLDER_ID;
 
+// OAuth 2.0 settings
+const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
+const REFRESH_TOKEN = process.env.GOOGLE_REFRESH_TOKEN;
+
 let drive = null;
 
 /**
@@ -14,16 +19,27 @@ let drive = null;
 function initDrive() {
     if (drive) return drive;
 
-    if (!SERVICE_ACCOUNT_KEY_PATH || !fs.existsSync(SERVICE_ACCOUNT_KEY_PATH)) {
-        console.warn('⚠️ Google Drive Service Account key path not configured or file not found.');
-        return null;
-    }
-
     try {
-        const auth = new google.auth.GoogleAuth({
-            keyFile: SERVICE_ACCOUNT_KEY_PATH,
-            scopes: ['https://www.googleapis.com/auth/drive.file'],
-        });
+        let auth;
+
+        // Try OAuth 2.0 first
+        if (CLIENT_ID && CLIENT_SECRET && REFRESH_TOKEN) {
+            console.log('🔄 Initializing Google Drive with OAuth 2.0...');
+            auth = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET);
+            auth.setCredentials({ refresh_token: REFRESH_TOKEN });
+        }
+        // Fallback to Service Account
+        else if (SERVICE_ACCOUNT_KEY_PATH && fs.existsSync(SERVICE_ACCOUNT_KEY_PATH)) {
+            console.log('🔄 Initializing Google Drive with Service Account...');
+            auth = new google.auth.GoogleAuth({
+                keyFile: SERVICE_ACCOUNT_KEY_PATH,
+                scopes: ['https://www.googleapis.com/auth/drive.file'],
+            });
+        } else {
+            console.warn('⚠️ Google Drive credentials (OAuth 2.0 or Service Account) not fully configured.');
+            return null;
+        }
+
         drive = google.drive({ version: 'v3', auth });
         return drive;
     } catch (error) {
