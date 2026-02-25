@@ -15,6 +15,11 @@ dist/
 .env
 .npm
 *.log
+service-account-key.json
+generate_token.js
+backend/auth_url.txt
+backend/create_new_folder.js
+backend/test_*.js
 backend/uploads/
 
 # IDEs
@@ -25,5 +30,8 @@ backend/uploads/
 backend/data/golive_audits/
 backend/data/qr_code_audits/
 backend/data/subscription_audits/
+backend/data/affordability_audits/
+backend/data/route_audits/
+backend/data/*.json
 backend/diagrams/
 backend/generated_frds/
