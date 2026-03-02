@@ -166,6 +166,53 @@ app.post("/upload", (req, res) => {
             // Get raw data as array of arrays
             const rawData = xlsx.utils.sheet_to_json(workbook.Sheets[sheetName], { header: 1 });
 
+            // --- Product Specific Validation ---
+            const validateChecklistContent = (type, data) => {
+                const content = JSON.stringify(data).toLowerCase();
+                const p = type.toLowerCase();
+
+                if (p.includes("subscription")) {
+                    if (!content.includes("plan creation") && !content.includes("subscription creation") && !content.includes("e mandate")) {
+                        return "This does not appear to be a Subscriptions checklist. Please upload the correct file for Subscriptions.";
+                    }
+                } else if (p === "route") {
+                    if (!content.includes("linked account creation") && !content.includes("transfer process")) {
+                        return "This does not appear to be a Route checklist. Please upload the correct file for Route.";
+                    }
+                } else if (p === "qr code") {
+                    if (!content.includes("qr code implementation") && !content.includes("dynamic qr")) {
+                        return "This does not appear to be a QR Code checklist. Please upload the correct file for QR Code.";
+                    }
+                } else if (p === "payment links" || p === "ncapps") {
+                    if (!content.includes("1. live keys") && !content.includes("downloading keys")) {
+                        return `This does not appear to be a ${type} checklist. Please upload the correct file.`;
+                    }
+                } else if (p.includes("affordability")) {
+                    if (!content.includes("affordability widget") && !content.includes("shopify")) {
+                        return "This does not appear to be an Affordability checklist. Please upload the correct file for Affordability.";
+                    }
+                } else if (p === "standard checkout" || p === "custom checkout" || p === "s2s") {
+                    if (!content.includes("account live (key/secret)") && !content.includes("webhook configs")) {
+                        return `This does not appear to be a ${type} checklist. Please upload the correct file.`;
+                    }
+                } else if (p.includes("smart collect")) {
+                    if (!content.includes("smart collect") && !content.includes("customer identifier") && !content.includes("virtual account")) {
+                        return "This does not appear to be a Smart Collect checklist. Please upload the correct file.";
+                    }
+                } else if (p.includes("charge at will")) {
+                    if (!content.includes("charge at will") && !content.includes("tokenization") && !content.includes("repeat payments")) {
+                        return "This does not appear to be a Charge at Will checklist. Please upload the correct file.";
+                    }
+                }
+                return null;
+            };
+
+            const validationError = validateChecklistContent(req.body.product || "Unknown", rawData);
+            if (validationError) {
+                console.error("❌ Validation failed:", validationError);
+                return res.status(400).json({ message: validationError });
+            }
+
             // Transformation Logic
             let result;
             const productType = req.body.product || "Unknown";

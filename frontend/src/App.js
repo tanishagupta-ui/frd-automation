@@ -2,49 +2,24 @@ import React, { useRef, useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 
-// SVG Icons
-const UploadIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-    <polyline points="17 8 12 3 7 8" />
-    <line x1="12" y1="3" x2="12" y2="15" />
+// --- SVG Icons ---
+const IconBox = ({ children, size = 20, color = "currentColor" }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ transition: 'all 0.3s' }}>
+    {children}
   </svg>
 );
 
-const DownloadIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-    <polyline points="7 10 12 15 17 10" />
-    <line x1="12" y1="15" x2="12" y2="3" />
-  </svg>
-);
-
-const CheckIcon = () => (
-  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-    <polyline points="20 6 9 17 4 12" />
-  </svg>
-);
-
-const FileIcon = () => (
-  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-    <polyline points="14 2 14 8 20 8" />
-    <line x1="16" y1="13" x2="8" y2="13" />
-    <line x1="16" y1="17" x2="8" y2="17" />
-    <polyline points="10 9 9 9 8 9" />
-  </svg>
-);
-
-const PDFIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-    <polyline points="14 2 14 8 20 8" />
-  </svg>
-);
+const LayersIcon = () => <IconBox><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></IconBox>;
+const PlusIcon = () => <IconBox><path d="M12 5v14M5 12h14" /></IconBox>;
+const HistoryIcon = () => <IconBox><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></IconBox>;
+const SettingsIcon = () => <IconBox><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" /></IconBox>;
+const FileTextIcon = () => <IconBox><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><polyline points="10 9 9 9 8 9" /></IconBox>;
+const DownloadIcon = () => <IconBox><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></IconBox>;
+const CheckCircleIcon = () => <IconBox color="var(--success)"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></IconBox>;
+const AlertCircleIcon = () => <IconBox color="var(--error)"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></IconBox>;
 
 function App() {
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const fileInputRef = useRef(null);
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -52,48 +27,33 @@ function App() {
   const [latestFrd, setLatestFrd] = useState(null);
   const [checkingFrd, setCheckingFrd] = useState(false);
   const [dragOver, setDragOver] = useState(false);
-  const [theme, setTheme] = useState(() => localStorage.getItem('frd-theme') || 'dark');
+  const [theme, setTheme] = useState(() => localStorage.getItem('fra-theme') || 'dark');
+  const fileInputRef = useRef(null);
 
   useEffect(() => {
-    localStorage.setItem('frd-theme', theme);
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('fra-theme', theme);
   }, [theme]);
 
-  const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark');
+  const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark');
 
   const products = [
-    { name: "Route", color: "#6366f1" },
-    { name: "Subscriptions", color: "#8b5cf6" },
-    { name: "QR Code", color: "#06b6d4" },
-    { name: "NCApps", color: "#0ea5e9" },
-    { name: "Affordability Widget", color: "#10b981" },
-    { name: "Smart Collect", color: "#f59e0b" },
-    { name: "Charge at Will", color: "#ef4444" },
-    { name: "Standard Checkout", color: "#6366f1" },
-    { name: "Custom Checkout", color: "#8b5cf6" },
-    { name: "S2S", color: "#ec4899" },
-    { name: "Payment Links", color: "#14b8a6" },
+    { name: "Standard Checkout", cat: "PYMT" },
+    { name: "Subscriptions", cat: "RECR" },
+    { name: "QR Code", cat: "OFFL" },
+    { name: "Affordability", cat: "WIDG" },
+    { name: "Smart Collect", cat: "AUTO" },
+    { name: "Route", cat: "MKPL" },
+    { name: "Payment Links", cat: "LINK" },
+    { name: "NCApps", cat: "CORE" },
+    { name: "Charge at Will", cat: "TKNZ" },
   ];
 
-  const openFilePicker = () => {
-    if (!selectedProduct) {
-      setMessage("Please select a product first.");
-      setMessageType("error");
-      return;
-    }
-    fileInputRef.current.click();
-  };
+  const handleFileUpload = async (file) => {
+    if (!file || !selectedProduct) return;
 
-  const processFile = async (file) => {
-    if (!file) return;
-    if (!selectedProduct) {
-      setMessage("Please select a product first.");
-      setMessageType("error");
-      return;
-    }
-    const isExcelExtension = file.name.endsWith(".xls") || file.name.endsWith(".xlsx");
-    if (!isExcelExtension) {
-      setMessage("Invalid file type. Please upload an .xls or .xlsx file.");
-      setMessageType("error");
+    if (!file.name.match(/\.(xls|xlsx)$/i)) {
+      showToast("Please upload a valid Excel file (.xls, .xlsx)", "error");
       return;
     }
 
@@ -104,281 +64,248 @@ function App() {
     setIsLoading(true);
     setUploadDone(false);
     setLatestFrd(null);
-    setMessage("Processing your checklist...");
-    setMessageType("info");
+    showToast("Initializing Deep Scan...", "info");
 
     try {
-      const res = await axios.post("http://localhost:5001/upload", formData);
-      setMessage(res.data.message || "Checklist uploaded successfully.");
-      setMessageType("success");
+      const BASE_URL = "http://localhost:5001";
+      await axios.post(`${BASE_URL}/upload`, formData);
+      showToast("Data Ingested. Generating Documentation...", "success");
       setUploadDone(true);
-      pollForFrd();
-    } catch (error) {
-      setMessage(error.response?.data?.message || "Upload failed. Please try again.");
-      setMessageType("error");
-    } finally {
+      startPolling();
+    } catch (err) {
+      showToast(err.response?.data?.message || "Ingestion failed.", "error");
       setIsLoading(false);
     }
   };
 
-  const handleFileChange = (e) => {
-    processFile(e.target.files[0]);
-    e.target.value = "";
-  };
-
-  const handleDrop = (e) => {
-    e.preventDefault();
-    setDragOver(false);
-    processFile(e.dataTransfer.files[0]);
-  };
-
-  const pollForFrd = async () => {
+  const startPolling = () => {
     setCheckingFrd(true);
-    let attempts = 0;
-    const poll = async () => {
+    const BASE_URL = "http://localhost:5001";
+    let count = 0;
+
+    const check = async () => {
       try {
-        const res = await axios.get("http://localhost:5001/api/latest-frd");
+        const res = await axios.get(`${BASE_URL}/api/latest-frd`);
         if (res.data?.filename) {
           setLatestFrd(res.data);
           setCheckingFrd(false);
+          setIsLoading(false);
           return;
         }
-      } catch (_) { }
-      attempts++;
-      if (attempts < 20) setTimeout(poll, 2000);
-      else setCheckingFrd(false);
+      } catch (e) { }
+
+      count++;
+      if (count < 15) setTimeout(check, 2500);
+      else {
+        setCheckingFrd(false);
+        setIsLoading(false);
+        showToast("Documentation takes longer than expected. Check history later.", "info");
+      }
     };
-    setTimeout(poll, 3000);
+    setTimeout(check, 2000);
   };
 
-  const handleDownloadFrd = () => {
+  const showToast = (msg, type) => {
+    setMessage(msg);
+    setMessageType(type);
+  };
+
+  const downloadPDF = async () => {
     if (!latestFrd) return;
-    const link = document.createElement("a");
-    link.href = `http://localhost:5001${latestFrd.url}`;
-    link.download = latestFrd.filename;
-    link.click();
+    const BASE_URL = "http://localhost:5001";
+
+    try {
+      // Improved robust download method using axios
+      const response = await axios({
+        url: `${BASE_URL}${latestFrd.url}`,
+        method: 'GET',
+        responseType: 'blob',
+      });
+
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', latestFrd.filename);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error("Download failed:", err);
+      // Fallback to direct link if blob method fails
+      window.open(`${BASE_URL}${latestFrd.url}`, '_blank');
+    }
   };
 
   return (
     <div className="app-root" data-theme={theme}>
-      {/* Subtle grid background */}
+      <div className="bg-mesh" />
       <div className="bg-grid" />
-      <div className="bg-glow" />
 
       <div className="layout">
-        {/* Sidebar */}
+        {/* Navigation Sidebar */}
         <aside className="sidebar">
-          <div className="sidebar-logo">
-            <div className="sidebar-logo-mark">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
-                <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                <path d="M2 17l10 5 10-5" />
-                <path d="M2 12l10 5 10-5" />
-              </svg>
+          <div className="logo-container">
+            <div className="logo-glow">
+              <LayersIcon />
             </div>
-            <span className="sidebar-brand">FRD Studio</span>
           </div>
-
           <nav className="sidebar-nav">
-            <div className="nav-item active">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" />
-                <rect x="14" y="14" width="7" height="7" /><rect x="3" y="14" width="7" height="7" />
-              </svg>
-              <span>New Audit</span>
-            </div>
+            <button className="nav-tool active" title="New Audit"><PlusIcon /></button>
+            <button className="nav-tool" title="Audit History"><HistoryIcon /></button>
           </nav>
-
-          <div className="sidebar-footer">
-            <div className="sidebar-user">
-              <div className="user-avatar">T</div>
-              <span>Tanisha G.</span>
-            </div>
-            <button className="theme-toggle" onClick={toggleTheme} title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}>
-              {theme === 'dark' ? (
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="5" />
-                  <line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" />
-                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                  <line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" />
-                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                </svg>
-              ) : (
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-                </svg>
-              )}
-              <span>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
+          <div className="sidebar-actions">
+            <button className="theme-btn" onClick={toggleTheme}>
+              {theme === 'dark' ? "☀️" : "🌙"}
             </button>
+            <div style={{ padding: '8px', opacity: 0.5, fontSize: '12px' }}>v2.0</div>
           </div>
         </aside>
 
-        {/* Main Content */}
-        <main className="main">
-          <div className="page-header">
-            <div>
-              <div className="breadcrumb">Audits / New</div>
-              <h1 className="page-title">Generate FRD</h1>
-              <p className="page-desc">Upload your audit checklist to automatically generate a Feature Requirements Document.</p>
-            </div>
-            <div className="progress-tracker">
-              <div className={`progress-step ${selectedProduct ? "done" : "active"}`}>
-                <span className="ps-num">{selectedProduct ? <CheckIcon /> : "1"}</span>
-                <span>Product</span>
-              </div>
-              <div className="progress-line" />
-              <div className={`progress-step ${uploadDone ? "done" : isLoading ? "active" : ""}`}>
-                <span className="ps-num">{uploadDone ? <CheckIcon /> : "2"}</span>
-                <span>Upload</span>
-              </div>
-              <div className="progress-line" />
-              <div className={`progress-step ${latestFrd ? "done" : checkingFrd ? "active" : ""}`}>
-                <span className="ps-num">{latestFrd ? <CheckIcon /> : "3"}</span>
-                <span>FRD</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="content-grid">
-            {/* Step 1 */}
-            <div className="panel">
-              <div className="panel-header">
-                <div className="panel-step">01</div>
-                <div>
-                  <h2 className="panel-title">Select Product</h2>
-                  <p className="panel-subtitle">Choose the product type for this audit</p>
-                </div>
-              </div>
-              <div className="product-grid">
-                {products.map((p) => (
-                  <button
-                    key={p.name}
-                    className={`product-chip ${selectedProduct === p.name ? "selected" : ""}`}
-                    style={selectedProduct === p.name ? { "--chip-color": p.color } : {}}
-                    onClick={() => {
-                      setSelectedProduct(p.name);
-                      setMessage("");
-                      setUploadDone(false);
-                      setLatestFrd(null);
-                    }}
-                  >
-                    <span className="chip-dot" style={{ background: p.color }} />
-                    {p.name}
-                    {selectedProduct === p.name && (
-                      <span className="chip-check"><CheckIcon /></span>
-                    )}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Step 2 */}
-            <div className="panel">
-              <div className="panel-header">
-                <div className="panel-step">02</div>
-                <div>
-                  <h2 className="panel-title">Upload Checklist</h2>
-                  <p className="panel-subtitle">Supports .xls and .xlsx Excel files</p>
-                </div>
-              </div>
-
-              <input
-                type="file"
-                accept=".xls,.xlsx"
-                ref={fileInputRef}
-                style={{ display: "none" }}
-                onChange={handleFileChange}
-              />
-
+        {/* Product Explorer */}
+        <section className="nav-panel">
+          <header className="panel-header">
+            <h2>FRD Automata</h2>
+            <p>Select product module</p>
+          </header>
+          <div className="product-scroll">
+            {products.map((p) => (
               <div
-                className={`drop-zone ${dragOver ? "drag-over" : ""} ${!selectedProduct ? "disabled" : ""}`}
-                onClick={openFilePicker}
-                onDragOver={(e) => { e.preventDefault(); if (selectedProduct) setDragOver(true); }}
-                onDragLeave={() => setDragOver(false)}
-                onDrop={handleDrop}
+                key={p.name}
+                className={`module-card ${selectedProduct === p.name ? 'selected' : ''}`}
+                onClick={() => {
+                  setSelectedProduct(p.name);
+                  setUploadDone(false);
+                  setLatestFrd(null);
+                }}
               >
-                {isLoading ? (
-                  <div className="drop-loading">
-                    <div className="ring-spinner" />
-                    <span>Processing checklist...</span>
-                  </div>
-                ) : (
-                  <div className="drop-content">
-                    <div className="drop-icon-wrap">
-                      <FileIcon />
+                <div className="module-info">
+                  <span className="module-name">{p.name}</span>
+                  <span className="module-tag">{p.cat}</span>
+                </div>
+                {selectedProduct === p.name && <div className="selected-indicator" />}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Workspace */}
+        <main className="workspace">
+          <header className="workspace-header">
+            <div className="header-meta">
+              <span className="path-hint">Workspace / Ingestion / {selectedProduct || 'Idle'}</span>
+              <h1>{selectedProduct ? `${selectedProduct} Audit` : "System Ready"}</h1>
+            </div>
+            <div className="header-actions">
+              <div className={`live-pill ${uploadDone ? 'active' : ''}`}>
+                <div className="pulse-dot" />
+                <span>{isLoading ? 'Processing' : uploadDone ? 'Task Complete' : 'Await Data'}</span>
+              </div>
+            </div>
+          </header>
+
+          <div className="workspace-body">
+            <div className="workspace-main">
+              <div className="glass-card" style={{ height: '100%' }}>
+                <span className="card-label">01 // Data Acquisition</span>
+                <div
+                  className={`upload-zone ${!selectedProduct ? 'disabled' : ''} ${dragOver ? 'drag-over' : ''}`}
+                  onDragOver={(e) => { e.preventDefault(); selectedProduct && setDragOver(true); }}
+                  onDragLeave={() => setDragOver(false)}
+                  onDrop={(e) => { e.preventDefault(); setDragOver(false); handleFileUpload(e.dataTransfer.files[0]); }}
+                  onClick={() => selectedProduct && fileInputRef.current.click()}
+                >
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    style={{ display: 'none' }}
+                    accept=".xls,.xlsx"
+                    onChange={(e) => handleFileUpload(e.target.files[0])}
+                  />
+
+                  {isLoading ? (
+                    <div className="processing-state">
+                      <div className="scanning-container">
+                        <div className="scan-bar" />
+                        <div className="data-stream">
+                          {`> EXTRACTING_METADATA\n> ANALYZING_ITEM_STATUS\n> MAPPING_CANONICAL_SCHEMA\n> TRIGGERING_GEMINI_AI\n> SCRIBING_FRD_STRUCTURE`}
+                        </div>
+                      </div>
+                      <div style={{ textAlign: 'center' }}>
+                        <h3 className="accent-text">Scanning Spreadsheet</h3>
+                        <p>Mapping identified requirements to FRD structure...</p>
+                      </div>
                     </div>
-                    <p className="drop-label">
-                      {selectedProduct
-                        ? <>Drop your Excel file here, or <span className="drop-link">browse</span></>
-                        : "Select a product above to enable upload"}
-                    </p>
-                    <p className="drop-sub">Supported: .xls, .xlsx</p>
+                  ) : (
+                    <div className="upload-content">
+                      <div className="upload-icon-anim">
+                        <FileTextIcon />
+                      </div>
+                      <h3>{selectedProduct ? 'Drop Audit Spreadsheet' : 'Select Product First'}</h3>
+                      <p>Release .xlsx file here or <span className="accent-text">browse assets</span></p>
+                    </div>
+                  )}
+                </div>
+
+                {message && (
+                  <div className={`status-toast ${messageType}`}>
+                    {messageType === 'success' ? <CheckCircleIcon /> : messageType === 'error' ? <AlertCircleIcon /> : "📡"}
+                    <span>{message}</span>
                   </div>
                 )}
               </div>
-
-              <button
-                className={`btn btn-primary ${(!selectedProduct || isLoading) ? "btn-disabled" : ""}`}
-                onClick={openFilePicker}
-                disabled={!selectedProduct || isLoading}
-              >
-                {isLoading ? (
-                  <><div className="btn-spinner" /> Processing...</>
-                ) : (
-                  <><UploadIcon /> Upload Checklist</>
-                )}
-              </button>
-
-              {message && (
-                <div className={`alert alert-${messageType}`}>
-                  <div className="alert-dot" />
-                  {message}
-                </div>
-              )}
             </div>
 
-            {/* Step 3 */}
-            <div className="panel">
-              <div className="panel-header">
-                <div className="panel-step">03</div>
-                <div>
-                  <h2 className="panel-title">Download FRD</h2>
-                  <p className="panel-subtitle">Your generated Feature Requirements Document</p>
+            <aside className="workspace-side">
+              <div className="glass-card output-card">
+                <span className="card-label">02 // Documentation Hub</span>
+
+                <div className="doc-status-panel">
+                  {!isLoading && !latestFrd && !checkingFrd && (
+                    <div className="empty-output">
+                      <div style={{ fontSize: '48px', opacity: 0.2 }}>📄</div>
+                      <p>Outputs will appear here after data ingestion</p>
+                    </div>
+                  )}
+
+                  {(isLoading || checkingFrd) && !latestFrd && (
+                    <div className="empty-output">
+                      <div className="spinner-glow" />
+                      <p>Scribing functional requirements...</p>
+                    </div>
+                  )}
+
+                  {latestFrd && (
+                    <div className="doc-ready-view">
+                      <div className="frd-ticket">
+                        <div className="ticket-header">
+                          <span className="ticket-id">PROCESSED_OK</span>
+                          <span style={{ fontSize: '18px' }}>✅</span>
+                        </div>
+                        <span className="ticket-name">{latestFrd.filename}</span>
+                        <div className="ticket-meta">
+                          <span>FORMAT: PDF</span> • <span>ENV: PRODUCTION</span>
+                        </div>
+                      </div>
+
+                      <button className="premium-btn" onClick={downloadPDF}>
+                        <DownloadIcon />
+                        Download PDF Document
+                      </button>
+
+                      <div className="secondary-actions">
+                        <button className="outline-btn" title="Coming Soon" disabled>
+                          <span>📧</span> Send to Merchant
+                        </button>
+                        <button className="outline-btn">
+                          <SettingsIcon /> Workflow Settings
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
-
-              {!uploadDone && !checkingFrd && !latestFrd && (
-                <div className="frd-empty">
-                  <div className="frd-empty-icon"><PDFIcon /></div>
-                  <p>Complete steps 1 & 2 to generate your FRD</p>
-                </div>
-              )}
-
-              {checkingFrd && (
-                <div className="frd-generating">
-                  <div className="gen-progress">
-                    <div className="gen-bar" />
-                  </div>
-                  <p className="gen-label">Generating FRD document...</p>
-                </div>
-              )}
-
-              {latestFrd && (
-                <div className="frd-ready">
-                  <div className="frd-file-card">
-                    <div className="frd-file-icon"><PDFIcon /></div>
-                    <div className="frd-file-info">
-                      <div className="frd-file-name">{latestFrd.filename}</div>
-                      <div className="frd-file-meta">PDF · Ready to download</div>
-                    </div>
-                    <div className="frd-file-status" />
-                  </div>
-                  <button className="btn btn-success" onClick={handleDownloadFrd}>
-                    <DownloadIcon /> Download FRD
-                  </button>
-                </div>
-              )}
-            </div>
+            </aside>
           </div>
         </main>
       </div>

@@ -419,6 +419,7 @@ async function generateFRD(
     // Generate PDF
     const pdfFilename = filename.replace(".md", ".pdf");
     const pdfFilepath = path.join(FRD_EXPORTS_DIR, pdfFilename);
+    const tmpPdfFilepath = pdfFilepath + ".tmp";
 
     console.log(`Generating PDF version: ${pdfFilename}...`);
 
@@ -428,9 +429,15 @@ async function generateFRD(
         remarkable: { html: true },
       })
         .from.string(pdfMarkdown)
-        .to(pdfFilepath, function () {
-          console.log(`✅ PDF generated: ${pdfFilename} `);
-          resolve();
+        .to(tmpPdfFilepath, function () {
+          try {
+            fs.renameSync(tmpPdfFilepath, pdfFilepath);
+            console.log(`✅ PDF generated and finalized: ${pdfFilename} `);
+            resolve();
+          } catch (renameError) {
+            console.error("Error finalizing PDF file:", renameError);
+            reject(renameError);
+          }
         });
     });
 

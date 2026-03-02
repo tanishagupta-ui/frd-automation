@@ -27,24 +27,25 @@
     {
       "id": 2,
       "merchant_name": "Bharat Petroleum Corporation Limited (BPCL)",
-      "original_name": "BPCL QR Code (1)",
+      "original_name": "BPCL QR Code (2)",
       "merchant_id": null,
-      "search_date": "2026-02-12T09:57:08.812Z",
+      "search_date": "2026-02-26T06:01:20.480Z",
       "web_data": {
         "company_name": "Bharat Petroleum Corporation Limited (BPCL)",
         "website": "https://www.bharatpetroleum.in",
-        "description": "Bharat Petroleum Corporation Limited (BPCL) is an Indian central public sector undertaking under the Ministry of Petroleum and Natural Gas. It is one of India's leading oil and gas companies, engaged in refining, marketing, and distribution of petroleum products, and has integrated digital payment systems including QR-code based transactions across its retail outlets.",
-        "industry": "Oil & Gas",
+        "description": "A Fortune 500 Indian central public sector undertaking under the Ministry of Petroleum and Natural Gas, engaged in refining crude oil and marketing petroleum products. The 'QR Code' initiative refers to their integrated digital payment system across fuel stations to facilitate cashless transactions.",
+        "industry": "Oil and Gas",
         "products_services": [
           "Petrol and Diesel",
-          "LPG (Bharatgas)",
+          "Liquefied Petroleum Gas (Bharatgas)",
+          "Lubricants (MAK Lubricants)",
           "Aviation Turbine Fuel",
-          "Lubricants (MAK)",
-          "Refining and Marketing of Petroleum Products",
+          "Petrochemicals",
+          "Refining Services",
           "Digital Payment Solutions (HelloBPCL App, SmartDrive)"
         ],
         "business_model": "B2B, B2C",
-        "target_audience": "Individual vehicle owners, households, industrial enterprises, and aviation companies"
+        "target_audience": "Individual motorists, domestic households (LPG users), industrial enterprises, commercial transporters, and the aviation industry."
       },
       "model_used": "gemini-flash-latest"
     },
@@ -210,6 +211,29 @@
         ],
         "business_model": "B2B",
         "target_audience": "E-commerce businesses, SaaS companies, non-profits, freelancers, and enterprises."
+      },
+      "model_used": "gemini-flash-latest"
+    },
+    {
+      "id": 11,
+      "merchant_name": "Affordability",
+      "original_name": "Affordability",
+      "merchant_id": null,
+      "search_date": "2026-02-25T11:13:39.036Z",
+      "web_data": {
+        "company_name": "Affordability",
+        "website": "https://affordability.com",
+        "description": "A financial technology platform that leverages open banking and AI to provide real-time, automated financial health and creditworthiness assessments for lenders and property managers.",
+        "industry": "Fintech",
+        "products_services": [
+          "Open Banking Data Aggregation",
+          "Automated Income and Expenditure Analysis",
+          "Real-time Affordability Reporting",
+          "Credit Risk Assessment Tools",
+          "Categorized Transaction Insights"
+        ],
+        "business_model": "B2B",
+        "target_audience": "Banks, credit providers, mortgage lenders, property managers, and financial institutions."
       },
       "model_used": "gemini-flash-latest"
     }
