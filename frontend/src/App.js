@@ -45,7 +45,6 @@ function App() {
     { name: "Smart Collect", cat: "AUTO" },
     { name: "Route", cat: "MKPL" },
     { name: "Payment Links", cat: "LINK" },
-    { name: "NCApps", cat: "CORE" },
     { name: "Charge at Will", cat: "TKNZ" },
   ];
 

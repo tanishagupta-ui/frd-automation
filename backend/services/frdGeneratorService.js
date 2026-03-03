@@ -145,9 +145,13 @@ async function generateFRD(
     markdown += `### 1.2 Business Requirement\n`;
     pdfMarkdown += `### 1.2 Business Requirement\n`;
 
+    const objectiveText = productType.toLowerCase().includes("affordability")
+      ? `**Objective:** Integrate with **Razorpay ${productType}** to provide seamless EMI and Pay Later options to customers.`
+      : `**Objective:** Integrate with **Razorpay ${productType}** to facilitate seamless premium payments and recurring mandates.`;
+
     const businessReq =
       `**Merchant Name:** ${merchantName}  \n` +
-      `**Objective:** Integrate with **Razorpay ${productType}** to facilitate seamless premium payments and recurring mandates.\n\n`;
+      `${objectiveText}\n\n`;
     markdown += businessReq;
     pdfMarkdown += businessReq;
 
@@ -196,11 +200,17 @@ async function generateFRD(
 
     markdown += `#### 2.3.1 API Documentation\n`;
     pdfMarkdown += `#### 2.3.1 API Documentation\n`;
+    console.log(`[DEBUG] Attempting doc resolution for productType: "${productType}"`);
     let docConfig = null;
     try {
       docConfig = resolveProductDocs(productType);
+      if (!docConfig && auditResult && auditResult.product) {
+        console.log(`[DEBUG] Retrying doc resolution with auditResult.product: "${auditResult.product}"`);
+        docConfig = resolveProductDocs(auditResult.product);
+      }
+      if (docConfig) console.log(`[DEBUG] Resolved docs: ${docConfig.productName}`);
     } catch (e) {
-      console.warn(`Doc resolve failed for ${productType}: ${e.message}`);
+      console.warn(`[DEBUG] Doc resolve failed: ${e.message}`);
     }
 
     if (
@@ -216,9 +226,9 @@ async function generateFRD(
       markdown += `\n`;
       pdfMarkdown += `\n`;
     } else {
-      markdown += `- [Charge At Will (CAW)](https://razorpay.com/docs/payments/recurring/charge-at-will/)\n`;
+      markdown += `- [Razorpay Support](https://razorpay.com/docs/)\n`;
       markdown += `- [Fetch APIs](https://razorpay.com/docs/api/payments/)\n\n`;
-      pdfMarkdown += `- [Charge At Will (CAW)](https://razorpay.com/docs/payments/recurring/charge-at-will/)\n`;
+      pdfMarkdown += `- [Razorpay Support](https://razorpay.com/docs/)\n`;
       pdfMarkdown += `- [Fetch APIs](https://razorpay.com/docs/api/payments/)\n\n`;
     }
 
@@ -259,7 +269,7 @@ async function generateFRD(
       ? `- **Checkout type:** ${checkoutType}\n`
       : "";
     const captureStr =
-      `- **Automatic capture:** ${capture}\n` +
+      (capture !== "NA" ? `- **Automatic capture:** ${capture}\n` : "") +
       checkoutTypeStr +
       `- **Test payments:** Validated in test mode.\n\n`;
     markdown += captureStr;
@@ -348,20 +358,15 @@ async function generateFRD(
     markdown += `---\n\n`;
     pdfMarkdown += `---\n\n`;
 
-    markdown += `### 3.4 Auto Capture Configuration\n`;
-    pdfMarkdown += `### 3.4 Auto Capture Configuration\n`;
-
     const autoCaptureInfo = extractAutoCaptureSettings(auditResult);
     if (autoCaptureInfo) {
+      markdown += `### 3.4 Auto Capture Configuration\n`;
+      pdfMarkdown += `### 3.4 Auto Capture Configuration\n`;
       markdown += autoCaptureInfo + `\n\n`;
       pdfMarkdown += autoCaptureInfo + `\n\n`;
-    } else {
-      markdown += `Standard auto-capture timing applies: 2 days for UPI and 3 days for other payment methods.\n\n`;
-      pdfMarkdown += `Standard auto-capture timing applies: 2 days for UPI and 3 days for other payment methods.\n\n`;
+      markdown += `---\n\n`;
+      pdfMarkdown += `---\n\n`;
     }
-
-    markdown += `---\n\n`;
-    pdfMarkdown += `---\n\n`;
 
     // --- 4. Ready Reckoner Analysis ---
     // markdown += `## 4. Ready Reckoner Analysis\n\n`;
@@ -471,7 +476,7 @@ function extractPaymentMethods(auditResult) {
 }
 
 function extractCaptureSetting(auditResult) {
-  let capture = "3 days (Default)";
+  let capture = "NA";
   const checks = collectChecklistChecks(auditResult);
   for (const check of checks) {
     const section = (check._section || "").toLowerCase();

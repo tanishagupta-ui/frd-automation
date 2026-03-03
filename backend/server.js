@@ -43,6 +43,14 @@ if (!fs.existsSync(uploadDir)) {
 app.use(cors()); // Allow all origins to fix Network IP issues
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+app.get("/", (req, res) => {
+    res.json({
+        message: "FRD Automation Backend is running",
+        port: PORT,
+        status: "Online"
+    });
+});
+
 // app.options("*", cors()); // Removed for Express 5 compatibility
 
 const storage = multer.diskStorage({
@@ -206,6 +214,7 @@ app.post("/upload", (req, res) => {
                 'route': 'route',
                 'smart_collect': 'smart_collect',
                 's2s': 's2s',
+                'affordability': 'affordability',
                 'affordability_widget': 'affordability'
             };
 
@@ -239,9 +248,22 @@ app.post("/upload", (req, res) => {
             // --- Product Specific Validation ---
             const validateChecklistContent = (type, data) => {
                 const content = JSON.stringify(data).toLowerCase();
-                const p = type.toLowerCase();
+                const rawProduct = (type || "Unknown").toLowerCase().trim();
 
-                if (p.includes("subscription")) {
+                // Normalize product name to a standard key for validation
+                let p = rawProduct;
+                if (p.includes("subscription")) p = "subscriptions";
+                else if (p.includes("payment link") || p.includes("pay link")) p = "payment_links";
+                else if (p.includes("qr code")) p = "qr_code";
+                else if (p.includes("route")) p = "route";
+                else if (p.includes("smart collect")) p = "smart_collect";
+                else if (p.includes("charge at will") || p === "caw") p = "caw";
+                else if (p.includes("affordability")) p = "affordability";
+                else if (p.includes("standard checkout")) p = "standard_checkout";
+                else if (p.includes("custom checkout")) p = "custom_checkout";
+                else if (p.includes("s2s")) p = "s2s";
+
+                if (p === "subscriptions") {
                     if (!content.includes("plan creation") && !content.includes("subscription creation") && !content.includes("e mandate")) {
                         return "This does not appear to be a Subscriptions checklist. Please upload the correct file for Subscriptions.";
                     }
@@ -249,27 +271,35 @@ app.post("/upload", (req, res) => {
                     if (!content.includes("linked account creation") && !content.includes("transfer process")) {
                         return "This does not appear to be a Route checklist. Please upload the correct file for Route.";
                     }
-                } else if (p === "qr code") {
+                } else if (p === "qr_code") {
                     if (!content.includes("qr code implementation") && !content.includes("dynamic qr")) {
                         return "This does not appear to be a QR Code checklist. Please upload the correct file for QR Code.";
                     }
-                } else if (p === "payment links" || p === "ncapps") {
-                    if (!content.includes("1. live keys") && !content.includes("downloading keys")) {
+                } else if (p === "payment_links") {
+                    // Cross-validation: reject if it looks like affordability
+                    if (content.includes("affordability widget") || content.includes("emi, cardless emi")) {
+                        return "This looks like an Affordability checklist, but you selected Payment Links. Please upload the correct file.";
+                    }
+
+                    const hasLiveKeys = content.includes("1. live keys") || content.includes("downloading keys");
+                    const hasSetup = content.includes("standard checkout") || content.includes("native checkout") || content.includes("custom checkout");
+
+                    if (!hasLiveKeys || !hasSetup) {
                         return `This does not appear to be a ${type} checklist. Please upload the correct file.`;
                     }
-                } else if (p.includes("affordability")) {
-                    if (!content.includes("affordability widget") && !content.includes("shopify")) {
+                } else if (p === "affordability") {
+                    if (!content.includes("affordability widget") && !content.includes("shopify") && !content.includes("emi, cardless emi")) {
                         return "This does not appear to be an Affordability checklist. Please upload the correct file for Affordability.";
                     }
-                } else if (p === "standard checkout" || p === "custom checkout" || p === "s2s") {
+                } else if (["standard_checkout", "custom_checkout", "s2s"].includes(p)) {
                     if (!content.includes("account live (key/secret)") && !content.includes("webhook configs")) {
                         return `This does not appear to be a ${type} checklist. Please upload the correct file.`;
                     }
-                } else if (p.includes("smart collect")) {
+                } else if (p === "smart_collect") {
                     if (!content.includes("smart collect") && !content.includes("customer identifier") && !content.includes("virtual account")) {
                         return "This does not appear to be a Smart Collect checklist. Please upload the correct file.";
                     }
-                } else if (p.includes("charge at will")) {
+                } else if (p === "caw") {
                     if (!content.includes("charge at will") && !content.includes("tokenization") && !content.includes("repeat payments")) {
                         return "This does not appear to be a Charge at Will checklist. Please upload the correct file.";
                     }
@@ -1370,7 +1400,8 @@ app.post("/upload", (req, res) => {
             }
 
             // --- Go Live Checklist - PG Specific Logic ---
-            if (productType === "Standard Checkout" || productType === "Custom Checkout" || productType === "S2S") {
+            const normalizedProduct = productType.toLowerCase();
+            if (normalizedProduct === "standard checkout" || normalizedProduct === "custom checkout" || normalizedProduct === "s2s") {
                 const goliveDataPath = path.join(__dirname, "data", "golive_checklist_data.json");
 
                 // Canonical Template 
@@ -1619,7 +1650,7 @@ app.post("/upload", (req, res) => {
             }
 
             // --- Affordability Widget Specific Logic ---
-            if (productType === "Affordability Widget") {
+            if (productType.toLowerCase().includes("affordability")) {
                 const affordabilityDataPath = path.join(__dirname, "data", "affordability_checklist_data.json");
 
                 const AFFORDABILITY_CANONICAL_TEMPLATE = [
@@ -1679,6 +1710,14 @@ app.post("/upload", (req, res) => {
                 let mxName = meta.mxName;
                 let mxDate = meta.mxDate;
 
+                // Sync with outer scope for FRD/Diagram use
+                if (mxName && mxName !== "Audit Checklist" && mxName !== "Unknown") {
+                    merchantName = mxName;
+                }
+                if (mxId) {
+                    merchantId = mxId;
+                }
+
                 const sessionId = affordabilityStorage.affordability_audits.length + 1;
                 const sessionRecord = {
                     id: sessionId,
@@ -1688,6 +1727,39 @@ app.post("/upload", (req, res) => {
                     created_at: new Date().toISOString()
                 };
                 affordabilityStorage.affordability_audits.push(sessionRecord);
+
+                // --- Robust Column Detection for Affordability ---
+                let categoryColIdx = 0;
+                let itemColIdx = 1;
+                let statusColIdx = 2;
+                let commentColIdx = 3;
+                let headerRowIndex = -1;
+
+                for (let i = 0; i < Math.min(rawData.length, 20); i++) {
+                    const row = rawData[i];
+                    if (!row || !Array.isArray(row)) continue;
+                    const rowStr = row.join(" ").toLowerCase();
+                    if (rowStr.includes("category") || rowStr.includes("item") || rowStr.includes("status")) {
+                        headerRowIndex = i;
+                        const catIdx = row.findIndex(c => String(c || "").toLowerCase().includes("category"));
+                        if (catIdx !== -1) categoryColIdx = catIdx;
+
+                        const itmIdx = row.findIndex(c => String(c || "").toLowerCase().includes("item") || String(c || "").toLowerCase().includes("requirement"));
+                        if (itmIdx !== -1) itemColIdx = itmIdx;
+                        else itemColIdx = categoryColIdx + 1;
+
+                        const statIdx = row.findIndex(c => String(c || "").toLowerCase().includes("status"));
+                        if (statIdx !== -1) statusColIdx = statIdx;
+                        else statusColIdx = Math.max(categoryColIdx, itemColIdx) + 1;
+
+                        const commIdx = row.findIndex(c => String(c || "").toLowerCase().includes("comment") || String(c || "").toLowerCase().includes("remark") || String(c || "").toLowerCase().includes("feedback"));
+                        if (commIdx !== -1) commentColIdx = commIdx;
+                        else commentColIdx = Math.max(categoryColIdx, itemColIdx, statusColIdx) + 1;
+
+                        console.log(`[Affordability] Headers found at row ${i}: Cat=${categoryColIdx}, Item=${itemColIdx}, Status=${statusColIdx}, Comment=${commentColIdx}`);
+                        break;
+                    }
+                }
 
                 let currentCategory = "";
                 let processedChecklistItems = [];
@@ -1851,6 +1923,16 @@ app.post("/upload", (req, res) => {
 
                 if (webhookVal && webhookVal.field_value) {
                     additionalCommentsStr += ` ${webhookVal.field_value}`;
+                }
+
+                // Ensure diagram is attempted if still missing
+                if (!diagramPath) {
+                    try {
+                        console.log(`[Affordability] Attempting diagram generation for "affordability" (Merchant: ${merchantName})`);
+                        diagramPath = await diagramService.generateDiagram("affordability", merchantName || "Merchant");
+                    } catch (e) {
+                        console.error("[Affordability] Diagram generation failed:", e.message);
+                    }
                 }
 
                 result = {
@@ -2175,6 +2257,7 @@ app.post("/upload", (req, res) => {
                                     'route': 'route',
                                     'smart_collect': 'smart_collect',
                                     's2s': 's2s',
+                                    'affordability': 'affordability',
                                     'affordability_widget': 'affordability'
                                 };
                                 const cleanProduct = productType.toLowerCase().replace(/\s+/g, '_');
@@ -2187,6 +2270,7 @@ app.post("/upload", (req, res) => {
                                     else if (cleanProduct.includes('standard')) mappedKey = 'standard_checkout';
                                     else if (cleanProduct.includes('custom')) mappedKey = 'custom_checkout';
                                     else if (cleanProduct.includes('qr')) mappedKey = 'qr_codes';
+                                    else if (cleanProduct.includes('affordability')) mappedKey = 'affordability';
                                 }
 
                                 if (mappedKey) {

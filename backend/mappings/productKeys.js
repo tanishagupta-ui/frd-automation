@@ -11,7 +11,10 @@ const PRODUCT_KEYS = {
     "QR Codes": "qr_codes",
     "QR Code": "qr_codes",
     "Affordability Widget": "affordability",
+    "Affordability": "affordability",
     "route": "route",
+    "Route": "route",
+    "subscription": "subscriptions",
     "subscription": "subscriptions",
     "subscriptions": "subscriptions",
     "smart collect": "smart_collect",
@@ -22,7 +25,8 @@ const PRODUCT_KEYS = {
     "payment links": "payment_links",
     "qr codes": "qr_codes",
     "qr code": "qr_codes",
-    "affordability widget": "affordability"
+    "affordability widget": "affordability",
+    "affordability": "affordability"
 };
 
 module.exports = PRODUCT_KEYS;
