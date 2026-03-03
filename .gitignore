@@ -32,6 +32,7 @@ backend/data/qr_code_audits/
 backend/data/subscription_audits/
 backend/data/affordability_audits/
 backend/data/route_audits/
+backend/data/ncapps_audits/
 backend/data/*.json
 backend/diagrams/
 backend/generated_frds/

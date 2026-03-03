@@ -70,6 +70,67 @@ const upload = multer({
 });
 
 
+// Function to extract common metadata from raw Excel data
+function extractMetadataFromRawData(rawData) {
+    let mxName = "";
+    let mxId = "";
+    let mxDate = "";
+
+    console.log(`[Metadata] Scanning raw data (${rawData.length} rows)...`);
+
+    // Scan up to 100 rows for metadata
+    for (let i = 0; i < Math.min(rawData.length, 100); i++) {
+        const row = rawData[i];
+        if (!row || !Array.isArray(row)) continue;
+
+        row.forEach((cell, idx) => {
+            if (!cell) return;
+            const str = String(cell).trim();
+            const lower = str.toLowerCase();
+
+            // Heuristic for Merchant Name
+            if (lower.includes("mx name") || lower.includes("merchant name")) {
+                let val = str.split(":")[1]?.trim() || String(row[idx + 1] || "").trim();
+                if (val && !/mx name|merchant name|audit checklist/i.test(val)) {
+                    mxName = val;
+                }
+            }
+
+            // Heuristic for MID (Merchant ID)
+            if (lower.includes("mid") || lower.includes("merchant id") || lower.includes("merchant_id") || lower === "id") {
+                // 1. Try after colon
+                let val = str.split(":")[1]?.trim();
+
+                // 2. Try same cell for digits if no colon or empty after colon
+                if (!val) {
+                    const digitMatch = str.match(/\b(\d{7,15})\b/);
+                    if (digitMatch) val = digitMatch[1];
+                }
+
+                // 3. Try next cell
+                if (!val) {
+                    val = String(row[idx + 1] || "").trim();
+                }
+
+                if (val && !/mid|id|audit checklist|merchant|configs/i.test(val)) {
+                    mxId = val;
+                }
+            }
+
+            // Heuristic for Audit Date
+            if (lower.includes("audit date") || lower.includes("date of audit") || (lower.includes("date") && !/update|expiry|birth|create/i.test(lower))) {
+                let val = str.split(":")[1]?.trim() || String(row[idx + 1] || "").trim();
+                if (val && !/date|name|checklist|merchant/i.test(val)) {
+                    mxDate = val;
+                }
+            }
+        });
+    }
+
+    console.log(`[Metadata] Final Extracted - Name: "${mxName}", ID: "${mxId}", Date: "${mxDate}"`);
+    return { mxName, mxId, mxDate };
+}
+
 // Function to store merchant enrichment data
 
 app.post("/upload", (req, res) => {
@@ -137,6 +198,9 @@ app.post("/upload", (req, res) => {
                 'custom_checkout': 'custom_checkout',
                 'subscriptions': 'subscriptions',
                 'payment_links': 'payment_links',
+                'payment_link': 'payment_links',
+                'pay_links': 'payment_links',
+                'pay_link': 'payment_links',
                 'qr_codes': 'qr_codes',
                 'qr_code': 'qr_codes', // Added alias to match frontend singular
                 'route': 'route',
@@ -146,15 +210,21 @@ app.post("/upload", (req, res) => {
             };
 
             const mappedKey = productKeyMap[productKey];
+            console.log(`[DIAGRAM] Product: "${req.body.product}", productKey: "${productKey}", mappedKey: "${mappedKey}"`);
 
             if (mappedKey) {
-                console.log(`Generating payment flow diagram for: ${mappedKey}`);
+                console.log(`[DIAGRAM] Generating diagram for: ${mappedKey} (Merchant: ${merchantName})`);
                 diagramPath = await diagramService.generateDiagram(mappedKey, merchantName);
+                if (diagramPath) {
+                    console.log(`[DIAGRAM] Successfully generated at: ${diagramPath}`);
+                } else {
+                    console.log(`[DIAGRAM] generateDiagram returned null for ${mappedKey}`);
+                }
             } else {
-                console.log(`No diagram template for product: ${req.body.product}`);
+                console.log(`[DIAGRAM] No diagram template for product: "${req.body.product}" (key: ${productKey})`);
             }
         } catch (diagramError) {
-            console.error("Error generating diagram:", diagramError.message);
+            console.error(`[DIAGRAM] Error generating diagram for ${req.body.product}:`, diagramError.message);
         }
         console.log("Processing for product:", req.body.product);
 
@@ -1101,32 +1171,11 @@ app.post("/upload", (req, res) => {
 
                 console.log(`[NCApps] Header detection: row=${headerRowIndex}, catCol=${catColIdx}, configCol=${configColIdx}, statusCol=${statusColIdx}, commentCol=${commentColIdx}`);
 
-                let mxName = "";
-                let mxId = "";
-                let mxDate = "";
-
-                // metadata extraction (all cells)
-                for (let i = 0; i < Math.min(rawData.length, 50); i++) {
-                    const row = rawData[i];
-                    if (!row || !Array.isArray(row)) continue;
-                    row.forEach((cell, idx) => {
-                        if (!cell) return;
-                        const str = String(cell).trim();
-                        const lower = str.toLowerCase();
-                        const nextVal = String(row[idx + 1] || "").trim();
-                        const splitVal = str.split(":")[1]?.trim();
-                        const val = splitVal || nextVal;
-
-                        if (lower.includes("mx name") || lower.includes("merchant name")) mxName = val || mxName;
-                        if (lower.includes("mid") || (lower.includes("id") && lower.length < 5)) mxId = val || mxId;
-                        if (lower.includes("audit date") || lower.includes("date of audit") || (lower.includes("date") && !lower.includes("update"))) {
-                            // Only capture if val doesn't look like another label
-                            if (val && !val.toLowerCase().includes("date") && !val.toLowerCase().includes("name")) {
-                                mxDate = val;
-                            }
-                        }
-                    });
-                }
+                // Metadata Extraction (Robust)
+                const meta = extractMetadataFromRawData(rawData);
+                let mxId = meta.mxId;
+                let mxName = meta.mxName;
+                let mxDate = meta.mxDate;
 
                 const sessionId = ncappsStorage.ncapps_audits.length + 1;
                 const merchantNameForSafe = (mxName && !/audit checklist|merchant name/i.test(mxName)) ? mxName : (merchantName || "Audit Checklist");
@@ -1147,12 +1196,32 @@ app.post("/upload", (req, res) => {
 
                 const startIdx = headerRowIndex !== -1 ? headerRowIndex + 1 : 0;
 
+                let captureNCComments = false;
+                let genericAdditionalComments = "";
+
                 for (let i = startIdx; i < rawData.length; i++) {
                     const row = rawData[i];
                     if (!row || !Array.isArray(row)) continue;
 
                     const catVal = catColIdx !== -1 ? String(row[catColIdx] || "").trim() : "";
-                    if (catVal) currentCategory = catVal;
+                    if (catVal) {
+                        currentCategory = catVal;
+                    }
+
+                    // Check for "Additional Comments" section start
+                    if (catVal.toLowerCase().includes("additional comments") ||
+                        (row[configColIdx] && String(row[configColIdx]).toLowerCase().includes("additional comments"))) {
+                        captureNCComments = true;
+                        continue;
+                    }
+
+                    if (captureNCComments) {
+                        const rowText = row.filter(Boolean).join(" ").trim();
+                        if (rowText && !rowText.toLowerCase().includes("additional comments")) {
+                            genericAdditionalComments += (genericAdditionalComments ? "\n" : "") + rowText;
+                        }
+                        continue;
+                    }
 
                     const itemVal = String(row[configColIdx] || "").trim();
                     const statusVal = statusColIdx !== -1 ? String(row[statusColIdx] || "N/A").trim() : "N/A";
@@ -1161,7 +1230,10 @@ app.post("/upload", (req, res) => {
                     if (!itemVal) {
                         // Check if the label is in the Audit Checklist column for comments
                         const labelInCat = catVal;
-                        const commentTemplate = ncappsStorage.ncapps_comment_templates.find(t => t.field_label.toLowerCase() === labelInCat.toLowerCase());
+                        const commentTemplate = ncappsStorage.ncapps_comment_templates.find(t =>
+                            t.field_label.toLowerCase() === labelInCat.toLowerCase() ||
+                            labelInCat.toLowerCase().includes(t.field_label.toLowerCase())
+                        );
                         if (commentTemplate) {
                             ncappsStorage.ncapps_comment_values.push({
                                 id: ncappsStorage.ncapps_comment_values.length + 1,
@@ -1194,9 +1266,10 @@ app.post("/upload", (req, res) => {
                     }
 
 
-                    // Check if it's a comment field
+                    // Check if it's a comment field (template-based)
                     const commentTemplate = ncappsStorage.ncapps_comment_templates.find(t =>
                         itemVal.toLowerCase().includes(t.field_label.toLowerCase()) ||
+                        t.field_label.toLowerCase().includes(itemVal.toLowerCase()) ||
                         (catVal && catVal.toLowerCase().includes(t.field_label.toLowerCase()))
                     );
 
@@ -1206,7 +1279,7 @@ app.post("/upload", (req, res) => {
                         if (catVal && catVal.toLowerCase().includes(commentTemplate.field_label.toLowerCase())) {
                             val = itemVal;
                         } else {
-                            val = statusVal !== "N/A" ? statusVal : commentVal;
+                            val = (statusVal && statusVal !== "N/A") ? statusVal : commentVal;
                         }
 
                         ncappsStorage.ncapps_comment_values.push({
@@ -1216,6 +1289,26 @@ app.post("/upload", (req, res) => {
                             field_value: val || ""
                         });
                     }
+                }
+
+                // Add generic additional comments if found
+                if (genericAdditionalComments) {
+                    // Create or find a generic comment template if it doesn't exist? 
+                    // Or just push to ncapps_comment_values with a legacy label
+                    let genericTemplate = ncappsStorage.ncapps_comment_templates.find(t => t.field_label === "Integration Notes");
+                    if (!genericTemplate) {
+                        genericTemplate = {
+                            id: ncappsStorage.ncapps_comment_templates.length + 1,
+                            field_label: "Integration Notes"
+                        };
+                        ncappsStorage.ncapps_comment_templates.push(genericTemplate);
+                    }
+                    ncappsStorage.ncapps_comment_values.push({
+                        id: ncappsStorage.ncapps_comment_values.length + 1,
+                        session_id: sessionId,
+                        comment_template_id: genericTemplate.id,
+                        field_value: genericAdditionalComments
+                    });
                 }
 
                 // Fill in N/A for missing checklist items
@@ -1375,31 +1468,11 @@ app.post("/upload", (req, res) => {
                     }
                 }
 
-                // Metadata Extraction - search ALL cells in a robust way
-                let mxName = "";
-                let mxId = "";
-                let mxDate = "";
-
-                for (let i = 0; i < Math.min(rawData.length, 50); i++) {
-                    const row = rawData[i];
-                    if (!row || !Array.isArray(row)) continue;
-                    row.forEach((cell, idx) => {
-                        if (!cell) return;
-                        const str = String(cell).trim();
-                        const lower = str.toLowerCase();
-                        const val = str.split(":")[1]?.trim() || String(row[idx + 1] || "").trim();
-
-                        if (lower.includes("mx name") || lower.includes("merchant name")) {
-                            mxName = val || mxName;
-                        }
-                        if (lower.includes("mid") || lower.includes("merchant id") || (lower.includes("id") && lower.length < 5)) {
-                            mxId = val || mxId;
-                        }
-                        if (lower.includes("date of audit") || (lower.includes("date") && !lower.includes("update") && !lower.includes("create") && !/id|key/i.test(lower))) {
-                            mxDate = val || mxDate;
-                        }
-                    });
-                }
+                // Metadata Extraction (Robust)
+                const meta = extractMetadataFromRawData(rawData);
+                let mxId = meta.mxId;
+                let mxName = meta.mxName;
+                let mxDate = meta.mxDate;
 
                 const sessionId = goliveStorage.golive_audits.length + 1;
                 const sessionRecord = {
@@ -1600,56 +1673,11 @@ app.post("/upload", (req, res) => {
                     }));
                 }
 
-                // Header & Column Detection
-                let headerRowIndex = -1;
-                let categoryColIdx = 0;
-                let itemColIdx = 1;
-                let statusColIdx = 2;
-                let commentColIdx = 3;
-
-                // Try to find headers dynamically
-                for (let i = 0; i < Math.min(rawData.length, 20); i++) {
-                    const row = rawData[i];
-                    if (!row || !Array.isArray(row)) continue;
-
-                    const lowerRow = row.map(c => String(c || "").trim().toLowerCase());
-                    const catIdx = lowerRow.findIndex(c => c.includes("audit checklist") || c.includes("category"));
-                    const itemIdx = lowerRow.findIndex(c => c === "configs" || c === "items" || c === "item");
-
-                    if (catIdx !== -1 || itemIdx !== -1) {
-                        headerRowIndex = i;
-                        if (catIdx !== -1) categoryColIdx = catIdx;
-                        if (itemIdx !== -1) itemColIdx = itemIdx;
-                        else itemColIdx = categoryColIdx + 1;
-
-                        const statIdx = lowerRow.findIndex(c => c.includes("status") || c.includes("result") || c.includes("observation"));
-                        if (statIdx !== -1) statusColIdx = statIdx;
-                        else statusColIdx = Math.max(categoryColIdx, itemColIdx) + 1;
-
-                        const comIdx = lowerRow.findIndex(c => c.includes("comment") || c.includes("remark") || c.includes("note"));
-                        if (comIdx !== -1) commentColIdx = comIdx;
-                        else commentColIdx = statusColIdx + 1;
-
-                        console.log(`[Affordability] Headers found at row ${i}: Cat=${categoryColIdx}, Item=${itemColIdx}, Status=${statusColIdx}, Comment=${commentColIdx}`);
-                        break;
-                    }
-                }
-
-                let mxId = "";
-                let mxName = "";
-                let mxDate = "";
-
-                for (let i = 0; i < Math.min(rawData.length, 20); i++) {
-                    const row = rawData[i];
-                    if (!row || !Array.isArray(row)) continue;
-                    const colA = row[0] ? String(row[0]).trim() : "";
-                    const colB = row[1] ? String(row[1]).trim() : "";
-                    const lowerA = colA.toLowerCase();
-
-                    if (lowerA.includes("mx name")) mxName = colA.split(":")[1]?.trim() || colB;
-                    if (lowerA.includes("mid")) mxId = colA.split(":")[1]?.trim() || colB;
-                    if (lowerA.includes("date of audit")) mxDate = colA.split(":")[1]?.trim() || colB;
-                }
+                // Metadata Extraction (Robust)
+                const meta = extractMetadataFromRawData(rawData);
+                let mxId = meta.mxId;
+                let mxName = meta.mxName;
+                let mxDate = meta.mxDate;
 
                 const sessionId = affordabilityStorage.affordability_audits.length + 1;
                 const sessionRecord = {
@@ -1935,23 +1963,11 @@ app.post("/upload", (req, res) => {
                     }
                 }
 
-                // Metadata Extraction (Scan first 20 rows)
-                let mxId = "";
-                let mxName = "";
-                let mxDate = "";
-
-                for (let i = 0; i < Math.min(rawData.length, 20); i++) {
-                    const row = rawData[i];
-                    if (!row) continue;
-
-                    const colA = row[0] ? String(row[0]).trim() : "";
-                    const colB = row[1] ? String(row[1]).trim() : "";
-                    const lowerA = colA.toLowerCase();
-
-                    if (lowerA.includes("mx name")) mxName = colA.split(":")[1]?.trim() || colB;
-                    if (lowerA.includes("mid")) mxId = colA.split(":")[1]?.trim() || colB;
-                    if (lowerA.includes("date of audit")) mxDate = colA.split(":")[1]?.trim() || colB;
-                }
+                // Metadata Extraction (Robust)
+                const meta = extractMetadataFromRawData(rawData);
+                let mxId = meta.mxId;
+                let mxName = meta.mxName;
+                let mxDate = meta.mxDate;
 
                 const sessionId = qrStorage.qr_audits.length + 1;
                 const sessionRecord = {
@@ -2145,6 +2161,47 @@ app.post("/upload", (req, res) => {
                             }
                         }
 
+                        // Fail-safe: Try to generate diagram if it was missed earlier
+                        if (!diagramPath && productType) {
+                            try {
+                                const productKeyMap = {
+                                    'charge_at_will': 'caw',
+                                    'standard_checkout': 'standard_checkout',
+                                    'custom_checkout': 'custom_checkout',
+                                    'subscriptions': 'subscriptions',
+                                    'payment_links': 'payment_links',
+                                    'qr_codes': 'qr_codes',
+                                    'qr_code': 'qr_codes',
+                                    'route': 'route',
+                                    'smart_collect': 'smart_collect',
+                                    's2s': 's2s',
+                                    'affordability_widget': 'affordability'
+                                };
+                                const cleanProduct = productType.toLowerCase().replace(/\s+/g, '_');
+                                let mappedKey = productKeyMap[cleanProduct];
+
+                                // Fuzzy match if direct match fails
+                                if (!mappedKey) {
+                                    if (cleanProduct.includes('payment_link')) mappedKey = 'payment_links';
+                                    else if (cleanProduct.includes('subscription')) mappedKey = 'subscriptions';
+                                    else if (cleanProduct.includes('standard')) mappedKey = 'standard_checkout';
+                                    else if (cleanProduct.includes('custom')) mappedKey = 'custom_checkout';
+                                    else if (cleanProduct.includes('qr')) mappedKey = 'qr_codes';
+                                }
+
+                                if (mappedKey) {
+                                    console.log(`[DEBUG] Fallback: Found mappedKey="${mappedKey}" for productType="${productType}"`);
+                                    diagramPath = await diagramService.generateDiagram(mappedKey, merchantName || "Merchant");
+                                    console.log(`[DEBUG] Fallback: Resulting diagramPath="${diagramPath}"`);
+                                } else {
+                                    console.log(`[DEBUG] Fallback: No mappedKey found for productType="${productType}"`);
+                                }
+                            } catch (e) {
+                                console.warn("[DEBUG] Fallback diagram generation failed:", e.message);
+                            }
+                        }
+
+                        console.log(`[DEBUG] FINAL CALL: productType="${productType}", diagramPath="${diagramPath}", merchantName="${merchantName}"`);
                         const frdPaths = await frdGenerator.generateFRD(
                             result,
                             finalEnrichment,
