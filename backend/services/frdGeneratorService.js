@@ -32,7 +32,7 @@ async function generateFRD(
       auditResult.audit_metadata?.merchant_name ||
       auditResult.audit_metadata?.mx_name ||
       enrichmentData?.merchant_name ||
-      "Merchant";
+      "NA";
 
     auditResult = hydrateChecklistFromDataFolder(
       auditResult,
@@ -1141,8 +1141,7 @@ function buildWebDataSummary(webData, merchantName) {
       .trim();
   }
 
-  const fallback = `${merchantName} is a key business entity looking to optimize its payment infrastructure. This document outlines the functional and technical requirements for integrating Razorpay's payment solutions to enhance user experience and operational efficiency.`;
-  return fallback;
+  return "NA";
 }
 
 function extractAutoCaptureSettings(auditResult) {

@@ -265,6 +265,13 @@
       "merchant_name": "Affordability",
       "audit_date": "",
       "created_at": "2026-03-03T07:10:56.903Z"
+    },
+    {
+      "id": 39,
+      "merchant_id": "Unknown",
+      "merchant_name": "Audit Checklist",
+      "audit_date": "",
+      "created_at": "2026-03-12T07:11:32.079Z"
     }
   ],
   "affordability_checklist_template": [
@@ -3543,6 +3550,90 @@
       "template_id": 12,
       "status": "N/A",
       "specific_comment": ""
+    },
+    {
+      "id": 457,
+      "session_id": 39,
+      "template_id": 1,
+      "status": "Implemented",
+      "specific_comment": "yes"
+    },
+    {
+      "id": 458,
+      "session_id": 39,
+      "template_id": 2,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 459,
+      "session_id": 39,
+      "template_id": 3,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 460,
+      "session_id": 39,
+      "template_id": 4,
+      "status": "N/A",
+      "specific_comment": "yes"
+    },
+    {
+      "id": 461,
+      "session_id": 39,
+      "template_id": 5,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 462,
+      "session_id": 39,
+      "template_id": 6,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 463,
+      "session_id": 39,
+      "template_id": 7,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 464,
+      "session_id": 39,
+      "template_id": 8,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 465,
+      "session_id": 39,
+      "template_id": 9,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 466,
+      "session_id": 39,
+      "template_id": 10,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 467,
+      "session_id": 39,
+      "template_id": 11,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 468,
+      "session_id": 39,
+      "template_id": 12,
+      "status": "N/A",
+      "specific_comment": ""
     }
   ],
   "affordability_comment_values": [
@@ -3837,6 +3928,12 @@
     {
       "id": 49,
       "session_id": 38,
+      "comment_template_id": 1,
+      "field_value": ""
+    },
+    {
+      "id": 50,
+      "session_id": 39,
       "comment_template_id": 1,
       "field_value": ""
     }

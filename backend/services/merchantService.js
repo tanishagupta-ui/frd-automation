@@ -46,7 +46,8 @@ function normalizeMerchantName(name) {
         'instant qr', 'dynamic qr', 'image content', 'terminals enabled',
         'payment methods', 'capture settings', 'late auth scenarios',
         'verify payment status', 'offers', 'fetch payment api', 'webhook url',
-        'webhook events'
+        'webhook events', 'affordability', 'subscriptions', 'route', 'qr codes',
+        'payment links', 'smart collect', 'charge at will'
     ];
 
     const lowerN = n.toLowerCase();
