@@ -32,7 +32,7 @@ async function generateFRD(
       auditResult.audit_metadata?.merchant_name ||
       auditResult.audit_metadata?.mx_name ||
       enrichmentData?.merchant_name ||
-      "Merchant";
+      "NA";
 
     auditResult = hydrateChecklistFromDataFolder(
       auditResult,
@@ -48,11 +48,12 @@ async function generateFRD(
     const filepath = path.join(FRD_EXPORTS_DIR, filename);
 
     const webData = enrichmentData?.web_data || {};
-    const mid =
+    const rawMid =
       auditResult.merchant_info?.mid ||
       auditResult.audit_metadata?.merchant_id ||
       auditResult.audit_metadata?.mid ||
-      "Pending";
+      "NA";
+    const mid = (String(rawMid).toLowerCase() === "unknown" || !rawMid) ? "NA" : rawMid;
     const backendCoverImagePath = path.resolve(
       __dirname,
       "../public/image.png"
@@ -64,8 +65,8 @@ async function generateFRD(
     const coverImagePath = fs.existsSync(backendCoverImagePath)
       ? backendCoverImagePath
       : frontendCoverImagePath;
-    let markdown = "";
-    let pdfMarkdown = "";
+    let markdown = `<!-- FRD_GENERATOR_VERSION: 1.1-NA-FIX | TIMESTAMP: ${new Date().toISOString()} -->\n`;
+    let pdfMarkdown = `<!-- FRD_GENERATOR_VERSION: 1.1-NA-FIX | TIMESTAMP: ${new Date().toISOString()} -->\n`;
 
     // --- Cover Page ---
     markdown += `<div class="cover-page">\n\n`;
@@ -144,9 +145,13 @@ async function generateFRD(
     markdown += `### 1.2 Business Requirement\n`;
     pdfMarkdown += `### 1.2 Business Requirement\n`;
 
+    const objectiveText = productType.toLowerCase().includes("affordability")
+      ? `**Objective:** Integrate with **Razorpay ${productType}** to provide seamless EMI and Pay Later options to customers.`
+      : `**Objective:** Integrate with **Razorpay ${productType}** to facilitate seamless premium payments and recurring mandates.`;
+
     const businessReq =
       `**Merchant Name:** ${merchantName}  \n` +
-      `**Objective:** Integrate with **Razorpay ${productType}** to facilitate seamless premium payments and recurring mandates.\n\n`;
+      `${objectiveText}\n\n`;
     markdown += businessReq;
     pdfMarkdown += businessReq;
 
@@ -174,10 +179,16 @@ async function generateFRD(
     const methods = extractPaymentMethods(auditResult);
     const methodStr = `- **Payment methods:** ${methods.length > 0
       ? methods.join(", ")
-      : "UPI, Emandate (Netbanking), Cards"
-      }\n\n`;
+      : "NA"
+      }\n`;
     markdown += methodStr;
     pdfMarkdown += methodStr;
+
+    const webhooks = extractWebhooks(auditResult);
+    const webhookList = webhooks.length > 0 ? webhooks.map((w) => `\`${w}\``).join(", ") : "NA";
+    const webhookTechStr = `- **Webhook Events:** ${webhookList}\n\n`;
+    markdown += webhookTechStr;
+    pdfMarkdown += webhookTechStr;
 
     markdown += `### 2.2 Special Programs\n`;
     pdfMarkdown += `### 2.2 Special Programs\n`;
@@ -189,11 +200,17 @@ async function generateFRD(
 
     markdown += `#### 2.3.1 API Documentation\n`;
     pdfMarkdown += `#### 2.3.1 API Documentation\n`;
+    console.log(`[DEBUG] Attempting doc resolution for productType: "${productType}"`);
     let docConfig = null;
     try {
       docConfig = resolveProductDocs(productType);
+      if (!docConfig && auditResult && auditResult.product) {
+        console.log(`[DEBUG] Retrying doc resolution with auditResult.product: "${auditResult.product}"`);
+        docConfig = resolveProductDocs(auditResult.product);
+      }
+      if (docConfig) console.log(`[DEBUG] Resolved docs: ${docConfig.productName}`);
     } catch (e) {
-      console.warn(`Doc resolve failed for ${productType}: ${e.message}`);
+      console.warn(`[DEBUG] Doc resolve failed: ${e.message}`);
     }
 
     if (
@@ -209,9 +226,9 @@ async function generateFRD(
       markdown += `\n`;
       pdfMarkdown += `\n`;
     } else {
-      markdown += `- [Charge At Will (CAW)](https://razorpay.com/docs/payments/recurring/charge-at-will/)\n`;
+      markdown += `- [Razorpay Support](https://razorpay.com/docs/)\n`;
       markdown += `- [Fetch APIs](https://razorpay.com/docs/api/payments/)\n\n`;
-      pdfMarkdown += `- [Charge At Will (CAW)](https://razorpay.com/docs/payments/recurring/charge-at-will/)\n`;
+      pdfMarkdown += `- [Razorpay Support](https://razorpay.com/docs/)\n`;
       pdfMarkdown += `- [Fetch APIs](https://razorpay.com/docs/api/payments/)\n\n`;
     }
 
@@ -252,7 +269,7 @@ async function generateFRD(
       ? `- **Checkout type:** ${checkoutType}\n`
       : "";
     const captureStr =
-      `- **Automatic capture:** ${capture}\n` +
+      (capture !== "NA" ? `- **Automatic capture:** ${capture}\n` : "") +
       checkoutTypeStr +
       `- **Test payments:** Validated in test mode.\n\n`;
     markdown += captureStr;
@@ -265,19 +282,6 @@ async function generateFRD(
 
     markdown += `#### 2.4.5 Webhook URLs and events\n`;
     pdfMarkdown += `#### 2.4.5 Webhook URLs and events\n`;
-    const webhooks = extractWebhooks(auditResult);
-    const productLabel = (
-      auditResult.product ||
-      productType ||
-      ""
-    ).toLowerCase();
-    const isSubscription = productLabel.includes("subscription");
-    const webhookList =
-      webhooks.length > 0
-        ? webhooks.map((w) => `\`${w}\``).join(", ")
-        : isSubscription
-          ? "Not provided in checklist"
-          : "`payment.captured`, `payment.failed`";
     const webhookStr = `- **Events:** ${webhookList}\n\n`;
     markdown += webhookStr;
     pdfMarkdown += webhookStr;
@@ -354,20 +358,15 @@ async function generateFRD(
     markdown += `---\n\n`;
     pdfMarkdown += `---\n\n`;
 
-    markdown += `### 3.4 Auto Capture Configuration\n`;
-    pdfMarkdown += `### 3.4 Auto Capture Configuration\n`;
-
     const autoCaptureInfo = extractAutoCaptureSettings(auditResult);
     if (autoCaptureInfo) {
+      markdown += `### 3.4 Auto Capture Configuration\n`;
+      pdfMarkdown += `### 3.4 Auto Capture Configuration\n`;
       markdown += autoCaptureInfo + `\n\n`;
       pdfMarkdown += autoCaptureInfo + `\n\n`;
-    } else {
-      markdown += `Standard auto-capture timing applies: 2 days for UPI and 3 days for other payment methods.\n\n`;
-      pdfMarkdown += `Standard auto-capture timing applies: 2 days for UPI and 3 days for other payment methods.\n\n`;
+      markdown += `---\n\n`;
+      pdfMarkdown += `---\n\n`;
     }
-
-    markdown += `---\n\n`;
-    pdfMarkdown += `---\n\n`;
 
     // --- 4. Ready Reckoner Analysis ---
     // markdown += `## 4. Ready Reckoner Analysis\n\n`;
@@ -456,22 +455,28 @@ function extractPaymentMethods(auditResult) {
   checks.forEach((check) => {
     const label = getCheckLabel(check);
     const status = (check.status || "").toLowerCase();
-    if (label.includes("upi") || status.includes("upi")) methods.add("UPI");
-    if (label.includes("card") || status.includes("card")) methods.add("Cards");
-    if (
-      label.includes("netbanking") ||
-      status.includes("netbanking") ||
-      label.includes("emandate")
-    )
-      methods.add("Netbanking/Emandate");
-    if (label.includes("wallet") || status.includes("wallet"))
-      methods.add("Wallets");
+    const comment = (check.comment || "").toLowerCase();
+    const isImplemented = ["done", "implemented", "pass", "success", "yes"].some(s =>
+      status.includes(s) || comment.includes(s)
+    );
+
+    if (isImplemented) {
+      if (label.includes("upi")) methods.add("UPI");
+      if (label.includes("card")) methods.add("Cards");
+      if (
+        label.includes("netbanking") ||
+        label.includes("emandate")
+      )
+        methods.add("Netbanking/Emandate");
+      if (label.includes("wallet"))
+        methods.add("Wallets");
+    }
   });
   return Array.from(methods);
 }
 
 function extractCaptureSetting(auditResult) {
-  let capture = "3 days (Default)";
+  let capture = "NA";
   const checks = collectChecklistChecks(auditResult);
   for (const check of checks) {
     const section = (check._section || "").toLowerCase();
@@ -553,20 +558,29 @@ function extractWebhooks(auditResult) {
 }
 
 function extractPlatform(auditResult) {
-  let platform = "Website";
+  let platform = "NA";
   const checks = collectChecklistChecks(auditResult);
+  console.log(`[DEBUG] extractPlatform: found ${checks.length} checks`);
   checks.forEach((check) => {
     const label = getCheckLabel(check);
     const comment = (check.comment || "").toLowerCase();
+    const status = (check.status || "").toLowerCase();
+
     if (label.includes("platform")) {
-      const value =
-        getMeaningfulValue(check.comment) || getMeaningfulValue(check.status);
-      if (value) platform = value;
+      const value = getMeaningfulValue(check.comment) || getMeaningfulValue(check.status);
+      if (value) {
+        console.log(`[DEBUG] extractPlatform: Found via label "platform": "${value}"`);
+        platform = value;
+      }
     } else if (
       comment.includes("android") ||
       comment.includes("ios") ||
-      comment.includes("mobile")
+      comment.includes("mobile") ||
+      status.includes("android") ||
+      status.includes("ios") ||
+      status.includes("mobile")
     ) {
+      console.log(`[DEBUG] extractPlatform: Found via keywords in content: ${comment || status}`);
       platform = "Mobile App (Android/iOS)";
     }
   });
@@ -593,8 +607,9 @@ function extractPlatform(auditResult) {
 }
 
 function extractBackendLanguage(auditResult) {
-  let language = "Java (Spring Boot)";
+  let language = "NA";
   const checks = collectChecklistChecks(auditResult);
+  console.log(`[DEBUG] extractBackendLanguage: found ${checks.length} checks`);
   checks.forEach((check) => {
     const label = getCheckLabel(check);
     if (
@@ -606,7 +621,10 @@ function extractBackendLanguage(auditResult) {
         extractLabeledValue(check.comment, ["language", "sdk"]) ||
         getMeaningfulValue(check.comment) ||
         getMeaningfulValue(check.status);
-      if (value) language = value;
+      if (value) {
+        console.log(`[DEBUG] extractBackendLanguage: Found via label: "${value}"`);
+        language = value;
+      }
     }
   });
   return language;
@@ -694,7 +712,12 @@ function getMeaningfulValue(value) {
   const cleaned = String(value).trim();
   if (!cleaned) return "";
   const lowered = cleaned.toLowerCase();
-  if (["done", "n/a", "na", "yes", "no"].includes(lowered)) return "";
+  if (
+    ["done", "n/a", "na", "yes", "no", "implemented", "pass", "fail", "success", "unknown", "pending"].includes(
+      lowered
+    )
+  )
+    return "";
   if (lowered.startsWith("version:")) return "";
   return cleaned;
 }
@@ -1118,8 +1141,7 @@ function buildWebDataSummary(webData, merchantName) {
       .trim();
   }
 
-  const fallback = `${merchantName} is a key business entity looking to optimize its payment infrastructure. This document outlines the functional and technical requirements for integrating Razorpay's payment solutions to enhance user experience and operational efficiency.`;
-  return fallback;
+  return "NA";
 }
 
 function extractAutoCaptureSettings(auditResult) {

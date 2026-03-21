@@ -2388,6 +2388,182 @@
       ],
       "audit_summary": "- The user completes the payment journey on the Stripe, Inc. platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
       "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1771926100412",
+      "audit_id": "audit_1771926099910",
+      "merchant_name": "Stripe, Inc.",
+      "product_type": "Payment Links",
+      "audit_date": "2026-02-24T09:41:39.910Z",
+      "summary_date": "2026-02-24T09:41:40.412Z",
+      "key_findings": [
+        "Downloading Keys: IMPLEMENTED",
+        "Regenerate Keys: N/A",
+        "Payment Methods: N/A",
+        "Auto Capture & Manual Capture: N/A"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Stripe, Inc. platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1772007909719",
+      "audit_id": "audit_1772007907866",
+      "merchant_name": "Stripe, Inc.",
+      "product_type": "Payment Links",
+      "audit_date": "2026-02-25T08:25:07.866Z",
+      "summary_date": "2026-02-25T08:25:09.719Z",
+      "key_findings": [
+        "Downloading Keys: IMPLEMENTED",
+        "Regenerate Keys: N/A",
+        "Payment Methods: N/A",
+        "Auto Capture & Manual Capture: N/A"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Stripe, Inc. platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1772008196796",
+      "audit_id": "audit_1772008196331",
+      "merchant_name": "Stripe, Inc.",
+      "product_type": "Payment Links",
+      "audit_date": "2026-02-25T08:29:56.331Z",
+      "summary_date": "2026-02-25T08:29:56.796Z",
+      "key_findings": [
+        "Downloading Keys: IMPLEMENTED",
+        "Regenerate Keys: N/A",
+        "Payment Methods: N/A",
+        "Auto Capture & Manual Capture: N/A"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Stripe, Inc. platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1772008936979",
+      "audit_id": "audit_1772008936569",
+      "merchant_name": "Stripe, Inc.",
+      "product_type": "Payment Links",
+      "audit_date": "2026-02-25T08:42:16.569Z",
+      "summary_date": "2026-02-25T08:42:16.979Z",
+      "key_findings": [
+        "Downloading Keys: IMPLEMENTED",
+        "Regenerate Keys: N/A",
+        "Payment Methods: N/A",
+        "Auto Capture & Manual Capture: N/A"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Stripe, Inc. platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1772012109798",
+      "audit_id": "audit_1772012109387",
+      "merchant_name": "Stripe, Inc.",
+      "product_type": "Payment Links",
+      "audit_date": "2026-02-25T09:35:09.387Z",
+      "summary_date": "2026-02-25T09:35:09.798Z",
+      "key_findings": [
+        "Downloading Keys: IMPLEMENTED",
+        "Regenerate Keys: N/A",
+        "Payment Methods: N/A",
+        "Auto Capture & Manual Capture: N/A"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Stripe, Inc. platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1772428471214",
+      "audit_id": "audit_1772428470809",
+      "merchant_name": "Stripe, Inc.",
+      "product_type": "Payment Links",
+      "audit_date": "2026-03-02T05:14:30.809Z",
+      "summary_date": "2026-03-02T05:14:31.214Z",
+      "key_findings": [
+        "Downloading Keys: IMPLEMENTED",
+        "Regenerate Keys: N/A",
+        "Payment Methods: N/A",
+        "Auto Capture & Manual Capture: N/A"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Stripe, Inc. platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1772434115140",
+      "audit_id": "audit_1772434114229",
+      "merchant_name": "Sugarfit Health Solutions Private Limited",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-03-02T06:48:35.140Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: Done"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Sugarfit Health Solutions Private Limited platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for UPI, Cards.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1772434601577",
+      "audit_id": "audit_1772434601148",
+      "merchant_name": "Bharat Petroleum Corporation Limited (BPCL)",
+      "product_type": "QR Code",
+      "audit_date": "2026-03-02T06:56:41.148Z",
+      "summary_date": "2026-03-02T06:56:41.577Z",
+      "key_findings": [
+        "Downloading Keys: IMPLEMENTED",
+        "Regenerate Keys: N/A",
+        "API: IMPLEMENTED",
+        "Payment Methods: IMPLEMENTED"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Bharat Petroleum Corporation Limited (BPCL) platform.\n- Technical validation confirms critical API implementations are under review.\n- Payment status is determined via webhooks for core payment methods.\n- Auto-capture settings are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Action Required"
+    },
+    {
+      "id": "sum_1772436402365",
+      "audit_id": "audit_1772436401907",
+      "merchant_name": "Bharat Petroleum Corporation Limited (BPCL)",
+      "product_type": "QR Code",
+      "audit_date": "2026-03-02T07:26:41.907Z",
+      "summary_date": "2026-03-02T07:26:42.365Z",
+      "key_findings": [
+        "Downloading Keys: IMPLEMENTED",
+        "Regenerate Keys: N/A",
+        "API: IMPLEMENTED",
+        "Payment Methods: IMPLEMENTED"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Bharat Petroleum Corporation Limited (BPCL) platform.\n- Technical validation confirms critical API implementations are under review.\n- Payment status is determined via webhooks for core payment methods.\n- Auto-capture settings are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Action Required"
+    },
+    {
+      "id": "sum_1772443557383",
+      "audit_id": "audit_1772443556613",
+      "merchant_name": "Bharat Petroleum Corporation Limited (BPCL)",
+      "product_type": "QR Code",
+      "audit_date": "2026-03-02T09:25:56.613Z",
+      "summary_date": "2026-03-02T09:25:57.383Z",
+      "key_findings": [
+        "Downloading Keys: IMPLEMENTED",
+        "Regenerate Keys: N/A",
+        "API: IMPLEMENTED",
+        "Payment Methods: IMPLEMENTED"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Bharat Petroleum Corporation Limited (BPCL) platform.\n- Technical validation confirms critical API implementations are under review.\n- Payment status is determined via webhooks for core payment methods.\n- Auto-capture settings are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Action Required"
+    },
+    {
+      "id": "sum_1772444858063",
+      "audit_id": "audit_1772444857295",
+      "merchant_name": "Bharat Petroleum Corporation Limited (BPCL)",
+      "product_type": "QR Code",
+      "audit_date": "2026-03-02T09:47:37.295Z",
+      "summary_date": "2026-03-02T09:47:38.063Z",
+      "key_findings": [
+        "Downloading Keys: IMPLEMENTED",
+        "Regenerate Keys: N/A",
+        "API: IMPLEMENTED",
+        "Payment Methods: IMPLEMENTED"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Bharat Petroleum Corporation Limited (BPCL) platform.\n- Technical validation confirms critical API implementations are under review.\n- Payment status is determined via webhooks for core payment methods.\n- Auto-capture settings are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Action Required"
     }
   ]
 }
