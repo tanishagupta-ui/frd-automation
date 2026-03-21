@@ -1,0 +1,186 @@
+{
+  "product": "Payment Links",
+  "audit_metadata": {
+    "mx_name": "Affordability",
+    "mid": "Unknown",
+    "date": ""
+  },
+  "checklist_content": [
+    {
+      "category": "1. Live Keys",
+      "checks": [
+        {
+          "item": "Downloading Keys",
+          "status": "Implemented",
+          "comment": "yes"
+        },
+        {
+          "item": "Set Expiry",
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "item": "Regenerate Keys",
+          "status": "N/A",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "2. Implementation Setup",
+      "checks": [
+        {
+          "item": "Standard Checkout",
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "item": "Custom Checkout",
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "item": "S2S",
+          "status": "N/A",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "3. Features Enabled",
+      "checks": [
+        {
+          "item": "Native Checkout",
+          "status": "N/A",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "4. Image Content",
+      "checks": [
+        {
+          "item": "Image Content URL",
+          "status": "N/A",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "5 Terminals Enabled",
+      "checks": [
+        {
+          "item": "Type Online",
+          "status": "N/A",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "6. Methods Enabled",
+      "checks": [
+        {
+          "item": "Payment Methods",
+          "status": "N/A",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "7. Capture Settings",
+      "checks": [
+        {
+          "item": "Auto Capture & Manual Capture",
+          "status": "N/A",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "8. For successful transactions",
+      "checks": [
+        {
+          "item": "Consumes payment_id, order_id",
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "item": "Verify payment signature step",
+          "status": "N/A",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "9. For failure transactions",
+      "checks": [
+        {
+          "item": "Consumes Error Codes",
+          "status": "N/A",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "10. Late Auth Scenarios",
+      "checks": [
+        {
+          "item": "Consumes payment state at capture time",
+          "status": "N/A",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "11. Verify Payment Status",
+      "checks": [
+        {
+          "item": "Webhooks",
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "item": "Verify webhook signature",
+          "status": "N/A",
+          "comment": ""
+        },
+        {
+          "item": "Fetch payment APIs",
+          "status": "N/A",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "12. Offers",
+      "checks": [
+        {
+          "item": "Offers API / Dashboard",
+          "status": "N/A",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "13. Refund APIs",
+      "checks": [
+        {
+          "item": "Refund APIs",
+          "status": "N/A",
+          "comment": ""
+        }
+      ]
+    },
+    {
+      "category": "14. UAT Sign Off",
+      "checks": [
+        {
+          "item": "Sign Off / Action Item",
+          "status": "N/A",
+          "comment": ""
+        }
+      ]
+    }
+  ],
+  "additional_comments": []
+}
