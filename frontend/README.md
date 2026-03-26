@@ -1,70 +1,141 @@
-# Getting Started with Create React App
+# Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This frontend powers the FRD Automation user interface. It lets users select a product module, upload an audit checklist, monitor document generation, and download the latest generated FRD PDF.
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+The frontend is a React application created with Create React App and styled as a compact dashboard workflow. It talks to the backend API running on `http://localhost:5001`.
+
+### Current user flow
+
+1. Select a product module from the left navigation panel.
+2. Upload a matching Excel checklist using drag-and-drop or the file picker.
+3. Wait while the backend parses the checklist and generates the FRD.
+4. Poll for the latest generated FRD.
+5. Download the resulting PDF once it is available.
+
+## Key features
+
+- Product-based audit workflow
+- Drag-and-drop Excel upload
+- Upload validation for `.xls` and `.xlsx`
+- Live processing and status messaging
+- Polling-based FRD readiness check
+- Direct PDF download from the generated artifact endpoint
+- Light and dark theme toggle persisted in local storage
+
+## Tech stack
+
+- React 19
+- Axios
+- Create React App (`react-scripts`)
+- Plain CSS via `src/App.css` and `src/index.css`
+
+## Project structure
+
+```text
+frontend/
+├── public/
+├── src/
+│   ├── App.js          # Main application UI and workflow logic
+│   ├── App.css         # Main dashboard styling
+│   ├── App.test.js     # Default CRA test scaffold
+│   ├── index.js        # React entry point
+│   ├── index.css       # Global styles
+│   ├── reportWebVitals.js
+│   └── setupTests.js
+├── package.json
+└── README.md
+```
+
+## Getting started
+
+### Prerequisites
+
+- Node.js and npm
+- The backend service running locally on port `5001`
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Start the development server
+
+```bash
+npm start
+```
+
+The app will run on [http://localhost:3000](http://localhost:3000).
+
+## Available scripts
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Starts the development server.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Runs the React test runner in watch mode.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Builds the app for production into the `build/` directory.
 
 ### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Ejects the Create React App configuration.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Backend dependency
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The UI currently uses a hardcoded backend base URL:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```js
+const BASE_URL = "http://localhost:5001";
+```
 
-## Learn More
+This is used for:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- `POST /upload`
+- `GET /api/latest-frd`
+- downloading generated FRD files
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+If the backend is not running on port `5001`, uploads and downloads will fail until the frontend is updated or the backend is exposed on that address.
 
-### Code Splitting
+## UI behavior
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Product modules
 
-### Analyzing the Bundle Size
+The current product list rendered in the UI includes:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Standard Checkout
+- Subscriptions
+- QR Code
+- Affordability
+- Smart Collect
+- Route
+- Payment Links
+- Charge at Will
 
-### Making a Progressive Web App
+### Theme persistence
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The selected theme is stored in browser local storage under the key `fra-theme`.
 
-### Advanced Configuration
+### Polling behavior
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+After a successful upload, the UI polls the backend up to 15 times at roughly 2.5-second intervals to check whether a PDF has been generated.
 
-### Deployment
+## Development notes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Most frontend logic currently lives in [`src/App.js`](src/App.js).
+- Most styling currently lives in [`src/App.css`](src/App.css).
+- The "Audit History" navigation item is present in the UI shell but does not yet have a connected workflow.
+- The current test file is still the default CRA scaffold and does not meaningfully cover the upload workflow.
 
-### `npm run build` fails to minify
+## Suggested improvements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Move the backend base URL into environment-based configuration
+- Split `App.js` into smaller UI and workflow components
+- Add tests for upload, polling, error states, and download behavior
+- Add a real audit history view if that sidebar action is intended to be active
