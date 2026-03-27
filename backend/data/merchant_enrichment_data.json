@@ -236,6 +236,30 @@
         "target_audience": "Banks, credit providers, mortgage lenders, property managers, and financial institutions."
       },
       "model_used": "gemini-flash-latest"
+    },
+    {
+      "id": 12,
+      "merchant_name": "Matrimony.com Limited",
+      "original_name": "Matrimony",
+      "merchant_id": null,
+      "search_date": "2026-03-27T06:29:30.766Z",
+      "web_data": {
+        "company_name": "Matrimony.com Limited",
+        "website": "https://www.matrimony.com",
+        "description": "Matrimony.com is a leading consumer internet company in India that pioneered online matchmaking. It operates several well-known brands and provides a comprehensive suite of marriage-related services including matchmaking, wedding planning, and venue discovery.",
+        "industry": "Consumer Internet / Online Matchmaking",
+        "products_services": [
+          "BharatMatrimony",
+          "CommunityMatrimony",
+          "EliteMatrimony",
+          "MatrimonyBazaar",
+          "Mandap.com",
+          "Jory.com"
+        ],
+        "business_model": "B2C",
+        "target_audience": "Singles and families seeking matrimonial matches and wedding-related services, primarily within India and the global Indian diaspora."
+      },
+      "model_used": "gemini-flash-latest"
     }
   ]
 }

@@ -38,14 +38,14 @@ function App() {
   const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark');
 
   const products = [
-    { name: "Standard Checkout", cat: "PYMT" },
-    { name: "Subscriptions", cat: "RECR" },
-    { name: "QR Code", cat: "OFFL" },
-    { name: "Affordability", cat: "WIDG" },
-    { name: "Smart Collect", cat: "AUTO" },
-    { name: "Route", cat: "MKPL" },
-    { name: "Payment Links", cat: "LINK" },
-    { name: "Charge at Will", cat: "TKNZ" },
+    { name: "Standard Checkout", displayName: "Checkout" },
+    { name: "Subscriptions", displayName: "Subscriptions" },
+    { name: "QR Code", displayName: "QR Code" },
+    { name: "Affordability", displayName: "Affordability" },
+    { name: "Smart Collect", displayName: "Smart Collect" },
+    { name: "Route", displayName: "Route" },
+    { name: "Payment Links", displayName: "Payment Links" },
+    { name: "Charge at Will", displayName: "Charge at Will" },
   ];
 
   const handleFileUpload = async (file) => {
@@ -179,8 +179,7 @@ function App() {
                 }}
               >
                 <div className="module-info">
-                  <span className="module-name">{p.name}</span>
-                  <span className="module-tag">{p.cat}</span>
+                  <span className="module-name">{p.displayName}</span>
                 </div>
                 {selectedProduct === p.name && <div className="selected-indicator" />}
               </div>
@@ -192,8 +191,8 @@ function App() {
         <main className="workspace">
           <header className="workspace-header">
             <div className="header-meta">
-              <span className="path-hint">Workspace / Ingestion / {selectedProduct || 'Idle'}</span>
-              <h1>{selectedProduct ? `${selectedProduct} Audit` : "System Ready"}</h1>
+              <span className="path-hint">Workspace / Ingestion / {products.find(p => p.name === selectedProduct)?.displayName || selectedProduct || 'Idle'}</span>
+              <h1>{selectedProduct ? `${products.find(p => p.name === selectedProduct)?.displayName || selectedProduct} Audit` : "System Ready"}</h1>
             </div>
             <div className="header-actions">
               <div className={`live-pill ${uploadDone ? 'active' : ''}`}>
@@ -240,7 +239,7 @@ function App() {
                       <div className="upload-icon-anim">
                         <FileTextIcon />
                       </div>
-                      <h3>{selectedProduct ? 'Drop Audit Spreadsheet' : 'Select Product First'}</h3>
+                      <h3>{selectedProduct ? 'Drop Audit Checklist' : 'Select Product First'}</h3>
                       <p>Release .xlsx file here or <span className="accent-text">browse assets</span></p>
                     </div>
                   )}

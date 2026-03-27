@@ -71,6 +71,14 @@
       "merchant_name": "Webhook.site",
       "audit_date": "",
       "created_at": "2026-03-13T11:15:54.081Z"
+    },
+    {
+      "id": 10,
+      "product": "Standard Checkout",
+      "merchant_id": "Unknown",
+      "merchant_name": "Webhook.site",
+      "audit_date": "",
+      "created_at": "2026-03-27T06:14:46.386Z"
     }
   ],
   "golive_results": [
@@ -1367,6 +1375,153 @@
       "session_id": 9,
       "config_item": "Sign off",
       "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 186,
+      "session_id": 10,
+      "config_item": "Account Live (Key/Secret available for live mode)",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 187,
+      "session_id": 10,
+      "config_item": "Webhook Configs",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 188,
+      "session_id": 10,
+      "config_item": "Successful Payment IDs",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 189,
+      "session_id": 10,
+      "config_item": "Order API Implementation",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 190,
+      "session_id": 10,
+      "config_item": "Checkout Implementation / Create Payment",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 191,
+      "session_id": 10,
+      "config_item": "WebView Implementation (If Applicable)",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 192,
+      "session_id": 10,
+      "config_item": "Signature verification",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 193,
+      "session_id": 10,
+      "config_item": "Callback_url",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 194,
+      "session_id": 10,
+      "config_item": "Implementing fetch status API",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 195,
+      "session_id": 10,
+      "config_item": "Custom solution",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 196,
+      "session_id": 10,
+      "config_item": "Refund API",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 197,
+      "session_id": 10,
+      "config_item": "Session Timeout - webhooks / fetch api/ create payment API(s2s)",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 198,
+      "session_id": 10,
+      "config_item": "Payment capture settings",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 199,
+      "session_id": 10,
+      "config_item": "Failure handler-function",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 200,
+      "session_id": 10,
+      "config_item": "Backend Language",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 201,
+      "session_id": 10,
+      "config_item": "Checkout library and platform",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 202,
+      "session_id": 10,
+      "config_item": "SDK latest Version",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 203,
+      "session_id": 10,
+      "config_item": "Best practices",
+      "status": "N/A",
+      "comment": "Use the S2S JSON API; open the HTML returned in the API response in the customer's browser; pass actual user_agent, customer IP, and referrer; integrate webhooks for server-to-server callbacks; use the Payments Rainy Day kit for late auth, downtimes, and errors."
+    },
+    {
+      "id": 204,
+      "session_id": 10,
+      "config_item": "Rainy day",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 205,
+      "session_id": 10,
+      "config_item": "Late Auth",
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 206,
+      "session_id": 10,
+      "config_item": "Sign off",
+      "status": "N/A",
       "comment": ""
     }
   ]

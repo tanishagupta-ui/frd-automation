@@ -104,8 +104,10 @@ async function generateFRD(
       `   3.4 [Auto Capture Configuration](#34-auto-capture-configuration)\n` +
       `4. [Integration Best Practices](#4-integration-best-practices)\n\n`;
 
-    markdown += `- **Owner Name: Rakshita Sharma**\n\n`;
-    pdfMarkdown += `- **Owner Name: Rakshita Sharma**\n\n`;
+    const ownerName = auditResult.audit_metadata?.owner_name || auditResult.merchant_info?.owner_name || "NA";
+    
+    markdown += `- **Owner Name: ${ownerName}**\n\n`;
+    pdfMarkdown += `- **Owner Name: ${ownerName}**\n\n`;
 
     markdown += toc;
     pdfMarkdown += toc;
@@ -237,11 +239,12 @@ async function generateFRD(
     pdfMarkdown += `#### 2.3.2 Test Credentials\n`;
     pdfMarkdown += `N/A (Shared internally)\n\n`;
 
+    const integrationPoc = auditResult.audit_metadata?.integration_poc || auditResult.merchant_info?.integration_poc || "NA";
     markdown += `#### 2.3.3 Technical Contacts\n`;
-    markdown += `- **Rakshita Sharma** (Integrations POC, Razorpay)\n`;
+    markdown += `- **${integrationPoc}** (Integrations POC, Razorpay)\n`;
     markdown += `- **Merchant Tech Team** (Merchant POC)\n\n`;
     pdfMarkdown += `#### 2.3.3 Technical Contacts\n`;
-    pdfMarkdown += `- **Rakshita Sharma** (Integrations POC, Razorpay)\n`;
+    pdfMarkdown += `- **${integrationPoc}** (Integrations POC, Razorpay)\n`;
     pdfMarkdown += `- **Merchant Tech Team** (Merchant POC)\n\n`;
 
     markdown += `### 2.4 Configurations\n\n`;
