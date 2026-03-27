@@ -218,8 +218,3 @@ The endpoint responds with upload and parsing details first, then continues summ
 - If merchant enrichment is missing, verify that `GEMINI_API_KEY` is configured in `backend/.env`.
 - If FRDs are not appearing in the UI, inspect `backend/generated_frds/` and review backend logs for generation errors.
 - If Google Drive uploads fail, the local FRD generation flow should still continue unless the backend logs show a broader failure.
-
-## Suggested next improvements
-
-- Add a real backend test command and formalize the existing verification scripts
-- Move hardcoded service URLs into environment-based configuration
