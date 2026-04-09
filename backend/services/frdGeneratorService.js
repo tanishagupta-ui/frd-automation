@@ -509,55 +509,67 @@ function extractCaptureSetting(auditResult) {
 function extractWebhooks(auditResult) {
   const webhooks = [];
   const checks = collectChecklistChecks(auditResult);
+
+  // Primary pass: Extract from dedicated webhook items, skipping Additional Comments/Remarks sections
   checks.forEach((check) => {
     const label = getCheckLabel(check);
     if (!label.includes("webhook")) return;
-    const combined = [check.comment, check.hint].filter(Boolean).join(" ");
+
+    const section = (check._section || "").toLowerCase();
+    if (section.includes("additional comment") || section.includes("remark")) return;
+
+    const combined = [check.comment, check.hint].filter(Boolean).join(" ").trim();
+    if (!combined) return;
+
+    // Use parseWebhookEvents to see if it finds a structured "events:" list
     const eventList = parseWebhookEvents(combined);
-    if (eventList.length > 0) {
+    if (eventList.length > 0 && eventList[0] !== combined) {
       webhooks.push(...eventList);
-    } else if (combined) {
-      webhooks.push(...combined.split(/[,;\s]+/));
+    } else {
+      // Not a structured list, but if it's from a "webhook" item, it's likely relevant
+      const parts = combined.split(/[,;]+/).map(p => p.trim()).filter(Boolean);
+      webhooks.push(...parts);
     }
   });
 
-  // Also check structured or string additional_comments if available (e.g. Affordability)
-  const addComments = auditResult.additional_comments || auditResult.additionalComments;
-  if (addComments) {
-    if (typeof addComments === 'object' && addComments.webhook_url_events) {
-      const eventList = parseWebhookEvents(addComments.webhook_url_events);
-      if (eventList.length > 0) {
-        webhooks.push(...eventList);
-      } else {
-        webhooks.push(...addComments.webhook_url_events.split(/[,;\s]+/));
-      }
-    } else if (typeof addComments === 'string') {
-      const eventList = parseWebhookEvents(addComments);
-      if (eventList.length > 0) webhooks.push(...eventList);
-      else {
-        // Look for typical URL patterns in the string
-        const urlMatch = addComments.match(/https?:\/\/[^\s,;]+/gi);
-        if (urlMatch) webhooks.push(...urlMatch);
+  // If no webhooks found in dedicated items, fall back to additional_comments fields
+  if (webhooks.length === 0) {
+    const addComments = auditResult.additional_comments || auditResult.additionalComments;
+    if (addComments) {
+      if (typeof addComments === 'object' && addComments.webhook_url_events) {
+        const val = addComments.webhook_url_events;
+        const eventList = parseWebhookEvents(val);
+        if (eventList.length > 0 && eventList[0] !== val) webhooks.push(...eventList);
+        else webhooks.push(...val.split(/[,;]+/).map(p => p.trim()).filter(p => p.toLowerCase().includes("webhook") || p.includes(".") || p.includes("_")));
+      } else if (typeof addComments === 'string') {
+        // Split by lines and only take lines that mention webhook
+        const lines = addComments.split(/[\n\r]+/).map(l => l.trim()).filter(l => l.toLowerCase().includes("webhook"));
+        lines.forEach(line => {
+          const parts = line.split(/[,;]+/).map(p => p.trim()).filter(Boolean);
+          webhooks.push(...parts);
+        });
       }
     }
   }
 
+  // Final fallback to raw additional comments
   if (webhooks.length === 0) {
     const raw = auditResult.raw_additional_comments || auditResult.rawAdditionalComments;
     if (raw && typeof raw === 'string') {
-      const eventList = parseWebhookEvents(raw);
-      if (eventList.length > 0) webhooks.push(...eventList);
-      else {
-        // Look for typical URL patterns
-        const urlMatch = raw.match(/https?:\/\/[^\s,;]+/gi);
-        if (urlMatch) webhooks.push(...urlMatch);
-      }
+      const lines = raw.split(/[\n\r]+/).map(l => l.trim()).filter(l => l.toLowerCase().includes("webhook"));
+      lines.forEach(line => {
+        const parts = line.split(/[,;]+/).map(p => p.trim()).filter(Boolean);
+        webhooks.push(...parts);
+      });
     }
   }
 
-  return [...new Set(webhooks)].filter(
-    (w) => w.includes(".") || w.includes("_")
-  );
+  // Final cleanup: filter out URLs and keep only strings that look like events (dots/underscores) OR mention "webhook"
+  return [...new Set(webhooks)].filter((w) => {
+    const low = w.toLowerCase();
+    if (low.startsWith("http") || low.startsWith("www")) return false;
+    return w.includes(".") || w.includes("_") || low.includes("webhook");
+  });
 }
 
 function extractPlatform(auditResult) {

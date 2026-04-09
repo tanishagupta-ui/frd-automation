@@ -242,22 +242,22 @@
       "merchant_name": "Matrimony.com Limited",
       "original_name": "Matrimony",
       "merchant_id": null,
-      "search_date": "2026-03-27T06:29:30.766Z",
+      "search_date": "2026-04-07T09:09:40.114Z",
       "web_data": {
         "company_name": "Matrimony.com Limited",
         "website": "https://www.matrimony.com",
-        "description": "Matrimony.com is a leading consumer internet company in India that pioneered online matchmaking. It operates several well-known brands and provides a comprehensive suite of marriage-related services including matchmaking, wedding planning, and venue discovery.",
+        "description": "Matrimony.com Limited is India's leading consumer internet company, primarily focused on providing online matchmaking and marriage-related services. It is the parent company of several well-known brands including BharatMatrimony.",
         "industry": "Consumer Internet / Online Matchmaking",
         "products_services": [
           "BharatMatrimony",
           "CommunityMatrimony",
           "EliteMatrimony",
-          "MatrimonyBazaar",
-          "Mandap.com",
-          "Jory.com"
+          "MatrimonyBazaar (Wedding services marketplace)",
+          "Mandap.com (Wedding venue booking platform)",
+          "Jodii (Vernacular matchmaking app)"
         ],
         "business_model": "B2C",
-        "target_audience": "Singles and families seeking matrimonial matches and wedding-related services, primarily within India and the global Indian diaspora."
+        "target_audience": "Singles and their families looking for life partners and wedding-related services, primarily within India and the global Indian diaspora."
       },
       "model_used": "gemini-flash-latest"
     }

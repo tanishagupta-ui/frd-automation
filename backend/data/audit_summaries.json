@@ -2310,7 +2310,6 @@
       "overall_status": "Pass"
     },
     {
-<<<<<<< Updated upstream
       "id": "sum_1771831020173",
       "audit_id": "audit_1771831019934",
       "merchant_name": "NCApps Test Merchant",
@@ -2327,20 +2326,6 @@
       "overall_status": "Pass"
     },
     {
-      "id": "sum_1771831285128",
-      "audit_id": "audit_1771831284525",
-      "merchant_name": "NCApps Test Merchant",
-      "product_type": "NCApps",
-      "audit_date": "2026-02-23T07:21:24.526Z",
-      "summary_date": "2026-02-23T07:21:25.128Z",
-      "key_findings": [
-        "Downloading Keys: Done",
-        "Regenerate Keys: N/A",
-        "Payment Methods: N/A",
-        "Auto Capture & Manual Capture: N/A"
-      ],
-      "audit_summary": "- The user completes the payment journey on the NCApps Test Merchant platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
-=======
       "id": "sum_1771594978157",
       "audit_id": 14,
       "merchant_name": "N/A (Generic File Name)",
@@ -2354,7 +2339,6 @@
         "iii. Request product config: N/A"
       ],
       "audit_summary": "- The user completes the payment journey on the N/A (Generic File Name) platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for core payment methods.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
->>>>>>> Stashed changes
       "overall_status": "Pass"
     },
     {
@@ -2564,6 +2548,91 @@
       ],
       "audit_summary": "- The user completes the payment journey on the Bharat Petroleum Corporation Limited (BPCL) platform.\n- Technical validation confirms critical API implementations are under review.\n- Payment status is determined via webhooks for core payment methods.\n- Auto-capture settings are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
       "overall_status": "Action Required"
+    },
+    {
+      "id": "sum_1775553005201",
+      "audit_id": "audit_1775552982088_724",
+      "merchant_name": "Matrimony.com Limited",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-04-07T09:09:42.092Z",
+      "summary_date": "2026-04-07T09:10:05.201Z",
+      "key_findings": [
+        "Bank Account / TPV: N/A",
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): Done",
+        "Fetch status of Payment_id: Done",
+        "Consumes Error Codes: Done",
+        "Fetch Token by Payment ID: Done",
+        "Consumes payment state at capture time: Done",
+        "Webhooks: Evaluated",
+        "Fetch payment APIs (Fallback): Done",
+        "Autorefund Auth payments using payment capture as manual: Done"
+      ],
+      "audit_summary": "- The user selects the preferred matrimony service or subscription plan on the platform and proceeds to the integrated Razorpay checkout interface.\n- Server-side validation is strictly enforced through the verification of payment_id, order_id, and razorpay_signature for both Standard and Custom checkout flows.\n- The integration successfully implements the 'Fetch Token by Payment ID' functionality to support the 'Charge at Will' product logic for tokenized transactions.\n- Webhook events are configured and evaluated to synchronize payment states and ensure real-time updates for transaction lifecycle events.\n- Payment capture is governed by standard mechanisms, with automated refund logic implemented for authorized-only payments to prevent stale transaction states.\n- Comprehensive error handling is maintained through the consumption of Razorpay error codes, allowing for precise identification of transaction failure points.\n- Fallback reconciliation is established using 'Fetch Payment' APIs to verify transaction statuses in the event of asynchronous notification delays.\n- Successful Test IDs: No specific pay_IDs were recorded for UPI or Cards during this audit phase.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1775553027206",
+      "audit_id": "audit_1775553000859_884",
+      "merchant_name": "Matrimony.com Limited",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-04-07T09:10:00.861Z",
+      "summary_date": "2026-04-07T09:10:27.206Z",
+      "key_findings": [
+        "Bank Account / TPV: N/A",
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): Done",
+        "Fetch status of Payment_id: Done",
+        "Consumes Error Codes: Done"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Matrimony.com Limited platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for UPI, Cards.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1775554090692",
+      "audit_id": "audit_1775554059162_625",
+      "merchant_name": "Matrimony.com Limited",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-04-07T09:27:39.166Z",
+      "summary_date": "2026-04-07T09:28:10.693Z",
+      "key_findings": [
+        "Bank Account / TPV: N/A",
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): Done",
+        "Fetch status of Payment_id: Done",
+        "Consumes Error Codes: Done"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Matrimony.com Limited platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for UPI, Cards.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1775554230485",
+      "audit_id": "audit_1775554198856_741",
+      "merchant_name": "Matrimony.com Limited",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-04-07T09:29:58.873Z",
+      "summary_date": "2026-04-07T09:30:30.485Z",
+      "key_findings": [
+        "Bank Account / TPV: N/A",
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): Done",
+        "Fetch status of Payment_id: Done",
+        "Consumes Error Codes: Done"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Matrimony.com Limited platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for UPI, Cards.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1775729986902",
+      "audit_id": "audit_1775729980163_810",
+      "merchant_name": "Matrimony.com Limited",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-04-09T10:19:40.177Z",
+      "summary_date": "2026-04-09T10:19:46.903Z",
+      "key_findings": [
+        "Bank Account / TPV: N/A",
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): Done",
+        "Fetch status of Payment_id: Done",
+        "Consumes Error Codes: Done"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Matrimony.com Limited platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for UPI, Cards.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
     }
   ]
 }
