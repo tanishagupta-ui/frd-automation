@@ -579,35 +579,63 @@
       "merchant_id": "",
       "merchant_name": "Sugarfit",
       "audit_date": "7th November",
-      "created_at": "2026-03-27T09:36:13.748Z"
+      "created_at": "2026-04-10T08:37:36.544Z"
     },
     {
       "id": 84,
-      "merchant_id": "",
-      "merchant_name": "Sugarfit",
-      "audit_date": "7th November",
-      "created_at": "2026-03-27T09:43:29.292Z"
+      "merchant_id": "1. Methods Enabled",
+      "merchant_name": "Matrimony.com Limited",
+      "audit_date": "",
+      "created_at": "2026-04-10T09:02:22.959Z"
     },
     {
       "id": 85,
       "merchant_id": "",
       "merchant_name": "Sugarfit",
       "audit_date": "7th November",
-      "created_at": "2026-03-27T09:52:48.029Z"
+      "created_at": "2026-04-10T09:19:29.493Z"
     },
     {
       "id": 86,
       "merchant_id": "",
       "merchant_name": "Sugarfit",
       "audit_date": "7th November",
-      "created_at": "2026-03-27T09:55:13.783Z"
+      "created_at": "2026-04-10T09:20:10.032Z"
     },
     {
       "id": 87,
       "merchant_id": "",
       "merchant_name": "Sugarfit",
       "audit_date": "7th November",
-      "created_at": "2026-03-27T10:41:07.825Z"
+      "created_at": "2026-04-10T09:26:03.778Z"
+    },
+    {
+      "id": 88,
+      "merchant_id": "",
+      "merchant_name": "Sugarfit",
+      "audit_date": "7th November",
+      "created_at": "2026-04-10T09:26:13.656Z"
+    },
+    {
+      "id": 89,
+      "merchant_id": "1. Methods Enabled",
+      "merchant_name": "Matrimony.com Limited",
+      "audit_date": "",
+      "created_at": "2026-04-10T09:28:55.067Z"
+    },
+    {
+      "id": 90,
+      "merchant_id": "",
+      "merchant_name": "Sugarfit",
+      "audit_date": "7th November",
+      "created_at": "2026-04-10T09:39:37.675Z"
+    },
+    {
+      "id": 91,
+      "merchant_id": "1. Methods Enabled",
+      "merchant_name": "Matrimony.com Limited",
+      "audit_date": "",
+      "created_at": "2026-04-10T09:40:07.519Z"
     }
   ],
   "subscription_checklist_template": [
@@ -24157,261 +24185,261 @@
     {
       "id": 3324,
       "audit_id": 84,
-      "item_id": 5,
+      "item_id": 4,
       "status": "N/A",
       "comment": ""
     },
     {
       "id": 3325,
       "audit_id": 84,
-      "item_id": 6,
+      "item_id": 10,
       "status": "N/A",
       "comment": ""
     },
     {
       "id": 3326,
       "audit_id": 84,
-      "item_id": 7,
+      "item_id": 11,
       "status": "Done",
       "comment": ""
     },
     {
       "id": 3327,
       "audit_id": 84,
-      "item_id": 8,
-      "status": "Done",
-      "comment": ""
-    },
-    {
-      "id": 3328,
-      "audit_id": 84,
-      "item_id": 9,
-      "status": "N/A",
-      "comment": ""
-    },
-    {
-      "id": 3329,
-      "audit_id": 84,
-      "item_id": 10,
-      "status": "Done",
-      "comment": ""
-    },
-    {
-      "id": 3330,
-      "audit_id": 84,
-      "item_id": 11,
-      "status": "N/A",
-      "comment": ""
-    },
-    {
-      "id": 3331,
-      "audit_id": 84,
       "item_id": 12,
       "status": "N/A",
       "comment": ""
     },
     {
-      "id": 3332,
-      "audit_id": 84,
-      "item_id": 13,
-      "status": "N/A",
-      "comment": ""
-    },
-    {
-      "id": 3333,
+      "id": 3328,
       "audit_id": 84,
       "item_id": 14,
-      "status": "N/A",
+      "status": "Done",
       "comment": ""
     },
     {
-      "id": 3334,
-      "audit_id": 84,
-      "item_id": 15,
-      "status": "Done",
-      "comment": "sub_RclHY7hxcaS1wD"
-    },
-    {
-      "id": 3335,
+      "id": 3329,
       "audit_id": 84,
       "item_id": 16,
       "status": "Done",
       "comment": ""
     },
     {
-      "id": 3336,
+      "id": 3330,
       "audit_id": 84,
-      "item_id": 17,
-      "status": "Done",
-      "comment": ""
+      "item_id": 23,
+      "status": "Suggested PWM",
+      "comment": "Suggested PWM"
     },
     {
-      "id": 3337,
-      "audit_id": 84,
-      "item_id": 18,
-      "status": "Done",
-      "comment": ""
-    },
-    {
-      "id": 3338,
-      "audit_id": 84,
-      "item_id": 19,
-      "status": "Done",
-      "comment": ""
-    },
-    {
-      "id": 3339,
-      "audit_id": 84,
-      "item_id": 20,
-      "status": "Done",
-      "comment": ""
-    },
-    {
-      "id": 3340,
-      "audit_id": 84,
-      "item_id": 21,
-      "status": "N/A",
-      "comment": ""
-    },
-    {
-      "id": 3341,
-      "audit_id": 84,
-      "item_id": 22,
-      "status": "N/A",
-      "comment": ""
-    },
-    {
-      "id": 3342,
+      "id": 3331,
       "audit_id": 84,
       "item_id": 24,
       "status": "Done",
       "comment": ""
     },
     {
-      "id": 3343,
+      "id": 3332,
       "audit_id": 84,
       "item_id": 25,
-      "status": "Done",
-      "comment": "Events: subscription.charged, subscription.authenticated"
+      "status": "Suggested PWM",
+      "comment": "Suggested PWM Webhook Implementation to be considered P0"
     },
     {
-      "id": 3344,
+      "id": 3333,
       "audit_id": 84,
       "item_id": 26,
       "status": "Done",
       "comment": ""
     },
     {
-      "id": 3345,
+      "id": 3334,
       "audit_id": 84,
       "item_id": 27,
       "status": "Done",
       "comment": ""
     },
     {
-      "id": 3346,
+      "id": 3335,
       "audit_id": 84,
       "item_id": 28,
       "status": "Done",
-      "comment": "Type: Standard"
+      "comment": "Type:"
     },
     {
-      "id": 3347,
+      "id": 3336,
       "audit_id": 84,
       "item_id": 29,
       "status": "Done",
-      "comment": "Version: NA"
+      "comment": "Version:"
     },
     {
-      "id": 3348,
+      "id": 3337,
       "audit_id": 84,
       "item_id": 30,
       "status": "N/A",
       "comment": ""
     },
     {
-      "id": 3349,
+      "id": 3338,
       "audit_id": 84,
       "item_id": 31,
       "status": "N/A",
       "comment": "Others if applicable:"
     },
     {
-      "id": 3350,
+      "id": 3339,
       "audit_id": 84,
       "item_id": 32,
       "status": "N/A",
       "comment": ""
     },
     {
-      "id": 3351,
+      "id": 3340,
       "audit_id": 84,
       "item_id": 33,
       "status": "Done",
       "comment": ""
     },
     {
-      "id": 3352,
-      "audit_id": 84,
-      "item_id": 34,
-      "status": "Done",
-      "comment": ""
-    },
-    {
-      "id": 3353,
-      "audit_id": 84,
-      "item_id": 35,
-      "status": "N/A",
-      "comment": ""
-    },
-    {
-      "id": 3354,
+      "id": 3341,
       "audit_id": 84,
       "item_id": 36,
       "status": "N/A",
       "comment": ""
     },
     {
-      "id": 3355,
-      "audit_id": 84,
-      "item_id": 37,
-      "status": "N/A",
-      "comment": ""
-    },
-    {
-      "id": 3356,
+      "id": 3342,
       "audit_id": 84,
       "item_id": 38,
       "status": "Done",
       "comment": ""
     },
     {
-      "id": 3357,
+      "id": 3343,
       "audit_id": 84,
       "item_id": 39,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3344,
+      "audit_id": 84,
+      "item_id": 40,
+      "status": "N/A",
+      "comment": "Subscription.completed, subscription.halted, subscription.activated webhook events have been recommended to be implemented at the merchant end. In case of payment failure or auto-refund, using the same subscription_id generated previously has been recommended to the merchant to reduce API calls. Recurring: true and Save:1 to be passed in the Recurring flow, and skipped from the one time payments flow\nWebhook Implementation to be considered as P0 for Recurring flow.\nCancel Mandate and Delete Token APIs to be implemented for a convenient flow of the user.\nRecommended the Payment Capture Settings to be increased to 3 Days."
+    },
+    {
+      "id": 3345,
+      "audit_id": 84,
+      "item_id": 5,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3346,
+      "audit_id": 84,
+      "item_id": 6,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3347,
+      "audit_id": 84,
+      "item_id": 7,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3348,
+      "audit_id": 84,
+      "item_id": 8,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3349,
+      "audit_id": 84,
+      "item_id": 9,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3350,
+      "audit_id": 84,
+      "item_id": 13,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3351,
+      "audit_id": 84,
+      "item_id": 15,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3352,
+      "audit_id": 84,
+      "item_id": 17,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3353,
+      "audit_id": 84,
+      "item_id": 18,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3354,
+      "audit_id": 84,
+      "item_id": 19,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3355,
+      "audit_id": 84,
+      "item_id": 20,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3356,
+      "audit_id": 84,
+      "item_id": 21,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3357,
+      "audit_id": 84,
+      "item_id": 22,
       "status": "N/A",
       "comment": ""
     },
     {
       "id": 3358,
       "audit_id": 84,
-      "item_id": 40,
+      "item_id": 34,
       "status": "N/A",
-      "comment": "Subscription.completed, subscription.halted, subscription.activated webhook events have been recommended to be implemented at the merchant end. In case of payment failure or auto-refund, using the same subscription_id generated previously has been recommended to the merchant to reduce API calls. Subscription.completed, subscription.halted, subscription.activated webhook events have been recommended to be implemented at the merchant end.\nIn case of payment failure or auto-refund, using the same subscription_id generated previously has been recommended to the merchant to reduce API calls."
+      "comment": ""
     },
     {
       "id": 3359,
       "audit_id": 84,
-      "item_id": 4,
+      "item_id": 35,
       "status": "N/A",
       "comment": ""
     },
     {
       "id": 3360,
       "audit_id": 84,
-      "item_id": 23,
-      "status": "Done",
-      "comment": "12 minutes"
+      "item_id": 37,
+      "status": "N/A",
+      "comment": ""
     },
     {
       "id": 3361,
@@ -25252,6 +25280,1126 @@
       "item_id": 23,
       "status": "Done",
       "comment": "12 minutes"
+    },
+    {
+      "id": 3481,
+      "audit_id": 88,
+      "item_id": 1,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3482,
+      "audit_id": 88,
+      "item_id": 2,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3483,
+      "audit_id": 88,
+      "item_id": 3,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3484,
+      "audit_id": 88,
+      "item_id": 5,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3485,
+      "audit_id": 88,
+      "item_id": 6,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3486,
+      "audit_id": 88,
+      "item_id": 7,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3487,
+      "audit_id": 88,
+      "item_id": 8,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3488,
+      "audit_id": 88,
+      "item_id": 9,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3489,
+      "audit_id": 88,
+      "item_id": 10,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3490,
+      "audit_id": 88,
+      "item_id": 11,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3491,
+      "audit_id": 88,
+      "item_id": 12,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3492,
+      "audit_id": 88,
+      "item_id": 13,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3493,
+      "audit_id": 88,
+      "item_id": 14,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3494,
+      "audit_id": 88,
+      "item_id": 15,
+      "status": "Done",
+      "comment": "sub_RclHY7hxcaS1wD"
+    },
+    {
+      "id": 3495,
+      "audit_id": 88,
+      "item_id": 16,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3496,
+      "audit_id": 88,
+      "item_id": 17,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3497,
+      "audit_id": 88,
+      "item_id": 18,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3498,
+      "audit_id": 88,
+      "item_id": 19,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3499,
+      "audit_id": 88,
+      "item_id": 20,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3500,
+      "audit_id": 88,
+      "item_id": 21,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3501,
+      "audit_id": 88,
+      "item_id": 22,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3502,
+      "audit_id": 88,
+      "item_id": 24,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3503,
+      "audit_id": 88,
+      "item_id": 25,
+      "status": "Done",
+      "comment": "Events: subscription.charged, subscription.authenticated"
+    },
+    {
+      "id": 3504,
+      "audit_id": 88,
+      "item_id": 26,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3505,
+      "audit_id": 88,
+      "item_id": 27,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3506,
+      "audit_id": 88,
+      "item_id": 28,
+      "status": "Done",
+      "comment": "Type: Standard"
+    },
+    {
+      "id": 3507,
+      "audit_id": 88,
+      "item_id": 29,
+      "status": "Done",
+      "comment": "Version: NA"
+    },
+    {
+      "id": 3508,
+      "audit_id": 88,
+      "item_id": 30,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3509,
+      "audit_id": 88,
+      "item_id": 31,
+      "status": "N/A",
+      "comment": "Others if applicable:"
+    },
+    {
+      "id": 3510,
+      "audit_id": 88,
+      "item_id": 32,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3511,
+      "audit_id": 88,
+      "item_id": 33,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3512,
+      "audit_id": 88,
+      "item_id": 34,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3513,
+      "audit_id": 88,
+      "item_id": 35,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3514,
+      "audit_id": 88,
+      "item_id": 36,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3515,
+      "audit_id": 88,
+      "item_id": 37,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3516,
+      "audit_id": 88,
+      "item_id": 38,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3517,
+      "audit_id": 88,
+      "item_id": 39,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3518,
+      "audit_id": 88,
+      "item_id": 40,
+      "status": "N/A",
+      "comment": "Subscription.completed, subscription.halted, subscription.activated webhook events have been recommended to be implemented at the merchant end. In case of payment failure or auto-refund, using the same subscription_id generated previously has been recommended to the merchant to reduce API calls. Subscription.completed, subscription.halted, subscription.activated webhook events have been recommended to be implemented at the merchant end.\nIn case of payment failure or auto-refund, using the same subscription_id generated previously has been recommended to the merchant to reduce API calls."
+    },
+    {
+      "id": 3519,
+      "audit_id": 88,
+      "item_id": 4,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3520,
+      "audit_id": 88,
+      "item_id": 23,
+      "status": "Done",
+      "comment": "12 minutes"
+    },
+    {
+      "id": 3521,
+      "audit_id": 89,
+      "item_id": 1,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3522,
+      "audit_id": 89,
+      "item_id": 2,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3523,
+      "audit_id": 89,
+      "item_id": 3,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3524,
+      "audit_id": 89,
+      "item_id": 4,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3525,
+      "audit_id": 89,
+      "item_id": 10,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3526,
+      "audit_id": 89,
+      "item_id": 11,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3527,
+      "audit_id": 89,
+      "item_id": 12,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3528,
+      "audit_id": 89,
+      "item_id": 14,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3529,
+      "audit_id": 89,
+      "item_id": 16,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3530,
+      "audit_id": 89,
+      "item_id": 23,
+      "status": "Suggested PWM",
+      "comment": "Suggested PWM"
+    },
+    {
+      "id": 3531,
+      "audit_id": 89,
+      "item_id": 24,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3532,
+      "audit_id": 89,
+      "item_id": 25,
+      "status": "Suggested PWM",
+      "comment": "Suggested PWM Webhook Implementation to be considered P0"
+    },
+    {
+      "id": 3533,
+      "audit_id": 89,
+      "item_id": 26,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3534,
+      "audit_id": 89,
+      "item_id": 27,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3535,
+      "audit_id": 89,
+      "item_id": 28,
+      "status": "Done",
+      "comment": "Type:"
+    },
+    {
+      "id": 3536,
+      "audit_id": 89,
+      "item_id": 29,
+      "status": "Done",
+      "comment": "Version:"
+    },
+    {
+      "id": 3537,
+      "audit_id": 89,
+      "item_id": 30,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3538,
+      "audit_id": 89,
+      "item_id": 31,
+      "status": "N/A",
+      "comment": "Others if applicable:"
+    },
+    {
+      "id": 3539,
+      "audit_id": 89,
+      "item_id": 32,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3540,
+      "audit_id": 89,
+      "item_id": 33,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3541,
+      "audit_id": 89,
+      "item_id": 36,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3542,
+      "audit_id": 89,
+      "item_id": 38,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3543,
+      "audit_id": 89,
+      "item_id": 39,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3544,
+      "audit_id": 89,
+      "item_id": 40,
+      "status": "N/A",
+      "comment": "Subscription.completed, subscription.halted, subscription.activated webhook events have been recommended to be implemented at the merchant end. In case of payment failure or auto-refund, using the same subscription_id generated previously has been recommended to the merchant to reduce API calls. Recurring: true and Save:1 to be passed in the Recurring flow, and skipped from the one time payments flow\nWebhook Implementation to be considered as P0 for Recurring flow.\nCancel Mandate and Delete Token APIs to be implemented for a convenient flow of the user.\nRecommended the Payment Capture Settings to be increased to 3 Days."
+    },
+    {
+      "id": 3545,
+      "audit_id": 89,
+      "item_id": 5,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3546,
+      "audit_id": 89,
+      "item_id": 6,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3547,
+      "audit_id": 89,
+      "item_id": 7,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3548,
+      "audit_id": 89,
+      "item_id": 8,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3549,
+      "audit_id": 89,
+      "item_id": 9,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3550,
+      "audit_id": 89,
+      "item_id": 13,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3551,
+      "audit_id": 89,
+      "item_id": 15,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3552,
+      "audit_id": 89,
+      "item_id": 17,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3553,
+      "audit_id": 89,
+      "item_id": 18,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3554,
+      "audit_id": 89,
+      "item_id": 19,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3555,
+      "audit_id": 89,
+      "item_id": 20,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3556,
+      "audit_id": 89,
+      "item_id": 21,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3557,
+      "audit_id": 89,
+      "item_id": 22,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3558,
+      "audit_id": 89,
+      "item_id": 34,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3559,
+      "audit_id": 89,
+      "item_id": 35,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3560,
+      "audit_id": 89,
+      "item_id": 37,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3561,
+      "audit_id": 90,
+      "item_id": 1,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3562,
+      "audit_id": 90,
+      "item_id": 2,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3563,
+      "audit_id": 90,
+      "item_id": 3,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3564,
+      "audit_id": 90,
+      "item_id": 5,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3565,
+      "audit_id": 90,
+      "item_id": 6,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3566,
+      "audit_id": 90,
+      "item_id": 7,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3567,
+      "audit_id": 90,
+      "item_id": 8,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3568,
+      "audit_id": 90,
+      "item_id": 9,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3569,
+      "audit_id": 90,
+      "item_id": 10,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3570,
+      "audit_id": 90,
+      "item_id": 11,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3571,
+      "audit_id": 90,
+      "item_id": 12,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3572,
+      "audit_id": 90,
+      "item_id": 13,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3573,
+      "audit_id": 90,
+      "item_id": 14,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3574,
+      "audit_id": 90,
+      "item_id": 15,
+      "status": "Done",
+      "comment": "sub_RclHY7hxcaS1wD"
+    },
+    {
+      "id": 3575,
+      "audit_id": 90,
+      "item_id": 16,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3576,
+      "audit_id": 90,
+      "item_id": 17,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3577,
+      "audit_id": 90,
+      "item_id": 18,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3578,
+      "audit_id": 90,
+      "item_id": 19,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3579,
+      "audit_id": 90,
+      "item_id": 20,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3580,
+      "audit_id": 90,
+      "item_id": 21,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3581,
+      "audit_id": 90,
+      "item_id": 22,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3582,
+      "audit_id": 90,
+      "item_id": 24,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3583,
+      "audit_id": 90,
+      "item_id": 25,
+      "status": "Done",
+      "comment": "Events: subscription.charged, subscription.authenticated"
+    },
+    {
+      "id": 3584,
+      "audit_id": 90,
+      "item_id": 26,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3585,
+      "audit_id": 90,
+      "item_id": 27,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3586,
+      "audit_id": 90,
+      "item_id": 28,
+      "status": "Done",
+      "comment": "Type: Standard"
+    },
+    {
+      "id": 3587,
+      "audit_id": 90,
+      "item_id": 29,
+      "status": "Done",
+      "comment": "Version: NA"
+    },
+    {
+      "id": 3588,
+      "audit_id": 90,
+      "item_id": 30,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3589,
+      "audit_id": 90,
+      "item_id": 31,
+      "status": "N/A",
+      "comment": "Others if applicable:"
+    },
+    {
+      "id": 3590,
+      "audit_id": 90,
+      "item_id": 32,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3591,
+      "audit_id": 90,
+      "item_id": 33,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3592,
+      "audit_id": 90,
+      "item_id": 34,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3593,
+      "audit_id": 90,
+      "item_id": 35,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3594,
+      "audit_id": 90,
+      "item_id": 36,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3595,
+      "audit_id": 90,
+      "item_id": 37,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3596,
+      "audit_id": 90,
+      "item_id": 38,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3597,
+      "audit_id": 90,
+      "item_id": 39,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3598,
+      "audit_id": 90,
+      "item_id": 40,
+      "status": "N/A",
+      "comment": "Subscription.completed, subscription.halted, subscription.activated webhook events have been recommended to be implemented at the merchant end. In case of payment failure or auto-refund, using the same subscription_id generated previously has been recommended to the merchant to reduce API calls. Subscription.completed, subscription.halted, subscription.activated webhook events have been recommended to be implemented at the merchant end.\nIn case of payment failure or auto-refund, using the same subscription_id generated previously has been recommended to the merchant to reduce API calls."
+    },
+    {
+      "id": 3599,
+      "audit_id": 90,
+      "item_id": 4,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3600,
+      "audit_id": 90,
+      "item_id": 23,
+      "status": "Done",
+      "comment": "12 minutes"
+    },
+    {
+      "id": 3601,
+      "audit_id": 91,
+      "item_id": 1,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3602,
+      "audit_id": 91,
+      "item_id": 2,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3603,
+      "audit_id": 91,
+      "item_id": 3,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3604,
+      "audit_id": 91,
+      "item_id": 4,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3605,
+      "audit_id": 91,
+      "item_id": 10,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3606,
+      "audit_id": 91,
+      "item_id": 11,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3607,
+      "audit_id": 91,
+      "item_id": 12,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3608,
+      "audit_id": 91,
+      "item_id": 14,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3609,
+      "audit_id": 91,
+      "item_id": 16,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3610,
+      "audit_id": 91,
+      "item_id": 23,
+      "status": "Suggested PWM",
+      "comment": "Suggested PWM"
+    },
+    {
+      "id": 3611,
+      "audit_id": 91,
+      "item_id": 24,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3612,
+      "audit_id": 91,
+      "item_id": 25,
+      "status": "Suggested PWM",
+      "comment": "Suggested PWM Webhook Implementation to be considered P0"
+    },
+    {
+      "id": 3613,
+      "audit_id": 91,
+      "item_id": 26,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3614,
+      "audit_id": 91,
+      "item_id": 27,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3615,
+      "audit_id": 91,
+      "item_id": 28,
+      "status": "Done",
+      "comment": "Type:"
+    },
+    {
+      "id": 3616,
+      "audit_id": 91,
+      "item_id": 29,
+      "status": "Done",
+      "comment": "Version:"
+    },
+    {
+      "id": 3617,
+      "audit_id": 91,
+      "item_id": 30,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3618,
+      "audit_id": 91,
+      "item_id": 31,
+      "status": "N/A",
+      "comment": "Others if applicable:"
+    },
+    {
+      "id": 3619,
+      "audit_id": 91,
+      "item_id": 32,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3620,
+      "audit_id": 91,
+      "item_id": 33,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3621,
+      "audit_id": 91,
+      "item_id": 36,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3622,
+      "audit_id": 91,
+      "item_id": 38,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3623,
+      "audit_id": 91,
+      "item_id": 39,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3624,
+      "audit_id": 91,
+      "item_id": 40,
+      "status": "N/A",
+      "comment": "Subscription.completed, subscription.halted, subscription.activated webhook events have been recommended to be implemented at the merchant end. In case of payment failure or auto-refund, using the same subscription_id generated previously has been recommended to the merchant to reduce API calls. Recurring: true and Save:1 to be passed in the Recurring flow, and skipped from the one time payments flow\nWebhook Implementation to be considered as P0 for Recurring flow.\nCancel Mandate and Delete Token APIs to be implemented for a convenient flow of the user.\nRecommended the Payment Capture Settings to be increased to 3 Days."
+    },
+    {
+      "id": 3625,
+      "audit_id": 91,
+      "item_id": 5,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3626,
+      "audit_id": 91,
+      "item_id": 6,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3627,
+      "audit_id": 91,
+      "item_id": 7,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3628,
+      "audit_id": 91,
+      "item_id": 8,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3629,
+      "audit_id": 91,
+      "item_id": 9,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3630,
+      "audit_id": 91,
+      "item_id": 13,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3631,
+      "audit_id": 91,
+      "item_id": 15,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3632,
+      "audit_id": 91,
+      "item_id": 17,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3633,
+      "audit_id": 91,
+      "item_id": 18,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3634,
+      "audit_id": 91,
+      "item_id": 19,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3635,
+      "audit_id": 91,
+      "item_id": 20,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3636,
+      "audit_id": 91,
+      "item_id": 21,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3637,
+      "audit_id": 91,
+      "item_id": 22,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3638,
+      "audit_id": 91,
+      "item_id": 34,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3639,
+      "audit_id": 91,
+      "item_id": 35,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3640,
+      "audit_id": 91,
+      "item_id": 37,
+      "status": "N/A",
+      "comment": ""
     }
   ]
 }

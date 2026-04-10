@@ -27,6 +27,7 @@ function App() {
   const [latestFrd, setLatestFrd] = useState(null);
   const [checkingFrd, setCheckingFrd] = useState(false);
   const [dragOver, setDragOver] = useState(false);
+  const [selectedSubProduct, setSelectedSubProduct] = useState(null);
   const [theme, setTheme] = useState(() => localStorage.getItem('fra-theme') || 'dark');
   const fileInputRef = useRef(null);
 
@@ -38,7 +39,15 @@ function App() {
   const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark');
 
   const products = [
-    { name: "Standard Checkout", displayName: "Checkout" },
+    {
+      name: "Checkout",
+      displayName: "Checkout",
+      subOptions: [
+        { name: "Standard Checkout", displayName: "Standard" },
+        { name: "Custom Checkout", displayName: "Custom" },
+        { name: "S2S", displayName: "S2S" }
+      ]
+    },
     { name: "Subscriptions", displayName: "Subscriptions" },
     { name: "QR Code", displayName: "QR Code" },
     { name: "Affordability", displayName: "Affordability" },
@@ -57,7 +66,7 @@ function App() {
     }
 
     const formData = new FormData();
-    formData.append("product", selectedProduct);
+    formData.append("product", selectedSubProduct || selectedProduct);
     formData.append("checklist", file);
 
     setIsLoading(true);
@@ -67,24 +76,26 @@ function App() {
 
     try {
       const BASE_URL = "http://localhost:5001";
-      await axios.post(`${BASE_URL}/upload`, formData);
+      const res = await axios.post(`${BASE_URL}/upload`, formData);
       showToast("Data Ingested. Generating Documentation...", "success");
       setUploadDone(true);
-      startPolling();
+      const serverStartTime = res.data?.serverStartTime || 0;
+      startPolling(serverStartTime);
     } catch (err) {
       showToast(err.response?.data?.message || "Ingestion failed.", "error");
       setIsLoading(false);
     }
   };
 
-  const startPolling = () => {
+  const startPolling = (sinceTime) => {
     setCheckingFrd(true);
     const BASE_URL = "http://localhost:5001";
     let count = 0;
+    const sinceParam = sinceTime ? `?since=${sinceTime}` : "";
 
     const check = async () => {
       try {
-        const res = await axios.get(`${BASE_URL}/api/latest-frd`);
+        const res = await axios.get(`${BASE_URL}/api/latest-frd${sinceParam}`);
         if (res.data?.filename) {
           setLatestFrd(res.data);
           setCheckingFrd(false);
@@ -174,6 +185,7 @@ function App() {
                 className={`module-card ${selectedProduct === p.name ? 'selected' : ''}`}
                 onClick={() => {
                   setSelectedProduct(p.name);
+                  setSelectedSubProduct(null);
                   setUploadDone(false);
                   setLatestFrd(null);
                 }}
@@ -207,12 +219,31 @@ function App() {
               <div className="glass-card" style={{ height: '100%' }}>
                 <span className="card-label">01 // Data Acquisition</span>
                 <div
-                  className={`upload-zone ${!selectedProduct ? 'disabled' : ''} ${dragOver ? 'drag-over' : ''}`}
+                  className={`upload-zone ${(!selectedProduct || (products.find(p => p.name === selectedProduct)?.subOptions && !selectedSubProduct)) ? 'disabled' : ''} ${dragOver ? 'drag-over' : ''}`}
                   onDragOver={(e) => { e.preventDefault(); selectedProduct && setDragOver(true); }}
                   onDragLeave={() => setDragOver(false)}
                   onDrop={(e) => { e.preventDefault(); setDragOver(false); handleFileUpload(e.dataTransfer.files[0]); }}
-                  onClick={() => selectedProduct && fileInputRef.current.click()}
+                  onClick={() => {
+                    const hasSubOptions = products.find(p => p.name === selectedProduct)?.subOptions;
+                    if (selectedProduct && (!hasSubOptions || selectedSubProduct)) {
+                      fileInputRef.current.click();
+                    }
+                  }}
                 >
+                  {selectedProduct === "Checkout" && (
+                    <div className="sub-product-selector" onClick={(e) => e.stopPropagation()}>
+                      {products.find(p => p.name === "Checkout").subOptions.map(sub => (
+                        <button
+                          key={sub.name}
+                          className={`sub-opt-btn ${selectedSubProduct === sub.name ? 'active' : ''}`}
+                          onClick={() => setSelectedSubProduct(sub.name)}
+                        >
+                          {sub.displayName}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
                   <input
                     type="file"
                     ref={fileInputRef}

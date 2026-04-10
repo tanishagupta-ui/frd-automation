@@ -260,6 +260,75 @@
         "target_audience": "Singles and their families looking for life partners and wedding-related services, primarily within India and the global Indian diaspora."
       },
       "model_used": "gemini-flash-latest"
+    },
+    {
+      "id": 13,
+      "merchant_name": "Section",
+      "original_name": "Section",
+      "merchant_id": null,
+      "search_date": "2026-04-10T08:46:09.672Z",
+      "web_data": {
+        "company_name": "Section",
+        "website": "https://www.sectionschool.com/",
+        "description": "An online business school that provides sprint-based courses, AI workshops, and professional development programs designed for high-growth professionals and corporate teams.",
+        "industry": "EdTech",
+        "products_services": [
+          "AI Crash Course",
+          "Section Membership",
+          "Business Strategy Sprints",
+          "AI Proficiency Report",
+          "Enterprise Learning & Development programs",
+          "Product Management and Marketing workshops"
+        ],
+        "business_model": "B2B and B2C",
+        "target_audience": "Mid-to-senior level professionals, managers, and corporate leadership teams looking to upskill in AI and modern business strategy."
+      },
+      "model_used": "gemini-flash-latest"
+    },
+    {
+      "id": 14,
+      "merchant_name": "Join Ventures",
+      "original_name": "Copy of Joinventures",
+      "merchant_id": null,
+      "search_date": "2026-04-10T08:50:40.135Z",
+      "web_data": {
+        "company_name": "Join Ventures",
+        "website": "https://joinventures.co.in",
+        "description": "Join Ventures is a house of brands for celebrations, operating a diverse portfolio of digital-first brands across gifting, fresh flowers, gourmet food, and home decor categories.",
+        "industry": "E-commerce",
+        "products_services": [
+          "Floral arrangements and delivery",
+          "Gourmet cakes and food hampers",
+          "Personalized gifting",
+          "Handcrafted home decor",
+          "Corporate gifting solutions"
+        ],
+        "business_model": "D2C",
+        "target_audience": "Global consumers celebrating personal milestones and corporate entities seeking professional gifting services."
+      },
+      "model_used": "gemini-flash-latest"
+    },
+    {
+      "id": 15,
+      "merchant_name": "BlaBlaCar (Comuto SA)",
+      "original_name": "1775811024682 514271128",
+      "merchant_id": null,
+      "search_date": "2026-04-10T08:54:51.517Z",
+      "web_data": {
+        "company_name": "BlaBlaCar (Comuto SA)",
+        "website": "https://www.blablacar.com",
+        "description": "A global community-based carpooling platform that connects drivers with empty seats to passengers traveling in the same direction to share travel costs.",
+        "industry": "Transportation and Mobility",
+        "products_services": [
+          "Long-distance carpooling",
+          "BlaBlaBus (intercity bus services)",
+          "BlaBlaCar Daily (short-distance commuter carpooling)",
+          "Travel insurance"
+        ],
+        "business_model": "C2C / Marketplace",
+        "target_audience": "Budget-conscious travelers, long-distance commuters, and eco-friendly individuals seeking flexible transportation options."
+      },
+      "model_used": "gemini-flash-latest"
     }
   ]
 }

@@ -27,12 +27,14 @@ async function generateFRD(
   originalFilename = null
 ) {
   try {
-    const merchantName =
+    let merchantName =
       auditResult.merchant_info?.name ||
       auditResult.audit_metadata?.merchant_name ||
       auditResult.audit_metadata?.mx_name ||
       enrichmentData?.merchant_name ||
       "NA";
+
+    merchantName = cleanMerchantName(merchantName);
 
     auditResult = hydrateChecklistFromDataFolder(
       auditResult,
@@ -105,7 +107,7 @@ async function generateFRD(
       `4. [Integration Best Practices](#4-integration-best-practices)\n\n`;
 
     const ownerName = auditResult.audit_metadata?.owner_name || auditResult.merchant_info?.owner_name || "NA";
-    
+
     markdown += `- **Owner Name: ${ownerName}**\n\n`;
     pdfMarkdown += `- **Owner Name: ${ownerName}**\n\n`;
 
@@ -1129,9 +1131,36 @@ function slugifyName(value) {
     .toLowerCase();
 }
 
+/**
+ * Deduplicates and cleans up merchant names (e.g., "Name Name" -> "Name").
+ */
+function cleanMerchantName(name) {
+  if (!name || name === "NA") return name;
+  let n = String(name).trim();
+  if (!n) return n;
+
+  // 1. Handle "Phrase Phrase" duplication
+  const words = n.split(/\s+/);
+  if (words.length >= 2 && words.length % 2 === 0) {
+    const half = words.length / 2;
+    const firstHalf = words.slice(0, half).join(" ");
+    const secondHalf = words.slice(half).join(" ");
+    if (firstHalf.toLowerCase() === secondHalf.toLowerCase()) {
+      return firstHalf;
+    }
+  }
+
+  // 2. Handle simple "Word Word" duplication
+  if (words.length === 2 && words[0].toLowerCase() === words[1].toLowerCase()) {
+    return words[0];
+  }
+
+  return n;
+}
+
 function buildWebDataSummary(webData, merchantName) {
   if (webData && webData.description && webData.description !== "Not found") {
-    const company = webData.company_name || merchantName || "The company";
+    const company = cleanMerchantName(webData.company_name || merchantName || "The company");
     const description = webData.description || "";
     const industry = webData.industry
       ? `It operates in ${webData.industry}. `
@@ -1151,7 +1180,11 @@ function buildWebDataSummary(webData, merchantName) {
 
     const prefix = location || size ? `${location}${size}`.trim() + " " : "";
     const base = description.endsWith(".") ? description : `${description}.`;
-    return `${company} ${base} ${industry}${prefix}${services}`
+
+    // Avoid prepending company name if description already starts with it
+    const companyPrefix = base.toLowerCase().startsWith(company.toLowerCase()) ? "" : `${company} `;
+
+    return `${companyPrefix}${base} ${industry}${prefix}${services}`
       .replace(/\s+/g, " ")
       .trim();
   }
@@ -1381,4 +1414,6 @@ function formatBestPractices(val) {
 }
 module.exports = {
   generateFRD,
+  buildWebDataSummary,
+  cleanMerchantName,
 };

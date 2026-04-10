@@ -3,7 +3,7 @@
   --rzp-dark: #0B122B;
   --rzp-success: #13C2C2;
   --rzp-error: #FE5A5A;
-  
+
   --bg: #F8FAFC;
   --surface: #FFFFFF;
   --surface-low: #F1F5F9;
@@ -17,7 +17,7 @@
   --accent-glow: rgba(51, 149, 255, 0.15);
   --success: var(--rzp-success);
   --error: var(--rzp-error);
-  
+
   --sidebar-w: 80px;
   --nav-panel-w: 280px;
   --radius-xl: 16px;
@@ -410,6 +410,43 @@ body {
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 24px;
+}
+
+/* ─── Sub Product Selector ─── */
+.sub-product-selector {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  display: flex;
+  gap: 8px;
+  background: var(--surface-low);
+  padding: 4px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  z-index: 10;
+}
+
+.sub-opt-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sub-opt-btn:hover {
+  background: var(--surface-top);
+  color: var(--text-primary);
+}
+
+.sub-opt-btn.active {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 12px var(--accent-glow);
 }
 
 /* ─── Upload Experience ─── */

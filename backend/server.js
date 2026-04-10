@@ -142,6 +142,7 @@ function extractMetadataFromRawData(rawData) {
 // Function to store merchant enrichment data
 
 app.post("/upload", (req, res) => {
+    const serverStartTime = Date.now();
     upload.single("checklist")(req, res, async function (err) {
         if (err instanceof multer.MulterError) {
             // A Multer error occurred when uploading.
@@ -258,53 +259,66 @@ app.post("/upload", (req, res) => {
                 else if (p.includes("route")) p = "route";
                 else if (p.includes("smart collect")) p = "smart_collect";
                 else if (p.includes("charge at will") || p === "caw") p = "caw";
-                else if (p.includes("affordability")) p = "affordability";
+                else if (p.includes("affordability") || p.includes("affordability widget")) p = "affordability";
                 else if (p.includes("standard checkout")) p = "standard_checkout";
                 else if (p.includes("custom checkout")) p = "custom_checkout";
                 else if (p.includes("s2s")) p = "s2s";
 
-                if (p === "subscriptions") {
-                    if (!content.includes("plan creation") && !content.includes("subscription creation") && !content.includes("e mandate")) {
-                        return "This does not appear to be a Subscriptions checklist. Please upload the correct file for Subscriptions.";
-                    }
-                } else if (p === "route") {
-                    if (!content.includes("linked account creation") && !content.includes("transfer process")) {
-                        return "This does not appear to be a Route checklist. Please upload the correct file for Route.";
-                    }
-                } else if (p === "qr_code") {
-                    if (!content.includes("qr code implementation") && !content.includes("dynamic qr")) {
-                        return "This does not appear to be a QR Code checklist. Please upload the correct file for QR Code.";
-                    }
-                } else if (p === "payment_links") {
-                    // Cross-validation: reject if it looks like affordability
-                    if (content.includes("affordability widget") || content.includes("emi, cardless emi")) {
-                        return "This looks like an Affordability checklist, but you selected Payment Links. Please upload the correct file.";
-                    }
+                // Define Signatures (Unique identifying strings for each product)
+                const signatures = {
+                    "subscriptions": ["plan creation", "subscription creation", "e mandate", "upi autopay"],
+                    "route": ["linked account creation", "transfer process", "refund or reversal", "direct transfer"],
+                    "qr_code": ["qr code implementation", "dynamic qr", "instant qr"],
+                    "payment_links": ["set expiry", "regenerate keys", "ncapps"],
+                    "affordability": ["emi, cardless emi"],
+                    "smart_collect": ["virtual account", "customer identifier", "smart collect"],
+                    "caw": ["charge at will", "tokenization", "repeat payments"],
+                    "checkout": ["account live (key/secret)", "webhook configs", "order creation"]
+                };
 
-                    const hasLiveKeys = content.includes("1. live keys") || content.includes("downloading keys");
-                    const hasSetup = content.includes("standard checkout") || content.includes("native checkout") || content.includes("custom checkout");
+                // Helper to check if content matches a signature
+                const matchesSignature = (sigKey) => {
+                    const sigs = signatures[sigKey];
+                    if (!sigs) return false;
+                    // For checkout, we need more lenient matching because it's broad
+                    if (sigKey === "checkout") {
+                        return content.includes("order creation") || (content.includes("webhooks") && content.includes("razorpay_signature"));
+                    }
+                    // For others, if any of the signature phrases are found
+                    return sigs.some(sig => content.includes(sig));
+                };
 
-                    if (!hasLiveKeys || !hasSetup) {
-                        return `This does not appear to be a ${type} checklist. Please upload the correct file.`;
-                    }
-                } else if (p === "affordability") {
-                    if (!content.includes("affordability widget") && !content.includes("shopify") && !content.includes("emi, cardless emi")) {
-                        return "This does not appear to be an Affordability checklist. Please upload the correct file for Affordability.";
-                    }
-                } else if (["standard_checkout", "custom_checkout", "s2s"].includes(p)) {
-                    if (!content.includes("account live (key/secret)") && !content.includes("webhook configs")) {
-                        return `This does not appear to be a ${type} checklist. Please upload the correct file.`;
-                    }
-                } else if (p === "smart_collect") {
-                    if (!content.includes("smart collect") && !content.includes("customer identifier") && !content.includes("virtual account")) {
-                        return "This does not appear to be a Smart Collect checklist. Please upload the correct file.";
-                    }
-                } else if (p === "caw") {
-                    if (!content.includes("charge at will") && !content.includes("tokenization") && !content.includes("repeat payments")) {
-                        return "This does not appear to be a Charge at Will checklist. Please upload the correct file.";
-                    }
+                const selectedSigKey = (p === "standard_checkout" || p === "custom_checkout" || p === "s2s") ? "checkout" : p;
+
+                // 1. Identify which signatures are present
+                const matches = {};
+                for (const sigKey of Object.entries(signatures).map(([k]) => k)) {
+                    matches[sigKey] = matchesSignature(sigKey);
                 }
-                return null;
+
+                // 2. Refined Identification & Exclusions
+                // Subscriptions is very specific; if it's there, it's not CAW or Checkout only
+                if (matches["subscriptions"]) {
+                    matches["caw"] = false;
+                    matches["checkout"] = false;
+                }
+
+                // If it looks like more specific products, it's not just "Checkout"
+                if (matches["route"] || matches["qr_code"] || matches["payment_links"] || matches["affordability"] || matches["smart_collect"] || matches["caw"]) {
+                    matches["checkout"] = false;
+                }
+
+                // 3. Validate Selection
+                if (matches[selectedSigKey]) {
+                    // Check for some additional criteria for certain products
+                    if (p === "payment_links" && !content.includes("payment link") && !matches["payment_links"]) return "Please upload the correct checklist";
+                    if (p === "affordability" && !matches["affordability"] && !content.includes("shopify")) return "Please upload the correct checklist";
+
+                    return null; // Successfully validated
+                }
+
+                // 4. Default: Invalid
+                return `Please upload the correct checklist`;
             };
 
             const validationError = validateChecklistContent(req.body.product || "Unknown", rawData);
@@ -2187,7 +2201,8 @@ app.post("/upload", (req, res) => {
                 merchantName: merchantName,
                 merchantEnrichment: merchantInfo,
                 data: result,
-                diagramPath: diagramPath
+                diagramPath: diagramPath,
+                serverStartTime: serverStartTime
             });
 
             // Enrichment search is now triggered at the start of the handler
@@ -2331,10 +2346,14 @@ app.use("/generated_frds", express.static(frdDir));
 
 // GET latest FRD PDF info
 app.get("/api/latest-frd", (req, res) => {
+    const { since } = req.query;
+    const sinceTime = since ? parseInt(since) : 0;
+
     try {
         const files = fs.readdirSync(frdDir)
             .filter(f => f.endsWith(".pdf"))
             .map(f => ({ name: f, time: fs.statSync(path.join(frdDir, f)).mtime.getTime() }))
+            .filter(f => f.time > sinceTime)
             .sort((a, b) => b.time - a.time);
 
         if (files.length === 0) return res.status(404).json({ message: "No FRD found" });
