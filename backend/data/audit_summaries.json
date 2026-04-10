@@ -2633,6 +2633,42 @@
       ],
       "audit_summary": "- The user completes the payment journey on the Matrimony.com Limited platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for UPI, Cards.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
       "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1775809632614",
+      "audit_id": "audit_1775809626843_355",
+      "merchant_name": "Matrimony.com Limited",
+      "product_type": "Charge at Will",
+      "audit_date": "18th March",
+      "summary_date": "2026-04-10T08:27:12.614Z",
+      "key_findings": [
+        "Bank Account / TPV: N/A",
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): Done",
+        "Fetch status of Payment_id: Done",
+        "Consumes Error Codes: Done"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Matrimony.com Limited platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for UPI, Cards.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1775810390788",
+      "audit_id": "audit_1775810376133_769",
+      "merchant_name": "Matrimony.com Limited",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-04-10T08:39:36.141Z",
+      "summary_date": "2026-04-10T08:39:50.788Z",
+      "key_findings": [
+        "Bank Account / TPV: N/A",
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): Done",
+        "Fetch status of Payment_id: Done",
+        "Consumes Error Codes: Done",
+        "Fetch Token by Payment ID: Done",
+        "Consumes payment state at capture time: Done",
+        "Fetch payment APIs (Fallback): Done",
+        "Autorefund Auth payments using payment capture as manual: Done"
+      ],
+      "audit_summary": "- The user selects a subscription or matchmaking service on the Matrimony.com platform and proceeds to the checkout interface.\n- The system performs server-side verification of the payment_id, order_id, and razorpay_signature for both Standard and Custom checkout flows to ensure transaction authenticity.\n- Webhook events are evaluated and integrated to handle asynchronous payment status updates and maintain backend synchronization.\n- Payment capture is managed through standard mechanisms, including automated logic to refund authorized payments when manual capture is not completed within the designated window.\n- The integration utilizes the 'Fetch Token by Payment ID' API to facilitate the 'Charge at Will' product functionality for subsequent transaction processing.\n- Robust error handling is implemented by consuming Razorpay-standard error codes to manage payment failures and exceptions effectively.\n- A fallback mechanism is established using Fetch Payment APIs to verify transaction statuses in scenarios where real-time notifications are delayed.\n- Successful Test IDs: No successful payment IDs (pay_IDs) were recorded for UPI or Card methods during this audit session.",
+      "overall_status": "Pass"
     }
   ]
 }

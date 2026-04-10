@@ -74,6 +74,7 @@ async function uploadFile(filePath, fileName, mimeType) {
             resource: fileMetadata,
             media: media,
             fields: 'id',
+            supportsAllDrives: true,
         });
 
         console.log(`✅ File uploaded to Google Drive: ${fileName} (ID: ${response.data.id})`);
