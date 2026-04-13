@@ -657,6 +657,13 @@
       "merchant_name": "Sugarfit",
       "audit_date": "7th November",
       "created_at": "2026-04-13T07:22:45.143Z"
+    },
+    {
+      "id": 95,
+      "merchant_id": "",
+      "merchant_name": "Sugarfit",
+      "audit_date": "7th November",
+      "created_at": "2026-04-13T09:02:30.463Z"
     }
   ],
   "subscription_checklist_template": [
@@ -27258,6 +27265,286 @@
     {
       "id": 3760,
       "audit_id": 94,
+      "item_id": 23,
+      "status": "Done",
+      "comment": "12 minutes"
+    },
+    {
+      "id": 3761,
+      "audit_id": 95,
+      "item_id": 1,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3762,
+      "audit_id": 95,
+      "item_id": 2,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3763,
+      "audit_id": 95,
+      "item_id": 3,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3764,
+      "audit_id": 95,
+      "item_id": 5,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3765,
+      "audit_id": 95,
+      "item_id": 6,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3766,
+      "audit_id": 95,
+      "item_id": 7,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3767,
+      "audit_id": 95,
+      "item_id": 8,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3768,
+      "audit_id": 95,
+      "item_id": 9,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3769,
+      "audit_id": 95,
+      "item_id": 10,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3770,
+      "audit_id": 95,
+      "item_id": 11,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3771,
+      "audit_id": 95,
+      "item_id": 12,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3772,
+      "audit_id": 95,
+      "item_id": 13,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3773,
+      "audit_id": 95,
+      "item_id": 14,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3774,
+      "audit_id": 95,
+      "item_id": 15,
+      "status": "Done",
+      "comment": "sub_RclHY7hxcaS1wD"
+    },
+    {
+      "id": 3775,
+      "audit_id": 95,
+      "item_id": 16,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3776,
+      "audit_id": 95,
+      "item_id": 17,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3777,
+      "audit_id": 95,
+      "item_id": 18,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3778,
+      "audit_id": 95,
+      "item_id": 19,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3779,
+      "audit_id": 95,
+      "item_id": 20,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3780,
+      "audit_id": 95,
+      "item_id": 21,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3781,
+      "audit_id": 95,
+      "item_id": 22,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3782,
+      "audit_id": 95,
+      "item_id": 24,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3783,
+      "audit_id": 95,
+      "item_id": 25,
+      "status": "Done",
+      "comment": "Events: subscription.charged, subscription.authenticated"
+    },
+    {
+      "id": 3784,
+      "audit_id": 95,
+      "item_id": 26,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3785,
+      "audit_id": 95,
+      "item_id": 27,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3786,
+      "audit_id": 95,
+      "item_id": 28,
+      "status": "Done",
+      "comment": "Type: Standard"
+    },
+    {
+      "id": 3787,
+      "audit_id": 95,
+      "item_id": 29,
+      "status": "Done",
+      "comment": "Version: NA"
+    },
+    {
+      "id": 3788,
+      "audit_id": 95,
+      "item_id": 30,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3789,
+      "audit_id": 95,
+      "item_id": 31,
+      "status": "N/A",
+      "comment": "Others if applicable:"
+    },
+    {
+      "id": 3790,
+      "audit_id": 95,
+      "item_id": 32,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3791,
+      "audit_id": 95,
+      "item_id": 33,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3792,
+      "audit_id": 95,
+      "item_id": 34,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3793,
+      "audit_id": 95,
+      "item_id": 35,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3794,
+      "audit_id": 95,
+      "item_id": 36,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3795,
+      "audit_id": 95,
+      "item_id": 37,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3796,
+      "audit_id": 95,
+      "item_id": 38,
+      "status": "Done",
+      "comment": ""
+    },
+    {
+      "id": 3797,
+      "audit_id": 95,
+      "item_id": 39,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3798,
+      "audit_id": 95,
+      "item_id": 40,
+      "status": "N/A",
+      "comment": "Subscription.completed, subscription.halted, subscription.activated webhook events have been recommended to be implemented at the merchant end. In case of payment failure or auto-refund, using the same subscription_id generated previously has been recommended to the merchant to reduce API calls. Subscription.completed, subscription.halted, subscription.activated webhook events have been recommended to be implemented at the merchant end.\nIn case of payment failure or auto-refund, using the same subscription_id generated previously has been recommended to the merchant to reduce API calls."
+    },
+    {
+      "id": 3799,
+      "audit_id": 95,
+      "item_id": 4,
+      "status": "N/A",
+      "comment": ""
+    },
+    {
+      "id": 3800,
+      "audit_id": 95,
       "item_id": 23,
       "status": "Done",
       "comment": "12 minutes"

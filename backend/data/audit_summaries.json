@@ -3096,6 +3096,27 @@
       ],
       "audit_summary": "- The user journey involves selecting a matchmaking service or subscription plan on the platform, triggering the 'Charge at Will' payment flow.\n- Server-side verification of razorpay_payment_id, razorpay_order_id, and razorpay_signature is correctly implemented for both Standard and Custom Checkout integrations.\n- The integration consumes the Fetch Status and Fetch Token by Payment ID APIs to validate transaction states and manage recurring payment tokens.\n- Specific webhook events have been evaluated to ensure real-time synchronization of payment states and lifecycle management within the merchant's backend.\n- Auto-capture is configured through standard mechanisms, with automated refund logic applied to authorized payments where manual capture is utilized.\n- Technical kits for error code consumption have been integrated to handle transaction exceptions and provide descriptive user feedback.\n- Successful Test IDs: No pay_IDs were recorded for UPI or Card methods during this specific audit cycle.",
       "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1776070962903",
+      "audit_id": "audit_1776070950480",
+      "merchant_name": "Sugarfit Health Solutions Private Limited",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-04-13T09:02:42.903Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: Done",
+        "Consumes payment state at capture time: Done",
+        "Webhooks: Done",
+        "Fetch payment APIs (Fallback): Done",
+        "Server language/SDK: Done",
+        "Using Refund api's: N/A"
+      ],
+      "audit_summary": "- The user journey involves selecting a health subscription plan on the Sugarfit platform followed by payment authorization through the Razorpay checkout interface.\n- The integration utilizes automated status fetching for both 'payment_id' and 'subscription_id' to maintain consistency between the merchant database and Razorpay records.\n- Webhook events are fully integrated to handle real-time subscription lifecycle updates and asynchronous payment notifications.\n- Payment capture is managed via standard mechanisms, ensuring transaction finality is synchronized with the subscription state.\n- Transaction expiry is configured with a 2-day window for UPI and a 3-day window for Card payments, aligning with the platform's operational requirements.\n- The system effectively consumes Razorpay error codes, enabling granular error handling and reporting for failed subscription attempts.\n- Fallback mechanisms via 'Fetch Payment' APIs are implemented to ensure data integrity in cases where front-end redirects or webhooks fail.\n- Successful Test IDs: None identified (No pay_IDs for UPI or Cards were found in the provided logs).",
+      "overall_status": "Pass"
     }
   ]
 }
