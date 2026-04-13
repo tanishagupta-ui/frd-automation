@@ -41,6 +41,24 @@ function initDrive() {
         }
 
         drive = google.drive({ version: 'v3', auth });
+
+        // Asynchronously log the authenticated user's email for diagnostic purposes
+        auth.getCredentials().then(creds => {
+            if (CLIENT_ID) {
+                // For OAuth2, we can't easily get the email without an extra call, 
+                // but we can log that we are using OAuth.
+                console.log(`✅ Google Drive diagnostic: Authenticated via OAuth 2.0 (Client ID: ${CLIENT_ID.substring(0, 10)}...)`);
+            } else if (SERVICE_ACCOUNT_KEY_PATH) {
+                // For Service Account, the email is in the key file
+                try {
+                    const key = JSON.parse(fs.readFileSync(SERVICE_ACCOUNT_KEY_PATH, 'utf8'));
+                    console.log(`✅ Google Drive diagnostic: Authenticated via Service Account (${key.client_email})`);
+                } catch (e) {
+                    console.log(`✅ Google Drive diagnostic: Authenticated via Service Account`);
+                }
+            }
+        }).catch(() => { });
+
         return drive;
     } catch (error) {
         console.error('❌ Error initializing Google Drive:', error);
@@ -80,7 +98,14 @@ async function uploadFile(filePath, fileName, mimeType) {
         console.log(`✅ File uploaded to Google Drive: ${fileName} (ID: ${response.data.id})`);
         return response.data.id;
     } catch (error) {
-        console.error(`❌ Error uploading to Google Drive (${fileName}):`, error);
+        let errorMsg = error.message;
+        if (error.errors && error.errors.length > 0) {
+            errorMsg = error.errors.map(e => e.message).join('; ');
+        }
+        console.error(`❌ Error uploading to Google Drive (${fileName}):`, errorMsg);
+        if (error.code === 403) {
+            console.error(`💡 Suggestion: Ensure the authenticated account has 'Contributor' or 'Content Manager' permissions on the Shared Drive folder (ID: ${FOLDER_ID})`);
+        }
         return null;
     }
 }

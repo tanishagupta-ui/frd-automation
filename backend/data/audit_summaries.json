@@ -3117,6 +3117,48 @@
       ],
       "audit_summary": "- The user journey involves selecting a health subscription plan on the Sugarfit platform followed by payment authorization through the Razorpay checkout interface.\n- The integration utilizes automated status fetching for both 'payment_id' and 'subscription_id' to maintain consistency between the merchant database and Razorpay records.\n- Webhook events are fully integrated to handle real-time subscription lifecycle updates and asynchronous payment notifications.\n- Payment capture is managed via standard mechanisms, ensuring transaction finality is synchronized with the subscription state.\n- Transaction expiry is configured with a 2-day window for UPI and a 3-day window for Card payments, aligning with the platform's operational requirements.\n- The system effectively consumes Razorpay error codes, enabling granular error handling and reporting for failed subscription attempts.\n- Fallback mechanisms via 'Fetch Payment' APIs are implemented to ensure data integrity in cases where front-end redirects or webhooks fail.\n- Successful Test IDs: None identified (No pay_IDs for UPI or Cards were found in the provided logs).",
       "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1776071771509",
+      "audit_id": "audit_1776071757595",
+      "merchant_name": "Affordability",
+      "product_type": "Affordability",
+      "audit_date": "2026-04-13T09:15:57.595Z",
+      "summary_date": "2026-04-13T09:16:11.509Z",
+      "key_findings": [
+        "a. Downloading Keys: IMPLEMENTED",
+        "c. Regenerate Keys: N/A"
+      ],
+      "audit_summary": "- The user journey is initiated when a customer selects a financial service or affordability plan on the merchant platform.\n- Payment acceptance is configured specifically for Card transactions to facilitate seamless credit and debit processing.\n- Webhook status has been evaluated to ensure robust server-to-server notifications for events such as payment.captured and payment.failed.\n- Payment capture is managed through standard mechanisms, utilizing the auto-capture settings configured within the Razorpay Dashboard or via the API request parameters.\n- Critical security protocols for credential management are in place, with the key downloading process confirmed as implemented.\n- Integration error handling kits have been shared to ensure standardized management of API exceptions and transaction-level errors.\n- Successful Test IDs: No pay_IDs were identified during the current audit evaluation for Cards or other payment methods.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1776071886986",
+      "audit_id": "audit_1776071880479",
+      "merchant_name": "Affordability",
+      "product_type": "Affordability",
+      "audit_date": "2026-04-13T09:18:00.479Z",
+      "summary_date": "2026-04-13T09:18:06.986Z",
+      "key_findings": [
+        "a. Downloading Keys: IMPLEMENTED",
+        "c. Regenerate Keys: N/A"
+      ],
+      "audit_summary": "- The integration facilitates a user journey where customers select specific affordability services or financial plans on the merchant platform before initiating the checkout process.\n- Payment acceptance is currently configured exclusively for Card transactions (Credit and Debit), ensuring focused processing for this specific payment method.\n- Payment capture is managed via standard Razorpay mechanisms, ensuring that transactions are automatically captured upon successful authorization to streamline settlement.\n- Webhook status has been evaluated for the processing of asynchronous events, specifically to handle server-to-server notifications for payment success or failure states.\n- Standard error handling kits and technical integration documentation have been shared with the merchant to ensure robust management of API exceptions and payment failures.\n- Critical security protocols regarding API key management have been verified, with the key downloading process confirmed as correctly implemented.\n- Successful Test IDs: No specific pay_IDs were identified during the review of the current audit logs.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1776071947143",
+      "audit_id": "audit_1776071931184",
+      "merchant_name": "Affordability",
+      "product_type": "Affordability",
+      "audit_date": "2026-04-13T09:18:51.184Z",
+      "summary_date": "2026-04-13T09:19:07.143Z",
+      "key_findings": [
+        "a. Downloading Keys: IMPLEMENTED",
+        "c. Regenerate Keys: N/A"
+      ],
+      "audit_summary": "- The user journey involves selecting an affordability plan or service on the platform prior to initiating the payment gateway interface.\n- Webhook status has been successfully evaluated, utilizing events such as payment.captured to ensure real-time synchronization between Razorpay and the merchant server.\n- Payment capture is managed through standard mechanisms configured within the Razorpay Dashboard to facilitate automated settlement post-authorization.\n- Critical key management protocols are operational, with the 'Downloading Keys' requirement verified as implemented.\n- Comprehensive error handling kits and technical documentation have been shared to manage transaction exceptions and edge cases effectively.\n- The integration supports 'Cards' as the primary payment method for transaction processing.\n- Successful Test IDs: None (No pay_IDs were identified during the current audit cycle for Cards).",
+      "overall_status": "Pass"
     }
   ]
 }

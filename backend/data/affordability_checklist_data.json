@@ -342,6 +342,27 @@
       "merchant_name": "Affordability",
       "audit_date": "",
       "created_at": "2026-04-13T08:41:23.742Z"
+    },
+    {
+      "id": 50,
+      "merchant_id": "Unknown",
+      "merchant_name": "Affordability",
+      "audit_date": "",
+      "created_at": "2026-04-13T09:15:57.592Z"
+    },
+    {
+      "id": 51,
+      "merchant_id": "Unknown",
+      "merchant_name": "Affordability",
+      "audit_date": "",
+      "created_at": "2026-04-13T09:18:00.474Z"
+    },
+    {
+      "id": 52,
+      "merchant_id": "Unknown",
+      "merchant_name": "Affordability",
+      "audit_date": "",
+      "created_at": "2026-04-13T09:18:51.181Z"
     }
   ],
   "affordability_checklist_template": [
@@ -4544,6 +4565,258 @@
       "template_id": 12,
       "status": "N/A",
       "specific_comment": ""
+    },
+    {
+      "id": 589,
+      "session_id": 50,
+      "template_id": 1,
+      "status": "Implemented",
+      "specific_comment": "yes"
+    },
+    {
+      "id": 590,
+      "session_id": 50,
+      "template_id": 2,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 591,
+      "session_id": 50,
+      "template_id": 3,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 592,
+      "session_id": 50,
+      "template_id": 4,
+      "status": "N/A",
+      "specific_comment": "yes"
+    },
+    {
+      "id": 593,
+      "session_id": 50,
+      "template_id": 5,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 594,
+      "session_id": 50,
+      "template_id": 6,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 595,
+      "session_id": 50,
+      "template_id": 7,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 596,
+      "session_id": 50,
+      "template_id": 8,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 597,
+      "session_id": 50,
+      "template_id": 9,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 598,
+      "session_id": 50,
+      "template_id": 10,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 599,
+      "session_id": 50,
+      "template_id": 11,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 600,
+      "session_id": 50,
+      "template_id": 12,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 601,
+      "session_id": 51,
+      "template_id": 1,
+      "status": "Implemented",
+      "specific_comment": "yes"
+    },
+    {
+      "id": 602,
+      "session_id": 51,
+      "template_id": 2,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 603,
+      "session_id": 51,
+      "template_id": 3,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 604,
+      "session_id": 51,
+      "template_id": 4,
+      "status": "N/A",
+      "specific_comment": "yes"
+    },
+    {
+      "id": 605,
+      "session_id": 51,
+      "template_id": 5,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 606,
+      "session_id": 51,
+      "template_id": 6,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 607,
+      "session_id": 51,
+      "template_id": 7,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 608,
+      "session_id": 51,
+      "template_id": 8,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 609,
+      "session_id": 51,
+      "template_id": 9,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 610,
+      "session_id": 51,
+      "template_id": 10,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 611,
+      "session_id": 51,
+      "template_id": 11,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 612,
+      "session_id": 51,
+      "template_id": 12,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 613,
+      "session_id": 52,
+      "template_id": 1,
+      "status": "Implemented",
+      "specific_comment": "yes"
+    },
+    {
+      "id": 614,
+      "session_id": 52,
+      "template_id": 2,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 615,
+      "session_id": 52,
+      "template_id": 3,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 616,
+      "session_id": 52,
+      "template_id": 4,
+      "status": "N/A",
+      "specific_comment": "yes"
+    },
+    {
+      "id": 617,
+      "session_id": 52,
+      "template_id": 5,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 618,
+      "session_id": 52,
+      "template_id": 6,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 619,
+      "session_id": 52,
+      "template_id": 7,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 620,
+      "session_id": 52,
+      "template_id": 8,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 621,
+      "session_id": 52,
+      "template_id": 9,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 622,
+      "session_id": 52,
+      "template_id": 10,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 623,
+      "session_id": 52,
+      "template_id": 11,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 624,
+      "session_id": 52,
+      "template_id": 12,
+      "status": "N/A",
+      "specific_comment": ""
     }
   ],
   "affordability_comment_values": [
@@ -4880,6 +5153,24 @@
     {
       "id": 56,
       "session_id": 49,
+      "comment_template_id": 1,
+      "field_value": ""
+    },
+    {
+      "id": 57,
+      "session_id": 50,
+      "comment_template_id": 1,
+      "field_value": ""
+    },
+    {
+      "id": 58,
+      "session_id": 51,
+      "comment_template_id": 1,
+      "field_value": ""
+    },
+    {
+      "id": 59,
+      "session_id": 52,
       "comment_template_id": 1,
       "field_value": ""
     }
