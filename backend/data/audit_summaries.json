@@ -2993,6 +2993,109 @@
       ],
       "audit_summary": "- The user completes the payment journey on the Matrimony.com Limited platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for UPI, Cards.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
       "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1776064080522",
+      "audit_id": "audit_1776064073087",
+      "merchant_name": "Matrimony.com Limited",
+      "product_type": "Subscriptions",
+      "audit_date": "2026-04-13T07:07:53.087Z",
+      "summary_date": "2026-04-13T07:08:00.522Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): Done",
+        "Fetch status of Payment_id and Subscription_id: N/A",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: SUGGESTED PWM",
+        "Consumes payment state at capture time: Done",
+        "Webhooks: SUGGESTED PWM",
+        "Fetch payment APIs (Fallback): Done",
+        "Server language/SDK: Done",
+        "Using Refund api's: N/A"
+      ],
+      "audit_summary": "- The user selects a subscription plan on the Matrimony.com platform, initiating the transaction flow through the integrated Razorpay checkout.\n- Server-side signature verification is implemented for payment_id, order_id, and razorpay_signature across both Standard and Custom Checkout integrations.\n- The system consumes and processes Razorpay-specific error codes to provide appropriate feedback during transaction failures.\n- Payment capture is executed via standard mechanisms, with the system consuming the payment state at the time of capture to ensure synchronization.\n- Webhook event notifications have been evaluated for processing asynchronous updates and maintaining subscription lifecycle states.\n- A fallback mechanism is in place using Fetch Payment APIs to reconcile transaction statuses in the event of notification delays.\n- The integration observes a payment status wait period of 2 days for UPI transactions and 3 days for Card-based payments.\n- Successful Test IDs: None (No transaction IDs were captured for UPI or Card methods during this audit phase).",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1776064567161",
+      "audit_id": "audit_1776064555217_529",
+      "merchant_name": "Matrimony.com Limited",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-04-13T07:15:55.224Z",
+      "summary_date": "2026-04-13T07:16:07.161Z",
+      "key_findings": [
+        "Bank Account / TPV: N/A",
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): Done",
+        "Fetch status of Payment_id: Done",
+        "Consumes Error Codes: Done",
+        "Fetch Token by Payment ID: Done",
+        "Consumes payment state at capture time: Done",
+        "Fetch payment APIs (Fallback): Done",
+        "Autorefund Auth payments using payment capture as manual: Done"
+      ],
+      "audit_summary": "- The user journey involves selecting a subscription or service on the Matrimony.com platform, followed by initiating a 'Charge at Will' payment via the Razorpay Checkout.\n- Verification of transaction integrity is maintained through the mandatory consumption and validation of payment_id, order_id, and razorpay_signature on the server side.\n- Token management is integrated via the 'Fetch Token by Payment ID' API, enabling the platform to store and utilize payment tokens for recurring or subsequent charges.\n- The system utilizes webhook events to monitor payment states asynchronously, ensuring robust synchronization between Razorpay and the merchant’s backend during the capture process.\n- Capture settings are configured for manual capture, with a functional logic implemented to auto-refund authorized payments that are not captured within the stipulated window.\n- Comprehensive error handling is established through the consumption of standard Razorpay error code kits to manage transaction lifecycle exceptions.\n- API-based reconciliation is supported by the implementation of 'Fetch Status' and fallback 'Fetch Payment' APIs to handle transaction state discrepancies.\n- Successful Test IDs: No specific pay_IDs were identified for UPI or Card methods in the provided audit logs.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1776064585119",
+      "audit_id": "audit_1776064574094",
+      "merchant_name": "Matrimony.com Limited",
+      "product_type": "Subscriptions",
+      "audit_date": "2026-04-13T07:16:14.094Z",
+      "summary_date": "2026-04-13T07:16:25.119Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): Done",
+        "Fetch status of Payment_id and Subscription_id: N/A",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: SUGGESTED PWM",
+        "Consumes payment state at capture time: Done",
+        "Webhooks: SUGGESTED PWM",
+        "Fetch payment APIs (Fallback): Done",
+        "Server language/SDK: Done",
+        "Using Refund api's: N/A"
+      ],
+      "audit_summary": "- The user journey involves selecting a subscription plan on the Matrimony.com platform, followed by redirection to the Razorpay checkout interface for payment via UPI or Cards.\n- Server-side verification is implemented to validate payment authenticity by consuming and verifying the payment_id, order_id, and razorpay_signature for both Standard and Custom checkout flows.\n- Payment capture is managed through standard mechanisms, with the system configured to consume the payment state at the specific time of capture.\n- Webhook events are integrated and evaluated to track subscription lifecycle transitions and ensure real-time status synchronization between Razorpay and the merchant backend.\n- Error handling is managed through the consumption of standardized Razorpay error codes and the implementation of shared error handling kits for transaction resilience.\n- Redundancy is provided via Fetch Payment APIs, serving as a fallback mechanism to verify payment status in the event of notification delays or frontend interruptions.\n- Successful Test IDs: No successful transaction IDs (pay_IDs) were found or recorded during this audit cycle for UPI or Card payment methods.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1776064977204",
+      "audit_id": "audit_1776064965167",
+      "merchant_name": "Sugarfit Health Solutions Private Limited",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-04-13T07:22:57.204Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: Done",
+        "Consumes payment state at capture time: Done",
+        "Webhooks: Done",
+        "Fetch payment APIs (Fallback): Done",
+        "Server language/SDK: Done",
+        "Using Refund api's: N/A"
+      ],
+      "audit_summary": "- The user journey commences with the selection of a health subscription plan on the Sugarfit platform, triggering the subscription creation flow.\n- Integration leverages the Razorpay Subscriptions product to facilitate recurring billing cycles across UPI and Card payment methods.\n- Webhook events are fully integrated to handle asynchronous notifications for subscription state changes and payment confirmations.\n- Implementation includes robust error handling via the consumption of standard Razorpay error codes to provide immediate feedback during transaction failures.\n- Payment capture is executed through standard mechanisms, with the system configured to consume and record the payment state at the point of capture.\n- Data consistency is ensured by the utilization of Fetch Payment and Subscription APIs as a fallback mechanism for status verification.\n- Reconciliation logic adheres to the prescribed timelines of 2 days for UPI transactions and 3 days for other payment methods to account for late authorizations.\n- Successful Test IDs: No specific pay_IDs were recorded for UPI or Cards during this audit phase.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1776065033511",
+      "audit_id": "audit_1776065018146_693",
+      "merchant_name": "Matrimony.com Limited",
+      "product_type": "Charge at Will",
+      "audit_date": "2026-04-13T07:23:38.156Z",
+      "summary_date": "2026-04-13T07:23:53.511Z",
+      "key_findings": [
+        "Bank Account / TPV: N/A",
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): Done",
+        "Fetch status of Payment_id: Done",
+        "Consumes Error Codes: Done",
+        "Fetch Token by Payment ID: Done",
+        "Consumes payment state at capture time: Done",
+        "Fetch payment APIs (Fallback): Done",
+        "Autorefund Auth payments using payment capture as manual: Done"
+      ],
+      "audit_summary": "- The user journey involves selecting a matchmaking service or subscription plan on the platform, triggering the 'Charge at Will' payment flow.\n- Server-side verification of razorpay_payment_id, razorpay_order_id, and razorpay_signature is correctly implemented for both Standard and Custom Checkout integrations.\n- The integration consumes the Fetch Status and Fetch Token by Payment ID APIs to validate transaction states and manage recurring payment tokens.\n- Specific webhook events have been evaluated to ensure real-time synchronization of payment states and lifecycle management within the merchant's backend.\n- Auto-capture is configured through standard mechanisms, with automated refund logic applied to authorized payments where manual capture is utilized.\n- Technical kits for error code consumption have been integrated to handle transaction exceptions and provide descriptive user feedback.\n- Successful Test IDs: No pay_IDs were recorded for UPI or Card methods during this specific audit cycle.",
+      "overall_status": "Pass"
     }
   ]
 }

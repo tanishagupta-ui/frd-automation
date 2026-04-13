@@ -3280,5 +3280,589 @@
       ],
       "additionalComments": "Subscription.completed, subscription.halted, subscription.activated webhook events have been recommended to be implemented at the merchant end.\nIn case of payment failure or auto-refund, using the same subscription_id generated previously has been recommended to the merchant to reduce API calls."
     }
+  },
+  {
+    "filename": "checklist-1776064554902-944524823.xlsx",
+    "originalName": "Matrimony Audit Checklist.xlsx",
+    "product": "Charge at Will",
+    "uploadDate": "2026-04-13T07:15:55.220Z",
+    "data": {
+      "audit_id": "audit_1776064555217_529",
+      "merchant_info": {
+        "name": "Matrimony.com Limited",
+        "mid": "",
+        "date": ""
+      },
+      "audit_data": [
+        {
+          "section": "1. Methods Enabled",
+          "checks": [
+            {
+              "item": "E Mandate",
+              "status": "N/A",
+              "comment": null
+            },
+            {
+              "item": "UPI Autopay",
+              "status": "N/A",
+              "comment": null
+            },
+            {
+              "item": "Card Mandates",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "Paper Nach",
+              "status": "N/A",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "2. Order creation",
+          "checks": [
+            {
+              "item": "Auth Type",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "Token Expiry",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "Frequency",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "Max_amount",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "Recurring type / value",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "Bank Account / TPV",
+              "status": "N/A",
+              "comment": null
+            },
+            {
+              "item": "Notification Object (UPI / Cards) during subsequent debit",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "Registration and Charge First. (E Mandate / Paper Nach)",
+              "status": "N/A",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "3. Checkout configuration",
+          "checks": [
+            {
+              "item": "Handler Function",
+              "status": "N/A",
+              "comment": null
+            },
+            {
+              "item": "Callback function [w/o Redirect]",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "Deeplink Handling (S2S Checkout)",
+              "status": "N/A",
+              "comment": null
+            },
+            {
+              "item": "Recurring True / 1 / preferred",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "Customer_ID",
+              "status": "Done",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "4. For Successful transactions",
+          "checks": [
+            {
+              "item": "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout)",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "Fetch status of Payment_id",
+              "status": "Done",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "5. For Failure transactions",
+          "checks": [
+            {
+              "item": "Consumes Error Codes",
+              "status": "Done",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "6. Token Management",
+          "checks": [
+            {
+              "item": "Fetch Token by Payment ID",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "Fetch Tokens by Customer ID",
+              "status": "N/A",
+              "comment": null
+            },
+            {
+              "item": "Delete Token",
+              "status": "Suggested PWM",
+              "comment": null
+            },
+            {
+              "item": "Cancel Token (UPI)",
+              "status": "Suggested PWM",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "7. Autoacapture Settings",
+          "checks": [
+            {
+              "item": "2 Days for UPI and 3 Days for other methods",
+              "status": "Suggested PWM",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "8. Late Auth Scenarios",
+          "checks": [
+            {
+              "item": "Consumes payment state at capture time",
+              "status": "Done",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "9. Verify Payment / Token Status",
+          "checks": [
+            {
+              "item": "Webhooks",
+              "status": "Suggested PWM",
+              "comment": "Webhook Implementation to be considered P0"
+            },
+            {
+              "item": "Fetch payment APIs (Fallback)",
+              "status": "Done",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "10. Checkout library, server language, version",
+          "checks": [
+            {
+              "item": "a. Platform",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "b. Checkout Type",
+              "status": "Done",
+              "comment": "Type:"
+            },
+            {
+              "item": "c. Server language/SDK",
+              "status": "Done",
+              "comment": "Version:"
+            }
+          ]
+        },
+        {
+          "section": "11. Refund APIs",
+          "checks": [
+            {
+              "item": "Autorefund Auth payments using payment capture as manual",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "Using Refund api's",
+              "status": "N/A",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "12. Recurring Terminals",
+          "checks": [
+            {
+              "item": "upi_icici",
+              "status": "N/A",
+              "comment": "Others if applicable:"
+            },
+            {
+              "item": "enach_rbl",
+              "status": "N/A",
+              "comment": null
+            },
+            {
+              "item": "hitachi / fulcrum",
+              "status": "Done",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "13. Feature Flags",
+          "checks": [
+            {
+              "item": "Charge_at_will",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "e_sign",
+              "status": "N/A",
+              "comment": null
+            },
+            {
+              "item": "save_vpa",
+              "status": "N/A",
+              "comment": null
+            },
+            {
+              "item": "emandate_mrn",
+              "status": "N/A",
+              "comment": null
+            },
+            {
+              "item": "tokenization flags for cards",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "allow_billdesk_sihub",
+              "status": "Done",
+              "comment": null
+            }
+          ]
+        }
+      ],
+      "additionalComments": "Recurring: true and Save:1 to be passed in the Recurring flow, and skipped from the one time payments flow\nWebhook Implementation to be considered as P0 for Recurring flow.\nCancel Mandate and Delete Token APIs to be implemented for a convenient flow of the user.\nRecommended the Payment Capture Settings to be increased to 3 Days."
+    }
+  },
+  {
+    "filename": "checklist-1776065017873-148630438.xlsx",
+    "originalName": "Matrimony Audit Checklist.xlsx",
+    "product": "Charge at Will",
+    "uploadDate": "2026-04-13T07:23:38.150Z",
+    "data": {
+      "audit_id": "audit_1776065018146_693",
+      "merchant_info": {
+        "name": "Matrimony.com Limited",
+        "mid": "",
+        "date": ""
+      },
+      "audit_data": [
+        {
+          "section": "1. Methods Enabled",
+          "checks": [
+            {
+              "item": "E Mandate",
+              "status": "N/A",
+              "comment": null
+            },
+            {
+              "item": "UPI Autopay",
+              "status": "N/A",
+              "comment": null
+            },
+            {
+              "item": "Card Mandates",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "Paper Nach",
+              "status": "N/A",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "2. Order creation",
+          "checks": [
+            {
+              "item": "Auth Type",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "Token Expiry",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "Frequency",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "Max_amount",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "Recurring type / value",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "Bank Account / TPV",
+              "status": "N/A",
+              "comment": null
+            },
+            {
+              "item": "Notification Object (UPI / Cards) during subsequent debit",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "Registration and Charge First. (E Mandate / Paper Nach)",
+              "status": "N/A",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "3. Checkout configuration",
+          "checks": [
+            {
+              "item": "Handler Function",
+              "status": "N/A",
+              "comment": null
+            },
+            {
+              "item": "Callback function [w/o Redirect]",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "Deeplink Handling (S2S Checkout)",
+              "status": "N/A",
+              "comment": null
+            },
+            {
+              "item": "Recurring True / 1 / preferred",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "Customer_ID",
+              "status": "Done",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "4. For Successful transactions",
+          "checks": [
+            {
+              "item": "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout)",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "Fetch status of Payment_id",
+              "status": "Done",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "5. For Failure transactions",
+          "checks": [
+            {
+              "item": "Consumes Error Codes",
+              "status": "Done",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "6. Token Management",
+          "checks": [
+            {
+              "item": "Fetch Token by Payment ID",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "Fetch Tokens by Customer ID",
+              "status": "N/A",
+              "comment": null
+            },
+            {
+              "item": "Delete Token",
+              "status": "Suggested PWM",
+              "comment": null
+            },
+            {
+              "item": "Cancel Token (UPI)",
+              "status": "Suggested PWM",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "7. Autoacapture Settings",
+          "checks": [
+            {
+              "item": "2 Days for UPI and 3 Days for other methods",
+              "status": "Suggested PWM",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "8. Late Auth Scenarios",
+          "checks": [
+            {
+              "item": "Consumes payment state at capture time",
+              "status": "Done",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "9. Verify Payment / Token Status",
+          "checks": [
+            {
+              "item": "Webhooks",
+              "status": "Suggested PWM",
+              "comment": "Webhook Implementation to be considered P0"
+            },
+            {
+              "item": "Fetch payment APIs (Fallback)",
+              "status": "Done",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "10. Checkout library, server language, version",
+          "checks": [
+            {
+              "item": "a. Platform",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "b. Checkout Type",
+              "status": "Done",
+              "comment": "Type:"
+            },
+            {
+              "item": "c. Server language/SDK",
+              "status": "Done",
+              "comment": "Version:"
+            }
+          ]
+        },
+        {
+          "section": "11. Refund APIs",
+          "checks": [
+            {
+              "item": "Autorefund Auth payments using payment capture as manual",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "Using Refund api's",
+              "status": "N/A",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "12. Recurring Terminals",
+          "checks": [
+            {
+              "item": "upi_icici",
+              "status": "N/A",
+              "comment": "Others if applicable:"
+            },
+            {
+              "item": "enach_rbl",
+              "status": "N/A",
+              "comment": null
+            },
+            {
+              "item": "hitachi / fulcrum",
+              "status": "Done",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "section": "13. Feature Flags",
+          "checks": [
+            {
+              "item": "Charge_at_will",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "e_sign",
+              "status": "N/A",
+              "comment": null
+            },
+            {
+              "item": "save_vpa",
+              "status": "N/A",
+              "comment": null
+            },
+            {
+              "item": "emandate_mrn",
+              "status": "N/A",
+              "comment": null
+            },
+            {
+              "item": "tokenization flags for cards",
+              "status": "Done",
+              "comment": null
+            },
+            {
+              "item": "allow_billdesk_sihub",
+              "status": "Done",
+              "comment": null
+            }
+          ]
+        }
+      ],
+      "additionalComments": "Recurring: true and Save:1 to be passed in the Recurring flow, and skipped from the one time payments flow\nWebhook Implementation to be considered as P0 for Recurring flow.\nCancel Mandate and Delete Token APIs to be implemented for a convenient flow of the user.\nRecommended the Payment Capture Settings to be increased to 3 Days."
+    }
   }
 ]

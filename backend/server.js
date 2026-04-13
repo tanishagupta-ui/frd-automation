@@ -266,13 +266,13 @@ app.post("/upload", (req, res) => {
 
                 // Define Signatures (Unique identifying strings for each product)
                 const signatures = {
-                    "subscriptions": ["plan creation", "subscription creation", "e mandate", "upi autopay"],
+                    "subscriptions": ["plan creation", "subscription creation", "e mandate", "upi autopay", "plan id"],
                     "route": ["linked account creation", "transfer process", "refund or reversal", "direct transfer"],
                     "qr_code": ["qr code implementation", "dynamic qr", "instant qr"],
                     "payment_links": ["set expiry", "regenerate keys", "ncapps"],
                     "affordability": ["emi, cardless emi"],
                     "smart_collect": ["virtual account", "customer identifier", "smart collect"],
-                    "caw": ["charge at will", "tokenization", "repeat payments"],
+                    "caw": ["charge at will", "tokenization", "repeat payments", "caw", "recurring", "card at will", "auto charge", "matrimony", "subsequent debit"],
                     "checkout": ["account live (key/secret)", "webhook configs", "order creation"]
                 };
 
@@ -297,9 +297,9 @@ app.post("/upload", (req, res) => {
                 }
 
                 // 2. Refined Identification & Exclusions
-                // Subscriptions is very specific; if it's there, it's not CAW or Checkout only
+                // Subscriptions is very specific; if it's there, it's not Checkout only
                 if (matches["subscriptions"]) {
-                    matches["caw"] = false;
+                    // removed: matches["caw"] = false; (CAW overlaps with subscriptions)
                     matches["checkout"] = false;
                 }
 
@@ -313,6 +313,14 @@ app.post("/upload", (req, res) => {
                     // Check for some additional criteria for certain products
                     if (p === "payment_links" && !content.includes("payment link") && !matches["payment_links"]) return "Please upload the correct checklist";
                     if (p === "affordability" && !matches["affordability"] && !content.includes("shopify")) return "Please upload the correct checklist";
+
+                    if (p === "subscriptions") {
+                        // A Charge at Will/Subsequent Debit checklist should be invalid for Subscriptions
+                        if (content.includes("charge at will") || content.includes("subsequent debit")) return "Please upload the correct checklist";
+                        
+                        // Enforce Plan ID requirement
+                        if (!content.includes("plan id") && !content.includes("plan creation")) return "Please upload the correct checklist";
+                    }
 
                     return null; // Successfully validated
                 }
