@@ -27,25 +27,25 @@
     {
       "id": 2,
       "merchant_name": "Bharat Petroleum Corporation Limited (BPCL)",
-      "original_name": "BPCL QR Code (2)",
+      "original_name": "BPCL QR Code (1)",
       "merchant_id": null,
-      "search_date": "2026-02-26T06:01:20.480Z",
+      "search_date": "2026-04-13T08:45:38.312Z",
       "web_data": {
         "company_name": "Bharat Petroleum Corporation Limited (BPCL)",
-        "website": "https://www.bharatpetroleum.in",
-        "description": "A Fortune 500 Indian central public sector undertaking under the Ministry of Petroleum and Natural Gas, engaged in refining crude oil and marketing petroleum products. The 'QR Code' initiative refers to their integrated digital payment system across fuel stations to facilitate cashless transactions.",
-        "industry": "Oil and Gas",
+        "website": "https://www.bharatpetroleum.in/",
+        "description": "A Fortune 500 Maharatna Public Sector Undertaking (PSU) under the Ministry of Petroleum and Natural Gas, India, engaged in refining, marketing, and distribution of petroleum products.",
+        "industry": "Oil & Gas",
         "products_services": [
-          "Petrol and Diesel",
+          "Motor Spirit (Petrol)",
+          "High Speed Diesel",
           "Liquefied Petroleum Gas (Bharatgas)",
-          "Lubricants (MAK Lubricants)",
+          "Lubricants (MAK)",
           "Aviation Turbine Fuel",
           "Petrochemicals",
-          "Refining Services",
-          "Digital Payment Solutions (HelloBPCL App, SmartDrive)"
+          "Digital Payment Solutions (Hello BPCL / QR-based payments)"
         ],
         "business_model": "B2B, B2C",
-        "target_audience": "Individual motorists, domestic households (LPG users), industrial enterprises, commercial transporters, and the aviation industry."
+        "target_audience": "Individual motorists, domestic households, industrial enterprises, logistics companies, and the aviation sector."
       },
       "model_used": "gemini-flash-latest"
     },
@@ -98,23 +98,23 @@
     {
       "id": 5,
       "merchant_name": "AGF Management Limited",
-      "original_name": "Copy of AGF (1)",
+      "original_name": "Copy of AGF",
       "merchant_id": null,
-      "search_date": "2026-02-18T08:45:44.959Z",
+      "search_date": "2026-04-13T06:53:25.026Z",
       "web_data": {
         "company_name": "AGF Management Limited",
         "website": "https://www.agf.com",
-        "description": "A diversified global asset management firm that delivers investment solutions to institutions, advisors, and individual investors through a range of quantitative, fundamental, and alternative strategies.",
-        "industry": "Financial Services",
+        "description": "AGF Management Limited is a diversified global asset management firm that provides investment solutions to institutions, advisors, and individual investors through its various subsidiaries and investment platforms.",
+        "industry": "Financial Services / Asset Management",
         "products_services": [
           "Mutual Funds",
           "Exchange Traded Funds (ETFs)",
           "Private Wealth Management",
-          "Institutional Investment Strategies",
-          "Sustainable Investing (ESG)"
+          "Alternative Investments",
+          "Institutional Investment Accounts"
         ],
         "business_model": "B2B, B2C",
-        "target_audience": "Individual retail investors, financial advisors, and institutional clients such as pension funds and endowments."
+        "target_audience": "Individual retail investors, financial advisors, pension funds, foundations, and high-net-worth individuals."
       },
       "model_used": "gemini-flash-latest"
     },
@@ -327,6 +327,33 @@
         ],
         "business_model": "C2C / Marketplace",
         "target_audience": "Budget-conscious travelers, long-distance commuters, and eco-friendly individuals seeking flexible transportation options."
+      },
+      "model_used": "gemini-flash-latest"
+    },
+    {
+      "id": 16,
+      "merchant_name": "Affordability Test Merchant",
+      "original_name": "Affordability Test Merchant",
+      "merchant_id": null,
+      "search_date": "2026-04-13T07:18:00.645Z",
+      "web_data": {
+        "company_name": "Affordability Test Merchant",
+        "website": "https://developer.mastercard.com/",
+        "description": "A synthetic merchant entity and placeholder used within fintech sandbox environments, specifically for testing Open Banking APIs and credit decisioning engines. It allows developers to simulate affordability checks and transaction flows to verify that financial software correctly interprets consumer income and expenditure data.",
+        "industry": "Fintech / Open Banking",
+        "products_services": [
+          "Sandbox API Testing",
+          "Affordability Data Simulation",
+          "Mock Transaction Processing",
+          "Developer Integration Tools"
+        ],
+        "business_model": "B2B (Developer Tooling)",
+        "target_audience": [
+          "Software Engineers",
+          "Fintech Startups",
+          "Banking Technology Integrators",
+          "QA Testers"
+        ]
       },
       "model_used": "gemini-flash-latest"
     }

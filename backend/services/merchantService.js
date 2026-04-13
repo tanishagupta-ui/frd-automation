@@ -41,13 +41,12 @@ function normalizeMerchantName(name) {
         'linked account creation', 'transfer process', 'failure transfers',
         'platform', 'methods enabled', 'plan creation', 'subscription creation',
         'checkout configuration', 'successful transactions', 'failure transactions',
-        'management', 'autoacapture', 'recurring terminals', 'feature flags',
+        'management', 'autocapture', 'recurring terminals', 'feature flags',
         'additional comments', 'qr code', 'live keys', 'dashboard', 'api',
         'instant qr', 'dynamic qr', 'image content', 'terminals enabled',
         'payment methods', 'capture settings', 'late auth scenarios',
         'verify payment status', 'offers', 'fetch payment api', 'webhook url',
-        'webhook events', 'affordability', 'subscriptions', 'route', 'qr codes',
-        'payment links', 'smart collect', 'charge at will'
+        'webhook events'
     ];
 
     const lowerN = n.toLowerCase();

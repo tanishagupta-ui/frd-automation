@@ -427,6 +427,7 @@ async function generateFRD(
 
     console.log(`Generating PDF version: ${pdfFilename}...`);
 
+    console.time(`PDF_Generation_${pdfFilename}`);
     await new Promise((resolve, reject) => {
       markdownpdf({
         cssPath: path.resolve(__dirname, "frdStyle.css"),
@@ -437,9 +438,11 @@ async function generateFRD(
           try {
             fs.renameSync(tmpPdfFilepath, pdfFilepath);
             console.log(`✅ PDF generated and finalized: ${pdfFilename} `);
+            console.timeEnd(`PDF_Generation_${pdfFilename}`);
             resolve();
           } catch (renameError) {
             console.error("Error finalizing PDF file:", renameError);
+            console.timeEnd(`PDF_Generation_${pdfFilename}`);
             reject(renameError);
           }
         });

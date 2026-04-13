@@ -286,6 +286,62 @@
       "merchant_name": "Audit Checklist",
       "audit_date": "",
       "created_at": "2026-03-27T06:10:54.529Z"
+    },
+    {
+      "id": 42,
+      "merchant_id": "Unknown",
+      "merchant_name": "Audit Checklist",
+      "audit_date": "",
+      "created_at": "2026-04-13T07:00:44.436Z"
+    },
+    {
+      "id": 43,
+      "merchant_id": "Unknown",
+      "merchant_name": "Audit Checklist",
+      "audit_date": "",
+      "created_at": "2026-04-13T07:02:00.113Z"
+    },
+    {
+      "id": 44,
+      "merchant_id": "Unknown",
+      "merchant_name": "Affordability Test Merchant",
+      "audit_date": "",
+      "created_at": "2026-04-13T07:19:51.796Z"
+    },
+    {
+      "id": 45,
+      "merchant_id": "Unknown",
+      "merchant_name": "Affordability Test Merchant",
+      "audit_date": "",
+      "created_at": "2026-04-13T07:24:44.693Z"
+    },
+    {
+      "id": 46,
+      "merchant_id": "Unknown",
+      "merchant_name": "Affordability Test Merchant",
+      "audit_date": "",
+      "created_at": "2026-04-13T07:26:27.401Z"
+    },
+    {
+      "id": 47,
+      "merchant_id": "Unknown",
+      "merchant_name": "Audit Checklist",
+      "audit_date": "",
+      "created_at": "2026-04-13T07:27:55.630Z"
+    },
+    {
+      "id": 48,
+      "merchant_id": "Unknown",
+      "merchant_name": "Affordability Test Merchant",
+      "audit_date": "",
+      "created_at": "2026-04-13T08:39:34.359Z"
+    },
+    {
+      "id": 49,
+      "merchant_id": "Unknown",
+      "merchant_name": "Affordability",
+      "audit_date": "",
+      "created_at": "2026-04-13T08:41:23.742Z"
     }
   ],
   "affordability_checklist_template": [
@@ -3816,6 +3872,678 @@
       "template_id": 12,
       "status": "N/A",
       "specific_comment": ""
+    },
+    {
+      "id": 493,
+      "session_id": 42,
+      "template_id": 1,
+      "status": "Implemented",
+      "specific_comment": "yes"
+    },
+    {
+      "id": 494,
+      "session_id": 42,
+      "template_id": 2,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 495,
+      "session_id": 42,
+      "template_id": 3,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 496,
+      "session_id": 42,
+      "template_id": 4,
+      "status": "N/A",
+      "specific_comment": "yes"
+    },
+    {
+      "id": 497,
+      "session_id": 42,
+      "template_id": 5,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 498,
+      "session_id": 42,
+      "template_id": 6,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 499,
+      "session_id": 42,
+      "template_id": 7,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 500,
+      "session_id": 42,
+      "template_id": 8,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 501,
+      "session_id": 42,
+      "template_id": 9,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 502,
+      "session_id": 42,
+      "template_id": 10,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 503,
+      "session_id": 42,
+      "template_id": 11,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 504,
+      "session_id": 42,
+      "template_id": 12,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 505,
+      "session_id": 43,
+      "template_id": 1,
+      "status": "Implemented",
+      "specific_comment": "yes"
+    },
+    {
+      "id": 506,
+      "session_id": 43,
+      "template_id": 2,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 507,
+      "session_id": 43,
+      "template_id": 3,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 508,
+      "session_id": 43,
+      "template_id": 4,
+      "status": "N/A",
+      "specific_comment": "yes"
+    },
+    {
+      "id": 509,
+      "session_id": 43,
+      "template_id": 5,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 510,
+      "session_id": 43,
+      "template_id": 6,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 511,
+      "session_id": 43,
+      "template_id": 7,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 512,
+      "session_id": 43,
+      "template_id": 8,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 513,
+      "session_id": 43,
+      "template_id": 9,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 514,
+      "session_id": 43,
+      "template_id": 10,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 515,
+      "session_id": 43,
+      "template_id": 11,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 516,
+      "session_id": 43,
+      "template_id": 12,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 517,
+      "session_id": 44,
+      "template_id": 1,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 518,
+      "session_id": 44,
+      "template_id": 2,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 519,
+      "session_id": 44,
+      "template_id": 3,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 520,
+      "session_id": 44,
+      "template_id": 4,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 521,
+      "session_id": 44,
+      "template_id": 5,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 522,
+      "session_id": 44,
+      "template_id": 6,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 523,
+      "session_id": 44,
+      "template_id": 7,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 524,
+      "session_id": 44,
+      "template_id": 8,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 525,
+      "session_id": 44,
+      "template_id": 9,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 526,
+      "session_id": 44,
+      "template_id": 10,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 527,
+      "session_id": 44,
+      "template_id": 11,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 528,
+      "session_id": 44,
+      "template_id": 12,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 529,
+      "session_id": 45,
+      "template_id": 1,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 530,
+      "session_id": 45,
+      "template_id": 2,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 531,
+      "session_id": 45,
+      "template_id": 3,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 532,
+      "session_id": 45,
+      "template_id": 4,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 533,
+      "session_id": 45,
+      "template_id": 5,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 534,
+      "session_id": 45,
+      "template_id": 6,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 535,
+      "session_id": 45,
+      "template_id": 7,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 536,
+      "session_id": 45,
+      "template_id": 8,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 537,
+      "session_id": 45,
+      "template_id": 9,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 538,
+      "session_id": 45,
+      "template_id": 10,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 539,
+      "session_id": 45,
+      "template_id": 11,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 540,
+      "session_id": 45,
+      "template_id": 12,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 541,
+      "session_id": 46,
+      "template_id": 1,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 542,
+      "session_id": 46,
+      "template_id": 2,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 543,
+      "session_id": 46,
+      "template_id": 3,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 544,
+      "session_id": 46,
+      "template_id": 4,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 545,
+      "session_id": 46,
+      "template_id": 5,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 546,
+      "session_id": 46,
+      "template_id": 6,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 547,
+      "session_id": 46,
+      "template_id": 7,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 548,
+      "session_id": 46,
+      "template_id": 8,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 549,
+      "session_id": 46,
+      "template_id": 9,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 550,
+      "session_id": 46,
+      "template_id": 10,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 551,
+      "session_id": 46,
+      "template_id": 11,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 552,
+      "session_id": 46,
+      "template_id": 12,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 553,
+      "session_id": 47,
+      "template_id": 1,
+      "status": "Implemented",
+      "specific_comment": "yes"
+    },
+    {
+      "id": 554,
+      "session_id": 47,
+      "template_id": 2,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 555,
+      "session_id": 47,
+      "template_id": 3,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 556,
+      "session_id": 47,
+      "template_id": 4,
+      "status": "N/A",
+      "specific_comment": "yes"
+    },
+    {
+      "id": 557,
+      "session_id": 47,
+      "template_id": 5,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 558,
+      "session_id": 47,
+      "template_id": 6,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 559,
+      "session_id": 47,
+      "template_id": 7,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 560,
+      "session_id": 47,
+      "template_id": 8,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 561,
+      "session_id": 47,
+      "template_id": 9,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 562,
+      "session_id": 47,
+      "template_id": 10,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 563,
+      "session_id": 47,
+      "template_id": 11,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 564,
+      "session_id": 47,
+      "template_id": 12,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 565,
+      "session_id": 48,
+      "template_id": 1,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 566,
+      "session_id": 48,
+      "template_id": 2,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 567,
+      "session_id": 48,
+      "template_id": 3,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 568,
+      "session_id": 48,
+      "template_id": 4,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 569,
+      "session_id": 48,
+      "template_id": 5,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 570,
+      "session_id": 48,
+      "template_id": 6,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 571,
+      "session_id": 48,
+      "template_id": 7,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 572,
+      "session_id": 48,
+      "template_id": 8,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 573,
+      "session_id": 48,
+      "template_id": 9,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 574,
+      "session_id": 48,
+      "template_id": 10,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 575,
+      "session_id": 48,
+      "template_id": 11,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 576,
+      "session_id": 48,
+      "template_id": 12,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 577,
+      "session_id": 49,
+      "template_id": 1,
+      "status": "Implemented",
+      "specific_comment": "yes"
+    },
+    {
+      "id": 578,
+      "session_id": 49,
+      "template_id": 2,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 579,
+      "session_id": 49,
+      "template_id": 3,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 580,
+      "session_id": 49,
+      "template_id": 4,
+      "status": "N/A",
+      "specific_comment": "yes"
+    },
+    {
+      "id": 581,
+      "session_id": 49,
+      "template_id": 5,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 582,
+      "session_id": 49,
+      "template_id": 6,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 583,
+      "session_id": 49,
+      "template_id": 7,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 584,
+      "session_id": 49,
+      "template_id": 8,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 585,
+      "session_id": 49,
+      "template_id": 9,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 586,
+      "session_id": 49,
+      "template_id": 10,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 587,
+      "session_id": 49,
+      "template_id": 11,
+      "status": "N/A",
+      "specific_comment": ""
+    },
+    {
+      "id": 588,
+      "session_id": 49,
+      "template_id": 12,
+      "status": "N/A",
+      "specific_comment": ""
     }
   ],
   "affordability_comment_values": [
@@ -4128,6 +4856,30 @@
     {
       "id": 52,
       "session_id": 41,
+      "comment_template_id": 1,
+      "field_value": ""
+    },
+    {
+      "id": 53,
+      "session_id": 42,
+      "comment_template_id": 1,
+      "field_value": ""
+    },
+    {
+      "id": 54,
+      "session_id": 43,
+      "comment_template_id": 1,
+      "field_value": ""
+    },
+    {
+      "id": 55,
+      "session_id": 47,
+      "comment_template_id": 1,
+      "field_value": ""
+    },
+    {
+      "id": 56,
+      "session_id": 49,
       "comment_template_id": 1,
       "field_value": ""
     }

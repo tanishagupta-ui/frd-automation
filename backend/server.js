@@ -167,6 +167,7 @@ app.post("/upload", (req, res) => {
         let merchantName = null;
         let merchantId = null;
         let merchantInfo = null;
+        let sessionId = null;
 
         try {
             merchantName = merchantService.extractMerchantName(req.file.path, req.file.originalname);
@@ -195,47 +196,8 @@ app.post("/upload", (req, res) => {
             console.error("Error in merchant extraction process:", extractionError);
         }
 
-        // Generate payment flow diagram
+        // Diagram generation is now handled in the background generateFRDProcess to avoid blocking the initial response
         let diagramPath = null;
-        try {
-            const productKey = req.body.product ? req.body.product.toLowerCase().replace(/\s+/g, '_') : null;
-
-            // Map product names to keys
-            const productKeyMap = {
-                'charge_at_will': 'caw',
-                'standard_checkout': 'standard_checkout',
-                'custom_checkout': 'custom_checkout',
-                'subscriptions': 'subscriptions',
-                'payment_links': 'payment_links',
-                'payment_link': 'payment_links',
-                'pay_links': 'payment_links',
-                'pay_link': 'payment_links',
-                'qr_codes': 'qr_codes',
-                'qr_code': 'qr_codes', // Added alias to match frontend singular
-                'route': 'route',
-                'smart_collect': 'smart_collect',
-                's2s': 's2s',
-                'affordability': 'affordability',
-                'affordability_widget': 'affordability'
-            };
-
-            const mappedKey = productKeyMap[productKey];
-            console.log(`[DIAGRAM] Product: "${req.body.product}", productKey: "${productKey}", mappedKey: "${mappedKey}"`);
-
-            if (mappedKey) {
-                console.log(`[DIAGRAM] Generating diagram for: ${mappedKey} (Merchant: ${merchantName})`);
-                diagramPath = await diagramService.generateDiagram(mappedKey, merchantName);
-                if (diagramPath) {
-                    console.log(`[DIAGRAM] Successfully generated at: ${diagramPath}`);
-                } else {
-                    console.log(`[DIAGRAM] generateDiagram returned null for ${mappedKey}`);
-                }
-            } else {
-                console.log(`[DIAGRAM] No diagram template for product: "${req.body.product}" (key: ${productKey})`);
-            }
-        } catch (diagramError) {
-            console.error(`[DIAGRAM] Error generating diagram for ${req.body.product}:`, diagramError.message);
-        }
         console.log("Processing for product:", req.body.product);
 
         try {
@@ -270,7 +232,7 @@ app.post("/upload", (req, res) => {
                     "route": ["linked account creation", "transfer process", "refund or reversal", "direct transfer"],
                     "qr_code": ["qr code implementation", "dynamic qr", "instant qr"],
                     "payment_links": ["set expiry", "regenerate keys", "ncapps"],
-                    "affordability": ["emi, cardless emi"],
+                    "affordability": ["emi, cardless emi", "shopify", "woocommerce", "affordability widget"],
                     "smart_collect": ["virtual account", "customer identifier", "smart collect"],
                     "caw": ["charge at will", "tokenization", "repeat payments", "caw", "recurring", "card at will", "auto charge", "matrimony", "subsequent debit"],
                     "checkout": ["account live (key/secret)", "webhook configs", "order creation"]
@@ -506,7 +468,7 @@ app.post("/upload", (req, res) => {
                     }));
                 }
 
-                const sessionId = routeStorage.route_audit_sessions.length + 1;
+                sessionId = routeStorage.route_audit_sessions.length + 1;
                 const sessionRecord = {
                     id: sessionId,
                     merchant_id: "",
@@ -763,7 +725,7 @@ app.post("/upload", (req, res) => {
                     }));
                 }
 
-                const sessionId = subStorage.subscription_audits.length + 1;
+                sessionId = subStorage.subscription_audits.length + 1;
                 const sessionRecord = {
                     id: sessionId,
                     merchant_id: "",
@@ -1063,7 +1025,7 @@ app.post("/upload", (req, res) => {
                 if (!fs.existsSync(smartCollectDir)) fs.mkdirSync(smartCollectDir, { recursive: true });
 
                 const existingFiles = fs.readdirSync(smartCollectDir).filter(f => f.endsWith('.json'));
-                const sessionId = existingFiles.length + 1;
+                sessionId = existingFiles.length + 1;
                 const safeMxName = (result.audit_metadata?.merchant_name || merchantName || "unknown").replace(/[^a-z0-9]/gi, '_').toLowerCase();
                 const sessionFilename = `smart_collect_audit_${sessionId}_${safeMxName}.json`;
 
@@ -1229,7 +1191,7 @@ app.post("/upload", (req, res) => {
                 let mxName = meta.mxName;
                 let mxDate = meta.mxDate;
 
-                const sessionId = ncappsStorage.ncapps_audits.length + 1;
+                sessionId = ncappsStorage.ncapps_audits.length + 1;
                 const merchantNameForSafe = (mxName && !/audit checklist|merchant name/i.test(mxName)) ? mxName : (merchantName || "Audit Checklist");
                 const safeMxNameForAudit = merchantNameForSafe.replace(/[^a-z0-9]/gi, '_').toLowerCase() || "unknown";
 
@@ -1527,7 +1489,7 @@ app.post("/upload", (req, res) => {
                 let mxName = meta.mxName;
                 let mxDate = meta.mxDate;
 
-                const sessionId = goliveStorage.golive_audits.length + 1;
+                sessionId = goliveStorage.golive_audits.length + 1;
                 const sessionRecord = {
                     id: sessionId,
                     product: productType,
@@ -1740,7 +1702,7 @@ app.post("/upload", (req, res) => {
                     merchantId = mxId;
                 }
 
-                const sessionId = affordabilityStorage.affordability_audits.length + 1;
+                sessionId = affordabilityStorage.affordability_audits.length + 1;
                 const sessionRecord = {
                     id: sessionId,
                     merchant_id: mxId || merchantId || "Unknown",
@@ -1947,15 +1909,7 @@ app.post("/upload", (req, res) => {
                     additionalCommentsStr += ` ${webhookVal.field_value}`;
                 }
 
-                // Ensure diagram is attempted if still missing
-                if (!diagramPath) {
-                    try {
-                        console.log(`[Affordability] Attempting diagram generation for "affordability" (Merchant: ${merchantName})`);
-                        diagramPath = await diagramService.generateDiagram("affordability", merchantName || "Merchant");
-                    } catch (e) {
-                        console.error("[Affordability] Diagram generation failed:", e.message);
-                    }
-                }
+                // Diagram generation is now handled in the background generateFRDProcess to avoid blocking the initial response
 
                 result = {
                     product: "Affordability Widget",
@@ -2073,7 +2027,7 @@ app.post("/upload", (req, res) => {
                 let mxName = meta.mxName;
                 let mxDate = meta.mxDate;
 
-                const sessionId = qrStorage.qr_audits.length + 1;
+                sessionId = qrStorage.qr_audits.length + 1;
                 const sessionRecord = {
                     id: sessionId,
                     merchant_id: mxId || merchantId || "Unknown",
@@ -2226,11 +2180,12 @@ app.post("/upload", (req, res) => {
             ).catch(err => console.error("❌ Checklist upload error:", err));
 
             // Trigger audit summarization (async, non-blocking)
-            if (result && (merchantName || merchantId)) {
-                console.log(`📝 Triggering audit summarization for: ${merchantName || merchantId}`);
+            if (result) {
+                const displayMerchantName = merchantName || merchantId || "Unknown Merchant";
+                console.log(`📝 Triggering audit summarization for: ${displayMerchantName}`);
                 const metadata = {
                     audit_id: result.audit_id || result.session_id || `audit_${Date.now()}`,
-                    merchant_name: merchantName || "Unknown",
+                    merchant_name: displayMerchantName,
                     product_type: productType,
                     audit_date: result.audit_metadata?.date || result.merchant_info?.date || new Date().toISOString()
                 };
@@ -2247,11 +2202,14 @@ app.post("/upload", (req, res) => {
             }
 
             // --- FRD Generation Logic ---
-            if (result && (merchantName || merchantId)) {
-                console.log(`📄 Triggering FRD generation for: ${merchantName || merchantId}`);
+            if (result) {
+                const displayMerchantName = merchantName || merchantId || "Unknown Merchant";
+                console.log(`📄 Triggering FRD generation for: ${displayMerchantName}`);
 
                 // Use the already fetched merchantInfo or attempt to fall back to cache
                 const generateFRDProcess = async () => {
+                    const processStartTime = Date.now();
+                    console.time(`FRD_Process_${sessionId || merchantName}`);
                     try {
                         let finalEnrichment = merchantInfo;
 
@@ -2331,6 +2289,10 @@ app.post("/upload", (req, res) => {
                         }
                     } catch (frdError) {
                         console.error("FRD generation error:", frdError);
+                    } finally {
+                        console.timeEnd(`FRD_Process_${sessionId || merchantName}`);
+                        const totalTime = (Date.now() - processStartTime) / 1000;
+                        console.log(`⏱️ Total background process time: ${totalTime.toFixed(2)}s`);
                     }
                 };
 

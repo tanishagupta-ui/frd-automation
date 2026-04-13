@@ -105,7 +105,7 @@ function App() {
       } catch (e) { }
 
       count++;
-      if (count < 15) setTimeout(check, 2500);
+      if (count < 30) setTimeout(check, 2500);
       else {
         setCheckingFrd(false);
         setIsLoading(false);
