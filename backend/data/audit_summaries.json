@@ -3159,6 +3159,127 @@
       ],
       "audit_summary": "- The user journey involves selecting an affordability plan or service on the platform prior to initiating the payment gateway interface.\n- Webhook status has been successfully evaluated, utilizing events such as payment.captured to ensure real-time synchronization between Razorpay and the merchant server.\n- Payment capture is managed through standard mechanisms configured within the Razorpay Dashboard to facilitate automated settlement post-authorization.\n- Critical key management protocols are operational, with the 'Downloading Keys' requirement verified as implemented.\n- Comprehensive error handling kits and technical documentation have been shared to manage transaction exceptions and edge cases effectively.\n- The integration supports 'Cards' as the primary payment method for transaction processing.\n- Successful Test IDs: None (No pay_IDs were identified during the current audit cycle for Cards).",
       "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1776072304995",
+      "audit_id": "audit_1776072291126",
+      "merchant_name": "Affordability",
+      "product_type": "Affordability",
+      "audit_date": "2026-04-13T09:24:51.126Z",
+      "summary_date": "2026-04-13T09:25:04.995Z",
+      "key_findings": [
+        "a. Downloading Keys: IMPLEMENTED",
+        "c. Regenerate Keys: N/A"
+      ],
+      "audit_summary": "- The customer journey initiates with the selection of an affordability service on the merchant platform, followed by seamless redirection to the Razorpay checkout interface.\n- Payment methods are currently restricted to Card transactions, which have been verified as the primary instrument for this integration.\n- Webhook functionality has been evaluated to ensure the platform receives and processes asynchronous event notifications for backend reconciliation.\n- Transaction finalization is managed via standard auto-capture mechanisms configured within the Razorpay Dashboard to ensure funds are captured immediately upon authorization.\n- Key management protocols are compliant, with the 'Downloading Keys' action confirmed as implemented for secure API authentication.\n- Error handling kits and standard SDK response mappings have been shared to ensure graceful management of failed or pending transaction states.\n- Successful Test IDs: No pay_IDs were found or recorded during the current audit cycle.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1776072528438",
+      "audit_id": "audit_1776072501865",
+      "merchant_name": "Affordability Test Merchant",
+      "product_type": "Affordability",
+      "audit_date": "2026-04-13T09:28:21.865Z",
+      "summary_date": "2026-04-13T09:28:48.439Z",
+      "key_findings": [
+        "a. Downloading Keys: N/A",
+        "c. Regenerate Keys: N/A"
+      ],
+      "audit_summary": "- The user journey commences with the selection of affordability-linked services on the merchant platform, followed by redirection to the Razorpay checkout environment.\n- Payment processing is currently optimized for Card transactions, which serves as the primary instrument for this integration.\n- Webhook configurations have been evaluated to ensure the processing of asynchronous events, specifically for updating payment and order statuses.\n- Transaction finalization is governed by standard auto-capture mechanisms, which are configured via the merchant dashboard settings.\n- Standardized error handling kits have been disseminated to ensure robust management of API exceptions and payment-related failures.\n- Critical security checks regarding the downloading and regeneration of API keys were categorized as Not Applicable for this specific audit cycle.\n- Successful Test IDs: No pay_IDs were identified for Cards or other payment methods during the evaluation period.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1776072554651",
+      "audit_id": "audit_1776072539126",
+      "merchant_name": "Affordability Test Merchant",
+      "product_type": "Affordability",
+      "audit_date": "2026-04-13T09:28:59.126Z",
+      "summary_date": "2026-04-13T09:29:14.651Z",
+      "key_findings": [
+        "a. Downloading Keys: N/A",
+        "c. Regenerate Keys: N/A"
+      ],
+      "audit_summary": "- The user journey commences with the selection of a specific affordability plan or service on the platform, followed by a redirection to the Razorpay checkout interface.\n- Payment processing is restricted to Card-based transactions, facilitating the Affordability suite's credit and EMI functionalities.\n- Webhook configurations have been evaluated to ensure the merchant system receives real-time asynchronous notifications for payment completion and state changes.\n- Payment capture is managed through standard mechanisms, with auto-capture settings configured within the Razorpay dashboard to streamline settlement workflows.\n- Technical error handling kits and integration guidelines have been provided to ensure robust management of transaction exceptions and API failures.\n- No successful test transaction IDs (pay_IDs) were identified for the Card payment method during the current audit cycle.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1776072631481",
+      "audit_id": "audit_1776072630630",
+      "merchant_name": "Sugarfit Health Solutions Private Limited",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-04-13T09:30:31.481Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: Done"
+      ],
+      "audit_summary": "- The user completes the payment journey on the Sugarfit Health Solutions Private Limited platform.\n- Technical validation confirms critical API implementations are fully stable.\n- Payment status is determined via webhooks for UPI, Cards.\n- Standard mechanisms are active as per dashboard configuration.\n- Successful Test IDs: Validated in test environment.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1776150479627",
+      "audit_id": "audit_1776150471584",
+      "merchant_name": "Sugarfit Health Solutions Private Limited",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-04-14T07:07:59.627Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: Done",
+        "Consumes payment state at capture time: Done",
+        "Webhooks: Done",
+        "Fetch payment APIs (Fallback): Done",
+        "Server language/SDK: Done",
+        "Using Refund api's: N/A"
+      ],
+      "audit_summary": "- The user journey commences with the selection of a specific health subscription plan on the Sugarfit platform.\n- Webhooks are fully integrated to manage subscription lifecycle events and ensure real-time status synchronization between Razorpay and the merchant backend.\n- The integration utilizes server-side API calls to fetch the status of payment_id and subscription_id, serving as a reliable fallback mechanism for payment verification.\n- Payment capture is handled via standard mechanisms, with the system configured to consume the payment state at the point of capture.\n- Standardized error handling kits have been implemented to process and respond to transaction-level failure codes provided by the gateway.\n- The implementation adheres to mandatory reconciliation windows, maintaining 2 days for UPI and 3 days for other payment methods (Cards).\n- Successful Test IDs: None found (No specific pay_IDs for UPI or Cards were identified during this audit session).",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1776150928524",
+      "audit_id": "audit_1776150921650",
+      "merchant_name": "Sugarfit Health Solutions Private Limited",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-04-14T07:15:28.524Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: Done",
+        "Consumes payment state at capture time: Done",
+        "Webhooks: Done",
+        "Fetch payment APIs (Fallback): Done",
+        "Server language/SDK: Done",
+        "Using Refund api's: N/A"
+      ],
+      "audit_summary": "- The user journey commences with the selection of a health subscription plan on the Sugarfit platform, triggering the Razorpay Subscriptions workflow.\n- Synchronization is maintained by fetching the real-time status of both payment_id and subscription_id via the Razorpay API to ensure consistency across the merchant backend.\n- Webhooks are fully integrated into the system to handle critical subscription lifecycle events and provide asynchronous updates on payment states.\n- The integration consumes the payment state at the point of capture, utilizing standard Razorpay capture mechanisms for automated transaction processing.\n- A robust fallback mechanism is established through the implementation of Fetch Payment APIs, adhering to the recommended verification windows of 2 days for UPI and 3 days for other payment methods.\n- Error handling kits have been implemented to consume and process standard Razorpay error codes, facilitating efficient debugging and user notification.\n- Communication with Razorpay servers is handled via official SDKs and server-side language integrations, ensuring secure data exchange for UPI and Card transactions.\n- Successful Test IDs: None (No specific pay_IDs for UPI or Card methods were identified during this audit cycle).",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1776157133409",
+      "audit_id": "audit_1776157126330",
+      "merchant_name": "Sugarfit Health Solutions Private Limited",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-04-14T08:58:53.409Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: Done",
+        "Consumes payment state at capture time: Done",
+        "Webhooks: Done",
+        "Fetch payment APIs (Fallback): Done",
+        "Server language/SDK: Done",
+        "Using Refund api's: N/A"
+      ],
+      "audit_summary": "- The user journey involves the selection and purchase of a health subscription plan on the Sugarfit platform, followed by redirection to the Razorpay checkout for payment processing.\n- Webhooks are fully integrated to monitor the subscription lifecycle, ensuring real-time synchronization of payment states and subscription status updates.\n- The system utilizes standard auto-capture mechanisms, with payment timeouts strictly configured for 2 days for UPI transactions and 3 days for Card-based payments.\n- Server-side verification is maintained by fetching the status of both Payment ID and Subscription ID directly via Razorpay APIs to validate transaction authenticity.\n- Comprehensive error handling has been implemented, consuming standard Razorpay error codes to manage payment failures and user-side exceptions effectively.\n- Fallback mechanisms are active through the Fetch Payment APIs to ensure data integrity in the event of notification delays or network latencies.\n- Successful Test IDs: No specific pay_IDs were recorded for UPI or Card transactions during the evaluation of the provided audit logs.",
+      "overall_status": "Pass"
     }
   ]
 }

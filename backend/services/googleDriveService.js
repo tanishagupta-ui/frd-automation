@@ -42,22 +42,16 @@ function initDrive() {
 
         drive = google.drive({ version: 'v3', auth });
 
-        // Asynchronously log the authenticated user's email for diagnostic purposes
-        auth.getCredentials().then(creds => {
-            if (CLIENT_ID) {
-                // For OAuth2, we can't easily get the email without an extra call, 
-                // but we can log that we are using OAuth.
-                console.log(`✅ Google Drive diagnostic: Authenticated via OAuth 2.0 (Client ID: ${CLIENT_ID.substring(0, 10)}...)`);
-            } else if (SERVICE_ACCOUNT_KEY_PATH) {
-                // For Service Account, the email is in the key file
-                try {
-                    const key = JSON.parse(fs.readFileSync(SERVICE_ACCOUNT_KEY_PATH, 'utf8'));
-                    console.log(`✅ Google Drive diagnostic: Authenticated via Service Account (${key.client_email})`);
-                } catch (e) {
-                    console.log(`✅ Google Drive diagnostic: Authenticated via Service Account`);
-                }
+        if (CLIENT_ID) {
+            console.log(`✅ Google Drive diagnostic: Authenticated via OAuth 2.0 (Client ID: ${CLIENT_ID.substring(0, 10)}...)`);
+        } else if (SERVICE_ACCOUNT_KEY_PATH) {
+            try {
+                const key = JSON.parse(fs.readFileSync(SERVICE_ACCOUNT_KEY_PATH, 'utf8'));
+                console.log(`✅ Google Drive diagnostic: Authenticated via Service Account (${key.client_email})`);
+            } catch (e) {
+                console.log(`✅ Google Drive diagnostic: Authenticated via Service Account`);
             }
-        }).catch(() => { });
+        }
 
         return drive;
     } catch (error) {
