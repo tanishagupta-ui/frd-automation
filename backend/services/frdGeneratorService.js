@@ -102,7 +102,7 @@ async function generateFRD(
       `3. [Exception Scenarios](#3-exception-scenarios)\n` +
       `   3.1 [Error Handling](#31-error-handling)\n` +
       `   3.2 [Audit Findings](#32-audit-findings)\n` +
-      `   3.3 [Checklist Link](#33-checklist-link)\n` +
+      `   3.3 [Audit Checklist](#33-audit-checklist)\n` +
       `   3.4 [Auto Capture Configuration](#34-auto-capture-configuration)\n` +
       `4. [Integration Best Practices](#4-integration-best-practices)\n\n`;
 
@@ -159,6 +159,8 @@ async function generateFRD(
     markdown += businessReq;
     pdfMarkdown += businessReq;
 
+    markdown += `---\n\n`;
+    pdfMarkdown += `---\n\n`;
     markdown += `---\n\n`;
     pdfMarkdown += `---\n\n`;
 
@@ -348,17 +350,11 @@ async function generateFRD(
     markdown += auditFindingsSummary;
     pdfMarkdown += auditFindingsSummary;
 
-    markdown += `### 3.3 Checklist Link\n`;
-    pdfMarkdown += `### 3.3 Checklist Link\n`;
-    if (checklistFilename) {
-      const checklistUrl = `http://localhost:5001/uploads/${checklistFilename}`;
-      const linkText = originalFilename || checklistFilename;
-      markdown += `[${linkText}](${checklistUrl})\n\n`;
-      pdfMarkdown += `[${linkText}](${checklistUrl})\n\n`;
-    } else {
-      markdown += `N/A\n\n`;
-      pdfMarkdown += `N/A\n\n`;
-    }
+    markdown += `### 3.3 Audit Checklist\n`;
+    pdfMarkdown += `### 3.3 Audit Checklist\n`;
+    const fullChecklistTable = formatChecklistTable(auditResult);
+    markdown += fullChecklistTable + "\n\n";
+    pdfMarkdown += fullChecklistTable + "\n\n";
 
     markdown += `---\n\n`;
     pdfMarkdown += `---\n\n`;
@@ -1415,6 +1411,44 @@ function formatBestPractices(val) {
   const normalized = normalize(val);
   return `- ${normalized}${normalized.endsWith(".") ? "" : "."}`;
 }
+function formatChecklistTable(auditResult) {
+  const checks = collectChecklistChecks(auditResult);
+  if (checks.length === 0) return "No checklist items found.";
+
+  let table = "| Section | Item | Status | Comment |\n";
+  table += "| :--- | :--- | :--- | :--- |\n";
+
+  let lastSection = "";
+  checks.forEach((check) => {
+    // Keep names exactly as they are in the source
+    const section = (check._section || "").trim();
+    const item = (check.item || check.label || check.config || check.check || "").trim();
+    const status = (check.status || check.result || check.state || "").trim();
+    const comment = (check.comment || "").trim();
+    const hint = (check.hint || "").trim();
+    const details = (check.details || "").trim();
+
+    // Skip truly empty rows, but keep if it has any content
+    if (!section && !item && !status && !comment && !hint && !details) return;
+
+    const combinedComment = [hint, comment, details].filter(Boolean).join("<br>").trim();
+
+    // Grouping logic: Only show section if it's different from the last row
+    const displaySection = section === lastSection ? "" : section;
+    lastSection = section;
+
+    // Escape pipe characters to avoid breaking the table
+    const safeSection = String(displaySection).replace(/\|/g, "\\|");
+    const safeItem = String(item).replace(/\|/g, "\\|").replace(/[\r\n]+/g, "<br>");
+    const safeStatus = String(status).replace(/\|/g, "\\|").replace(/[\r\n]+/g, "<br>");
+    const safeComment = String(combinedComment).replace(/\|/g, "\\|").replace(/[\r\n]+/g, "<br>");
+
+    table += `| ${safeSection} | ${safeItem} | ${safeStatus} | ${safeComment} |\n`;
+  });
+
+  return table;
+}
+
 module.exports = {
   generateFRD,
   buildWebDataSummary,

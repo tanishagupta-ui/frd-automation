@@ -113,18 +113,32 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
+    table-layout: fixed; /* Force table to respect container width */
+    word-wrap: break-word;
+    word-break: break-word;
+    font-size: 9pt; /* Reduced overall table font size */
 }
 
 th,
 td {
     border: 1px solid #ddd;
-    padding: 10px;
+    padding: 8px;
     text-align: left;
+    vertical-align: top; /* Align content to top for multi-line items */
+    overflow: hidden;
+    word-wrap: break-word;
 }
+
+/* Specific column widths for 4-column audit checklist */
+tr td:nth-child(1) { width: 22%; font-weight: bold; } /* Section */
+tr td:nth-child(2) { width: 28%; } /* Item */
+tr td:nth-child(3) { width: 12%; } /* Status */
+tr td:nth-child(4) { width: 38%; } /* Comment */
 
 th {
     background-color: #f7f7f7;
     color: #2F5597;
+    font-weight: bold;
 }
 
 /* Cover page owner info usually fits better with some margin */
