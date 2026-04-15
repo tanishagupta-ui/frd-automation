@@ -209,8 +209,9 @@ app.post("/upload", (req, res) => {
             const rawData = xlsx.utils.sheet_to_json(workbook.Sheets[sheetName], { header: 1 });
 
             // --- Product Specific Validation ---
-            const validateChecklistContent = (type, data) => {
+            const validateChecklistContent = (type, data, filename = "") => {
                 const content = JSON.stringify(data).toLowerCase();
+                const fileLower = filename.toLowerCase();
                 const rawProduct = (type || "Unknown").toLowerCase().trim();
 
                 // Normalize product name to a standard key for validation
@@ -268,6 +269,24 @@ app.post("/upload", (req, res) => {
 
                 // 3. Validate Selection
                 if (matches[selectedSigKey]) {
+                    // --- Specific Validation for Checkout Types ---
+                    const isCheckoutProduct = (p === "standard_checkout" || p === "custom_checkout" || p === "s2s");
+                    if (isCheckoutProduct) {
+                        const hasS2SKeyword = content.includes("s2s") || fileLower.includes("s2s");
+
+                        if (p === "s2s") {
+                            // If user selected S2S, it MUST have s2s in it
+                            if (!hasS2SKeyword) return "Please upload the correct S2S checklist";
+                        } else if (p === "standard_checkout") {
+                            // If user selected Standard, it MUST NOT have s2s
+                            if (hasS2SKeyword) return "S2S checklist cannot be uploaded for Standard Checkout";
+                            if (fileLower.includes("custom")) return "Custom checklist cannot be uploaded for Standard Checkout";
+                        } else if (p === "custom_checkout") {
+                            // If user selected Custom, it MUST NOT have s2s
+                            if (hasS2SKeyword) return "S2S checklist cannot be uploaded for Custom Checkout";
+                        }
+                    }
+
                     // Check for some additional criteria for certain products
                     if (p === "payment_links" && !content.includes("payment link") && !matches["payment_links"]) return "Please upload the correct checklist";
                     if (p === "affordability" && !matches["affordability"] && !content.includes("shopify")) return "Please upload the correct checklist";
@@ -275,7 +294,7 @@ app.post("/upload", (req, res) => {
                     if (p === "subscriptions") {
                         // A Charge at Will/Subsequent Debit checklist should be invalid for Subscriptions
                         if (content.includes("charge at will") || content.includes("subsequent debit")) return "Please upload the correct checklist";
-                        
+
                         // Enforce Plan ID requirement
                         if (!content.includes("plan id") && !content.includes("plan creation")) return "Please upload the correct checklist";
                     }
@@ -287,7 +306,7 @@ app.post("/upload", (req, res) => {
                 return `Please upload the correct checklist`;
             };
 
-            const validationError = validateChecklistContent(req.body.product || "Unknown", rawData);
+            const validationError = validateChecklistContent(req.body.product || "Unknown", rawData, req.file.originalname);
             if (validationError) {
                 console.error("❌ Validation failed:", validationError);
                 return res.status(400).json({ message: validationError });
