@@ -235,18 +235,14 @@ app.post("/upload", (req, res) => {
                     "affordability": ["emi, cardless emi", "shopify", "woocommerce", "affordability widget"],
                     "smart_collect": ["virtual account", "customer identifier", "smart collect"],
                     "caw": ["charge at will", "tokenization", "repeat payments", "caw", "recurring", "card at will", "auto charge", "matrimony", "subsequent debit"],
-                    "checkout": ["account live (key/secret)", "webhook configs", "order creation"]
+                    "checkout": ["account live (key/secret)", "webhook configs", "order creation", "successful payment id", "signature verification"]
                 };
 
                 // Helper to check if content matches a signature
                 const matchesSignature = (sigKey) => {
                     const sigs = signatures[sigKey];
                     if (!sigs) return false;
-                    // For checkout, we need more lenient matching because it's broad
-                    if (sigKey === "checkout") {
-                        return content.includes("order creation") || (content.includes("webhooks") && content.includes("razorpay_signature"));
-                    }
-                    // For others, if any of the signature phrases are found
+                    // Check if any of the signature phrases are found in the content
                     return sigs.some(sig => content.includes(sig));
                 };
 

@@ -415,24 +415,24 @@ body {
 /* ─── Sub Product Selector ─── */
 .sub-product-selector {
   position: absolute;
-  top: 32px;
-  right: 32px;
+  top: 16px;
+  right: 16px;
   display: flex;
-  gap: 8px;
+  gap: 12px;
   background: var(--surface-low);
   padding: 4px;
-  border-radius: 12px;
+  border-radius: 10px;
   border: 1px solid var(--border);
   z-index: 10;
 }
 
 .sub-opt-btn {
-  padding: 8px 16px;
-  border-radius: 8px;
+  padding: 4px 10px;
+  border-radius: 6px;
   border: none;
   background: transparent;
   color: var(--text-secondary);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);

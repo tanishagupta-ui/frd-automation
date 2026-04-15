@@ -1415,36 +1415,64 @@ function formatChecklistTable(auditResult) {
   const checks = collectChecklistChecks(auditResult);
   if (checks.length === 0) return "No checklist items found.";
 
-  let table = "| Section | Item | Status | Comment |\n";
-  table += "| :--- | :--- | :--- | :--- |\n";
+  // Detect format: if any check has a non-empty _section, use 4-column (sectioned) format
+  // Otherwise use 3-column flat format (Configs | Status | Comments) matching Standard Checkout Excel
+  const hasSections = checks.some((c) => (c._section || "").trim().length > 0);
 
-  let lastSection = "";
-  checks.forEach((check) => {
-    // Keep names exactly as they are in the source
-    const section = (check._section || "").trim();
-    const item = (check.item || check.label || check.config || check.check || "").trim();
-    const status = (check.status || check.result || check.state || "").trim();
-    const comment = (check.comment || "").trim();
-    const hint = (check.hint || "").trim();
-    const details = (check.details || "").trim();
+  let table = "";
 
-    // Skip truly empty rows, but keep if it has any content
-    if (!section && !item && !status && !comment && !hint && !details) return;
+  if (hasSections) {
+    // === 4-column format for products with sections (Subscriptions, Route, etc.) ===
+    table = "| Section | Item | Status | Comment |\n";
+    table += "| :--- | :--- | :--- | :--- |\n";
 
-    const combinedComment = [hint, comment, details].filter(Boolean).join("<br>").trim();
+    let lastSection = "";
+    checks.forEach((check) => {
+      const section = (check._section || "").trim();
+      const item = (check.item || check.label || check.config || check.check || "").trim();
+      const status = (check.status || check.result || check.state || "").trim();
+      const comment = (check.comment || "").trim();
+      const hint = (check.hint || "").trim();
+      const details = (check.details || "").trim();
 
-    // Grouping logic: Only show section if it's different from the last row
-    const displaySection = section === lastSection ? "" : section;
-    lastSection = section;
+      if (!section && !item && !status && !comment && !hint && !details) return;
 
-    // Escape pipe characters to avoid breaking the table
-    const safeSection = String(displaySection).replace(/\|/g, "\\|");
-    const safeItem = String(item).replace(/\|/g, "\\|").replace(/[\r\n]+/g, "<br>");
-    const safeStatus = String(status).replace(/\|/g, "\\|").replace(/[\r\n]+/g, "<br>");
-    const safeComment = String(combinedComment).replace(/\|/g, "\\|").replace(/[\r\n]+/g, "<br>");
+      const combinedComment = [hint, comment, details].filter(Boolean).join("<br>").trim();
 
-    table += `| ${safeSection} | ${safeItem} | ${safeStatus} | ${safeComment} |\n`;
-  });
+      // Grouping: show section name only on first row of each group
+      const displaySection = section === lastSection ? "" : section;
+      lastSection = section;
+
+      const safeSection = String(displaySection).replace(/\|/g, "\\|");
+      const safeItem = String(item).replace(/\|/g, "\\|").replace(/[\r\n]+/g, "<br>");
+      const safeStatus = String(status).replace(/\|/g, "\\|").replace(/[\r\n]+/g, "<br>");
+      const safeComment = String(combinedComment).replace(/\|/g, "\\|").replace(/[\r\n]+/g, "<br>");
+
+      table += `| ${safeSection} | ${safeItem} | ${safeStatus} | ${safeComment} |\n`;
+    });
+  } else {
+    // === 3-column format for flat checklists (Standard Checkout, Custom Checkout, S2S) ===
+    table = "| Configs | Status | Comments |\n";
+    table += "| :--- | :--- | :--- |\n";
+
+    checks.forEach((check) => {
+      const config = (check.config || check.item || check.label || check.check || "").trim();
+      const status = (check.status || check.result || check.state || "").trim();
+      const comment = (check.comment || "").trim();
+      const hint = (check.hint || "").trim();
+      const details = (check.details || "").trim();
+
+      if (!config && !status && !comment && !hint && !details) return;
+
+      const combinedComment = [hint, comment, details].filter(Boolean).join("<br>").trim();
+
+      const safeConfig = String(config).replace(/\|/g, "\\|").replace(/[\r\n]+/g, "<br>");
+      const safeStatus = String(status).replace(/\|/g, "\\|").replace(/[\r\n]+/g, "<br>");
+      const safeComment = String(combinedComment).replace(/\|/g, "\\|").replace(/[\r\n]+/g, "<br>");
+
+      table += `| ${safeConfig} | ${safeStatus} | ${safeComment} |\n`;
+    });
+  }
 
   return table;
 }

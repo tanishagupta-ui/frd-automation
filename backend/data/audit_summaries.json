@@ -3280,6 +3280,172 @@
       ],
       "audit_summary": "- The user journey involves the selection and purchase of a health subscription plan on the Sugarfit platform, followed by redirection to the Razorpay checkout for payment processing.\n- Webhooks are fully integrated to monitor the subscription lifecycle, ensuring real-time synchronization of payment states and subscription status updates.\n- The system utilizes standard auto-capture mechanisms, with payment timeouts strictly configured for 2 days for UPI transactions and 3 days for Card-based payments.\n- Server-side verification is maintained by fetching the status of both Payment ID and Subscription ID directly via Razorpay APIs to validate transaction authenticity.\n- Comprehensive error handling has been implemented, consuming standard Razorpay error codes to manage payment failures and user-side exceptions effectively.\n- Fallback mechanisms are active through the Fetch Payment APIs to ensure data integrity in the event of notification delays or network latencies.\n- Successful Test IDs: No specific pay_IDs were recorded for UPI or Card transactions during the evaluation of the provided audit logs.",
       "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1776235010413",
+      "audit_id": "audit_1776235001010",
+      "merchant_name": "Webhook.site",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-04-15T06:36:41.010Z",
+      "summary_date": "2026-04-15T06:36:50.413Z",
+      "key_findings": [
+        "Account Live (Key/Secret available for live mode): Done",
+        "Auto_capture Settings: Done",
+        "Successful Payment IDs: Done",
+        "Signature verification: Done",
+        "Implementing fetch status API: Done",
+        "Refund API: Done",
+        "Fetch API: Done",
+        "Payment capture settings: Done"
+      ],
+      "audit_summary": "- The payment flow is initiated on the Webhook.site platform where users select services and proceed to the Razorpay Standard Checkout for transaction processing.\n- The integration employs server-side signature verification to ensure the authenticity and integrity of the payment response received from Razorpay.\n- Payment capture is configured via the 'auto_capture' setting, facilitating immediate settlement upon successful authorization without manual intervention.\n- The implementation includes the Razorpay Fetch and Refund APIs, allowing for programmatic management of transaction details and post-payment lifecycle events.\n- A reconciliation mechanism using the Fetch Status API is active to ensure data consistency in scenarios where frontend redirection or webhook delivery is interrupted.\n- Standard error handling kits and technical documentation for edge-case management have been reviewed and verified for production readiness.\n- Successful end-to-end transaction processing has been confirmed with the following Test IDs: pay_pzqntdc2ttfarq, pay_q3nmu2esu2clrh, and pay_q3wu4xtt0ogzba.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1776235400998",
+      "audit_id": "audit_1776235394638",
+      "merchant_name": "Webhook.site",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-04-15T06:43:14.638Z",
+      "summary_date": "2026-04-15T06:43:20.998Z",
+      "key_findings": [
+        "Account Live (Key/Secret available for live mode): Done",
+        "Auto_capture Settings: Done",
+        "Successful Payment IDs: Done",
+        "Signature verification: Done",
+        "Implementing fetch status API: Done",
+        "Refund API: Done",
+        "Fetch API: Done",
+        "Payment capture settings: Done"
+      ],
+      "audit_summary": "- The user journey is initiated through the selection of services on the Webhook.site platform, leading to the invocation of the Razorpay Standard Checkout hosted sequence.\n- Payment capture is currently configured via auto-capture settings, ensuring immediate settlement upon successful transaction authorization.\n- Implementation of server-side signature verification has been confirmed, securing the communication between the merchant server and Razorpay's backend.\n- Technical evaluation of the integration confirms the successful deployment of the Fetch Payment API, Fetch Status API, and Refund API for comprehensive transaction management.\n- Standard error handling kits and response protocols have been verified to manage exceptions during the payment lifecycle effectively.\n- The webhook status has been evaluated for the merchant's integration to ensure proper event-driven status updates are processed.\n- Successful transaction processing was validated through the following Test Payment IDs: pay_pzqntdc2ttfarq, pay_q3nmu2esu2clrh, and pay_q3wu4xtt0ogzba.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1776235579619",
+      "audit_id": "audit_1776235573548",
+      "merchant_name": "Webhook.site",
+      "product_type": "Custom Checkout",
+      "audit_date": "2026-04-15T06:46:13.548Z",
+      "summary_date": "2026-04-15T06:46:19.619Z",
+      "key_findings": [
+        "Account Live (Key/Secret available for live mode): Done",
+        "Webhook Configs: N/A",
+        "Auto_capture Settings: Done",
+        "Successful Payment IDs: Done",
+        "Signature verification: Done",
+        "Implementing fetch status API: Done",
+        "Refund API: Done",
+        "Fetch API: Done",
+        "Payment capture settings: Done"
+      ],
+      "audit_summary": "- The payment journey is initiated via a Custom Checkout integration where the user selects services on the Webhook.site platform before proceeding to the payment gateway.\n- Server-side signature verification is successfully implemented to ensure the integrity of the data received from Razorpay post-transaction.\n- The integration utilizes Razorpay’s auto-capture functionality, ensuring that payments are captured immediately upon successful customer authorization.\n- Core API functionalities, including the Fetch Payment, Fetch Status, and Refund APIs, have been verified for managing the complete transaction lifecycle.\n- Standardized error handling kits have been provided and integrated to manage exceptions and provide appropriate feedback during the checkout process.\n- Webhook configurations have been evaluated to ensure asynchronous notifications are correctly processed for payment events.\n- Technical verification confirmed the successful execution of test transactions across the environment.\n- Successful Test IDs verified: pay_pzqntdc2ttfarq, pay_q3nmu2esu2clrh, and pay_q3wu4xtt0ogzba.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1776236529991",
+      "audit_id": "audit_1776236521864",
+      "merchant_name": "Webhook.site",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-04-15T07:02:01.864Z",
+      "summary_date": "2026-04-15T07:02:09.991Z",
+      "key_findings": [
+        "Account Live (Key/Secret available for live mode): Done",
+        "Webhook Configs: N/A",
+        "Auto_capture Settings: Done",
+        "Successful Payment IDs: Done",
+        "Signature verification: Done",
+        "Implementing fetch status API: Done",
+        "Refund API: Done",
+        "Fetch API: Done",
+        "Payment capture settings: Done"
+      ],
+      "audit_summary": "- The user journey commences with the selection of a specific service or subscription tier on the Webhook.site platform, triggering the Razorpay Standard Checkout modal.\n- Payment capture is configured via 'Auto-capture' settings, ensuring that authorized transactions are automatically processed for settlement without manual intervention.\n- Secure backend integration is verified through the successful implementation of Razorpay signature verification, protecting the system against request tampering.\n- The integration utilizes the Fetch Status, Refund, and Fetch APIs to facilitate real-time payment reconciliation and lifecycle management.\n- Webhook configurations have been evaluated for asynchronous event processing, specifically to handle status updates for payment success or failure events.\n- Comprehensive error handling kits have been shared to ensure the platform gracefully manages payment timeouts, cancellations, and gateway declines.\n- Successful transaction flow is confirmed by the following verified Test Payment IDs: pay_pzqntdc2ttfarq, pay_q3nmu2esu2clrh, and pay_q3wu4xtt0ogzba.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1776236553776",
+      "audit_id": "audit_1776236547159",
+      "merchant_name": "Sugarfit Health Solutions Private Limited",
+      "product_type": "Subscriptions",
+      "audit_date": "7th November",
+      "summary_date": "2026-04-15T07:02:33.776Z",
+      "key_findings": [
+        "Consumes / Verify payment_id, order_id and razorpay_signature (Standard and Custom Checkout): N/A",
+        "Fetch status of Payment_id and Subscription_id: Done",
+        "Consumes Error Codes: Done",
+        "2 Days for UPI and 3 Days for other methods: Done",
+        "Consumes payment state at capture time: Done",
+        "Webhooks: Done",
+        "Fetch payment APIs (Fallback): Done",
+        "Server language/SDK: Done",
+        "Using Refund api's: N/A"
+      ],
+      "audit_summary": "- The user selects a health management subscription plan on the platform, triggering the subscription creation and authorization flow.\n- Integration utilizes server-side status checks for both payment_id and subscription_id to maintain consistency between the merchant database and Razorpay's records.\n- Webhooks are fully integrated to process asynchronous notifications, specifically managing recurring payment cycles and subscription state changes.\n- Standard auto-capture mechanisms are implemented to ensure funds are captured immediately upon successful authorization by the customer.\n- Error handling logic is configured to consume Razorpay-specific error codes, enabling precise management of transaction failures and user feedback.\n- System architecture supports a fallback mechanism via Fetch Payment APIs to handle edge cases where immediate redirection or webhook delivery might fail.\n- Adherence to mandatory timeout thresholds is confirmed, with configurations set for 2 days for UPI and 3 days for Card payment methods.\n- Successful Test IDs: No pay_IDs found during the audit session.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1776236568519",
+      "audit_id": "audit_1776236562411",
+      "merchant_name": "Webhook.site",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-04-15T07:02:42.411Z",
+      "summary_date": "2026-04-15T07:02:48.519Z",
+      "key_findings": [
+        "Account Live (Key/Secret available for live mode): Done",
+        "Webhook Configs: N/A",
+        "Auto_capture Settings: Done",
+        "Successful Payment IDs: Done",
+        "Signature verification: Done",
+        "Implementing fetch status API: Done",
+        "Refund API: Done",
+        "Fetch API: Done",
+        "Payment capture settings: Done"
+      ],
+      "audit_summary": "- The user journey is initiated through the selection of products or services on the platform, seamlessly transitioning to the Razorpay Standard Checkout interface for payment processing.\n- Webhook configurations have been evaluated to monitor critical transaction events, ensuring real-time data consistency between Razorpay and the merchant server.\n- Payment capture is managed through automated settings, where transactions are captured immediately upon successful authorization to streamline settlement workflows.\n- Server-side signature verification is correctly implemented to validate the integrity of payment responses and prevent unauthorized transaction spoofing.\n- The integration utilizes the Fetch Status, Refund, and Fetch APIs to programmatically manage the payment lifecycle and facilitate post-transaction operations.\n- Comprehensive error handling kits and logic have been reviewed to ensure the system provides appropriate feedback during payment failures or network interruptions.\n- Integration integrity is confirmed through successful test transactions, specifically validated via Test IDs: pay_pzqntdc2ttfarq, pay_q3nmu2esu2clrh, and pay_q3wu4xtt0ogzba.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1776236608877",
+      "audit_id": "audit_1776236602520",
+      "merchant_name": "Webhook.site",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-04-15T07:03:22.520Z",
+      "summary_date": "2026-04-15T07:03:28.877Z",
+      "key_findings": [
+        "Account Live (Key/Secret available for live mode): Done",
+        "Webhook Configs: N/A",
+        "Auto_capture Settings: Done",
+        "Successful Payment IDs: Done",
+        "Signature verification: Done",
+        "Implementing fetch status API: Done",
+        "Refund API: Done",
+        "Fetch API: Done",
+        "Payment capture settings: Done"
+      ],
+      "audit_summary": "- The integration facilitates a seamless user journey where customers select services on Webhook.site and are redirected to the Razorpay Standard Checkout for payment execution.\n- Payment capture is configured via auto-capture settings, ensuring that authorized transactions are automatically settled without manual intervention.\n- Server-side signature verification is successfully implemented, providing robust validation of payment responses to prevent data tampering.\n- The merchant has integrated the Fetch Payment and Fetch Status APIs to programmatically reconcile transaction states within their backend system.\n- Operational readiness for transaction reversals is confirmed through the successful implementation of the Razorpay Refund API.\n- Comprehensive error handling kits have been shared and reviewed to ensure graceful management of payment failures and edge cases.\n- Webhook configurations were evaluated; while currently marked as N/A for this specific workflow, the infrastructure supports future event-driven notifications.\n- Successful transaction processing was verified via the following Test Payment IDs: pay_pzqntdc2ttfarq, pay_q3nmu2esu2clrh, and pay_q3wu4xtt0ogzba.",
+      "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1776236675532",
+      "audit_id": "audit_1776236668878",
+      "merchant_name": "Webhook.site",
+      "product_type": "Standard Checkout",
+      "audit_date": "2026-04-15T07:04:28.879Z",
+      "summary_date": "2026-04-15T07:04:35.532Z",
+      "key_findings": [
+        "Account Live (Key/Secret available for live mode): Done",
+        "Webhook Configs: N/A",
+        "Auto_capture Settings: Done",
+        "Successful Payment IDs: Done",
+        "Signature verification: Done",
+        "Implementing fetch status API: Done",
+        "Refund API: Done",
+        "Fetch API: Done",
+        "Payment capture settings: Done"
+      ],
+      "audit_summary": "- The user journey is initiated through the selection of a service or subscription on the Webhook.site platform, which triggers the Razorpay Standard Checkout interface.\n- Payment capture is configured via 'Auto-capture' settings, ensuring immediate fund settlement upon successful customer authentication without manual intervention.\n- Security protocols are enforced through server-side signature verification, validating the integrity of the payment response received from Razorpay.\n- Post-payment management is facilitated through the successful implementation of the Fetch Payment API and Refund API for programmatic transaction reconciliation.\n- Transaction status consistency is maintained through the Fetch Status API, ensuring the platform's internal database remains synchronized with the Razorpay gateway.\n- Error handling kits and best practices have been reviewed to ensure graceful management of payment failures and edge-case scenarios within the checkout flow.\n- Technical validation was performed using the following successful Test IDs: pay_pzqntdc2ttfarq, pay_q3nmu2esu2clrh, and pay_q3wu4xtt0ogzba.",
+      "overall_status": "Pass"
     }
   ]
 }

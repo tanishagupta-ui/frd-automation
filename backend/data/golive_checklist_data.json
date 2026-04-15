@@ -151,6 +151,62 @@
       "merchant_name": "Join Ventures",
       "audit_date": "",
       "created_at": "2026-04-10T09:14:16.758Z"
+    },
+    {
+      "id": 20,
+      "product": "Standard Checkout",
+      "merchant_id": "Unknown",
+      "merchant_name": "Webhook.site",
+      "audit_date": "",
+      "created_at": "2026-04-15T06:36:40.996Z"
+    },
+    {
+      "id": 21,
+      "product": "Standard Checkout",
+      "merchant_id": "Unknown",
+      "merchant_name": "Webhook.site",
+      "audit_date": "",
+      "created_at": "2026-04-15T06:43:14.627Z"
+    },
+    {
+      "id": 22,
+      "product": "Custom Checkout",
+      "merchant_id": "Unknown",
+      "merchant_name": "Webhook.site",
+      "audit_date": "",
+      "created_at": "2026-04-15T06:46:13.543Z"
+    },
+    {
+      "id": 23,
+      "product": "Standard Checkout",
+      "merchant_id": "Unknown",
+      "merchant_name": "Webhook.site",
+      "audit_date": "",
+      "created_at": "2026-04-15T07:02:01.859Z"
+    },
+    {
+      "id": 24,
+      "product": "Standard Checkout",
+      "merchant_id": "Unknown",
+      "merchant_name": "Webhook.site",
+      "audit_date": "",
+      "created_at": "2026-04-15T07:02:42.407Z"
+    },
+    {
+      "id": 25,
+      "product": "Standard Checkout",
+      "merchant_id": "Unknown",
+      "merchant_name": "Webhook.site",
+      "audit_date": "",
+      "created_at": "2026-04-15T07:03:22.515Z"
+    },
+    {
+      "id": 26,
+      "product": "Standard Checkout",
+      "merchant_id": "Unknown",
+      "merchant_name": "Webhook.site",
+      "audit_date": "",
+      "created_at": "2026-04-15T07:04:28.865Z"
     }
   ],
   "golive_results": [
@@ -2589,6 +2645,937 @@
       "config_item": "Webhook Events",
       "status": "payment.capture, order.paid",
       "comment": ""
+    },
+    {
+      "id": 349,
+      "session_id": 20,
+      "config_item": "Account Live (Key/Secret available for live mode)",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 350,
+      "session_id": 20,
+      "config_item": "Webhook Configs",
+      "status": "NA",
+      "comment": "payment.capture,payment.failed"
+    },
+    {
+      "id": 351,
+      "session_id": 20,
+      "config_item": "Auto_capture Settings",
+      "status": "Done",
+      "comment": "auto 3 days"
+    },
+    {
+      "id": 352,
+      "session_id": 20,
+      "config_item": "Successful Payment IDs",
+      "status": "Done",
+      "comment": "pay_PzqntDC2ttfaRQ(upi), pay_Q3nmu2eSU2cLrH(netbanking),pay_Q3WU4xtt0oGZbA(card)"
+    },
+    {
+      "id": 353,
+      "session_id": 20,
+      "config_item": "Signature verification",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 354,
+      "session_id": 20,
+      "config_item": "Callback_url",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 355,
+      "session_id": 20,
+      "config_item": "Implementing fetch status API",
+      "status": "Done",
+      "comment": "suggested"
+    },
+    {
+      "id": 356,
+      "session_id": 20,
+      "config_item": "Custom solution",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 357,
+      "session_id": 20,
+      "config_item": "Refund API",
+      "status": "Done",
+      "comment": "Refund created from the dashboard manually"
+    },
+    {
+      "id": 358,
+      "session_id": 20,
+      "config_item": "Fetch API",
+      "status": "Done",
+      "comment": "NA"
+    },
+    {
+      "id": 359,
+      "session_id": 20,
+      "config_item": "Payment capture settings",
+      "status": "Done",
+      "comment": "auto capture set as 3 days"
+    },
+    {
+      "id": 360,
+      "session_id": 20,
+      "config_item": "Failure handler-function",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 361,
+      "session_id": 20,
+      "config_item": "Backend Language",
+      "status": "Done",
+      "comment": "java,springboot"
+    },
+    {
+      "id": 362,
+      "session_id": 20,
+      "config_item": "Checkout library and platform",
+      "status": "Done",
+      "comment": "Web Standard checkout"
+    },
+    {
+      "id": 363,
+      "session_id": 20,
+      "config_item": "SDK latest Version",
+      "status": "NA",
+      "comment": "no sdk"
+    },
+    {
+      "id": 364,
+      "session_id": 20,
+      "config_item": "Best practices",
+      "status": "Done",
+      "comment": "Capture authorized payments using Payment Capture Settings; create orders via Orders API and pass the order_id to Checkout; verify the payment signature; confirm payment/order status is captured/paid before providing service (via fetch payment/order APIs); implement webhooks (payment.captured, payment.failed, order.paid); use callback_url for in-app browsers that do not support iframes."
+    },
+    {
+      "id": 365,
+      "session_id": 20,
+      "config_item": "Rainy day",
+      "status": "Done",
+      "comment": "shared"
+    },
+    {
+      "id": 366,
+      "session_id": 20,
+      "config_item": "Late Auth",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 367,
+      "session_id": 20,
+      "config_item": "Sign off",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 368,
+      "session_id": 21,
+      "config_item": "Account Live (Key/Secret available for live mode)",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 369,
+      "session_id": 21,
+      "config_item": "Webhook Configs",
+      "status": "NA",
+      "comment": "payment.capture,payment.failed"
+    },
+    {
+      "id": 370,
+      "session_id": 21,
+      "config_item": "Auto_capture Settings",
+      "status": "Done",
+      "comment": "auto 3 days"
+    },
+    {
+      "id": 371,
+      "session_id": 21,
+      "config_item": "Successful Payment IDs",
+      "status": "Done",
+      "comment": "pay_PzqntDC2ttfaRQ(upi), pay_Q3nmu2eSU2cLrH(netbanking),pay_Q3WU4xtt0oGZbA(card)"
+    },
+    {
+      "id": 372,
+      "session_id": 21,
+      "config_item": "Signature verification",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 373,
+      "session_id": 21,
+      "config_item": "Callback_url",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 374,
+      "session_id": 21,
+      "config_item": "Implementing fetch status API",
+      "status": "Done",
+      "comment": "suggested"
+    },
+    {
+      "id": 375,
+      "session_id": 21,
+      "config_item": "Custom solution",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 376,
+      "session_id": 21,
+      "config_item": "Refund API",
+      "status": "Done",
+      "comment": "Refund created from the dashboard manually"
+    },
+    {
+      "id": 377,
+      "session_id": 21,
+      "config_item": "Fetch API",
+      "status": "Done",
+      "comment": "NA"
+    },
+    {
+      "id": 378,
+      "session_id": 21,
+      "config_item": "Payment capture settings",
+      "status": "Done",
+      "comment": "auto capture set as 3 days"
+    },
+    {
+      "id": 379,
+      "session_id": 21,
+      "config_item": "Failure handler-function",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 380,
+      "session_id": 21,
+      "config_item": "Backend Language",
+      "status": "Done",
+      "comment": "java,springboot"
+    },
+    {
+      "id": 381,
+      "session_id": 21,
+      "config_item": "Checkout library and platform",
+      "status": "Done",
+      "comment": "Web Standard checkout"
+    },
+    {
+      "id": 382,
+      "session_id": 21,
+      "config_item": "SDK latest Version",
+      "status": "NA",
+      "comment": "no sdk"
+    },
+    {
+      "id": 383,
+      "session_id": 21,
+      "config_item": "Best practices",
+      "status": "Done",
+      "comment": "Capture authorized payments using Payment Capture Settings; create orders via Orders API and pass the order_id to Checkout; verify the payment signature; confirm payment/order status is captured/paid before providing service (via fetch payment/order APIs); implement webhooks (payment.captured, payment.failed, order.paid); use callback_url for in-app browsers that do not support iframes."
+    },
+    {
+      "id": 384,
+      "session_id": 21,
+      "config_item": "Rainy day",
+      "status": "Done",
+      "comment": "shared"
+    },
+    {
+      "id": 385,
+      "session_id": 21,
+      "config_item": "Late Auth",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 386,
+      "session_id": 21,
+      "config_item": "Sign off",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 387,
+      "session_id": 22,
+      "config_item": "Account Live (Key/Secret available for live mode)",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 388,
+      "session_id": 22,
+      "config_item": "Webhook Configs",
+      "status": "NA",
+      "comment": "payment.capture,payment.failed"
+    },
+    {
+      "id": 389,
+      "session_id": 22,
+      "config_item": "Auto_capture Settings",
+      "status": "Done",
+      "comment": "auto 3 days"
+    },
+    {
+      "id": 390,
+      "session_id": 22,
+      "config_item": "Successful Payment IDs",
+      "status": "Done",
+      "comment": "pay_PzqntDC2ttfaRQ(upi), pay_Q3nmu2eSU2cLrH(netbanking),pay_Q3WU4xtt0oGZbA(card)"
+    },
+    {
+      "id": 391,
+      "session_id": 22,
+      "config_item": "Signature verification",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 392,
+      "session_id": 22,
+      "config_item": "Callback_url",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 393,
+      "session_id": 22,
+      "config_item": "Implementing fetch status API",
+      "status": "Done",
+      "comment": "suggested"
+    },
+    {
+      "id": 394,
+      "session_id": 22,
+      "config_item": "Custom solution",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 395,
+      "session_id": 22,
+      "config_item": "Refund API",
+      "status": "Done",
+      "comment": "Refund created from the dashboard manually"
+    },
+    {
+      "id": 396,
+      "session_id": 22,
+      "config_item": "Fetch API",
+      "status": "Done",
+      "comment": "NA"
+    },
+    {
+      "id": 397,
+      "session_id": 22,
+      "config_item": "Payment capture settings",
+      "status": "Done",
+      "comment": "auto capture set as 3 days"
+    },
+    {
+      "id": 398,
+      "session_id": 22,
+      "config_item": "Failure handler-function",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 399,
+      "session_id": 22,
+      "config_item": "Backend Language",
+      "status": "Done",
+      "comment": "java,springboot"
+    },
+    {
+      "id": 400,
+      "session_id": 22,
+      "config_item": "Checkout library and platform",
+      "status": "Done",
+      "comment": "Web Standard checkout"
+    },
+    {
+      "id": 401,
+      "session_id": 22,
+      "config_item": "SDK latest Version",
+      "status": "NA",
+      "comment": "no sdk"
+    },
+    {
+      "id": 402,
+      "session_id": 22,
+      "config_item": "Best practices",
+      "status": "Done",
+      "comment": "Capture authorized payments using Payment Capture Settings; create orders via Orders API and pass the order_id to Checkout; verify the payment signature; confirm payment/order status is captured/paid before providing service (via fetch payment/order APIs); implement webhooks (payment.captured, payment.failed, order.paid); use callback_url for in-app browsers that do not support iframes."
+    },
+    {
+      "id": 403,
+      "session_id": 22,
+      "config_item": "Rainy day",
+      "status": "Done",
+      "comment": "shared"
+    },
+    {
+      "id": 404,
+      "session_id": 22,
+      "config_item": "Late Auth",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 405,
+      "session_id": 22,
+      "config_item": "Sign off",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 406,
+      "session_id": 23,
+      "config_item": "Account Live (Key/Secret available for live mode)",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 407,
+      "session_id": 23,
+      "config_item": "Webhook Configs",
+      "status": "NA",
+      "comment": "payment.capture,payment.failed"
+    },
+    {
+      "id": 408,
+      "session_id": 23,
+      "config_item": "Auto_capture Settings",
+      "status": "Done",
+      "comment": "auto 3 days"
+    },
+    {
+      "id": 409,
+      "session_id": 23,
+      "config_item": "Successful Payment IDs",
+      "status": "Done",
+      "comment": "pay_PzqntDC2ttfaRQ(upi), pay_Q3nmu2eSU2cLrH(netbanking),pay_Q3WU4xtt0oGZbA(card)"
+    },
+    {
+      "id": 410,
+      "session_id": 23,
+      "config_item": "Signature verification",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 411,
+      "session_id": 23,
+      "config_item": "Callback_url",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 412,
+      "session_id": 23,
+      "config_item": "Implementing fetch status API",
+      "status": "Done",
+      "comment": "suggested"
+    },
+    {
+      "id": 413,
+      "session_id": 23,
+      "config_item": "Custom solution",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 414,
+      "session_id": 23,
+      "config_item": "Refund API",
+      "status": "Done",
+      "comment": "Refund created from the dashboard manually"
+    },
+    {
+      "id": 415,
+      "session_id": 23,
+      "config_item": "Fetch API",
+      "status": "Done",
+      "comment": "NA"
+    },
+    {
+      "id": 416,
+      "session_id": 23,
+      "config_item": "Payment capture settings",
+      "status": "Done",
+      "comment": "auto capture set as 3 days"
+    },
+    {
+      "id": 417,
+      "session_id": 23,
+      "config_item": "Failure handler-function",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 418,
+      "session_id": 23,
+      "config_item": "Backend Language",
+      "status": "Done",
+      "comment": "java,springboot"
+    },
+    {
+      "id": 419,
+      "session_id": 23,
+      "config_item": "Checkout library and platform",
+      "status": "Done",
+      "comment": "Web Standard checkout"
+    },
+    {
+      "id": 420,
+      "session_id": 23,
+      "config_item": "SDK latest Version",
+      "status": "NA",
+      "comment": "no sdk"
+    },
+    {
+      "id": 421,
+      "session_id": 23,
+      "config_item": "Best practices",
+      "status": "Done",
+      "comment": "Capture authorized payments using Payment Capture Settings; create orders via Orders API and pass the order_id to Checkout; verify the payment signature; confirm payment/order status is captured/paid before providing service (via fetch payment/order APIs); implement webhooks (payment.captured, payment.failed, order.paid); use callback_url for in-app browsers that do not support iframes."
+    },
+    {
+      "id": 422,
+      "session_id": 23,
+      "config_item": "Rainy day",
+      "status": "Done",
+      "comment": "shared"
+    },
+    {
+      "id": 423,
+      "session_id": 23,
+      "config_item": "Late Auth",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 424,
+      "session_id": 23,
+      "config_item": "Sign off",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 425,
+      "session_id": 24,
+      "config_item": "Account Live (Key/Secret available for live mode)",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 426,
+      "session_id": 24,
+      "config_item": "Webhook Configs",
+      "status": "NA",
+      "comment": "payment.capture,payment.failed"
+    },
+    {
+      "id": 427,
+      "session_id": 24,
+      "config_item": "Auto_capture Settings",
+      "status": "Done",
+      "comment": "auto 3 days"
+    },
+    {
+      "id": 428,
+      "session_id": 24,
+      "config_item": "Successful Payment IDs",
+      "status": "Done",
+      "comment": "pay_PzqntDC2ttfaRQ(upi), pay_Q3nmu2eSU2cLrH(netbanking),pay_Q3WU4xtt0oGZbA(card)"
+    },
+    {
+      "id": 429,
+      "session_id": 24,
+      "config_item": "Signature verification",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 430,
+      "session_id": 24,
+      "config_item": "Callback_url",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 431,
+      "session_id": 24,
+      "config_item": "Implementing fetch status API",
+      "status": "Done",
+      "comment": "suggested"
+    },
+    {
+      "id": 432,
+      "session_id": 24,
+      "config_item": "Custom solution",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 433,
+      "session_id": 24,
+      "config_item": "Refund API",
+      "status": "Done",
+      "comment": "Refund created from the dashboard manually"
+    },
+    {
+      "id": 434,
+      "session_id": 24,
+      "config_item": "Fetch API",
+      "status": "Done",
+      "comment": "NA"
+    },
+    {
+      "id": 435,
+      "session_id": 24,
+      "config_item": "Payment capture settings",
+      "status": "Done",
+      "comment": "auto capture set as 3 days"
+    },
+    {
+      "id": 436,
+      "session_id": 24,
+      "config_item": "Failure handler-function",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 437,
+      "session_id": 24,
+      "config_item": "Backend Language",
+      "status": "Done",
+      "comment": "java,springboot"
+    },
+    {
+      "id": 438,
+      "session_id": 24,
+      "config_item": "Checkout library and platform",
+      "status": "Done",
+      "comment": "Web Standard checkout"
+    },
+    {
+      "id": 439,
+      "session_id": 24,
+      "config_item": "SDK latest Version",
+      "status": "NA",
+      "comment": "no sdk"
+    },
+    {
+      "id": 440,
+      "session_id": 24,
+      "config_item": "Best practices",
+      "status": "Done",
+      "comment": "Capture authorized payments using Payment Capture Settings; create orders via Orders API and pass the order_id to Checkout; verify the payment signature; confirm payment/order status is captured/paid before providing service (via fetch payment/order APIs); implement webhooks (payment.captured, payment.failed, order.paid); use callback_url for in-app browsers that do not support iframes."
+    },
+    {
+      "id": 441,
+      "session_id": 24,
+      "config_item": "Rainy day",
+      "status": "Done",
+      "comment": "shared"
+    },
+    {
+      "id": 442,
+      "session_id": 24,
+      "config_item": "Late Auth",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 443,
+      "session_id": 24,
+      "config_item": "Sign off",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 444,
+      "session_id": 25,
+      "config_item": "Account Live (Key/Secret available for live mode)",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 445,
+      "session_id": 25,
+      "config_item": "Webhook Configs",
+      "status": "NA",
+      "comment": "payment.capture,payment.failed"
+    },
+    {
+      "id": 446,
+      "session_id": 25,
+      "config_item": "Auto_capture Settings",
+      "status": "Done",
+      "comment": "auto 3 days"
+    },
+    {
+      "id": 447,
+      "session_id": 25,
+      "config_item": "Successful Payment IDs",
+      "status": "Done",
+      "comment": "pay_PzqntDC2ttfaRQ(upi), pay_Q3nmu2eSU2cLrH(netbanking),pay_Q3WU4xtt0oGZbA(card)"
+    },
+    {
+      "id": 448,
+      "session_id": 25,
+      "config_item": "Signature verification",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 449,
+      "session_id": 25,
+      "config_item": "Callback_url",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 450,
+      "session_id": 25,
+      "config_item": "Implementing fetch status API",
+      "status": "Done",
+      "comment": "suggested"
+    },
+    {
+      "id": 451,
+      "session_id": 25,
+      "config_item": "Custom solution",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 452,
+      "session_id": 25,
+      "config_item": "Refund API",
+      "status": "Done",
+      "comment": "Refund created from the dashboard manually"
+    },
+    {
+      "id": 453,
+      "session_id": 25,
+      "config_item": "Fetch API",
+      "status": "Done",
+      "comment": "NA"
+    },
+    {
+      "id": 454,
+      "session_id": 25,
+      "config_item": "Payment capture settings",
+      "status": "Done",
+      "comment": "auto capture set as 3 days"
+    },
+    {
+      "id": 455,
+      "session_id": 25,
+      "config_item": "Failure handler-function",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 456,
+      "session_id": 25,
+      "config_item": "Backend Language",
+      "status": "Done",
+      "comment": "java,springboot"
+    },
+    {
+      "id": 457,
+      "session_id": 25,
+      "config_item": "Checkout library and platform",
+      "status": "Done",
+      "comment": "Web Standard checkout"
+    },
+    {
+      "id": 458,
+      "session_id": 25,
+      "config_item": "SDK latest Version",
+      "status": "NA",
+      "comment": "no sdk"
+    },
+    {
+      "id": 459,
+      "session_id": 25,
+      "config_item": "Best practices",
+      "status": "Done",
+      "comment": "Capture authorized payments using Payment Capture Settings; create orders via Orders API and pass the order_id to Checkout; verify the payment signature; confirm payment/order status is captured/paid before providing service (via fetch payment/order APIs); implement webhooks (payment.captured, payment.failed, order.paid); use callback_url for in-app browsers that do not support iframes."
+    },
+    {
+      "id": 460,
+      "session_id": 25,
+      "config_item": "Rainy day",
+      "status": "Done",
+      "comment": "shared"
+    },
+    {
+      "id": 461,
+      "session_id": 25,
+      "config_item": "Late Auth",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 462,
+      "session_id": 25,
+      "config_item": "Sign off",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 463,
+      "session_id": 26,
+      "config_item": "Account Live (Key/Secret available for live mode)",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 464,
+      "session_id": 26,
+      "config_item": "Webhook Configs",
+      "status": "NA",
+      "comment": "payment.capture,payment.failed"
+    },
+    {
+      "id": 465,
+      "session_id": 26,
+      "config_item": "Auto_capture Settings",
+      "status": "Done",
+      "comment": "auto 3 days"
+    },
+    {
+      "id": 466,
+      "session_id": 26,
+      "config_item": "Successful Payment IDs",
+      "status": "Done",
+      "comment": "pay_PzqntDC2ttfaRQ(upi), pay_Q3nmu2eSU2cLrH(netbanking),pay_Q3WU4xtt0oGZbA(card)"
+    },
+    {
+      "id": 467,
+      "session_id": 26,
+      "config_item": "Signature verification",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 468,
+      "session_id": 26,
+      "config_item": "Callback_url",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 469,
+      "session_id": 26,
+      "config_item": "Implementing fetch status API",
+      "status": "Done",
+      "comment": "suggested"
+    },
+    {
+      "id": 470,
+      "session_id": 26,
+      "config_item": "Custom solution",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 471,
+      "session_id": 26,
+      "config_item": "Refund API",
+      "status": "Done",
+      "comment": "Refund created from the dashboard manually"
+    },
+    {
+      "id": 472,
+      "session_id": 26,
+      "config_item": "Fetch API",
+      "status": "Done",
+      "comment": "NA"
+    },
+    {
+      "id": 473,
+      "session_id": 26,
+      "config_item": "Payment capture settings",
+      "status": "Done",
+      "comment": "auto capture set as 3 days"
+    },
+    {
+      "id": 474,
+      "session_id": 26,
+      "config_item": "Failure handler-function",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 475,
+      "session_id": 26,
+      "config_item": "Backend Language",
+      "status": "Done",
+      "comment": "java,springboot"
+    },
+    {
+      "id": 476,
+      "session_id": 26,
+      "config_item": "Checkout library and platform",
+      "status": "Done",
+      "comment": "Web Standard checkout"
+    },
+    {
+      "id": 477,
+      "session_id": 26,
+      "config_item": "SDK latest Version",
+      "status": "NA",
+      "comment": "no sdk"
+    },
+    {
+      "id": 478,
+      "session_id": 26,
+      "config_item": "Best practices",
+      "status": "Done",
+      "comment": "Capture authorized payments using Payment Capture Settings; create orders via Orders API and pass the order_id to Checkout; verify the payment signature; confirm payment/order status is captured/paid before providing service (via fetch payment/order APIs); implement webhooks (payment.captured, payment.failed, order.paid); use callback_url for in-app browsers that do not support iframes."
+    },
+    {
+      "id": 479,
+      "session_id": 26,
+      "config_item": "Rainy day",
+      "status": "Done",
+      "comment": "shared"
+    },
+    {
+      "id": 480,
+      "session_id": 26,
+      "config_item": "Late Auth",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 481,
+      "session_id": 26,
+      "config_item": "Sign off",
+      "status": "Done",
+      "comment": "Done"
     }
   ]
 }
