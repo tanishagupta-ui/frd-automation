@@ -3446,6 +3446,27 @@
       ],
       "audit_summary": "- The user journey is initiated through the selection of a service or subscription on the Webhook.site platform, which triggers the Razorpay Standard Checkout interface.\n- Payment capture is configured via 'Auto-capture' settings, ensuring immediate fund settlement upon successful customer authentication without manual intervention.\n- Security protocols are enforced through server-side signature verification, validating the integrity of the payment response received from Razorpay.\n- Post-payment management is facilitated through the successful implementation of the Fetch Payment API and Refund API for programmatic transaction reconciliation.\n- Transaction status consistency is maintained through the Fetch Status API, ensuring the platform's internal database remains synchronized with the Razorpay gateway.\n- Error handling kits and best practices have been reviewed to ensure graceful management of payment failures and edge-case scenarios within the checkout flow.\n- Technical validation was performed using the following successful Test IDs: pay_pzqntdc2ttfarq, pay_q3nmu2esu2clrh, and pay_q3wu4xtt0ogzba.",
       "overall_status": "Pass"
+    },
+    {
+      "id": "sum_1776231074681",
+      "audit_id": "audit_1776231066228",
+      "merchant_name": "Bharat Petroleum Corporation Limited (BPCL)",
+      "product_type": "QR Code",
+      "audit_date": "2026-04-15T05:31:06.228Z",
+      "summary_date": "2026-04-15T05:31:14.681Z",
+      "key_findings": [
+        "Downloading Keys: IMPLEMENTED",
+        "API: IMPLEMENTED",
+        "Payment Methods: IMPLEMENTED",
+        "Auto Capture & Manual Capture: IMPLEMENTED",
+        "Consumes Error Codes: IMPLEMENTED",
+        "Consumes payment state at capture time: Not Done",
+        "Webhooks: Not Done",
+        "Verify webhook signature: Not Done",
+        "Fetch payment APIs: IMPLEMENTED"
+      ],
+      "audit_summary": "- The user journey is initiated through a QR-based interface where the customer scans a dynamic or static code to facilitate payments for BPCL services.\n- Transaction capture is governed by auto-capture settings, ensuring that authorized payments are immediately transitioned to the captured state for settlement.\n- Razorpay API integration and key management protocols have been successfully implemented to secure the communication between BPCL and the gateway.\n- Error handling mechanisms are currently active, allowing the merchant system to consume and interpret specific Razorpay error codes during transaction failures.\n- Webhook implementation for asynchronous updates remains in a 'pending optimization' status, with no active URL or event subscriptions identified for payment.captured or payment.failed events.\n- Technical observation confirms that mandatory security checks, specifically the verification of webhook signatures, are currently absent from the integration architecture.\n- The system does not currently consume or validate the payment state at the point of capture, relying instead on the synchronous API response.\n- Successful Test IDs: None (No transaction IDs or pay_IDs were identified for UPI or QR methods during this audit cycle).",
+      "overall_status": "Action Required"
     }
   ]
 }
