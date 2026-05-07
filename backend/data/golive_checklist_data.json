@@ -207,6 +207,62 @@
       "merchant_name": "Webhook.site",
       "audit_date": "",
       "created_at": "2026-04-15T07:04:28.865Z"
+    },
+    {
+      "id": 27,
+      "product": "Standard Checkout",
+      "merchant_id": "Unknown",
+      "merchant_name": "Webhook.site",
+      "audit_date": "",
+      "created_at": "2026-05-06T06:42:46.572Z"
+    },
+    {
+      "id": 28,
+      "product": "Custom Checkout",
+      "merchant_id": "Unknown",
+      "merchant_name": "Webhook.site",
+      "audit_date": "",
+      "created_at": "2026-05-07T06:21:23.308Z"
+    },
+    {
+      "id": 29,
+      "product": "Custom Checkout",
+      "merchant_id": "Unknown",
+      "merchant_name": "Webhook.site",
+      "audit_date": "",
+      "created_at": "2026-05-07T06:22:18.151Z"
+    },
+    {
+      "id": 30,
+      "product": "Custom Checkout",
+      "merchant_id": "Unknown",
+      "merchant_name": "Webhook.site",
+      "audit_date": "",
+      "created_at": "2026-05-07T06:30:05.511Z"
+    },
+    {
+      "id": 31,
+      "product": "Custom Checkout",
+      "merchant_id": "Unknown",
+      "merchant_name": "Webhook.site",
+      "audit_date": "",
+      "created_at": "2026-05-07T06:30:30.864Z"
+    },
+    {
+      "id": 32,
+      "product": "Custom Checkout",
+      "merchant_id": "Unknown",
+      "merchant_name": "Webhook.site",
+      "audit_date": "",
+      "created_at": "2026-05-07T06:33:15.690Z"
+    },
+    {
+      "id": 33,
+      "product": "Custom Checkout",
+      "merchant_id": "Unknown",
+      "merchant_name": "Neoifinity",
+      "audit_date": "",
+      "created_at": "2026-05-07T07:11:07.982Z"
     }
   ],
   "golive_results": [
@@ -3573,6 +3629,937 @@
     {
       "id": 481,
       "session_id": 26,
+      "config_item": "Sign off",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 482,
+      "session_id": 27,
+      "config_item": "Account Live (Key/Secret available for live mode)",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 483,
+      "session_id": 27,
+      "config_item": "Webhook Configs",
+      "status": "NA",
+      "comment": "payment.capture,payment.failed,token.confirmed,token.rejected"
+    },
+    {
+      "id": 484,
+      "session_id": 27,
+      "config_item": "Auto_capture Settings",
+      "status": "Done",
+      "comment": "auto 3 days"
+    },
+    {
+      "id": 485,
+      "session_id": 27,
+      "config_item": "Successful Payment IDs",
+      "status": "Done",
+      "comment": "pay_PzqntDC2ttfaRQ(upi), pay_Q3nmu2eSU2cLrH(netbanking),pay_Q3WU4xtt0oGZbA(card)"
+    },
+    {
+      "id": 486,
+      "session_id": 27,
+      "config_item": "Signature verification",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 487,
+      "session_id": 27,
+      "config_item": "Callback_url",
+      "status": "Done",
+      "comment": "yes"
+    },
+    {
+      "id": 488,
+      "session_id": 27,
+      "config_item": "Implementing fetch status API",
+      "status": "Done",
+      "comment": "suggested"
+    },
+    {
+      "id": 489,
+      "session_id": 27,
+      "config_item": "Custom solution",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 490,
+      "session_id": 27,
+      "config_item": "Refund API",
+      "status": "Done",
+      "comment": "Refund created from the dashboard manually"
+    },
+    {
+      "id": 491,
+      "session_id": 27,
+      "config_item": "Fetch API",
+      "status": "Done",
+      "comment": "NA"
+    },
+    {
+      "id": 492,
+      "session_id": 27,
+      "config_item": "Payment capture settings",
+      "status": "Done",
+      "comment": "auto capture set as 3 days"
+    },
+    {
+      "id": 493,
+      "session_id": 27,
+      "config_item": "Failure handler-function",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 494,
+      "session_id": 27,
+      "config_item": "Backend Language",
+      "status": "Done",
+      "comment": "java,springboot"
+    },
+    {
+      "id": 495,
+      "session_id": 27,
+      "config_item": "Checkout library and platform",
+      "status": "Done",
+      "comment": "Custom checkout"
+    },
+    {
+      "id": 496,
+      "session_id": 27,
+      "config_item": "SDK latest Version",
+      "status": "NA",
+      "comment": "no sdk"
+    },
+    {
+      "id": 497,
+      "session_id": 27,
+      "config_item": "Best practices",
+      "status": "Done",
+      "comment": "Integrate the Payments Rainy Day kit for late auth, downtime, and errors; integrate Orders API and pass order_id to Checkout to prevent duplicate payments; verify payment signature; check payment/order status before providing services (via fetch payment/order APIs); implement webhooks or query API (payment.captured, payment.failed, order.paid); implement callback_url for in-app browsers; validate and save cards; validate and save VPA for UPI collect."
+    },
+    {
+      "id": 498,
+      "session_id": 27,
+      "config_item": "Rainy day",
+      "status": "Done",
+      "comment": "shared"
+    },
+    {
+      "id": 499,
+      "session_id": 27,
+      "config_item": "Late Auth",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 500,
+      "session_id": 27,
+      "config_item": "Sign off",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 501,
+      "session_id": 28,
+      "config_item": "Account Live (Key/Secret available for live mode)",
+      "status": "Done",
+      "comment": "Yes"
+    },
+    {
+      "id": 502,
+      "session_id": 28,
+      "config_item": "Webhook Configs",
+      "status": "Done",
+      "comment": "payment.failed\npayment.captured\ntoken.confirmed\ntoken.rejected\ntoken.paused\ntoken.cancelled\ntoken.cancellation_initiated"
+    },
+    {
+      "id": 503,
+      "session_id": 28,
+      "config_item": "Auto_capture Settings",
+      "status": "Done",
+      "comment": "auto capture 12mins"
+    },
+    {
+      "id": 504,
+      "session_id": 28,
+      "config_item": "Successful Payment IDs",
+      "status": "Done",
+      "comment": "pay_Sm2zyJNY3XezVV\tUPI (one-time)\npay_Sm337Klj3VyEOJ\tCard ( one-time )\npay_Sm35kQSwDoTYYL\tUPI (recurring)"
+    },
+    {
+      "id": 505,
+      "session_id": 28,
+      "config_item": "Signature verification",
+      "status": "Done",
+      "comment": "Yes"
+    },
+    {
+      "id": 506,
+      "session_id": 28,
+      "config_item": "Callback_url",
+      "status": "Done",
+      "comment": "SDK function"
+    },
+    {
+      "id": 507,
+      "session_id": 28,
+      "config_item": "Implementing fetch status API",
+      "status": "Done",
+      "comment": "Yes"
+    },
+    {
+      "id": 508,
+      "session_id": 28,
+      "config_item": "Custom solution",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 509,
+      "session_id": 28,
+      "config_item": "Refund API",
+      "status": "Done",
+      "comment": "Refund created from the dashboard manually"
+    },
+    {
+      "id": 510,
+      "session_id": 28,
+      "config_item": "Fetch API",
+      "status": "Done",
+      "comment": "Yes"
+    },
+    {
+      "id": 511,
+      "session_id": 28,
+      "config_item": "Payment capture settings",
+      "status": "Done",
+      "comment": "auto capture set as 12 mins"
+    },
+    {
+      "id": 512,
+      "session_id": 28,
+      "config_item": "Failure handler-function",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 513,
+      "session_id": 28,
+      "config_item": "Backend Language",
+      "status": "Done",
+      "comment": "Node JS"
+    },
+    {
+      "id": 514,
+      "session_id": 28,
+      "config_item": "Checkout library and platform",
+      "status": "Done",
+      "comment": "Custom checkout"
+    },
+    {
+      "id": 515,
+      "session_id": 28,
+      "config_item": "SDK latest Version",
+      "status": "Done",
+      "comment": "Flutter Custom UI v1.4.2"
+    },
+    {
+      "id": 516,
+      "session_id": 28,
+      "config_item": "Best practices",
+      "status": "Done",
+      "comment": "Integrate the Payments Rainy Day kit for late auth, downtime, and errors; integrate Orders API and pass order_id to Checkout to prevent duplicate payments; verify payment signature; check payment/order status before providing services (via fetch payment/order APIs); implement webhooks or query API (payment.captured, payment.failed, order.paid); implement callback_url for in-app browsers; validate and save cards; validate and save VPA for UPI collect."
+    },
+    {
+      "id": 517,
+      "session_id": 28,
+      "config_item": "Rainy day",
+      "status": "Done",
+      "comment": "shared"
+    },
+    {
+      "id": 518,
+      "session_id": 28,
+      "config_item": "Late Auth",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 519,
+      "session_id": 28,
+      "config_item": "Sign off",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 520,
+      "session_id": 29,
+      "config_item": "Account Live (Key/Secret available for live mode)",
+      "status": "Done",
+      "comment": "Yes"
+    },
+    {
+      "id": 521,
+      "session_id": 29,
+      "config_item": "Webhook Configs",
+      "status": "Done",
+      "comment": "payment.failed\npayment.captured\ntoken.confirmed\ntoken.rejected\ntoken.paused\ntoken.cancelled\ntoken.cancellation_initiated"
+    },
+    {
+      "id": 522,
+      "session_id": 29,
+      "config_item": "Auto_capture Settings",
+      "status": "Done",
+      "comment": "auto capture 12mins"
+    },
+    {
+      "id": 523,
+      "session_id": 29,
+      "config_item": "Successful Payment IDs",
+      "status": "Done",
+      "comment": "pay_Sm2zyJNY3XezVV\tUPI (one-time)\npay_Sm337Klj3VyEOJ\tCard ( one-time )\npay_Sm35kQSwDoTYYL\tUPI (recurring)"
+    },
+    {
+      "id": 524,
+      "session_id": 29,
+      "config_item": "Signature verification",
+      "status": "Done",
+      "comment": "Yes"
+    },
+    {
+      "id": 525,
+      "session_id": 29,
+      "config_item": "Callback_url",
+      "status": "Done",
+      "comment": "SDK function"
+    },
+    {
+      "id": 526,
+      "session_id": 29,
+      "config_item": "Implementing fetch status API",
+      "status": "Done",
+      "comment": "Yes"
+    },
+    {
+      "id": 527,
+      "session_id": 29,
+      "config_item": "Custom solution",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 528,
+      "session_id": 29,
+      "config_item": "Refund API",
+      "status": "Done",
+      "comment": "Refund created from the dashboard manually"
+    },
+    {
+      "id": 529,
+      "session_id": 29,
+      "config_item": "Fetch API",
+      "status": "Done",
+      "comment": "Yes"
+    },
+    {
+      "id": 530,
+      "session_id": 29,
+      "config_item": "Payment capture settings",
+      "status": "Done",
+      "comment": "auto capture set as 12 mins"
+    },
+    {
+      "id": 531,
+      "session_id": 29,
+      "config_item": "Failure handler-function",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 532,
+      "session_id": 29,
+      "config_item": "Backend Language",
+      "status": "Done",
+      "comment": "Node JS"
+    },
+    {
+      "id": 533,
+      "session_id": 29,
+      "config_item": "Checkout library and platform",
+      "status": "Done",
+      "comment": "Custom checkout"
+    },
+    {
+      "id": 534,
+      "session_id": 29,
+      "config_item": "SDK latest Version",
+      "status": "Done",
+      "comment": "Flutter Custom UI v1.4.2"
+    },
+    {
+      "id": 535,
+      "session_id": 29,
+      "config_item": "Best practices",
+      "status": "Done",
+      "comment": "Integrate the Payments Rainy Day kit for late auth, downtime, and errors; integrate Orders API and pass order_id to Checkout to prevent duplicate payments; verify payment signature; check payment/order status before providing services (via fetch payment/order APIs); implement webhooks or query API (payment.captured, payment.failed, order.paid); implement callback_url for in-app browsers; validate and save cards; validate and save VPA for UPI collect."
+    },
+    {
+      "id": 536,
+      "session_id": 29,
+      "config_item": "Rainy day",
+      "status": "Done",
+      "comment": "shared"
+    },
+    {
+      "id": 537,
+      "session_id": 29,
+      "config_item": "Late Auth",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 538,
+      "session_id": 29,
+      "config_item": "Sign off",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 539,
+      "session_id": 30,
+      "config_item": "Account Live (Key/Secret available for live mode)",
+      "status": "Done",
+      "comment": "Yes"
+    },
+    {
+      "id": 540,
+      "session_id": 30,
+      "config_item": "Webhook Configs",
+      "status": "Done",
+      "comment": "payment.failed\npayment.captured\ntoken.confirmed\ntoken.rejected\ntoken.paused\ntoken.cancelled\ntoken.cancellation_initiated"
+    },
+    {
+      "id": 541,
+      "session_id": 30,
+      "config_item": "Auto_capture Settings",
+      "status": "Done",
+      "comment": "auto capture 12mins"
+    },
+    {
+      "id": 542,
+      "session_id": 30,
+      "config_item": "Successful Payment IDs",
+      "status": "Done",
+      "comment": "pay_Sm2zyJNY3XezVV\tUPI (one-time)\npay_Sm337Klj3VyEOJ\tCard ( one-time )\npay_Sm35kQSwDoTYYL\tUPI (recurring)"
+    },
+    {
+      "id": 543,
+      "session_id": 30,
+      "config_item": "Signature verification",
+      "status": "Done",
+      "comment": "Yes"
+    },
+    {
+      "id": 544,
+      "session_id": 30,
+      "config_item": "Callback_url",
+      "status": "Done",
+      "comment": "SDK function"
+    },
+    {
+      "id": 545,
+      "session_id": 30,
+      "config_item": "Implementing fetch status API",
+      "status": "Done",
+      "comment": "Yes"
+    },
+    {
+      "id": 546,
+      "session_id": 30,
+      "config_item": "Custom solution",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 547,
+      "session_id": 30,
+      "config_item": "Refund API",
+      "status": "Done",
+      "comment": "Refund created from the dashboard manually"
+    },
+    {
+      "id": 548,
+      "session_id": 30,
+      "config_item": "Fetch API",
+      "status": "Done",
+      "comment": "Yes"
+    },
+    {
+      "id": 549,
+      "session_id": 30,
+      "config_item": "Payment capture settings",
+      "status": "Done",
+      "comment": "auto capture set as 12 mins"
+    },
+    {
+      "id": 550,
+      "session_id": 30,
+      "config_item": "Failure handler-function",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 551,
+      "session_id": 30,
+      "config_item": "Backend Language",
+      "status": "Done",
+      "comment": "Node JS"
+    },
+    {
+      "id": 552,
+      "session_id": 30,
+      "config_item": "Checkout library and platform",
+      "status": "Done",
+      "comment": "Custom checkout"
+    },
+    {
+      "id": 553,
+      "session_id": 30,
+      "config_item": "SDK latest Version",
+      "status": "Done",
+      "comment": "Flutter Custom UI v1.4.2"
+    },
+    {
+      "id": 554,
+      "session_id": 30,
+      "config_item": "Best practices",
+      "status": "Done",
+      "comment": "Integrate the Payments Rainy Day kit for late auth, downtime, and errors; integrate Orders API and pass order_id to Checkout to prevent duplicate payments; verify payment signature; check payment/order status before providing services (via fetch payment/order APIs); implement webhooks or query API (payment.captured, payment.failed, order.paid); implement callback_url for in-app browsers; validate and save cards; validate and save VPA for UPI collect."
+    },
+    {
+      "id": 555,
+      "session_id": 30,
+      "config_item": "Rainy day",
+      "status": "Done",
+      "comment": "shared"
+    },
+    {
+      "id": 556,
+      "session_id": 30,
+      "config_item": "Late Auth",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 557,
+      "session_id": 30,
+      "config_item": "Sign off",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 558,
+      "session_id": 31,
+      "config_item": "Account Live (Key/Secret available for live mode)",
+      "status": "Done",
+      "comment": "Yes"
+    },
+    {
+      "id": 559,
+      "session_id": 31,
+      "config_item": "Webhook Configs",
+      "status": "Done",
+      "comment": "payment.failed\npayment.captured\ntoken.confirmed\ntoken.rejected\ntoken.paused\ntoken.cancelled\ntoken.cancellation_initiated"
+    },
+    {
+      "id": 560,
+      "session_id": 31,
+      "config_item": "Auto_capture Settings",
+      "status": "Done",
+      "comment": "auto capture 12mins"
+    },
+    {
+      "id": 561,
+      "session_id": 31,
+      "config_item": "Successful Payment IDs",
+      "status": "Done",
+      "comment": "pay_Sm2zyJNY3XezVV\tUPI (one-time)\npay_Sm337Klj3VyEOJ\tCard ( one-time )\npay_Sm35kQSwDoTYYL\tUPI (recurring)"
+    },
+    {
+      "id": 562,
+      "session_id": 31,
+      "config_item": "Signature verification",
+      "status": "Done",
+      "comment": "Yes"
+    },
+    {
+      "id": 563,
+      "session_id": 31,
+      "config_item": "Callback_url",
+      "status": "Done",
+      "comment": "SDK function"
+    },
+    {
+      "id": 564,
+      "session_id": 31,
+      "config_item": "Implementing fetch status API",
+      "status": "Done",
+      "comment": "Yes"
+    },
+    {
+      "id": 565,
+      "session_id": 31,
+      "config_item": "Custom solution",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 566,
+      "session_id": 31,
+      "config_item": "Refund API",
+      "status": "Done",
+      "comment": "Refund created from the dashboard manually"
+    },
+    {
+      "id": 567,
+      "session_id": 31,
+      "config_item": "Fetch API",
+      "status": "Done",
+      "comment": "Yes"
+    },
+    {
+      "id": 568,
+      "session_id": 31,
+      "config_item": "Payment capture settings",
+      "status": "Done",
+      "comment": "auto capture set as 12 mins"
+    },
+    {
+      "id": 569,
+      "session_id": 31,
+      "config_item": "Failure handler-function",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 570,
+      "session_id": 31,
+      "config_item": "Backend Language",
+      "status": "Done",
+      "comment": "Node JS"
+    },
+    {
+      "id": 571,
+      "session_id": 31,
+      "config_item": "Checkout library and platform",
+      "status": "Done",
+      "comment": "Custom checkout"
+    },
+    {
+      "id": 572,
+      "session_id": 31,
+      "config_item": "SDK latest Version",
+      "status": "Done",
+      "comment": "Flutter Custom UI v1.4.2"
+    },
+    {
+      "id": 573,
+      "session_id": 31,
+      "config_item": "Best practices",
+      "status": "Done",
+      "comment": "Integrate the Payments Rainy Day kit for late auth, downtime, and errors; integrate Orders API and pass order_id to Checkout to prevent duplicate payments; verify payment signature; check payment/order status before providing services (via fetch payment/order APIs); implement webhooks or query API (payment.captured, payment.failed, order.paid); implement callback_url for in-app browsers; validate and save cards; validate and save VPA for UPI collect."
+    },
+    {
+      "id": 574,
+      "session_id": 31,
+      "config_item": "Rainy day",
+      "status": "Done",
+      "comment": "shared"
+    },
+    {
+      "id": 575,
+      "session_id": 31,
+      "config_item": "Late Auth",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 576,
+      "session_id": 31,
+      "config_item": "Sign off",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 577,
+      "session_id": 32,
+      "config_item": "Account Live (Key/Secret available for live mode)",
+      "status": "Done",
+      "comment": "Yes"
+    },
+    {
+      "id": 578,
+      "session_id": 32,
+      "config_item": "Webhook Configs",
+      "status": "Done",
+      "comment": "payment.failed\npayment.captured\ntoken.confirmed\ntoken.rejected\ntoken.paused\ntoken.cancelled\ntoken.cancellation_initiated"
+    },
+    {
+      "id": 579,
+      "session_id": 32,
+      "config_item": "Auto_capture Settings",
+      "status": "Done",
+      "comment": "auto capture 12mins"
+    },
+    {
+      "id": 580,
+      "session_id": 32,
+      "config_item": "Successful Payment IDs",
+      "status": "Done",
+      "comment": "pay_Sm2zyJNY3XezVV\tUPI (one-time)\npay_Sm337Klj3VyEOJ\tCard ( one-time )\npay_Sm35kQSwDoTYYL\tUPI (recurring)"
+    },
+    {
+      "id": 581,
+      "session_id": 32,
+      "config_item": "Signature verification",
+      "status": "Done",
+      "comment": "Yes"
+    },
+    {
+      "id": 582,
+      "session_id": 32,
+      "config_item": "Callback_url",
+      "status": "Done",
+      "comment": "SDK function"
+    },
+    {
+      "id": 583,
+      "session_id": 32,
+      "config_item": "Implementing fetch status API",
+      "status": "Done",
+      "comment": "Yes"
+    },
+    {
+      "id": 584,
+      "session_id": 32,
+      "config_item": "Custom solution",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 585,
+      "session_id": 32,
+      "config_item": "Refund API",
+      "status": "Done",
+      "comment": "Refund created from the dashboard manually"
+    },
+    {
+      "id": 586,
+      "session_id": 32,
+      "config_item": "Fetch API",
+      "status": "Done",
+      "comment": "Yes"
+    },
+    {
+      "id": 587,
+      "session_id": 32,
+      "config_item": "Payment capture settings",
+      "status": "Done",
+      "comment": "auto capture set as 12 mins"
+    },
+    {
+      "id": 588,
+      "session_id": 32,
+      "config_item": "Failure handler-function",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 589,
+      "session_id": 32,
+      "config_item": "Backend Language",
+      "status": "Done",
+      "comment": "Node JS"
+    },
+    {
+      "id": 590,
+      "session_id": 32,
+      "config_item": "Checkout library and platform",
+      "status": "Done",
+      "comment": "Custom checkout"
+    },
+    {
+      "id": 591,
+      "session_id": 32,
+      "config_item": "SDK latest Version",
+      "status": "Done",
+      "comment": "Flutter Custom UI v1.4.2"
+    },
+    {
+      "id": 592,
+      "session_id": 32,
+      "config_item": "Best practices",
+      "status": "Done",
+      "comment": "Integrate the Payments Rainy Day kit for late auth, downtime, and errors; integrate Orders API and pass order_id to Checkout to prevent duplicate payments; verify payment signature; check payment/order status before providing services (via fetch payment/order APIs); implement webhooks or query API (payment.captured, payment.failed, order.paid); implement callback_url for in-app browsers; validate and save cards; validate and save VPA for UPI collect."
+    },
+    {
+      "id": 593,
+      "session_id": 32,
+      "config_item": "Rainy day",
+      "status": "Done",
+      "comment": "shared"
+    },
+    {
+      "id": 594,
+      "session_id": 32,
+      "config_item": "Late Auth",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 595,
+      "session_id": 32,
+      "config_item": "Sign off",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 596,
+      "session_id": 33,
+      "config_item": "Account Live (Key/Secret available for live mode)",
+      "status": "Done",
+      "comment": "Yes"
+    },
+    {
+      "id": 597,
+      "session_id": 33,
+      "config_item": "Webhook Configs",
+      "status": "Done",
+      "comment": "payment.failed\npayment.captured\ntoken.confirmed\ntoken.rejected\ntoken.paused\ntoken.cancelled\ntoken.cancellation_initiated"
+    },
+    {
+      "id": 598,
+      "session_id": 33,
+      "config_item": "Auto_capture Settings",
+      "status": "Done",
+      "comment": "auto capture 12mins"
+    },
+    {
+      "id": 599,
+      "session_id": 33,
+      "config_item": "Successful Payment IDs",
+      "status": "Done",
+      "comment": "pay_Sm2zyJNY3XezVV\tUPI (one-time)\npay_Sm337Klj3VyEOJ\tCard ( one-time )\npay_Sm35kQSwDoTYYL\tUPI (recurring)"
+    },
+    {
+      "id": 600,
+      "session_id": 33,
+      "config_item": "Signature verification",
+      "status": "Done",
+      "comment": "Yes"
+    },
+    {
+      "id": 601,
+      "session_id": 33,
+      "config_item": "Callback_url",
+      "status": "Done",
+      "comment": "SDK function"
+    },
+    {
+      "id": 602,
+      "session_id": 33,
+      "config_item": "Implementing fetch status API",
+      "status": "Done",
+      "comment": "Yes"
+    },
+    {
+      "id": 603,
+      "session_id": 33,
+      "config_item": "Custom solution",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 604,
+      "session_id": 33,
+      "config_item": "Refund API",
+      "status": "Done",
+      "comment": "Refund created from the dashboard manually"
+    },
+    {
+      "id": 605,
+      "session_id": 33,
+      "config_item": "Fetch API",
+      "status": "Done",
+      "comment": "Yes"
+    },
+    {
+      "id": 606,
+      "session_id": 33,
+      "config_item": "Payment capture settings",
+      "status": "Done",
+      "comment": "auto capture set as 12 mins"
+    },
+    {
+      "id": 607,
+      "session_id": 33,
+      "config_item": "Failure handler-function",
+      "status": "NA",
+      "comment": "No"
+    },
+    {
+      "id": 608,
+      "session_id": 33,
+      "config_item": "Backend Language",
+      "status": "Done",
+      "comment": "Node JS"
+    },
+    {
+      "id": 609,
+      "session_id": 33,
+      "config_item": "Checkout library and platform",
+      "status": "Done",
+      "comment": "Custom checkout"
+    },
+    {
+      "id": 610,
+      "session_id": 33,
+      "config_item": "SDK latest Version",
+      "status": "Done",
+      "comment": "Flutter Custom UI v1.4.2"
+    },
+    {
+      "id": 611,
+      "session_id": 33,
+      "config_item": "Best practices",
+      "status": "Done",
+      "comment": "Integrate the Payments Rainy Day kit for late auth, downtime, and errors; integrate Orders API and pass order_id to Checkout to prevent duplicate payments; verify payment signature; check payment/order status before providing services (via fetch payment/order APIs); implement webhooks or query API (payment.captured, payment.failed, order.paid); implement callback_url for in-app browsers; validate and save cards; validate and save VPA for UPI collect."
+    },
+    {
+      "id": 612,
+      "session_id": 33,
+      "config_item": "Rainy day",
+      "status": "Done",
+      "comment": "shared"
+    },
+    {
+      "id": 613,
+      "session_id": 33,
+      "config_item": "Late Auth",
+      "status": "Done",
+      "comment": "Done"
+    },
+    {
+      "id": 614,
+      "session_id": 33,
       "config_item": "Sign off",
       "status": "Done",
       "comment": "Done"

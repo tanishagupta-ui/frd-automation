@@ -356,6 +356,30 @@
         ]
       },
       "model_used": "gemini-flash-latest"
+    },
+    {
+      "id": 17,
+      "merchant_name": "Neoifinity",
+      "original_name": "Neoifinity",
+      "merchant_id": null,
+      "search_date": "2026-05-07T05:36:40.283Z",
+      "web_data": {
+        "company_name": "Neoifinity",
+        "website": "https://neoifinity.com/",
+        "description": "Neoifinity is a software development and IT consulting firm that specializes in providing custom digital solutions, including web and mobile application development, UI/UX design, and digital marketing services.",
+        "industry": "Software Development & IT Services",
+        "products_services": [
+          "Web Development",
+          "Mobile App Development",
+          "UI/UX Design",
+          "Graphic Designing",
+          "Search Engine Optimization (SEO)",
+          "Digital Marketing"
+        ],
+        "business_model": "B2B",
+        "target_audience": "Startups, small-to-medium enterprises (SMEs), and entrepreneurs requiring custom software and digital branding solutions."
+      },
+      "model_used": "gemini-flash-latest"
     }
   ]
 }

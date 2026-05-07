@@ -30,7 +30,7 @@ function normalizeMerchantName(name) {
     let n = name.toString().trim();
 
     // Remove common prefixes
-    n = n.replace(/^(mx|merchant|customer|client|company)\s*name[:\s]+/i, '');
+    n = n.replace(/^(mx|merchant|customer|client|company)\s*name[:\s-]+/i, '');
     n = n.replace(/^[:\s-]+/, '');
 
     // List of words that indicate this is a header/metadata label, not a name
@@ -46,7 +46,7 @@ function normalizeMerchantName(name) {
         'instant qr', 'dynamic qr', 'image content', 'terminals enabled',
         'payment methods', 'capture settings', 'late auth scenarios',
         'verify payment status', 'offers', 'fetch payment api', 'webhook url',
-        'webhook events'
+        'webhook events', 'webhook configs', 'tech checklist', 'checkout configuration'
     ];
 
     const lowerN = n.toLowerCase();
@@ -74,7 +74,7 @@ function extractMerchantName(filePath, originalFileName = null) {
         const sheetName = workbook.SheetNames[0];
         const sheet = workbook.Sheets[sheetName];
 
-        // 1. Check A1-B5 area first (most common for metadata)
+        // 1. Check A1-B5 area for explicit labels first
         const searchRange = ['A1', 'B1', 'A2', 'B2', 'A3', 'B3', 'A4', 'B4', 'A5', 'B5'];
 
         for (const addr of searchRange) {
@@ -82,15 +82,15 @@ function extractMerchantName(filePath, originalFileName = null) {
             if (cell && cell.v) {
                 const val = cell.v.toString().trim();
 
-                // 1. Specific pattern match: "MX Name: [Name]" or "Merchant: [Name]"
-                const match = val.match(/^(?:mx|merchant|customer)\s*name[:\s]+(.+)$/i);
+                // Specific pattern match: "MX Name: [Name]" or "Merchant: [Name]"
+                const match = val.match(/^(?:mx|merchant|customer)\s*name[:\s-]+(.+)$/i);
                 if (match && match[1]) {
                     const normalized = normalizeMerchantName(match[1]);
                     if (normalized) return normalized;
                 }
 
-                // 2. If it's a label in one cell, check the next cell
-                if (/^(?:mx|merchant|customer)\s*name[:\s]*$/i.test(val)) {
+                // If it's a label in one cell, check the next cell
+                if (/^(?:mx|merchant|customer)\s*name[:\s-]*$/i.test(val)) {
                     const cellAddrObj = xlsx.utils.decode_cell(addr);
                     const nextCellAddr = xlsx.utils.encode_cell({ r: cellAddrObj.r, c: cellAddrObj.c + 1 });
                     const nextCell = sheet[nextCellAddr];
@@ -99,22 +99,12 @@ function extractMerchantName(filePath, originalFileName = null) {
                         if (normalized) return normalized;
                     }
                 }
-
-                // 3. Fallback: If it's not a label, but passes normalization (not a header)
-                // and is in a likely spot (like A1 or A2)
-                const normalized = normalizeMerchantName(val);
-                if (normalized && !val.includes(':') && !val.includes('.')) {
-                    // Avoid single words that look like headers even if not in noise list
-                    if (val.split(' ').length <= 4) {
-                        return normalized;
-                    }
-                }
             }
         }
 
-        // 2. Scan first 30 rows, first 5 columns for any cell containing name labels
-        const range = xlsx.utils.decode_range(sheet['!ref'] || 'A1:E30');
-        for (let r = 0; r <= Math.min(range.e.r, 30); r++) {
+        // 2. Scan first 50 rows, first 5 columns for any cell containing explicit name labels
+        const range = xlsx.utils.decode_range(sheet['!ref'] || 'A1:E50');
+        for (let r = 0; r <= Math.min(range.e.r, 50); r++) {
             for (let c = 0; c <= Math.min(range.e.c, 4); c++) {
                 const cellAddress = xlsx.utils.encode_cell({ r, c });
                 const cell = sheet[cellAddress];
@@ -122,20 +112,35 @@ function extractMerchantName(filePath, originalFileName = null) {
                     const val = cell.v.toString().trim();
 
                     // Match pattern in same cell
-                    const nameMatch = val.match(/^(?:mx|merchant|customer)\s*name[:\s]+(.+)$/i);
+                    const nameMatch = val.match(/^(?:mx|merchant|customer)\s*name[:\s-]+(.+)$/i);
                     if (nameMatch && nameMatch[1]) {
                         const normalized = normalizeMerchantName(nameMatch[1]);
                         if (normalized) return normalized;
                     }
 
                     // Match label then check next cell
-                    if (/^(?:mx|merchant|customer)\s*name[:\s]*$/i.test(val)) {
+                    if (/^(?:mx|merchant|customer)\s*name[:\s-]*$/i.test(val)) {
                         const nextCellAddr = xlsx.utils.encode_cell({ r, c: c + 1 });
                         const nextCell = sheet[nextCellAddr];
                         if (nextCell && nextCell.v) {
                             const normalized = normalizeMerchantName(nextCell.v);
                             if (normalized) return normalized;
                         }
+                    }
+                }
+            }
+        }
+
+        // 3. Low Priority Heuristic: Check A1-B5 area for non-label potential names
+        for (const addr of searchRange) {
+            const cell = sheet[addr];
+            if (cell && cell.v) {
+                const val = cell.v.toString().trim();
+                const normalized = normalizeMerchantName(val);
+                if (normalized && !val.includes(':') && !val.includes('.')) {
+                    // Avoid single words that look like headers even if not in noise list
+                    if (val.split(' ').length <= 4) {
+                        return normalized;
                     }
                 }
             }

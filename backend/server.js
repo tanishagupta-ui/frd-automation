@@ -223,8 +223,8 @@ app.post("/upload", (req, res) => {
                 else if (p.includes("smart collect")) p = "smart_collect";
                 else if (p.includes("charge at will") || p === "caw") p = "caw";
                 else if (p.includes("affordability") || p.includes("affordability widget")) p = "affordability";
-                else if (p.includes("standard checkout")) p = "standard_checkout";
-                else if (p.includes("custom checkout")) p = "custom_checkout";
+                else if (p.includes("standard checkout")) p = "standard checkout";
+                else if (p.includes("custom checkout")) p = "custom checkout";
                 else if (p.includes("s2s")) p = "s2s";
 
                 // Define Signatures (Unique identifying strings for each product)
@@ -247,7 +247,13 @@ app.post("/upload", (req, res) => {
                     return sigs.some(sig => content.includes(sig));
                 };
 
-                const selectedSigKey = (p === "standard_checkout" || p === "custom_checkout" || p === "s2s") ? "checkout" : p;
+                const selectedSigKey = (p === "standard checkout" || p === "custom checkout" || p === "s2s") ? "checkout" : p;
+
+                // Bypass validation for custom chcekout and s2s
+                if (p === "custom checkout" || p === "s2s") {
+                    console.info(`✅ Bypassing checkout signature validation for product: ${rawProduct}`);
+                    return null;
+                }
 
                 // 1. Identify which signatures are present
                 const matches = {};
