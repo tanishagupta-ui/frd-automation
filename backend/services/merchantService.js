@@ -1,19 +1,13 @@
 const xlsx = require('xlsx');
 const fs = require('fs');
 const path = require('path');
-const { GoogleGenerativeAI } = require('@google/generative-ai');
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
+const { getGeminiClient, invalidateGeminiClient } = require('./geminiClientHelper');
 
 const MERCHANT_DATA_FILE = path.join(__dirname, '../data/merchant_enrichment_data.json');
 
-// Initialize Gemini AI
-let genAI = null;
-if (process.env.GEMINI_API_KEY) {
-    genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    console.log("✅ Gemini AI initialized for merchant enrichment");
-} else {
-    console.warn("⚠️ GEMINI_API_KEY not configured. Merchant enrichment will be limited.");
-}
+// Gemini is initialized on-demand via geminiClientHelper (supports AQ. OAuth token auto-refresh)
+console.log('✅ Gemini AI initialized for merchant enrichment');
 
 // Ensure merchant data file exists
 if (!fs.existsSync(MERCHANT_DATA_FILE)) {
@@ -241,7 +235,8 @@ async function fetchMerchantInfo(merchantName, merchantId = null) {
 
     console.log(`Fetching info for: ${merchantName} (ID: ${merchantId || 'N/A'})`);
 
-    if (!genAI) {
+    const client = await getGeminiClient();
+    if (!client) {
         const errorEntry = {
             id: entry ? entry.id : storage.enrichments.length + 1,
             merchant_name: merchantName,
@@ -255,13 +250,17 @@ async function fetchMerchantInfo(merchantName, merchantId = null) {
         return errorEntry;
     }
 
-    // Try multiple models in case of quota issues
-    const modelsToTry = ["gemini-2.0-flash", "gemini-flash-latest", "gemini-pro-latest"];
+    // Try multiple models in case of quota issues. (1.5 models not supported by AQ keys)
+    const modelsToTry = ["gemini-3.5-flash", "gemini-2.5-flash", "gemini-2.0-flash-lite", "gemini-2.0-flash"];
     let lastError = null;
 
     for (const modelName of modelsToTry) {
         try {
             console.log(`Attempting enrichment with ${modelName}...`);
+            // Get fresh client (auto-refreshes AQ. tokens if expired)
+            const genAI = await getGeminiClient();
+            if (!genAI) throw new Error('Gemini client unavailable');
+
             const model = genAI.getGenerativeModel({
                 model: modelName,
                 tools: modelName.includes('2.0') ? [{ googleSearchRetrieval: {} }] : []
@@ -305,6 +304,11 @@ async function fetchMerchantInfo(merchantName, merchantId = null) {
             return enrichmentData;
 
         } catch (error) {
+            const isExpired = error.message?.includes('expired') || error.message?.includes('API_KEY_INVALID');
+            if (isExpired) {
+                console.warn(`⏰ Token expired on ${modelName}. Invalidating cache...`);
+                invalidateGeminiClient();
+            }
             console.warn(`Error with ${modelName}: ${error.message}`);
             lastError = error;
             continue;

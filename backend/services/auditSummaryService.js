@@ -1,15 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
-require('dotenv').config();
+require('dotenv').config({ path: path.join(__dirname, '../.env') });
+const { getGeminiClient, invalidateGeminiClient } = require('./geminiClientHelper');
 
 const SUMMARY_DATA_FILE = path.join(__dirname, '../data/audit_summaries.json');
 
-// Initialize Gemini AI
-let genAI = null;
-if (process.env.GEMINI_API_KEY) {
-    genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-}
+// Gemini is initialized on-demand via geminiClientHelper (supports AQ. OAuth token auto-refresh)
 
 // Ensure summary data file exists
 if (!fs.existsSync(path.dirname(SUMMARY_DATA_FILE))) {
@@ -28,15 +25,19 @@ async function generateAndStoreSummary(auditResult, metadata) {
 
     // Check if we should use AI
     let summaryBody = null;
-    if (process.env.GEMINI_API_KEY && genAI) {
-        // Try multiple models in case of quota issues
-        const modelsToTry = ["gemini-2.0-flash", "gemini-flash-latest", "gemini-pro-latest"];
+    if (process.env.GEMINI_API_KEY) {
+        // Try multiple models in case of quota issues. (1.5 models not supported by AQ keys)
+        const modelsToTry = ["gemini-3.5-flash", "gemini-2.5-flash", "gemini-2.0-flash-lite", "gemini-2.0-flash"];
         let lastError = null;
         let success = false;
 
         for (const modelName of modelsToTry) {
             try {
                 console.log(`Attempting summary generation with ${modelName}...`);
+                // Get fresh client (auto-refreshes AQ. tokens if expired)
+                const genAI = await getGeminiClient();
+                if (!genAI) throw new Error('Gemini client unavailable');
+
                 const model = genAI.getGenerativeModel({
                     model: modelName,
                     tools: modelName.includes('2.0') ? [{ googleSearchRetrieval: {} }] : []
@@ -97,6 +98,11 @@ async function generateAndStoreSummary(auditResult, metadata) {
                     lastError = e;
                 }
             } catch (error) {
+                const isExpired = error.message?.includes('expired') || error.message?.includes('API_KEY_INVALID');
+                if (isExpired) {
+                    console.warn(`⏰ Token expired on ${modelName}. Invalidating cache...`);
+                    invalidateGeminiClient();
+                }
                 console.error(`Gemini error with ${modelName}:`, error.message);
                 lastError = error;
             }

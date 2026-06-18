@@ -1158,6 +1158,8 @@ function cleanMerchantName(name) {
 }
 
 function buildWebDataSummary(webData, merchantName) {
+  const defaultFallback = `**${cleanMerchantName(merchantName || "The merchant")}** is integrating Razorpay solutions to enhance their online payment experience. The objective is to provide a seamless, secure, and reliable transaction flow tailored to their business requirements.`;
+
   if (webData && webData.description && webData.description !== "Not found") {
     const company = cleanMerchantName(webData.company_name || merchantName || "The company");
     const description = webData.description || "";
@@ -1180,7 +1182,6 @@ function buildWebDataSummary(webData, merchantName) {
     const prefix = location || size ? `${location}${size}`.trim() + " " : "";
     const base = description.endsWith(".") ? description : `${description}.`;
 
-    // Avoid prepending company name if description already starts with it
     const companyPrefix = base.toLowerCase().startsWith(company.toLowerCase()) ? "" : `${company} `;
 
     return `${companyPrefix}${base} ${industry}${prefix}${services}`
@@ -1188,7 +1189,7 @@ function buildWebDataSummary(webData, merchantName) {
       .trim();
   }
 
-  return "NA";
+  return defaultFallback;
 }
 
 function extractAutoCaptureSettings(auditResult) {
