@@ -14,12 +14,19 @@ const frdGenerator = require("./services/frdGeneratorService");
 const googleDriveService = require("./services/googleDriveService");
 
 // Initialize Gemini AI
+// Note: Google AI Studio OAuth tokens (AQ. prefix) expire every ~1 hour.
+// If you see "API key expired" errors, get a fresh token from AI Studio.
 let genAI = null;
-if (process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY !== 'AIzaSyA3ka04wRlpWanOfl-S7hA1Bt_0fxGn_No') {
-    genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    console.log("✅ Gemini AI initialized");
+const _geminiKey = process.env.GEMINI_API_KEY || '';
+if (!_geminiKey) {
+    console.warn("⚠️ GEMINI_API_KEY not set in .env. Merchant enrichment disabled.");
 } else {
-    console.warn("⚠️ GEMINI_API_KEY not configured. Merchant enrichment disabled.");
+    genAI = new GoogleGenerativeAI(_geminiKey);
+    const tokenType = _geminiKey.startsWith('AQ.') ? 'API key' : 'API key';
+    console.log(`✅ Gemini AI initialized (${tokenType}).`);
+    if (_geminiKey.startsWith('AQ.')) {
+        console.warn("⏰ ");
+    }
 }
 
 const app = express();
@@ -106,21 +113,26 @@ function extractMetadataFromRawData(rawData) {
 
             // Heuristic for MID (Merchant ID)
             if (lower.includes("mid") || lower.includes("merchant id") || lower.includes("merchant_id") || lower === "id") {
-                // 1. Try after colon
-                let val = str.split(":")[1]?.trim();
+                let val = "";
+                const hasColon = str.includes(":");
 
-                // 2. Try same cell for digits if no colon or empty after colon
-                if (!val) {
-                    const digitMatch = str.match(/\b(\d{7,15})\b/);
-                    if (digitMatch) val = digitMatch[1];
-                }
-
-                // 3. Try next cell
-                if (!val) {
+                if (hasColon) {
+                    // Value lives after the colon in the same cell (e.g. "MID: AFF_MID_999").
+                    // Keep everything after the first colon so IDs with colons survive.
+                    val = str.split(":").slice(1).join(":").trim();
+                } else {
+                    // Standalone label cell ("MID") -> value is in the adjacent cell.
                     val = String(row[idx + 1] || "").trim();
                 }
 
-                if (val && !/mid|id|audit checklist|merchant|configs/i.test(val)) {
+                // Reject label echoes ("MID", "Merchant ID") and section/header text
+                // ("1. Methods Enabled", "Audit Checklist", ...). Note: we intentionally do
+                // NOT reject values just because they contain "mid"/"id" as a substring,
+                // since real merchant IDs can include those (e.g. "AFF_MID_999").
+                const isLabelEcho = /^(mid|merchant\s*id|merchant_id|id)$/i.test(val);
+                const isHeaderLike = /audit checklist|tech checklist|configs|^status$|methods enabled|^\d+\s*\./i.test(val);
+
+                if (val && !isLabelEcho && !isHeaderLike) {
                     mxId = val;
                 }
             }
